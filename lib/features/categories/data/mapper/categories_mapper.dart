@@ -5,7 +5,11 @@ import '../model/category_upsert_model.dart';
 
 extension SallaOptionCategoryModelMapper on CategoryModel {
   CategoryEntity toEntity() {
-    return CategoryEntity(id: id ?? 0, name: name ?? '');
+    return CategoryEntity(
+      id: id ?? 0,
+      name: name ?? '',
+      image: image ?? '',
+    );
   }
 }
 

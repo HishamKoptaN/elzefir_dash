@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:alzefr_dash/core/widgets/forms/custom_text_form_field.dart';
 import 'package:alzefr_dash/features/categories/domain/entities/categories_res_entity.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,6 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/widgets/custom_image.dart';
-import '../../../../core/widgets/custom_scaffold.dart';
-import '../../../products/present/blocs/product_upsert_bloc/product_upsert_bloc.dart';
 import '../../domain/entities/category_upsert_req_entity.dart';
 import '../blocs/category_upsert_bloc/category_upsert_bloc.dart';
 
@@ -32,7 +29,7 @@ class _UpsertCategoryViewState extends State<UpsertCategoryView> {
         CategoryUpsertEvent.dataChanged(
           categoryUpsertReq: CategoryUpsertReqEntity(
             id: widget.category?.id,
-            imageUrl: .dirty(value: widget.category?.name ?? ''),
+            imageUrl: .dirty(value: widget.category?.image ?? ''),
             name: .dirty(value: widget.category?.name ?? ''),
           ),
         ),
@@ -97,8 +94,11 @@ class _UpsertCategoryViewState extends State<UpsertCategoryView> {
                                       categoryUpsertReq: state
                                           .categoryUpsertReq!
                                           .copyWith(
-                                            imageFile: FileFormInput.dirty(
-                                              File(image.path),
+                                            // Keep the picked file itself: its
+                                            // name and mime type are what the
+                                            // upload link is generated from.
+                                            imageFile: XFileFormInput.dirty(
+                                              image,
                                             ),
                                           ),
                                     ),

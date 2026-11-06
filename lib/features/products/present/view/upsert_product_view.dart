@@ -8,8 +8,10 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/widgets/custom_image.dart';
+import '../../../../core/widgets/feedback/app_snackbar.dart';
 import '../../domain/entities/product_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
+import '../blocs/bloc/products_bloc.dart';
 import '../blocs/product_upsert_bloc/product_upsert_bloc.dart';
 
 class UpsertProductView extends StatefulWidget {
@@ -51,7 +53,16 @@ class _UpsertProductViewState extends State<UpsertProductView> {
       listener: (context, state) {
         state.maybeWhen(
           success: () {
+            // The list is cached in a singleton bloc, so pull it again to show
+            // the image that was just uploaded.
+            getIt<ProductsBloc>().add(ProductsEvent.get());
             context.pop();
+          },
+          failure: (errorInfo) {
+            final message = errorInfo.message.trim().isEmpty
+                ? 'تعذّر حفظ المنتج'
+                : errorInfo.message.trim();
+            context.showErrorSnackBar(title: 'خطأ', message: message);
           },
           orElse: () {},
         );
@@ -98,8 +109,11 @@ class _UpsertProductViewState extends State<UpsertProductView> {
                                   ProductUpsertEvent.dataChanged(
                                     productUpsertReq: state.productUpsertReq!
                                         .copyWith(
+                                          // Keep the picked file itself: its
+                                          // name and mime type are what the
+                                          // upload link is generated from.
                                           imageFile: XFileFormInput.dirty(
-                                            XFile(image.path),
+                                            image,
                                           ),
                                         ),
                                   ),

@@ -3,8 +3,6 @@ import 'env.dart';
 import 'envs/local_env.dart';
 import 'envs/prod_env.dart';
 
-enum DataSrcMode { api, mock }
-
 class EnvConfig {
   static final Env _config = _getConfig();
 

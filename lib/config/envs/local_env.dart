@@ -1,15 +1,9 @@
 import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 import '../env.dart';
-import '../env_config.dart';
 import '../firebase/firebase_options_dev.dart';
 
 class LocalEnv extends Env {
-  @override
-  DataSrcMode get dataSourceMode {
-    return .api;
-  }
-
   @override
   bool get enableLogging {
     return true;

@@ -15,7 +15,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PresignedUrlModel implements DiagnosticableTreeMixin {
 
-@JsonKey(name: 'upload_url') String? get uploadUrl;@JsonKey(name: 'file_path') String? get filePath;@JsonKey(name: 'content_type') String? get contentType;
+@JsonKey(name: 'upload_url') String? get uploadUrl;@JsonKey(name: 'file_path') String? get filePath;@JsonKey(name: 'content_type') String? get contentType;/// Unix seconds after which [uploadUrl] stops accepting the file.
+@JsonKey(name: 'expires_at') int? get expiresAt;/// Signature the upload endpoint expects for [filePath].
+ String? get token;
 /// Create a copy of PresignedUrlModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +31,21 @@ $PresignedUrlModelCopyWith<PresignedUrlModel> get copyWith => _$PresignedUrlMode
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'PresignedUrlModel'))
-    ..add(DiagnosticsProperty('uploadUrl', uploadUrl))..add(DiagnosticsProperty('filePath', filePath))..add(DiagnosticsProperty('contentType', contentType));
+    ..add(DiagnosticsProperty('uploadUrl', uploadUrl))..add(DiagnosticsProperty('filePath', filePath))..add(DiagnosticsProperty('contentType', contentType))..add(DiagnosticsProperty('expiresAt', expiresAt))..add(DiagnosticsProperty('token', token));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,uploadUrl,filePath,contentType);
+int get hashCode => Object.hash(runtimeType,uploadUrl,filePath,contentType,expiresAt,token);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType)';
+  return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType, expiresAt: $expiresAt, token: $token)';
 }
 
 
@@ -54,7 +56,7 @@ abstract mixin class $PresignedUrlModelCopyWith<$Res>  {
   factory $PresignedUrlModelCopyWith(PresignedUrlModel value, $Res Function(PresignedUrlModel) _then) = _$PresignedUrlModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'upload_url') String? uploadUrl,@JsonKey(name: 'file_path') String? filePath,@JsonKey(name: 'content_type') String? contentType
+@JsonKey(name: 'upload_url') String? uploadUrl,@JsonKey(name: 'file_path') String? filePath,@JsonKey(name: 'content_type') String? contentType,@JsonKey(name: 'expires_at') int? expiresAt, String? token
 });
 
 
@@ -71,11 +73,13 @@ class _$PresignedUrlModelCopyWithImpl<$Res>
 
 /// Create a copy of PresignedUrlModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? uploadUrl = freezed,Object? filePath = freezed,Object? contentType = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? uploadUrl = freezed,Object? filePath = freezed,Object? contentType = freezed,Object? expiresAt = freezed,Object? token = freezed,}) {
   return _then(_self.copyWith(
 uploadUrl: freezed == uploadUrl ? _self.uploadUrl : uploadUrl // ignore: cast_nullable_to_non_nullable
 as String?,filePath: freezed == filePath ? _self.filePath : filePath // ignore: cast_nullable_to_non_nullable
 as String?,contentType: freezed == contentType ? _self.contentType : contentType // ignore: cast_nullable_to_non_nullable
+as String?,expiresAt: freezed == expiresAt ? _self.expiresAt : expiresAt // ignore: cast_nullable_to_non_nullable
+as int?,token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -161,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'upload_url')  String? uploadUrl, @JsonKey(name: 'file_path')  String? filePath, @JsonKey(name: 'content_type')  String? contentType)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'upload_url')  String? uploadUrl, @JsonKey(name: 'file_path')  String? filePath, @JsonKey(name: 'content_type')  String? contentType, @JsonKey(name: 'expires_at')  int? expiresAt,  String? token)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PresignedUrlModel() when $default != null:
-return $default(_that.uploadUrl,_that.filePath,_that.contentType);case _:
+return $default(_that.uploadUrl,_that.filePath,_that.contentType,_that.expiresAt,_that.token);case _:
   return orElse();
 
 }
@@ -182,10 +186,10 @@ return $default(_that.uploadUrl,_that.filePath,_that.contentType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'upload_url')  String? uploadUrl, @JsonKey(name: 'file_path')  String? filePath, @JsonKey(name: 'content_type')  String? contentType)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'upload_url')  String? uploadUrl, @JsonKey(name: 'file_path')  String? filePath, @JsonKey(name: 'content_type')  String? contentType, @JsonKey(name: 'expires_at')  int? expiresAt,  String? token)  $default,) {final _that = this;
 switch (_that) {
 case _PresignedUrlModel():
-return $default(_that.uploadUrl,_that.filePath,_that.contentType);case _:
+return $default(_that.uploadUrl,_that.filePath,_that.contentType,_that.expiresAt,_that.token);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +206,10 @@ return $default(_that.uploadUrl,_that.filePath,_that.contentType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'upload_url')  String? uploadUrl, @JsonKey(name: 'file_path')  String? filePath, @JsonKey(name: 'content_type')  String? contentType)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'upload_url')  String? uploadUrl, @JsonKey(name: 'file_path')  String? filePath, @JsonKey(name: 'content_type')  String? contentType, @JsonKey(name: 'expires_at')  int? expiresAt,  String? token)?  $default,) {final _that = this;
 switch (_that) {
 case _PresignedUrlModel() when $default != null:
-return $default(_that.uploadUrl,_that.filePath,_that.contentType);case _:
+return $default(_that.uploadUrl,_that.filePath,_that.contentType,_that.expiresAt,_that.token);case _:
   return null;
 
 }
@@ -217,12 +221,16 @@ return $default(_that.uploadUrl,_that.filePath,_that.contentType);case _:
 @JsonSerializable()
 
 class _PresignedUrlModel with DiagnosticableTreeMixin implements PresignedUrlModel {
-  const _PresignedUrlModel({@JsonKey(name: 'upload_url') this.uploadUrl, @JsonKey(name: 'file_path') this.filePath, @JsonKey(name: 'content_type') this.contentType});
+  const _PresignedUrlModel({@JsonKey(name: 'upload_url') this.uploadUrl, @JsonKey(name: 'file_path') this.filePath, @JsonKey(name: 'content_type') this.contentType, @JsonKey(name: 'expires_at') this.expiresAt, this.token});
   factory _PresignedUrlModel.fromJson(Map<String, dynamic> json) => _$PresignedUrlModelFromJson(json);
 
 @override@JsonKey(name: 'upload_url') final  String? uploadUrl;
 @override@JsonKey(name: 'file_path') final  String? filePath;
 @override@JsonKey(name: 'content_type') final  String? contentType;
+/// Unix seconds after which [uploadUrl] stops accepting the file.
+@override@JsonKey(name: 'expires_at') final  int? expiresAt;
+/// Signature the upload endpoint expects for [filePath].
+@override final  String? token;
 
 /// Create a copy of PresignedUrlModel
 /// with the given fields replaced by the non-null parameter values.
@@ -238,21 +246,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'PresignedUrlModel'))
-    ..add(DiagnosticsProperty('uploadUrl', uploadUrl))..add(DiagnosticsProperty('filePath', filePath))..add(DiagnosticsProperty('contentType', contentType));
+    ..add(DiagnosticsProperty('uploadUrl', uploadUrl))..add(DiagnosticsProperty('filePath', filePath))..add(DiagnosticsProperty('contentType', contentType))..add(DiagnosticsProperty('expiresAt', expiresAt))..add(DiagnosticsProperty('token', token));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,uploadUrl,filePath,contentType);
+int get hashCode => Object.hash(runtimeType,uploadUrl,filePath,contentType,expiresAt,token);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType)';
+  return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType, expiresAt: $expiresAt, token: $token)';
 }
 
 
@@ -263,7 +271,7 @@ abstract mixin class _$PresignedUrlModelCopyWith<$Res> implements $PresignedUrlM
   factory _$PresignedUrlModelCopyWith(_PresignedUrlModel value, $Res Function(_PresignedUrlModel) _then) = __$PresignedUrlModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'upload_url') String? uploadUrl,@JsonKey(name: 'file_path') String? filePath,@JsonKey(name: 'content_type') String? contentType
+@JsonKey(name: 'upload_url') String? uploadUrl,@JsonKey(name: 'file_path') String? filePath,@JsonKey(name: 'content_type') String? contentType,@JsonKey(name: 'expires_at') int? expiresAt, String? token
 });
 
 
@@ -280,11 +288,13 @@ class __$PresignedUrlModelCopyWithImpl<$Res>
 
 /// Create a copy of PresignedUrlModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? uploadUrl = freezed,Object? filePath = freezed,Object? contentType = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? uploadUrl = freezed,Object? filePath = freezed,Object? contentType = freezed,Object? expiresAt = freezed,Object? token = freezed,}) {
   return _then(_PresignedUrlModel(
 uploadUrl: freezed == uploadUrl ? _self.uploadUrl : uploadUrl // ignore: cast_nullable_to_non_nullable
 as String?,filePath: freezed == filePath ? _self.filePath : filePath // ignore: cast_nullable_to_non_nullable
 as String?,contentType: freezed == contentType ? _self.contentType : contentType // ignore: cast_nullable_to_non_nullable
+as String?,expiresAt: freezed == expiresAt ? _self.expiresAt : expiresAt // ignore: cast_nullable_to_non_nullable
+as int?,token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

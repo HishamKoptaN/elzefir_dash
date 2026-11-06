@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
-import '../../../../products/domain/entities/product_upsert_req_entity.dart';
 import '../../../domain/entities/category_upsert_req_entity.dart';
 part 'category_upsert_bloc.freezed.dart';
 part 'category_upsert_event.dart';

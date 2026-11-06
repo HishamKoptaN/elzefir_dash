@@ -31,9 +31,7 @@ class ProfilePhoneWidget extends StatelessWidget {
         Container(
           height: 150.h,
           width: 1116.w,
-          decoration: BoxDecoration(
-            color: Color(0xFFFFFFFF),
-          ),
+          decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
           child: Theme(
             data: Theme.of(context).copyWith(
               splashColor: Colors.transparent,
@@ -160,7 +158,7 @@ class ProfilePhoneWidget extends StatelessWidget {
                           focusedErrorBorder: InputBorder.none,
                           disabledBorder: InputBorder.none,
                         ),
-                       
+
                         defaultSearchInputIconColor: Colors.grey,
                         bottomSheetDragHandlerColor: Colors.grey,
                         scrollPhysics: const BouncingScrollPhysics(),

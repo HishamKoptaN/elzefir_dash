@@ -7,7 +7,7 @@ abstract class CategoryUpsertReqEntity with _$CategoryUpsertReqEntity {
   const factory CategoryUpsertReqEntity({
     int? id,
     GenericFormInput? imageUrl,
-    FileFormInput? imageFile,
+    XFileFormInput? imageFile,
     GenericFormInput? name,
     bool? enabled,
   }) = _CategoryUpsertReqEntity;

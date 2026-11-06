@@ -22,6 +22,7 @@ class _ProductsApi implements ProductsApi {
 
   @override
   Future<PresignedUrlModel> presignedUrl({
+    required String id,
     required PresignedUrlReqModel presignedUrlReqModel,
   }) async {
     final _extra = <String, dynamic>{};
@@ -33,7 +34,7 @@ class _ProductsApi implements ProductsApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'products/id/presigned-url',
+            'products/${id}/presigned-url',
             queryParameters: queryParameters,
             data: _data,
           )

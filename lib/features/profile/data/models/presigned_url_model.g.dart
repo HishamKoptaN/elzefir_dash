@@ -11,6 +11,8 @@ _PresignedUrlModel _$PresignedUrlModelFromJson(Map<String, dynamic> json) =>
       uploadUrl: json['upload_url'] as String?,
       filePath: json['file_path'] as String?,
       contentType: json['content_type'] as String?,
+      expiresAt: (json['expires_at'] as num?)?.toInt(),
+      token: json['token'] as String?,
     );
 
 Map<String, dynamic> _$PresignedUrlModelToJson(_PresignedUrlModel instance) =>
@@ -18,4 +20,6 @@ Map<String, dynamic> _$PresignedUrlModelToJson(_PresignedUrlModel instance) =>
       'upload_url': instance.uploadUrl,
       'file_path': instance.filePath,
       'content_type': instance.contentType,
+      'expires_at': instance.expiresAt,
+      'token': instance.token,
     };

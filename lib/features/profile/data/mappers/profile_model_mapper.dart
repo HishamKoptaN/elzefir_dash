@@ -43,6 +43,8 @@ extension PresignedUrlX on PresignedUrlModel {
       uploadUrl: uploadUrl,
       filePath: filePath,
       contentType: contentType,
+      expiresAt: expiresAt,
+      token: token,
     );
   }
 }

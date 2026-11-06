@@ -9,6 +9,12 @@ abstract class PresignedUrlModel with _$PresignedUrlModel {
     @JsonKey(name: 'upload_url') String? uploadUrl,
     @JsonKey(name: 'file_path') String? filePath,
     @JsonKey(name: 'content_type') String? contentType,
+
+    /// Unix seconds after which [uploadUrl] stops accepting the file.
+    @JsonKey(name: 'expires_at') int? expiresAt,
+
+    /// Signature the upload endpoint expects for [filePath].
+    String? token,
   }) = _PresignedUrlModel;
 
   factory PresignedUrlModel.fromJson(Map<String, Object?> json) =>

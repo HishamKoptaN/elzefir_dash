@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/extensions/responsive_icon_extension .dart';
+import '../utils/storage_url.dart';
 
 class CustomImage extends StatelessWidget {
   const CustomImage({
@@ -20,16 +21,24 @@ class CustomImage extends StatelessWidget {
   final BorderRadius borderRadius;
   final Color backgroundColor;
 
+  /// Firestore keeps uploaded images as public-disk relative paths; resolve them
+  /// to the backend `/storage/` URL, leave assets and local files untouched.
+  String get _resolvedImage => resolveStoredImageUrl(image);
+
   bool get _isNetwork {
-    return image.startsWith('http://') || image.startsWith('https://');
+    return _resolvedImage.startsWith('http://') ||
+        _resolvedImage.startsWith('https://') ||
+        _resolvedImage.startsWith('blob:') ||
+        _resolvedImage.startsWith('data:');
   }
 
-  bool get _isFile => image.startsWith('/') || image.startsWith('file://');
+  bool get _isFile =>
+      _resolvedImage.startsWith('/') || _resolvedImage.startsWith('file://');
   @override
   Widget build(BuildContext context) {
     final Widget imageWidget = _isNetwork
         ? CachedNetworkImage(
-            imageUrl: image,
+            imageUrl: _resolvedImage,
             fit: fit,
             placeholder: (_, _) {
               return _placeholder();
@@ -40,7 +49,7 @@ class CustomImage extends StatelessWidget {
           )
         : _isFile
         ? Image.file(
-            File(image),
+            File(_resolvedImage),
             fit: fit,
             matchTextDirection: true,
             errorBuilder: (_, _, _) {
@@ -48,7 +57,7 @@ class CustomImage extends StatelessWidget {
             },
           )
         : Image.asset(
-            image,
+            _resolvedImage,
             fit: fit,
             matchTextDirection: true,
             errorBuilder: (_, _, _) {

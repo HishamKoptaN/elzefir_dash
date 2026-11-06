@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-
 class CameraButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final double size;

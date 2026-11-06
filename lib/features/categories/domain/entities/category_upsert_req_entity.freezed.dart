@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CategoryUpsertReqEntity {
 
- int? get id; GenericFormInput? get imageUrl; FileFormInput? get imageFile; GenericFormInput? get name; bool? get enabled;
+ int? get id; GenericFormInput? get imageUrl; XFileFormInput? get imageFile; GenericFormInput? get name; bool? get enabled;
 /// Create a copy of CategoryUpsertReqEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $CategoryUpsertReqEntityCopyWith<$Res>  {
   factory $CategoryUpsertReqEntityCopyWith(CategoryUpsertReqEntity value, $Res Function(CategoryUpsertReqEntity) _then) = _$CategoryUpsertReqEntityCopyWithImpl;
 @useResult
 $Res call({
- int? id, GenericFormInput? imageUrl, FileFormInput? imageFile, GenericFormInput? name, bool? enabled
+ int? id, GenericFormInput? imageUrl, XFileFormInput? imageFile, GenericFormInput? name, bool? enabled
 });
 
 
@@ -67,7 +67,7 @@ class _$CategoryUpsertReqEntityCopyWithImpl<$Res>
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,imageFile: freezed == imageFile ? _self.imageFile : imageFile // ignore: cast_nullable_to_non_nullable
-as FileFormInput?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as XFileFormInput?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
@@ -154,7 +154,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  FileFormInput? imageFile,  GenericFormInput? name,  bool? enabled)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  bool? enabled)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CategoryUpsertReqEntity() when $default != null:
 return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.enabled);case _:
@@ -175,7 +175,7 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.enabled
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  FileFormInput? imageFile,  GenericFormInput? name,  bool? enabled)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  bool? enabled)  $default,) {final _that = this;
 switch (_that) {
 case _CategoryUpsertReqEntity():
 return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.enabled);case _:
@@ -195,7 +195,7 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.enabled
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  GenericFormInput? imageUrl,  FileFormInput? imageFile,  GenericFormInput? name,  bool? enabled)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  bool? enabled)?  $default,) {final _that = this;
 switch (_that) {
 case _CategoryUpsertReqEntity() when $default != null:
 return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.enabled);case _:
@@ -215,7 +215,7 @@ class _CategoryUpsertReqEntity implements CategoryUpsertReqEntity {
 
 @override final  int? id;
 @override final  GenericFormInput? imageUrl;
-@override final  FileFormInput? imageFile;
+@override final  XFileFormInput? imageFile;
 @override final  GenericFormInput? name;
 @override final  bool? enabled;
 
@@ -249,7 +249,7 @@ abstract mixin class _$CategoryUpsertReqEntityCopyWith<$Res> implements $Categor
   factory _$CategoryUpsertReqEntityCopyWith(_CategoryUpsertReqEntity value, $Res Function(_CategoryUpsertReqEntity) _then) = __$CategoryUpsertReqEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, GenericFormInput? imageUrl, FileFormInput? imageFile, GenericFormInput? name, bool? enabled
+ int? id, GenericFormInput? imageUrl, XFileFormInput? imageFile, GenericFormInput? name, bool? enabled
 });
 
 
@@ -271,7 +271,7 @@ class __$CategoryUpsertReqEntityCopyWithImpl<$Res>
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,imageFile: freezed == imageFile ? _self.imageFile : imageFile // ignore: cast_nullable_to_non_nullable
-as FileFormInput?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as XFileFormInput?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));

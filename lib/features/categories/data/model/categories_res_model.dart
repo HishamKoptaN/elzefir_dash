@@ -7,6 +7,7 @@ abstract class CategoryModel with _$CategoryModel {
   const factory CategoryModel({
     @Default(0) @JsonKey(name: "id") int? id,
     @Default('') @JsonKey(name: "name") String? name,
+    @Default('') @JsonKey(name: "image") String? image,
   }) = _CategoryModel;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>

@@ -21,36 +21,8 @@ class _CategoriesApi implements CategoriesApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<CategoryModel>> get() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<CategoryModel>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'categories',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<CategoryModel> _value;
-    try {
-      _value = _result.data!
-          .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
   Future<PresignedUrlModel> presignedUrl({
+    required String id,
     required PresignedUrlReqModel presignedUrlReqModel,
   }) async {
     final _extra = <String, dynamic>{};
@@ -62,7 +34,7 @@ class _CategoriesApi implements CategoriesApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'products/id/presigned-url',
+            'categories/${id}/presigned-url',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -72,65 +44,6 @@ class _CategoriesApi implements CategoriesApi {
     late PresignedUrlModel _value;
     try {
       _value = PresignedUrlModel.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<CategoryModel> create(CategoryUpsertReqModel req) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(req.toJson());
-    final _options = _setStreamType<CategoryModel>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'products',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CategoryModel _value;
-    try {
-      _value = CategoryModel.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<CategoryModel> update({
-    required int id,
-    required CategoryUpsertReqModel req,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(req.toJson());
-    final _options = _setStreamType<CategoryModel>(
-      Options(method: 'PATCH', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'products/${id}',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CategoryModel _value;
-    try {
-      _value = CategoryModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
