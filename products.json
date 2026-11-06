@@ -1,0 +1,389 @@
+[
+  {
+    "id": 1,
+    "name": "بوري مشوي",
+    "title": null,
+    "description": null,
+    "price": "130",
+    "image": "products/grilled_mullet.png",
+    "category_id": 1
+  },
+  {
+    "id": 2,
+    "name": "بوري مقلي",
+    "title": null,
+    "description": null,
+    "price": "145",
+    "image": " /fried_mullet.png",
+    "category_id": 1
+  },
+  {
+    "id": 3,
+    "name": "بوري سنجاري",
+    "title": null,
+    "description": null,
+    "price": "150",
+    "image": "products/singari_mullet.png",
+    "category_id": 1
+  },
+  {
+    "id": 4,
+    "name": "بوري طاجن",
+    "title": null,
+    "description": null,
+    "price": "170",
+    "image": "products/tagine_mullet.png",
+    "category_id": 1
+  },
+  {
+    "id": 5,
+    "name": "بلطي مشوي",
+    "title": null,
+    "description": null,
+    "price": "120",
+    "image": "products/grilled_tilapia.png",
+    "category_id": 1
+  },
+  {
+    "id": 6,
+    "name": "بلطي مقلي",
+    "title": null,
+    "description": null,
+    "price": "120",
+    "image": "products/fried_tilapia.png",
+    "category_id": 1
+  },
+  {
+    "id": 7,
+    "name": "بلطي سنجاري",
+    "title": null,
+    "description": null,
+    "price": "130",
+    "image": "products/singari_tilapia.png",
+    "category_id": 1
+  },
+  {
+    "id": 8,
+    "name": "بلطي طاجن",
+    "title": null,
+    "description": null,
+    "price": "150",
+    "image": "products/tagine_tilapia.png",
+    "category_id": 1
+  },
+  {
+    "id": 9,
+    "name": "ماكريل مشوي",
+    "title": null,
+    "description": null,
+    "price": "150",
+    "image": "products/grilled_mackerel.png",
+    "category_id": 1
+  },
+  {
+    "id": 10,
+    "name": "ماكريل سنجاري",
+    "title": null,
+    "description": null,
+    "price": "170",
+    "image": "products/singari_mackerel.png",
+    "category_id": 1
+  },
+  {
+    "id": 11,
+    "name": "ماكريل طاجن",
+    "title": null,
+    "description": null,
+    "price": "170",
+    "image": "products/tagine_mackerel.png",
+    "category_id": 1
+  },
+  {
+    "id": 12,
+    "name": "مكرونة مشوي",
+    "title": null,
+    "description": null,
+    "price": "100",
+    "image": "products/grilled_macaroni.png",
+    "category_id": 1
+  },
+  {
+    "id": 13,
+    "name": "مكرونة مقلي ",
+    "title": null,
+    "description": null,
+    "price": "100",
+    "image": "products/fried_macaroni.png",
+    "category_id": 1
+  },
+  {
+    "id": 14,
+    "name": "فيليه ابيض مشوي",
+    "title": null,
+    "description": null,
+    "price": "160",
+    "image": "products/grilled_white_fillet.png",
+    "category_id": 1
+  },
+  {
+    "id": 15,
+    "name": "فيليه ابيض مقلي",
+    "title": null,
+    "description": null,
+    "price": "170",
+    "image": "products/fried_white_fillet.png",
+    "category_id": 1
+  },
+  {
+    "id": 16,
+    "name": "فيليه احمر مشوي",
+    "title": null,
+    "description": null,
+    "price": "170",
+    "image": "products/grilled_red_fillet.png",
+    "category_id": 1
+  },
+  {
+    "id": 17,
+    "name": "فيليه احمر مقلي",
+    "title": null,
+    "description": null,
+    "price": "180",
+    "image": "products/fried_red_fillet.png",
+    "category_id": 1
+  },
+  {
+    "id": 18,
+    "name": "فيليه طاجن",
+    "title": null,
+    "description": null,
+    "price": "190",
+    "image": "products/tagine_fillet.png",
+    "category_id": 1
+  },
+  {
+    "id": 19,
+    "name": "سبيط مقلي",
+    "title": null,
+    "description": null,
+    "price": "210",
+    "image": "products/fried_squid.png",
+    "category_id": 1
+  },
+  {
+    "id": 20,
+    "name": "بربوني مقلي",
+    "title": null,
+    "description": null,
+    "price": "160",
+    "image": "products/fried_barbuni.png",
+    "category_id": 1
+  },
+  {
+    "id": 21,
+    "name": "مكرونة بلدي مقلي ",
+    "title": null,
+    "description": null,
+    "price": "150",
+    "image": "products/fried_local_macaroni.png",
+    "category_id": 1
+  },
+  {
+    "id": 22,
+    "name": "جمبري صغير مقلي",
+    "title": null,
+    "description": null,
+    "price": "300",
+    "image": "products/fried_small_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 23,
+    "name": "جمبري وسط مقلي",
+    "title": null,
+    "description": null,
+    "price": "400",
+    "image": "products/fried_medium_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 24,
+    "name": "جمبري وسط مشوي",
+    "title": null,
+    "description": null,
+    "price": "400",
+    "image": "products/grilled_medium_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 25,
+    "name": "جمبري وسط مشوي",
+    "title": null,
+    "description": null,
+    "price": "400",
+    "image": "products/grilled_medium_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 26,
+    "name": "جمبري جامبو مقلي",
+    "title": null,
+    "description": null,
+    "price": "500",
+    "image": "products/fried_jumbo_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 27,
+    "name": "جمبري جامبو مشوي",
+    "title": null,
+    "description": null,
+    "price": "500",
+    "image": "products/grilled_jumbo_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 28,
+    "name": "جمبري طاجن",
+    "title": null,
+    "description": null,
+    "price": "500",
+    "image": "products/tagine_shrimp.png",
+    "category_id": 1
+  },
+  {
+    "id": 29,
+    "name": "وجبة بوري مشوي",
+    "title": null,
+    "description": "1 سمكة بوري 500 جرام + أرز + سلطة طحينة + عيش",
+    "price": "95",
+    "image": "products/grilled_bouri_meal.png",
+    "category_id": 2
+  },
+  {
+    "id": 30,
+    "name": "وجبة بوري مقلي",
+    "title": "وجبة بوري مقلي",
+    "description": "1 سمكة بوري 500 جرام + أرز + سلطة طحينة + عيش",
+    "price": "100",
+    "image": "products/fried_bouri_meal.png",
+    "category_id": 2
+  },
+  {
+    "id": 31,
+    "name": "وجبة بلطي مشوي",
+    "title": null,
+    "description": "1 سمكة بلطي 500 جرام + أرز + سلطة طحينة + عيش",
+    "price": "75",
+    "image": "products/grilled_tilapia_meal.png",
+    "category_id": 2
+  },
+  {
+    "id": 32,
+    "name": "وجبة بلطي مقلي",
+    "title": null,
+    "description": "1 سمكة بلطي 500 جرام + أرز + سلطة طحينة + عيش",
+    "price": "80",
+    "image": "products/fried_tilapia_meal.png",
+    "category_id": 2
+  },
+  {
+    "id": 33,
+    "name": "وجبة ماكريل مشوي",
+    "title": null,
+    "description": "نصف كيلو ماكريل + أرز + سلطة طحينة + عيش",
+    "price": "65",
+    "image": "products/grilled_mackerel_meal.png",
+    "category_id": 2
+  },
+  {
+    "id": 34,
+    "name": "وجبة فيليه مقلي",
+    "title": null,
+    "description": "ربع كيلو فيليه + أرز + سلطة طحينة + عيش",
+    "price": "130",
+    "image": "products/fried_filet.png",
+    "category_id": 2
+  },
+  {
+    "id": 35,
+    "name": "وجبة جمبري مقلي",
+    "title": null,
+    "description": "ثمن كيلو جمبري + أرز + سلطة طحينة + عيش",
+    "price": "130",
+    "image": "products/fried_shrimp.png",
+    "category_id": 2
+  },
+  {
+    "id": 36,
+    "name": "سندوتش جمبري",
+    "title": null,
+    "description": "خبز + جمبري + طحينة",
+    "price": "45",
+    "image": "products/shrimp_sandwich.png",
+    "category_id": 3
+  },
+  {
+    "id": 37,
+    "name": "سندوتش فيليه",
+    "title": null,
+    "description": "خبز + فيليه + طحينة",
+    "price": "50",
+    "image": "products/filet_sandwich.png",
+    "category_id": 3
+  },
+  {
+    "id": 38,
+    "name": "سندوتش سبيط",
+    "title": null,
+    "description": "خبز + سبيط + طحينة",
+    "price": "50",
+    "image": "products/squid_sandwich.png",
+    "category_id": 3
+  },
+  {
+    "id": 39,
+    "name": "شوربة سي فود حمراء",
+    "title": null,
+    "description": null,
+    "price": "70",
+    "image": "products/red_seafood_soup.png",
+    "category_id": 3
+  },
+  {
+    "id": 40,
+    "name": "شوربة سي فود بالكريمة",
+    "title": null,
+    "description": null,
+    "price": "70",
+    "image": "products/creamy_seafood_soup.png",
+    "category_id": 3
+  },
+  {
+    "id": 41,
+    "name": "ارز بالفيليه ",
+    "title": null,
+    "description": null,
+    "price": "70",
+    "image": "products/rice_with_fillet.png",
+    "category_id": 3
+  },
+  {
+    "id": 42,
+    "name": "ارز بالجمبري ",
+    "title": null,
+    "description": null,
+    "price": "130",
+    "image": "products/shrimp_rice.png",
+    "category_id": 3
+  },
+  {
+    "id": 43,
+    "name": "ارز صيادية ",
+    "title": null,
+    "description": null,
+    "price": "30",
+    "image": "products/sayadieh_rice.png",
+    "category_id": 3
+  }
+]

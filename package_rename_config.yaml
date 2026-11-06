@@ -1,0 +1,33 @@
+#! dart run package_rename --path="package_rename_config.yaml"
+package_rename_config:
+  android:
+    app_name: "الإدارة" # اسم التطبيق
+    package_name: "com.elzefir.admin" # اسم الحزمة
+    override_old_package: true # لتجاهل الحزمة القديمة
+    lang: "ar" # لغة التطبيق (اختياري)
+
+  ios:
+    app_name: "الإدارة" # اسم التطبيق
+    bundle_name: "com.elzefir.admin" # اسم الحزمة
+    package_name: "com.elzefir.admin" # اسم الحزمة
+
+  linux:
+    app_name: "الإدارة" # اسم التطبيق
+    package_name: "com.elzefir.admin" # اسم الحزمة
+    exe_name: "elzefir" # اسم ملف التنفيذ
+
+  macos:
+    app_name: "الإدارة" # اسم التطبيق
+    package_name: "com.elzefir.admin" # اسم الحزمة
+    copyright_notice: "© 2024 elzefir" # حقوق الطبع والنشر (اختياري)
+
+  web:
+    app_name: "الإدارة" # اسم التطبيق
+    short_app_name: "الإدارة" # اسم التطبيق المختصر (اختياري)
+    description: "الإدارة" # وصف التطبيق (اختياري )
+
+  windows:
+    app_name: "الإدارة" # اسم التطبيق
+    organization: "elzefir" # اسم المؤسسة (اختياري)
+    copyright_notice: "© 2024 elzefir" # حقوق الطبع والنشر (اختياري)
+    exe_name: "elzefir" # اسم ملف التنفيذ

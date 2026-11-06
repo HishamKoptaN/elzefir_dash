@@ -1,0 +1,16 @@
+#! dart pub run flutter_native_splash:create --path=flutter_native_splash.yaml
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#FFFFFF"
+  image: assets/logos/solid_logo.png
+  android_gravity: center
+  ios_content_mode: center
+  web: true
+  web_image_mode: center
+  android_12:
+    color: "#FFFFFF"
+    color_dark: "#FFFFFF"
+    image: assets/logos/solid_logo.png
+    icon_background_color: "#FFFFFF"
+  android: true
+  ios: true

@@ -1,0 +1,118 @@
+name: alzefr_dash
+description: "A new Flutter project."
+publish_to: "none"
+version: 1.0.0+1
+environment:
+  sdk: ^3.11.4
+dependencies:
+  retrofit: ^4.9.0
+  logger: ^2.6.0
+  json_annotation: ^4.9.0
+  dio: ^5.8.0+1
+  dartz: ^0.10.1
+  firebase_auth: ^6.5.4
+  firebase_core: ^4.11.0
+  flutter_bloc: ^9.0.0
+  flutter_secure_storage: ^10.3.1
+  gap: ^3.0.1
+  get_it: ^8.0.3
+  injectable: ^2.3.0
+  internet_connection_checker_plus: ^2.7.0
+  hydrated_bloc: ^10.0.0
+  formz: ^0.8.0
+  form_inputs:
+    git:
+      url: https://github.com/HishamKoptaN/form_inputs.git
+      ref: "58570dd"
+  go_router: ^16.2.0
+  shared_preferences: ^2.5.5
+  flutter_screenutil: ^5.9.3
+  pretty_dio_logger: ^1.4.0
+  equatable: ^2.0.8
+  shimmer: ^3.0.0
+  flutter_localized_locales: ^2.0.5
+  country_picker: ^2.0.27
+  image_picker: ^1.2.2
+  cached_network_image: ^3.4.1
+  country_code_picker: ^3.4.1
+  intl_phone_number_input: ^0.7.5
+  universal_html: ^2.2.4
+  phone_input: ^1.0.2
+  flutter_svg: ^2.3.0
+  share_plus: ^10.1.2
+  url_launcher: ^6.3.1
+  hijri: ^3.0.0
+  hijri_date: ^1.1.0
+  currency_text_input_formatter: ^2.3.0
+  number_words_reader: ^0.0.3
+  flutter_skeleton_ui: ^0.0.6
+  skeletonizer: ^2.1.3
+  universal_io: ^2.3.1
+  syncfusion_flutter_datepicker: ^33.2.7
+  bloc_concurrency: ^0.3.0
+  path_provider: ^2.1.5
+  easy_debounce: ^2.0.3
+  date_time_picker_plus: ^1.0.2
+  flutter_datetime_picker_plus: ^2.4.0
+  # firebase_messaging: ^16.4.1
+  universal_platform: ^1.1.0
+  device_info_plus: ^12.4.0
+  visibility_detector: ^0.4.0+2
+  archive: ^4.0.9
+  # pusher_channels_flutter: ^2.4.0
+  dart_pusher_channels: ^1.3.1
+  event_bus: ^2.0.1
+  flutter_otp_kit: ^3.1.1
+  isolate_manager: ^6.3.2
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  freezed_annotation: ^3.1.0
+  font_awesome_flutter: ^11.0.0
+  flutter_gen_runner: ^5.15.0
+  device_preview: ^1.3.1
+  cloud_firestore: ^6.10.2
+dev_dependencies:
+  retrofit_generator: ^10.0.1
+  build_runner: ^2.6.0
+  json_serializable: ^6.10.0
+  freezed: ^3.2.3
+  injectable_generator: ^2.4.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_arb_translator: ^1.0.0
+  flutter_native_splash: ^2.4.8
+  package_rename: ^1.7.1
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+flutter_gen:
+  output: lib/generated/
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/
+    - assets/logos/
+    - assets/icons/
+    - assets/images/
+    - assets/mock/
+  fonts:
+    - family: NotoNaskhArabic
+      fonts:
+        - asset: assets/fonts/noto_naskh_arabic/NotoNaskhArabic-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/noto_naskh_arabic/NotoNaskhArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/noto_naskh_arabic/NotoNaskhArabic-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/noto_naskh_arabic/NotoNaskhArabic-Medium.ttf
+          weight: 400
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/utils
+  filename: app_images.dart
+  field_prefix: null
+flutter_intl:
+  enabled: false
