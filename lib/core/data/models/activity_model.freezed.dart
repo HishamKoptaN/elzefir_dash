@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'activity_model.dart';
@@ -9,6 +9,7 @@ part of 'activity_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $ActivityModelCopyWith<ActivityModel> get copyWith => _$ActivityModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ActivityModel&&(identical(other.type, type) || other.type == type)&&(identical(other.action, action) || other.action == action)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.color, color) || other.color == color));
+  final _this = this as ActivityModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ActivityModel&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.action, _this.action) || other.action == _this.action)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&const DeepCollectionEquality().equals(other.data, _this.data)&&(identical(other.timestamp, _this.timestamp) || other.timestamp == _this.timestamp)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.icon, _this.icon) || other.icon == _this.icon)&&(identical(other.color, _this.color) || other.color == _this.color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,action,id,title,description,const DeepCollectionEquality().hash(data),timestamp,createdAt,icon,color);
+int get hashCode {
+  final _this = this as ActivityModel;
+  return Object.hash(runtimeType,_this.type,_this.action,_this.id,_this.title,_this.description,const DeepCollectionEquality().hash(_this.data),_this.timestamp,_this.createdAt,_this.icon,_this.color);
+}
 
 @override
 String toString() {
-  return 'ActivityModel(type: $type, action: $action, id: $id, title: $title, description: $description, data: $data, timestamp: $timestamp, createdAt: $createdAt, icon: $icon, color: $color)';
+  final _this = this as ActivityModel;
+  return 'ActivityModel(type: ${_this.type}, action: ${_this.action}, id: ${_this.id}, title: ${_this.title}, description: ${_this.description}, data: ${_this.data}, timestamp: ${_this.timestamp}, createdAt: ${_this.createdAt}, icon: ${_this.icon}, color: ${_this.color})';
 }
 
 
@@ -66,7 +72,7 @@ class _$ActivityModelCopyWithImpl<$Res>
 /// Create a copy of ActivityModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = freezed,Object? action = freezed,Object? id = freezed,Object? title = freezed,Object? description = freezed,Object? data = freezed,Object? timestamp = freezed,Object? createdAt = freezed,Object? icon = freezed,Object? color = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ActivityModel(
 type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String?,action: freezed == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
 as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
@@ -218,7 +224,7 @@ return $default(_that.type,_that.action,_that.id,_that.title,_that.description,_
 @JsonSerializable()
 
 class _ActivityModel implements ActivityModel {
-  const _ActivityModel({@JsonKey(name: "type") required this.type, @JsonKey(name: "action") required this.action, @JsonKey(name: "id") required this.id, @JsonKey(name: "title") required this.title, @JsonKey(name: "description") required this.description, @JsonKey(name: "data") required final  Map<String, dynamic>? data, @JsonKey(name: "timestamp") required this.timestamp, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "icon") required this.icon, @JsonKey(name: "color") required this.color}): _data = data;
+  const _ActivityModel({@JsonKey(name: "type") required this.type, @JsonKey(name: "action") required this.action, @JsonKey(name: "id") required this.id, @JsonKey(name: "title") required this.title, @JsonKey(name: "description") required this.description, @JsonKey(name: "data") required  Map<String, dynamic>? data, @JsonKey(name: "timestamp") required this.timestamp, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "icon") required this.icon, @JsonKey(name: "color") required this.color}): _data = data;
   factory _ActivityModel.fromJson(Map<String, dynamic> json) => _$ActivityModelFromJson(json);
 
 @override@JsonKey(name: "type") final  String? type;
@@ -253,16 +259,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ActivityModel&&(identical(other.type, type) || other.type == type)&&(identical(other.action, action) || other.action == action)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.color, color) || other.color == color));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ActivityModel&&(identical(other.type, type) || other.type == type)&&(identical(other.action, action) || other.action == action)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.data, _data)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.color, color) || other.color == color));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,action,id,title,description,const DeepCollectionEquality().hash(_data),timestamp,createdAt,icon,color);
+int get hashCode {
+    return Object.hash(runtimeType,type,action,id,title,description,const DeepCollectionEquality().hash(_data),timestamp,createdAt,icon,color);
+}
 
 @override
 String toString() {
-  return 'ActivityModel(type: $type, action: $action, id: $id, title: $title, description: $description, data: $data, timestamp: $timestamp, createdAt: $createdAt, icon: $icon, color: $color)';
+    return 'ActivityModel(type: $type, action: $action, id: $id, title: $title, description: $description, data: $data, timestamp: $timestamp, createdAt: $createdAt, icon: $icon, color: $color)';
 }
 
 

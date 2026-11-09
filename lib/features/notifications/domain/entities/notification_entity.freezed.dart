@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'notification_entity.dart';
@@ -9,6 +9,7 @@ part of 'notification_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $NotificationsResEntityCopyWith<NotificationsResEntity> get copyWith => _$Notifi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsResEntity&&const DeepCollectionEquality().equals(other.notifications, notifications)&&(identical(other.meta, meta) || other.meta == meta));
+  final _this = this as NotificationsResEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsResEntity&&const DeepCollectionEquality().equals(other.notifications, _this.notifications)&&(identical(other.meta, _this.meta) || other.meta == _this.meta));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(notifications),meta);
+int get hashCode {
+  final _this = this as NotificationsResEntity;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.notifications),_this.meta);
+}
 
 @override
 String toString() {
-  return 'NotificationsResEntity(notifications: $notifications, meta: $meta)';
+  final _this = this as NotificationsResEntity;
+  return 'NotificationsResEntity(notifications: ${_this.notifications}, meta: ${_this.meta})';
 }
 
 
@@ -63,7 +69,7 @@ class _$NotificationsResEntityCopyWithImpl<$Res>
 /// Create a copy of NotificationsResEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? notifications = null,Object? meta = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(NotificationsResEntity(
 notifications: null == notifications ? _self.notifications : notifications // ignore: cast_nullable_to_non_nullable
 as List<NotificationEntity>,meta: freezed == meta ? _self.meta : meta // ignore: cast_nullable_to_non_nullable
 as MetaEntity?,
@@ -207,7 +213,7 @@ return $default(_that.notifications,_that.meta);case _:
 
 
 class _NotificationsResEntity implements NotificationsResEntity {
-  const _NotificationsResEntity({final  List<NotificationEntity> notifications = const [], this.meta}): _notifications = notifications;
+  const _NotificationsResEntity({ List<NotificationEntity> notifications = const [], this.meta}): _notifications = notifications;
   
 
  final  List<NotificationEntity> _notifications;
@@ -229,16 +235,18 @@ _$NotificationsResEntityCopyWith<_NotificationsResEntity> get copyWith => __$Not
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationsResEntity&&const DeepCollectionEquality().equals(other._notifications, _notifications)&&(identical(other.meta, meta) || other.meta == meta));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationsResEntity&&const DeepCollectionEquality().equals(other.notifications, _notifications)&&(identical(other.meta, meta) || other.meta == meta));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_notifications),meta);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_notifications),meta);
+}
 
 @override
 String toString() {
-  return 'NotificationsResEntity(notifications: $notifications, meta: $meta)';
+    return 'NotificationsResEntity(notifications: $notifications, meta: $meta)';
 }
 
 
@@ -291,16 +299,21 @@ $NotificationEntityCopyWith<NotificationEntity> get copyWith => _$NotificationEn
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.targetUrl, targetUrl) || other.targetUrl == targetUrl)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.read, read) || other.read == read)&&(identical(other.type, type) || other.type == type));
+  final _this = this as NotificationEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.body, _this.body) || other.body == _this.body)&&const DeepCollectionEquality().equals(other.data, _this.data)&&(identical(other.targetUrl, _this.targetUrl) || other.targetUrl == _this.targetUrl)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.read, _this.read) || other.read == _this.read)&&(identical(other.type, _this.type) || other.type == _this.type));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,title,body,const DeepCollectionEquality().hash(data),targetUrl,createdAt,imageUrl,read,type);
+int get hashCode {
+  final _this = this as NotificationEntity;
+  return Object.hash(runtimeType,_this.id,_this.title,_this.body,const DeepCollectionEquality().hash(_this.data),_this.targetUrl,_this.createdAt,_this.imageUrl,_this.read,_this.type);
+}
 
 @override
 String toString() {
-  return 'NotificationEntity(id: $id, title: $title, body: $body, data: $data, targetUrl: $targetUrl, createdAt: $createdAt, imageUrl: $imageUrl, read: $read, type: $type)';
+  final _this = this as NotificationEntity;
+  return 'NotificationEntity(id: ${_this.id}, title: ${_this.title}, body: ${_this.body}, data: ${_this.data}, targetUrl: ${_this.targetUrl}, createdAt: ${_this.createdAt}, imageUrl: ${_this.imageUrl}, read: ${_this.read}, type: ${_this.type})';
 }
 
 
@@ -329,7 +342,7 @@ class _$NotificationEntityCopyWithImpl<$Res>
 /// Create a copy of NotificationEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? body = null,Object? data = null,Object? targetUrl = null,Object? createdAt = null,Object? imageUrl = null,Object? read = null,Object? type = null,}) {
-  return _then(_self.copyWith(
+  return _then(NotificationEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,body: null == body ? _self.body : body // ignore: cast_nullable_to_non_nullable
@@ -480,7 +493,7 @@ return $default(_that.id,_that.title,_that.body,_that.data,_that.targetUrl,_that
 
 
 class _NotificationEntity implements NotificationEntity {
-  const _NotificationEntity({required this.id, this.title = '', this.body = '', final  Map<String, dynamic> data = const <String, dynamic>{}, this.targetUrl = '', this.createdAt = '', this.imageUrl = '', this.read = false, this.type = NotificationType.info}): _data = data;
+  const _NotificationEntity({required this.id, this.title = '', this.body = '',  Map<String, dynamic> data = const <String, dynamic>{}, this.targetUrl = '', this.createdAt = '', this.imageUrl = '', this.read = false, this.type = NotificationType.info}): _data = data;
   
 
 @override final  String id;
@@ -509,16 +522,18 @@ _$NotificationEntityCopyWith<_NotificationEntity> get copyWith => __$Notificatio
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.targetUrl, targetUrl) || other.targetUrl == targetUrl)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.read, read) || other.read == read)&&(identical(other.type, type) || other.type == type));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&const DeepCollectionEquality().equals(other.data, _data)&&(identical(other.targetUrl, targetUrl) || other.targetUrl == targetUrl)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.read, read) || other.read == read)&&(identical(other.type, type) || other.type == type));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,title,body,const DeepCollectionEquality().hash(_data),targetUrl,createdAt,imageUrl,read,type);
+int get hashCode {
+    return Object.hash(runtimeType,id,title,body,const DeepCollectionEquality().hash(_data),targetUrl,createdAt,imageUrl,read,type);
+}
 
 @override
 String toString() {
-  return 'NotificationEntity(id: $id, title: $title, body: $body, data: $data, targetUrl: $targetUrl, createdAt: $createdAt, imageUrl: $imageUrl, read: $read, type: $type)';
+    return 'NotificationEntity(id: $id, title: $title, body: $body, data: $data, targetUrl: $targetUrl, createdAt: $createdAt, imageUrl: $imageUrl, read: $read, type: $type)';
 }
 
 

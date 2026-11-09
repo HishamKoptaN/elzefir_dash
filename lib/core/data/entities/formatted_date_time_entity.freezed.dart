@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'formatted_date_time_entity.dart';
@@ -9,6 +9,7 @@ part of 'formatted_date_time_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $FormattedDateTimeEntityCopyWith<FormattedDateTimeEntity> get copyWith => _$Form
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FormattedDateTimeEntity&&(identical(other.formattedDate, formattedDate) || other.formattedDate == formattedDate)&&(identical(other.formattedTime, formattedTime) || other.formattedTime == formattedTime)&&(identical(other.relativeTime, relativeTime) || other.relativeTime == relativeTime)&&(identical(other.fullDateTime, fullDateTime) || other.fullDateTime == fullDateTime)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime));
+  final _this = this as FormattedDateTimeEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FormattedDateTimeEntity&&(identical(other.formattedDate, _this.formattedDate) || other.formattedDate == _this.formattedDate)&&(identical(other.formattedTime, _this.formattedTime) || other.formattedTime == _this.formattedTime)&&(identical(other.relativeTime, _this.relativeTime) || other.relativeTime == _this.relativeTime)&&(identical(other.fullDateTime, _this.fullDateTime) || other.fullDateTime == _this.fullDateTime)&&(identical(other.dateTime, _this.dateTime) || other.dateTime == _this.dateTime));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,formattedDate,formattedTime,relativeTime,fullDateTime,dateTime);
+int get hashCode {
+  final _this = this as FormattedDateTimeEntity;
+  return Object.hash(runtimeType,_this.formattedDate,_this.formattedTime,_this.relativeTime,_this.fullDateTime,_this.dateTime);
+}
 
 @override
 String toString() {
-  return 'FormattedDateTimeEntity(formattedDate: $formattedDate, formattedTime: $formattedTime, relativeTime: $relativeTime, fullDateTime: $fullDateTime, dateTime: $dateTime)';
+  final _this = this as FormattedDateTimeEntity;
+  return 'FormattedDateTimeEntity(formattedDate: ${_this.formattedDate}, formattedTime: ${_this.formattedTime}, relativeTime: ${_this.relativeTime}, fullDateTime: ${_this.fullDateTime}, dateTime: ${_this.dateTime})';
 }
 
 
@@ -63,7 +69,7 @@ class _$FormattedDateTimeEntityCopyWithImpl<$Res>
 /// Create a copy of FormattedDateTimeEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? formattedDate = freezed,Object? formattedTime = freezed,Object? relativeTime = freezed,Object? fullDateTime = freezed,Object? dateTime = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(FormattedDateTimeEntity(
 formattedDate: freezed == formattedDate ? _self.formattedDate : formattedDate // ignore: cast_nullable_to_non_nullable
 as String?,formattedTime: freezed == formattedTime ? _self.formattedTime : formattedTime // ignore: cast_nullable_to_non_nullable
 as String?,relativeTime: freezed == relativeTime ? _self.relativeTime : relativeTime // ignore: cast_nullable_to_non_nullable
@@ -229,16 +235,18 @@ _$FormattedDateTimeEntityCopyWith<_FormattedDateTimeEntity> get copyWith => __$F
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FormattedDateTimeEntity&&(identical(other.formattedDate, formattedDate) || other.formattedDate == formattedDate)&&(identical(other.formattedTime, formattedTime) || other.formattedTime == formattedTime)&&(identical(other.relativeTime, relativeTime) || other.relativeTime == relativeTime)&&(identical(other.fullDateTime, fullDateTime) || other.fullDateTime == fullDateTime)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FormattedDateTimeEntity&&(identical(other.formattedDate, formattedDate) || other.formattedDate == formattedDate)&&(identical(other.formattedTime, formattedTime) || other.formattedTime == formattedTime)&&(identical(other.relativeTime, relativeTime) || other.relativeTime == relativeTime)&&(identical(other.fullDateTime, fullDateTime) || other.fullDateTime == fullDateTime)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,formattedDate,formattedTime,relativeTime,fullDateTime,dateTime);
+int get hashCode {
+    return Object.hash(runtimeType,formattedDate,formattedTime,relativeTime,fullDateTime,dateTime);
+}
 
 @override
 String toString() {
-  return 'FormattedDateTimeEntity(formattedDate: $formattedDate, formattedTime: $formattedTime, relativeTime: $relativeTime, fullDateTime: $fullDateTime, dateTime: $dateTime)';
+    return 'FormattedDateTimeEntity(formattedDate: $formattedDate, formattedTime: $formattedTime, relativeTime: $relativeTime, fullDateTime: $fullDateTime, dateTime: $dateTime)';
 }
 
 

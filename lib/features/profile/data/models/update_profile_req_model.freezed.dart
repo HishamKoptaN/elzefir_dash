@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'update_profile_req_model.dart';
@@ -9,6 +9,7 @@ part of 'update_profile_req_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $UpdateProfileReqModelCopyWith<UpdateProfileReqModel> get copyWith => _$UpdatePr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateProfileReqModel&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.name, name) || other.name == name)&&(identical(other.username, username) || other.username == username)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.dialCode, dialCode) || other.dialCode == dialCode)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode));
+  final _this = this as UpdateProfileReqModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateProfileReqModel&&(identical(other.avatar, _this.avatar) || other.avatar == _this.avatar)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.username, _this.username) || other.username == _this.username)&&(identical(other.phoneNumber, _this.phoneNumber) || other.phoneNumber == _this.phoneNumber)&&(identical(other.dialCode, _this.dialCode) || other.dialCode == _this.dialCode)&&(identical(other.isoCode, _this.isoCode) || other.isoCode == _this.isoCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,avatar,name,username,phoneNumber,dialCode,isoCode);
+int get hashCode {
+  final _this = this as UpdateProfileReqModel;
+  return Object.hash(runtimeType,_this.avatar,_this.name,_this.username,_this.phoneNumber,_this.dialCode,_this.isoCode);
+}
 
 @override
 String toString() {
-  return 'UpdateProfileReqModel(avatar: $avatar, name: $name, username: $username, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode)';
+  final _this = this as UpdateProfileReqModel;
+  return 'UpdateProfileReqModel(avatar: ${_this.avatar}, name: ${_this.name}, username: ${_this.username}, phoneNumber: ${_this.phoneNumber}, dialCode: ${_this.dialCode}, isoCode: ${_this.isoCode})';
 }
 
 
@@ -66,7 +72,7 @@ class _$UpdateProfileReqModelCopyWithImpl<$Res>
 /// Create a copy of UpdateProfileReqModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? avatar = freezed,Object? name = freezed,Object? username = freezed,Object? phoneNumber = freezed,Object? dialCode = freezed,Object? isoCode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(UpdateProfileReqModel(
 avatar: freezed == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
 as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
@@ -237,16 +243,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateProfileReqModel&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.name, name) || other.name == name)&&(identical(other.username, username) || other.username == username)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.dialCode, dialCode) || other.dialCode == dialCode)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateProfileReqModel&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.name, name) || other.name == name)&&(identical(other.username, username) || other.username == username)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.dialCode, dialCode) || other.dialCode == dialCode)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,avatar,name,username,phoneNumber,dialCode,isoCode);
+int get hashCode {
+    return Object.hash(runtimeType,avatar,name,username,phoneNumber,dialCode,isoCode);
+}
 
 @override
 String toString() {
-  return 'UpdateProfileReqModel(avatar: $avatar, name: $name, username: $username, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode)';
+    return 'UpdateProfileReqModel(avatar: $avatar, name: $name, username: $username, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode)';
 }
 
 

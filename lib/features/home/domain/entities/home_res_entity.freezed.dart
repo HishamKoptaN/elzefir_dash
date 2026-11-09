@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'home_res_entity.dart';
@@ -9,6 +9,7 @@ part of 'home_res_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $HomeResEntityCopyWith<HomeResEntity> get copyWith => _$HomeResEntityCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResEntity&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, categories)&&const DeepCollectionEquality().equals(other.products, products)&&const DeepCollectionEquality().equals(other.additions, additions));
+  final _this = this as HomeResEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResEntity&&(identical(other.offerImage, _this.offerImage) || other.offerImage == _this.offerImage)&&const DeepCollectionEquality().equals(other.categories, _this.categories)&&const DeepCollectionEquality().equals(other.products, _this.products)&&const DeepCollectionEquality().equals(other.additions, _this.additions));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(categories),const DeepCollectionEquality().hash(products),const DeepCollectionEquality().hash(additions));
+int get hashCode {
+  final _this = this as HomeResEntity;
+  return Object.hash(runtimeType,_this.offerImage,const DeepCollectionEquality().hash(_this.categories),const DeepCollectionEquality().hash(_this.products),const DeepCollectionEquality().hash(_this.additions));
+}
 
 @override
 String toString() {
-  return 'HomeResEntity(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions)';
+  final _this = this as HomeResEntity;
+  return 'HomeResEntity(offerImage: ${_this.offerImage}, categories: ${_this.categories}, products: ${_this.products}, additions: ${_this.additions})';
 }
 
 
@@ -63,7 +69,7 @@ class _$HomeResEntityCopyWithImpl<$Res>
 /// Create a copy of HomeResEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? offerImage = freezed,Object? categories = null,Object? products = null,Object? additions = null,}) {
-  return _then(_self.copyWith(
+  return _then(HomeResEntity(
 offerImage: freezed == offerImage ? _self.offerImage : offerImage // ignore: cast_nullable_to_non_nullable
 as String?,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<CategoryEntity>,products: null == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
@@ -209,7 +215,7 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 
 
 class _HomeResEntity implements HomeResEntity {
-  const _HomeResEntity({this.offerImage, final  List<CategoryEntity> categories = const [], final  List<ProductEntity> products = const [], final  List<AdditionEntity> additions = const []}): _categories = categories,_products = products,_additions = additions;
+  const _HomeResEntity({this.offerImage,  List<CategoryEntity> categories = const [],  List<ProductEntity> products = const [],  List<AdditionEntity> additions = const []}): _categories = categories,_products = products,_additions = additions;
   
 
 @override final  String? offerImage;
@@ -245,16 +251,18 @@ _$HomeResEntityCopyWith<_HomeResEntity> get copyWith => __$HomeResEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResEntity&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other._categories, _categories)&&const DeepCollectionEquality().equals(other._products, _products)&&const DeepCollectionEquality().equals(other._additions, _additions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResEntity&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, _categories)&&const DeepCollectionEquality().equals(other.products, _products)&&const DeepCollectionEquality().equals(other.additions, _additions));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_additions));
+int get hashCode {
+    return Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_additions));
+}
 
 @override
 String toString() {
-  return 'HomeResEntity(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions)';
+    return 'HomeResEntity(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions)';
 }
 
 

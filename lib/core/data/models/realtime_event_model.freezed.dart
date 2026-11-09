@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'realtime_event_model.dart';
@@ -9,6 +9,7 @@ part of 'realtime_event_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $RealtimeEventModelCopyWith<RealtimeEventModel> get copyWith => _$RealtimeEventM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RealtimeEventModel&&(identical(other.id, id) || other.id == id)&&(identical(other.orderNum, orderNum) || other.orderNum == orderNum)&&(identical(other.name, name) || other.name == name)&&(identical(other.status, status) || other.status == status)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.package, package) || other.package == package)&&(identical(other.distributionCountry, distributionCountry) || other.distributionCountry == distributionCountry)&&const DeepCollectionEquality().equals(other.changes, changes));
+  final _this = this as RealtimeEventModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RealtimeEventModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.orderNum, _this.orderNum) || other.orderNum == _this.orderNum)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.totalAmount, _this.totalAmount) || other.totalAmount == _this.totalAmount)&&(identical(other.countryCode, _this.countryCode) || other.countryCode == _this.countryCode)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&(identical(other.package, _this.package) || other.package == _this.package)&&(identical(other.distributionCountry, _this.distributionCountry) || other.distributionCountry == _this.distributionCountry)&&const DeepCollectionEquality().equals(other.changes, _this.changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,orderNum,name,status,totalAmount,countryCode,createdAt,updatedAt,package,distributionCountry,const DeepCollectionEquality().hash(changes));
+int get hashCode {
+  final _this = this as RealtimeEventModel;
+  return Object.hash(runtimeType,_this.id,_this.orderNum,_this.name,_this.status,_this.totalAmount,_this.countryCode,_this.createdAt,_this.updatedAt,_this.package,_this.distributionCountry,const DeepCollectionEquality().hash(_this.changes));
+}
 
 @override
 String toString() {
-  return 'RealtimeEventModel(id: $id, orderNum: $orderNum, name: $name, status: $status, totalAmount: $totalAmount, countryCode: $countryCode, createdAt: $createdAt, updatedAt: $updatedAt, package: $package, distributionCountry: $distributionCountry, changes: $changes)';
+  final _this = this as RealtimeEventModel;
+  return 'RealtimeEventModel(id: ${_this.id}, orderNum: ${_this.orderNum}, name: ${_this.name}, status: ${_this.status}, totalAmount: ${_this.totalAmount}, countryCode: ${_this.countryCode}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt}, package: ${_this.package}, distributionCountry: ${_this.distributionCountry}, changes: ${_this.changes})';
 }
 
 
@@ -66,7 +72,7 @@ class _$RealtimeEventModelCopyWithImpl<$Res>
 /// Create a copy of RealtimeEventModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? orderNum = freezed,Object? name = freezed,Object? status = freezed,Object? totalAmount = freezed,Object? countryCode = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? package = freezed,Object? distributionCountry = freezed,Object? changes = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(RealtimeEventModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,orderNum: freezed == orderNum ? _self.orderNum : orderNum // ignore: cast_nullable_to_non_nullable
 as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -243,7 +249,7 @@ return $default(_that.id,_that.orderNum,_that.name,_that.status,_that.totalAmoun
 @JsonSerializable()
 
 class _RealtimeEventModel implements RealtimeEventModel {
-  const _RealtimeEventModel({@JsonKey(name: "id") required this.id, @JsonKey(name: "order_num") required this.orderNum, @JsonKey(name: "name") required this.name, @JsonKey(name: "status") required this.status, @JsonKey(name: "total_amount") required this.totalAmount, @JsonKey(name: "country_code") required this.countryCode, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "updated_at") required this.updatedAt, @JsonKey(name: "package") required this.package, @JsonKey(name: "distribution_country") required this.distributionCountry, @JsonKey(name: "changes") required final  Map<String, dynamic>? changes}): _changes = changes;
+  const _RealtimeEventModel({@JsonKey(name: "id") required this.id, @JsonKey(name: "order_num") required this.orderNum, @JsonKey(name: "name") required this.name, @JsonKey(name: "status") required this.status, @JsonKey(name: "total_amount") required this.totalAmount, @JsonKey(name: "country_code") required this.countryCode, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "updated_at") required this.updatedAt, @JsonKey(name: "package") required this.package, @JsonKey(name: "distribution_country") required this.distributionCountry, @JsonKey(name: "changes") required  Map<String, dynamic>? changes}): _changes = changes;
   factory _RealtimeEventModel.fromJson(Map<String, dynamic> json) => _$RealtimeEventModelFromJson(json);
 
 @override@JsonKey(name: "id") final  int? id;
@@ -279,16 +285,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RealtimeEventModel&&(identical(other.id, id) || other.id == id)&&(identical(other.orderNum, orderNum) || other.orderNum == orderNum)&&(identical(other.name, name) || other.name == name)&&(identical(other.status, status) || other.status == status)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.package, package) || other.package == package)&&(identical(other.distributionCountry, distributionCountry) || other.distributionCountry == distributionCountry)&&const DeepCollectionEquality().equals(other._changes, _changes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _RealtimeEventModel&&(identical(other.id, id) || other.id == id)&&(identical(other.orderNum, orderNum) || other.orderNum == orderNum)&&(identical(other.name, name) || other.name == name)&&(identical(other.status, status) || other.status == status)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.package, package) || other.package == package)&&(identical(other.distributionCountry, distributionCountry) || other.distributionCountry == distributionCountry)&&const DeepCollectionEquality().equals(other.changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,orderNum,name,status,totalAmount,countryCode,createdAt,updatedAt,package,distributionCountry,const DeepCollectionEquality().hash(_changes));
+int get hashCode {
+    return Object.hash(runtimeType,id,orderNum,name,status,totalAmount,countryCode,createdAt,updatedAt,package,distributionCountry,const DeepCollectionEquality().hash(_changes));
+}
 
 @override
 String toString() {
-  return 'RealtimeEventModel(id: $id, orderNum: $orderNum, name: $name, status: $status, totalAmount: $totalAmount, countryCode: $countryCode, createdAt: $createdAt, updatedAt: $updatedAt, package: $package, distributionCountry: $distributionCountry, changes: $changes)';
+    return 'RealtimeEventModel(id: $id, orderNum: $orderNum, name: $name, status: $status, totalAmount: $totalAmount, countryCode: $countryCode, createdAt: $createdAt, updatedAt: $updatedAt, package: $package, distributionCountry: $distributionCountry, changes: $changes)';
 }
 
 
@@ -377,16 +385,21 @@ $PackageModelCopyWith<PackageModel> get copyWith => _$PackageModelCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  final _this = this as PackageModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+  final _this = this as PackageModel;
+  return Object.hash(runtimeType,_this.id,_this.name);
+}
 
 @override
 String toString() {
-  return 'PackageModel(id: $id, name: $name)';
+  final _this = this as PackageModel;
+  return 'PackageModel(id: ${_this.id}, name: ${_this.name})';
 }
 
 
@@ -415,7 +428,7 @@ class _$PackageModelCopyWithImpl<$Res>
 /// Create a copy of PackageModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PackageModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -578,16 +591,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,name);
+}
 
 @override
 String toString() {
-  return 'PackageModel(id: $id, name: $name)';
+    return 'PackageModel(id: $id, name: $name)';
 }
 
 
@@ -643,16 +658,21 @@ $DistributionCountryCopyWith<DistributionCountry> get copyWith => _$Distribution
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DistributionCountry&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  final _this = this as DistributionCountry;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DistributionCountry&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+  final _this = this as DistributionCountry;
+  return Object.hash(runtimeType,_this.id,_this.name);
+}
 
 @override
 String toString() {
-  return 'DistributionCountry(id: $id, name: $name)';
+  final _this = this as DistributionCountry;
+  return 'DistributionCountry(id: ${_this.id}, name: ${_this.name})';
 }
 
 
@@ -681,7 +701,7 @@ class _$DistributionCountryCopyWithImpl<$Res>
 /// Create a copy of DistributionCountry
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(DistributionCountry(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -844,16 +864,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DistributionCountry&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DistributionCountry&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,name);
+}
 
 @override
 String toString() {
-  return 'DistributionCountry(id: $id, name: $name)';
+    return 'DistributionCountry(id: $id, name: $name)';
 }
 
 

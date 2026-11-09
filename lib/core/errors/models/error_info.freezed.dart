@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'error_info.dart';
@@ -9,6 +9,7 @@ part of 'error_info.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $ErrorInfoCopyWith<ErrorInfo> get copyWith => _$ErrorInfoCopyWithImpl<ErrorInfo>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorInfo&&(identical(other.title, title) || other.title == title)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.reportToCrashlytics, reportToCrashlytics) || other.reportToCrashlytics == reportToCrashlytics)&&(identical(other.fatal, fatal) || other.fatal == fatal));
+  final _this = this as ErrorInfo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorInfo&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.message, _this.message) || other.message == _this.message)&&const DeepCollectionEquality().equals(other.data, _this.data)&&(identical(other.reportToCrashlytics, _this.reportToCrashlytics) || other.reportToCrashlytics == _this.reportToCrashlytics)&&(identical(other.fatal, _this.fatal) || other.fatal == _this.fatal));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,message,const DeepCollectionEquality().hash(data),reportToCrashlytics,fatal);
+int get hashCode {
+  final _this = this as ErrorInfo;
+  return Object.hash(runtimeType,_this.title,_this.message,const DeepCollectionEquality().hash(_this.data),_this.reportToCrashlytics,_this.fatal);
+}
 
 @override
 String toString() {
-  return 'ErrorInfo(title: $title, message: $message, data: $data, reportToCrashlytics: $reportToCrashlytics, fatal: $fatal)';
+  final _this = this as ErrorInfo;
+  return 'ErrorInfo(title: ${_this.title}, message: ${_this.message}, data: ${_this.data}, reportToCrashlytics: ${_this.reportToCrashlytics}, fatal: ${_this.fatal})';
 }
 
 
@@ -63,7 +69,7 @@ class _$ErrorInfoCopyWithImpl<$Res>
 /// Create a copy of ErrorInfo
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? message = null,Object? data = freezed,Object? reportToCrashlytics = null,Object? fatal = null,}) {
-  return _then(_self.copyWith(
+  return _then(ErrorInfo(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,data: freezed == data ? _self.data : data ,reportToCrashlytics: null == reportToCrashlytics ? _self.reportToCrashlytics : reportToCrashlytics // ignore: cast_nullable_to_non_nullable
@@ -228,16 +234,18 @@ _$ErrorInfoCopyWith<_ErrorInfo> get copyWith => __$ErrorInfoCopyWithImpl<_ErrorI
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ErrorInfo&&(identical(other.title, title) || other.title == title)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.reportToCrashlytics, reportToCrashlytics) || other.reportToCrashlytics == reportToCrashlytics)&&(identical(other.fatal, fatal) || other.fatal == fatal));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ErrorInfo&&(identical(other.title, title) || other.title == title)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.reportToCrashlytics, reportToCrashlytics) || other.reportToCrashlytics == reportToCrashlytics)&&(identical(other.fatal, fatal) || other.fatal == fatal));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,message,const DeepCollectionEquality().hash(data),reportToCrashlytics,fatal);
+int get hashCode {
+    return Object.hash(runtimeType,title,message,const DeepCollectionEquality().hash(data),reportToCrashlytics,fatal);
+}
 
 @override
 String toString() {
-  return 'ErrorInfo(title: $title, message: $message, data: $data, reportToCrashlytics: $reportToCrashlytics, fatal: $fatal)';
+    return 'ErrorInfo(title: $title, message: $message, data: $data, reportToCrashlytics: $reportToCrashlytics, fatal: $fatal)';
 }
 
 

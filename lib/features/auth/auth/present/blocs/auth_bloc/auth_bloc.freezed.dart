@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'auth_bloc.dart';
@@ -9,6 +9,7 @@ part of 'auth_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$AuthEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent()';
+    return 'AuthEvent()';
 }
 
 
@@ -208,16 +209,18 @@ _$CheckCopyWith<_Check> get copyWith => __$CheckCopyWithImpl<_Check>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,onComplete);
+int get hashCode {
+    return Object.hash(runtimeType,onComplete);
+}
 
 @override
 String toString() {
-  return 'AuthEvent.check(onComplete: $onComplete)';
+    return 'AuthEvent.check(onComplete: $onComplete)';
 }
 
 
@@ -274,16 +277,18 @@ _$authTokenCopyWith<_authToken> get copyWith => __$authTokenCopyWithImpl<_authTo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _authToken&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _authToken&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,onComplete);
+int get hashCode {
+    return Object.hash(runtimeType,onComplete);
+}
 
 @override
 String toString() {
-  return 'AuthEvent.authToken(onComplete: $onComplete)';
+    return 'AuthEvent.authToken(onComplete: $onComplete)';
 }
 
 
@@ -335,7 +340,7 @@ class _SignedOut implements AuthEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignedOut);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignedOut);
 }
 
 
@@ -344,7 +349,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent.signedOut()';
+    return 'AuthEvent.signedOut()';
 }
 
 
@@ -367,7 +372,7 @@ class _EmitAuthenticated implements AuthEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmitAuthenticated);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmitAuthenticated);
 }
 
 
@@ -376,7 +381,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent.emitAuthenticated()';
+    return 'AuthEvent.emitAuthenticated()';
 }
 
 
@@ -394,7 +399,7 @@ mixin _$AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState);
 }
 
 
@@ -403,7 +408,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState()';
+    return 'AuthState()';
 }
 
 
@@ -583,7 +588,7 @@ class _Init implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Init);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Init);
 }
 
 
@@ -592,7 +597,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.init()';
+    return 'AuthState.init()';
 }
 
 
@@ -615,7 +620,7 @@ class _Loading implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -624,7 +629,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.loading()';
+    return 'AuthState.loading()';
 }
 
 
@@ -647,7 +652,7 @@ class _Authenticated implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Authenticated);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Authenticated);
 }
 
 
@@ -656,7 +661,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.authenticated()';
+    return 'AuthState.authenticated()';
 }
 
 
@@ -679,7 +684,7 @@ class _Unauthenticated implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unauthenticated);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unauthenticated);
 }
 
 
@@ -688,7 +693,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.unauthenticated()';
+    return 'AuthState.unauthenticated()';
 }
 
 
@@ -716,16 +721,18 @@ _$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'AuthState.failure(apiErrorModel: $apiErrorModel)';
+    return 'AuthState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

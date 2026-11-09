@@ -41,7 +41,7 @@ import '../../features/auth/reset_password/domain/repo/reset_pass_repo.dart'
 import '../../features/auth/reset_password/domain/usecases/reset_pass_usecases.dart'
     as _i992;
 import '../../features/auth/reset_password/present/bloc/reset_pass_bloc.dart'
-    as _i191;
+    as _i192;
 import '../../features/auth/sign_in/data/datasources/sign_in_api.dart' as _i804;
 import '../../features/auth/sign_in/data/repo_impl/sign_in_repo_impl.dart'
     as _i200;
@@ -221,8 +221,8 @@ _i174.GetIt init(
   gh.factory<_i154.ForgotPassBloc>(
     () => _i154.ForgotPassBloc(gh<_i629.SendPassResetEmailUseCase>()),
   );
-  gh.lazySingleton<_i191.ResetPassBloc>(
-    () => _i191.ResetPassBloc(gh<_i992.ResetPassUseCases>()),
+  gh.lazySingleton<_i192.ResetPassBloc>(
+    () => _i192.ResetPassBloc(gh<_i992.ResetPassUseCases>()),
   );
   gh.lazySingleton<_i364.ProfileRepo>(
     () =>

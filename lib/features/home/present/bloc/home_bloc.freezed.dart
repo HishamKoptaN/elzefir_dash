@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'home_bloc.dart';
@@ -9,6 +9,7 @@ part of 'home_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent()';
+    return 'HomeEvent()';
 }
 
 
@@ -191,7 +192,7 @@ class _Get implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
 }
 
 
@@ -200,7 +201,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.get()';
+    return 'HomeEvent.get()';
 }
 
 
@@ -228,16 +229,18 @@ _$SelectCategoryIdCopyWith<_SelectCategoryId> get copyWith => __$SelectCategoryI
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SelectCategoryId&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SelectCategoryId&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'HomeEvent.selectCategoryId(id: $id)';
+    return 'HomeEvent.selectCategoryId(id: $id)';
 }
 
 
@@ -284,7 +287,7 @@ mixin _$HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState);
 }
 
 
@@ -293,7 +296,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState()';
+    return 'HomeState()';
 }
 
 
@@ -473,7 +476,7 @@ class _Initial implements HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -482,7 +485,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState.initial()';
+    return 'HomeState.initial()';
 }
 
 
@@ -512,16 +515,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.homeRes, homeRes) || other.homeRes == homeRes)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.selectedCategoryId, selectedCategoryId) || other.selectedCategoryId == selectedCategoryId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.homeRes, homeRes) || other.homeRes == homeRes)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.selectedCategoryId, selectedCategoryId) || other.selectedCategoryId == selectedCategoryId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,homeRes,loading,selectedCategoryId);
+int get hashCode {
+    return Object.hash(runtimeType,homeRes,loading,selectedCategoryId);
+}
 
 @override
 String toString() {
-  return 'HomeState.loaded(homeRes: $homeRes, loading: $loading, selectedCategoryId: $selectedCategoryId)';
+    return 'HomeState.loaded(homeRes: $homeRes, loading: $loading, selectedCategoryId: $selectedCategoryId)';
 }
 
 
@@ -587,7 +592,7 @@ class _Loading implements HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -596,7 +601,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState.loading()';
+    return 'HomeState.loading()';
 }
 
 
@@ -619,7 +624,7 @@ class _Success implements HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -628,7 +633,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState.success()';
+    return 'HomeState.success()';
 }
 
 
@@ -656,16 +661,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.errorInfo, errorInfo) || other.errorInfo == errorInfo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.errorInfo, errorInfo) || other.errorInfo == errorInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorInfo);
+int get hashCode {
+    return Object.hash(runtimeType,errorInfo);
+}
 
 @override
 String toString() {
-  return 'HomeState.failure(errorInfo: $errorInfo)';
+    return 'HomeState.failure(errorInfo: $errorInfo)';
 }
 
 

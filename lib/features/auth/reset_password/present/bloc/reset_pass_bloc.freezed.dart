@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'reset_pass_bloc.dart';
@@ -9,6 +9,7 @@ part of 'reset_pass_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$ResetPassEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ResetPassEvent()';
+    return 'ResetPassEvent()';
 }
 
 
@@ -196,16 +197,18 @@ _$DataChangedCopyWith<_DataChanged> get copyWith => __$DataChangedCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataChanged&&(identical(other.resetPassEntity, resetPassEntity) || other.resetPassEntity == resetPassEntity));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataChanged&&(identical(other.resetPassEntity, resetPassEntity) || other.resetPassEntity == resetPassEntity));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,resetPassEntity);
+int get hashCode {
+    return Object.hash(runtimeType,resetPassEntity);
+}
 
 @override
 String toString() {
-  return 'ResetPassEvent.dataChanged(resetPassEntity: $resetPassEntity)';
+    return 'ResetPassEvent.dataChanged(resetPassEntity: $resetPassEntity)';
 }
 
 
@@ -266,7 +269,7 @@ class _ResetPass implements ResetPassEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ResetPass);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ResetPass);
 }
 
 
@@ -275,7 +278,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ResetPassEvent.resetPass()';
+    return 'ResetPassEvent.resetPass()';
 }
 
 
@@ -293,7 +296,7 @@ mixin _$ResetPassState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassState);
 }
 
 
@@ -302,7 +305,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ResetPassState()';
+    return 'ResetPassState()';
 }
 
 
@@ -476,7 +479,7 @@ class ResetPassLoading implements ResetPassState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassLoading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassLoading);
 }
 
 
@@ -485,7 +488,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ResetPassState.loading()';
+    return 'ResetPassState.loading()';
 }
 
 
@@ -514,16 +517,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.resetPassEntity, resetPassEntity) || other.resetPassEntity == resetPassEntity)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.resetPassEntity, resetPassEntity) || other.resetPassEntity == resetPassEntity)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,resetPassEntity,formzSubmissionStatus);
+int get hashCode {
+    return Object.hash(runtimeType,resetPassEntity,formzSubmissionStatus);
+}
 
 @override
 String toString() {
-  return 'ResetPassState.loaded(resetPassEntity: $resetPassEntity, formzSubmissionStatus: $formzSubmissionStatus)';
+    return 'ResetPassState.loaded(resetPassEntity: $resetPassEntity, formzSubmissionStatus: $formzSubmissionStatus)';
 }
 
 
@@ -585,7 +590,7 @@ class ResetPassSuccess implements ResetPassState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassSuccess);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassSuccess);
 }
 
 
@@ -594,7 +599,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ResetPassState.success()';
+    return 'ResetPassState.success()';
 }
 
 
@@ -622,16 +627,18 @@ $ResetPassFailureCopyWith<ResetPassFailure> get copyWith => _$ResetPassFailureCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassFailure&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPassFailure&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode {
+    return Object.hash(runtimeType,error);
+}
 
 @override
 String toString() {
-  return 'ResetPassState.failure(error: $error)';
+    return 'ResetPassState.failure(error: $error)';
 }
 
 

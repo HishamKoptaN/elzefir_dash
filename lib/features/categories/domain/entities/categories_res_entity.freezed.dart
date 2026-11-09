@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'categories_res_entity.dart';
@@ -9,6 +9,7 @@ part of 'categories_res_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $CategoryEntityCopyWith<CategoryEntity> get copyWith => _$CategoryEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name));
+  final _this = this as CategoryEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,image,name);
+int get hashCode {
+  final _this = this as CategoryEntity;
+  return Object.hash(runtimeType,_this.id,_this.image,_this.name);
+}
 
 @override
 String toString() {
-  return 'CategoryEntity(id: $id, image: $image, name: $name)';
+  final _this = this as CategoryEntity;
+  return 'CategoryEntity(id: ${_this.id}, image: ${_this.image}, name: ${_this.name})';
 }
 
 
@@ -63,7 +69,7 @@ class _$CategoryEntityCopyWithImpl<$Res>
 /// Create a copy of CategoryEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? image = null,Object? name = null,}) {
-  return _then(_self.copyWith(
+  return _then(CategoryEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -225,16 +231,18 @@ _$CategoryEntityCopyWith<_CategoryEntity> get copyWith => __$CategoryEntityCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CategoryEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CategoryEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,image,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,image,name);
+}
 
 @override
 String toString() {
-  return 'CategoryEntity(id: $id, image: $image, name: $name)';
+    return 'CategoryEntity(id: $id, image: $image, name: $name)';
 }
 
 

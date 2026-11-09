@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'notification_model.dart';
@@ -9,6 +9,7 @@ part of 'notification_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $NotificationsResModelCopyWith<NotificationsResModel> get copyWith => _$Notifica
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsResModel&&const DeepCollectionEquality().equals(other.notifications, notifications)&&(identical(other.meta, meta) || other.meta == meta));
+  final _this = this as NotificationsResModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsResModel&&const DeepCollectionEquality().equals(other.notifications, _this.notifications)&&(identical(other.meta, _this.meta) || other.meta == _this.meta));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(notifications),meta);
+int get hashCode {
+  final _this = this as NotificationsResModel;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.notifications),_this.meta);
+}
 
 @override
 String toString() {
-  return 'NotificationsResModel(notifications: $notifications, meta: $meta)';
+  final _this = this as NotificationsResModel;
+  return 'NotificationsResModel(notifications: ${_this.notifications}, meta: ${_this.meta})';
 }
 
 
@@ -66,7 +72,7 @@ class _$NotificationsResModelCopyWithImpl<$Res>
 /// Create a copy of NotificationsResModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? notifications = freezed,Object? meta = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(NotificationsResModel(
 notifications: freezed == notifications ? _self.notifications : notifications // ignore: cast_nullable_to_non_nullable
 as List<NotificationModel>?,meta: freezed == meta ? _self.meta : meta // ignore: cast_nullable_to_non_nullable
 as MetaModel?,
@@ -222,7 +228,7 @@ return $default(_that.notifications,_that.meta);case _:
 @JsonSerializable()
 
 class _NotificationsResModel implements NotificationsResModel {
-  const _NotificationsResModel({@JsonKey(name: 'data') final  List<NotificationModel>? notifications, @JsonKey(name: 'meta') this.meta}): _notifications = notifications;
+  const _NotificationsResModel({@JsonKey(name: 'data')  List<NotificationModel>? notifications, @JsonKey(name: 'meta') this.meta}): _notifications = notifications;
   factory _NotificationsResModel.fromJson(Map<String, dynamic> json) => _$NotificationsResModelFromJson(json);
 
  final  List<NotificationModel>? _notifications;
@@ -249,16 +255,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationsResModel&&const DeepCollectionEquality().equals(other._notifications, _notifications)&&(identical(other.meta, meta) || other.meta == meta));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationsResModel&&const DeepCollectionEquality().equals(other.notifications, _notifications)&&(identical(other.meta, meta) || other.meta == meta));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_notifications),meta);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_notifications),meta);
+}
 
 @override
 String toString() {
-  return 'NotificationsResModel(notifications: $notifications, meta: $meta)';
+    return 'NotificationsResModel(notifications: $notifications, meta: $meta)';
 }
 
 
@@ -326,16 +334,21 @@ $NotificationModelCopyWith<NotificationModel> get copyWith => _$NotificationMode
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.type, type) || other.type == type)&&(identical(other.readAt, readAt) || other.readAt == readAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  final _this = this as NotificationModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.body, _this.body) || other.body == _this.body)&&const DeepCollectionEquality().equals(other.data, _this.data)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.readAt, _this.readAt) || other.readAt == _this.readAt)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,body,const DeepCollectionEquality().hash(data),type,readAt,createdAt,updatedAt);
+int get hashCode {
+  final _this = this as NotificationModel;
+  return Object.hash(runtimeType,_this.id,_this.title,_this.body,const DeepCollectionEquality().hash(_this.data),_this.type,_this.readAt,_this.createdAt,_this.updatedAt);
+}
 
 @override
 String toString() {
-  return 'NotificationModel(id: $id, title: $title, body: $body, data: $data, type: $type, readAt: $readAt, createdAt: $createdAt, updatedAt: $updatedAt)';
+  final _this = this as NotificationModel;
+  return 'NotificationModel(id: ${_this.id}, title: ${_this.title}, body: ${_this.body}, data: ${_this.data}, type: ${_this.type}, readAt: ${_this.readAt}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt})';
 }
 
 
@@ -364,7 +377,7 @@ class _$NotificationModelCopyWithImpl<$Res>
 /// Create a copy of NotificationModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,Object? body = freezed,Object? data = null,Object? type = freezed,Object? readAt = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(NotificationModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,body: freezed == body ? _self.body : body // ignore: cast_nullable_to_non_nullable
@@ -514,7 +527,7 @@ return $default(_that.id,_that.title,_that.body,_that.data,_that.type,_that.read
 @JsonSerializable()
 
 class _NotificationModel implements NotificationModel {
-  const _NotificationModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'title') this.title, @JsonKey(name: 'body') this.body, final  Map<String, dynamic> data = const <String, dynamic>{}, @JsonKey(name: 'type') this.type, @JsonKey(name: 'read_at') this.readAt, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt}): _data = data;
+  const _NotificationModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'title') this.title, @JsonKey(name: 'body') this.body,  Map<String, dynamic> data = const <String, dynamic>{}, @JsonKey(name: 'type') this.type, @JsonKey(name: 'read_at') this.readAt, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt}): _data = data;
   factory _NotificationModel.fromJson(Map<String, dynamic> json) => _$NotificationModelFromJson(json);
 
 @override@JsonKey(name: 'id') final  int? id;
@@ -545,16 +558,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.type, type) || other.type == type)&&(identical(other.readAt, readAt) || other.readAt == readAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&const DeepCollectionEquality().equals(other.data, _data)&&(identical(other.type, type) || other.type == type)&&(identical(other.readAt, readAt) || other.readAt == readAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,body,const DeepCollectionEquality().hash(_data),type,readAt,createdAt,updatedAt);
+int get hashCode {
+    return Object.hash(runtimeType,id,title,body,const DeepCollectionEquality().hash(_data),type,readAt,createdAt,updatedAt);
+}
 
 @override
 String toString() {
-  return 'NotificationModel(id: $id, title: $title, body: $body, data: $data, type: $type, readAt: $readAt, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'NotificationModel(id: $id, title: $title, body: $body, data: $data, type: $type, readAt: $readAt, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'sign_up_req_entity.dart';
@@ -9,6 +9,7 @@ part of 'sign_up_req_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $SignUpReqEntityCopyWith<SignUpReqEntity> get copyWith => _$SignUpReqEntityCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignUpReqEntity&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.dialCode, dialCode) || other.dialCode == dialCode)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.isValidNumber, isValidNumber) || other.isValidNumber == isValidNumber)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.rememberMe, rememberMe) || other.rememberMe == rememberMe));
+  final _this = this as SignUpReqEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignUpReqEntity&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.username, _this.username) || other.username == _this.username)&&(identical(other.password, _this.password) || other.password == _this.password)&&(identical(other.confirmPassword, _this.confirmPassword) || other.confirmPassword == _this.confirmPassword)&&(identical(other.phoneNumber, _this.phoneNumber) || other.phoneNumber == _this.phoneNumber)&&(identical(other.dialCode, _this.dialCode) || other.dialCode == _this.dialCode)&&(identical(other.isoCode, _this.isoCode) || other.isoCode == _this.isoCode)&&(identical(other.isValidNumber, _this.isValidNumber) || other.isValidNumber == _this.isValidNumber)&&(identical(other.obscurePassword, _this.obscurePassword) || other.obscurePassword == _this.obscurePassword)&&(identical(other.rememberMe, _this.rememberMe) || other.rememberMe == _this.rememberMe));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,email,username,password,confirmPassword,phoneNumber,dialCode,isoCode,isValidNumber,obscurePassword,rememberMe);
+int get hashCode {
+  final _this = this as SignUpReqEntity;
+  return Object.hash(runtimeType,_this.name,_this.email,_this.username,_this.password,_this.confirmPassword,_this.phoneNumber,_this.dialCode,_this.isoCode,_this.isValidNumber,_this.obscurePassword,_this.rememberMe);
+}
 
 @override
 String toString() {
-  return 'SignUpReqEntity(name: $name, email: $email, username: $username, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
+  final _this = this as SignUpReqEntity;
+  return 'SignUpReqEntity(name: ${_this.name}, email: ${_this.email}, username: ${_this.username}, password: ${_this.password}, confirmPassword: ${_this.confirmPassword}, phoneNumber: ${_this.phoneNumber}, dialCode: ${_this.dialCode}, isoCode: ${_this.isoCode}, isValidNumber: ${_this.isValidNumber}, obscurePassword: ${_this.obscurePassword}, rememberMe: ${_this.rememberMe})';
 }
 
 
@@ -63,7 +69,7 @@ class _$SignUpReqEntityCopyWithImpl<$Res>
 /// Create a copy of SignUpReqEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? email = freezed,Object? username = freezed,Object? password = freezed,Object? confirmPassword = freezed,Object? phoneNumber = freezed,Object? dialCode = freezed,Object? isoCode = freezed,Object? isValidNumber = freezed,Object? obscurePassword = freezed,Object? rememberMe = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(SignUpReqEntity(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as EmailFormInput?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
@@ -241,16 +247,18 @@ _$SignUpReqEntityCopyWith<_SignUpReqEntity> get copyWith => __$SignUpReqEntityCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignUpReqEntity&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.dialCode, dialCode) || other.dialCode == dialCode)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.isValidNumber, isValidNumber) || other.isValidNumber == isValidNumber)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.rememberMe, rememberMe) || other.rememberMe == rememberMe));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignUpReqEntity&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.dialCode, dialCode) || other.dialCode == dialCode)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.isValidNumber, isValidNumber) || other.isValidNumber == isValidNumber)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.rememberMe, rememberMe) || other.rememberMe == rememberMe));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,email,username,password,confirmPassword,phoneNumber,dialCode,isoCode,isValidNumber,obscurePassword,rememberMe);
+int get hashCode {
+    return Object.hash(runtimeType,name,email,username,password,confirmPassword,phoneNumber,dialCode,isoCode,isValidNumber,obscurePassword,rememberMe);
+}
 
 @override
 String toString() {
-  return 'SignUpReqEntity(name: $name, email: $email, username: $username, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
+    return 'SignUpReqEntity(name: $name, email: $email, username: $username, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
 }
 
 

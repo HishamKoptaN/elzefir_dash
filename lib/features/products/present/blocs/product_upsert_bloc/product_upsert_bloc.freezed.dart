@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'product_upsert_bloc.dart';
@@ -9,6 +9,7 @@ part of 'product_upsert_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$ProductUpsertEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductUpsertEvent()';
+    return 'ProductUpsertEvent()';
 }
 
 
@@ -191,7 +192,7 @@ class _Upsert implements ProductUpsertEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Upsert);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Upsert);
 }
 
 
@@ -200,7 +201,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductUpsertEvent.upsert()';
+    return 'ProductUpsertEvent.upsert()';
 }
 
 
@@ -228,16 +229,18 @@ _$DataChangedCopyWith<_DataChanged> get copyWith => __$DataChangedCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataChanged&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataChanged&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,productUpsertReq);
+int get hashCode {
+    return Object.hash(runtimeType,productUpsertReq);
+}
 
 @override
 String toString() {
-  return 'ProductUpsertEvent.dataChanged(productUpsertReq: $productUpsertReq)';
+    return 'ProductUpsertEvent.dataChanged(productUpsertReq: $productUpsertReq)';
 }
 
 
@@ -293,7 +296,7 @@ mixin _$ProductUpsertState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertState);
 }
 
 
@@ -302,7 +305,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductUpsertState()';
+    return 'ProductUpsertState()';
 }
 
 
@@ -482,7 +485,7 @@ class _Initial implements ProductUpsertState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -491,7 +494,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductUpsertState.initial()';
+    return 'ProductUpsertState.initial()';
 }
 
 
@@ -520,16 +523,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,productUpsertReq,formzSubmissionStatus);
+int get hashCode {
+    return Object.hash(runtimeType,productUpsertReq,formzSubmissionStatus);
+}
 
 @override
 String toString() {
-  return 'ProductUpsertState.loaded(productUpsertReq: $productUpsertReq, formzSubmissionStatus: $formzSubmissionStatus)';
+    return 'ProductUpsertState.loaded(productUpsertReq: $productUpsertReq, formzSubmissionStatus: $formzSubmissionStatus)';
 }
 
 
@@ -594,7 +599,7 @@ class _Loading implements ProductUpsertState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -603,7 +608,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductUpsertState.loading()';
+    return 'ProductUpsertState.loading()';
 }
 
 
@@ -626,7 +631,7 @@ class _Success implements ProductUpsertState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -635,7 +640,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductUpsertState.success()';
+    return 'ProductUpsertState.success()';
 }
 
 
@@ -663,16 +668,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'ProductUpsertState.failure(apiErrorModel: $apiErrorModel)';
+    return 'ProductUpsertState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

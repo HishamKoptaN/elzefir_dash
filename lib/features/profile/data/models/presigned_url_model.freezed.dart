@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'presigned_url_model.dart';
@@ -9,6 +9,7 @@ part of 'presigned_url_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -29,23 +30,29 @@ $PresignedUrlModelCopyWith<PresignedUrlModel> get copyWith => _$PresignedUrlMode
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as PresignedUrlModel;
   properties
     ..add(DiagnosticsProperty('type', 'PresignedUrlModel'))
-    ..add(DiagnosticsProperty('uploadUrl', uploadUrl))..add(DiagnosticsProperty('filePath', filePath))..add(DiagnosticsProperty('contentType', contentType))..add(DiagnosticsProperty('expiresAt', expiresAt))..add(DiagnosticsProperty('token', token));
+    ..add(DiagnosticsProperty('uploadUrl', _this.uploadUrl))..add(DiagnosticsProperty('filePath', _this.filePath))..add(DiagnosticsProperty('contentType', _this.contentType))..add(DiagnosticsProperty('expiresAt', _this.expiresAt))..add(DiagnosticsProperty('token', _this.token));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.token, token) || other.token == token));
+  final _this = this as PresignedUrlModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PresignedUrlModel&&(identical(other.uploadUrl, _this.uploadUrl) || other.uploadUrl == _this.uploadUrl)&&(identical(other.filePath, _this.filePath) || other.filePath == _this.filePath)&&(identical(other.contentType, _this.contentType) || other.contentType == _this.contentType)&&(identical(other.expiresAt, _this.expiresAt) || other.expiresAt == _this.expiresAt)&&(identical(other.token, _this.token) || other.token == _this.token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,uploadUrl,filePath,contentType,expiresAt,token);
+int get hashCode {
+  final _this = this as PresignedUrlModel;
+  return Object.hash(runtimeType,_this.uploadUrl,_this.filePath,_this.contentType,_this.expiresAt,_this.token);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType, expiresAt: $expiresAt, token: $token)';
+  final _this = this as PresignedUrlModel;
+  return 'PresignedUrlModel(uploadUrl: ${_this.uploadUrl}, filePath: ${_this.filePath}, contentType: ${_this.contentType}, expiresAt: ${_this.expiresAt}, token: ${_this.token})';
 }
 
 
@@ -74,7 +81,7 @@ class _$PresignedUrlModelCopyWithImpl<$Res>
 /// Create a copy of PresignedUrlModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? uploadUrl = freezed,Object? filePath = freezed,Object? contentType = freezed,Object? expiresAt = freezed,Object? token = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PresignedUrlModel(
 uploadUrl: freezed == uploadUrl ? _self.uploadUrl : uploadUrl // ignore: cast_nullable_to_non_nullable
 as String?,filePath: freezed == filePath ? _self.filePath : filePath // ignore: cast_nullable_to_non_nullable
 as String?,contentType: freezed == contentType ? _self.contentType : contentType // ignore: cast_nullable_to_non_nullable
@@ -244,23 +251,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'PresignedUrlModel'))
     ..add(DiagnosticsProperty('uploadUrl', uploadUrl))..add(DiagnosticsProperty('filePath', filePath))..add(DiagnosticsProperty('contentType', contentType))..add(DiagnosticsProperty('expiresAt', expiresAt))..add(DiagnosticsProperty('token', token));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.token, token) || other.token == token));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PresignedUrlModel&&(identical(other.uploadUrl, uploadUrl) || other.uploadUrl == uploadUrl)&&(identical(other.filePath, filePath) || other.filePath == filePath)&&(identical(other.contentType, contentType) || other.contentType == contentType)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.token, token) || other.token == token));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,uploadUrl,filePath,contentType,expiresAt,token);
+int get hashCode {
+    return Object.hash(runtimeType,uploadUrl,filePath,contentType,expiresAt,token);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType, expiresAt: $expiresAt, token: $token)';
+    return 'PresignedUrlModel(uploadUrl: $uploadUrl, filePath: $filePath, contentType: $contentType, expiresAt: $expiresAt, token: $token)';
 }
 
 

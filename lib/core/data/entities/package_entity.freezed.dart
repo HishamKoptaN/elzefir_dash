@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'package_entity.dart';
@@ -9,6 +9,7 @@ part of 'package_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $PackageEntityCopyWith<PackageEntity> get copyWith => _$PackageEntityCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.quantity, quantity) || other.quantity == quantity));
+  final _this = this as PackageEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,type,quantity);
+int get hashCode {
+  final _this = this as PackageEntity;
+  return Object.hash(runtimeType,_this.id,_this.type,_this.quantity);
+}
 
 @override
 String toString() {
-  return 'PackageEntity(id: $id, type: $type, quantity: $quantity)';
+  final _this = this as PackageEntity;
+  return 'PackageEntity(id: ${_this.id}, type: ${_this.type}, quantity: ${_this.quantity})';
 }
 
 
@@ -66,7 +72,7 @@ class _$PackageEntityCopyWithImpl<$Res>
 /// Create a copy of PackageEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? type = freezed,Object? quantity = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PackageEntity(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
@@ -231,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.quantity, quantity) || other.quantity == quantity));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.quantity, quantity) || other.quantity == quantity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,type,quantity);
+int get hashCode {
+    return Object.hash(runtimeType,id,type,quantity);
+}
 
 @override
 String toString() {
-  return 'PackageEntity(id: $id, type: $type, quantity: $quantity)';
+    return 'PackageEntity(id: $id, type: $type, quantity: $quantity)';
 }
 
 

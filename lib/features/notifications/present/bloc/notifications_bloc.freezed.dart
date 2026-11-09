@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'notifications_bloc.dart';
@@ -9,6 +9,7 @@ part of 'notifications_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$NotificationsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'NotificationsEvent()';
+    return 'NotificationsEvent()';
 }
 
 
@@ -191,7 +192,7 @@ class _Watch implements NotificationsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Watch);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Watch);
 }
 
 
@@ -200,7 +201,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'NotificationsEvent.watch()';
+    return 'NotificationsEvent.watch()';
 }
 
 
@@ -228,16 +229,18 @@ _$MarkAsReadCopyWith<_MarkAsRead> get copyWith => __$MarkAsReadCopyWithImpl<_Mar
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MarkAsRead&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MarkAsRead&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'NotificationsEvent.markAsRead(id: $id)';
+    return 'NotificationsEvent.markAsRead(id: $id)';
 }
 
 
@@ -284,7 +287,7 @@ mixin _$NotificationsState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationsState);
 }
 
 
@@ -293,7 +296,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'NotificationsState()';
+    return 'NotificationsState()';
 }
 
 
@@ -467,7 +470,7 @@ class _Initial implements NotificationsState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -476,7 +479,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'NotificationsState.initial()';
+    return 'NotificationsState.initial()';
 }
 
 
@@ -499,7 +502,7 @@ class _Loading implements NotificationsState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -508,7 +511,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'NotificationsState.loading()';
+    return 'NotificationsState.loading()';
 }
 
 
@@ -521,7 +524,7 @@ String toString() {
 
 
 class _Loaded implements NotificationsState {
-  const _Loaded({final  List<NotificationEntity>? notifications, this.unreadCount}): _notifications = notifications;
+  const _Loaded({ List<NotificationEntity>? notifications, this.unreadCount}): _notifications = notifications;
   
 
  final  List<NotificationEntity>? _notifications;
@@ -545,16 +548,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._notifications, _notifications)&&(identical(other.unreadCount, unreadCount) || other.unreadCount == unreadCount));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.notifications, _notifications)&&(identical(other.unreadCount, unreadCount) || other.unreadCount == unreadCount));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_notifications),unreadCount);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_notifications),unreadCount);
+}
 
 @override
 String toString() {
-  return 'NotificationsState.loaded(notifications: $notifications, unreadCount: $unreadCount)';
+    return 'NotificationsState.loaded(notifications: $notifications, unreadCount: $unreadCount)';
 }
 
 
@@ -612,16 +617,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'NotificationsState.failure(apiErrorModel: $apiErrorModel)';
+    return 'NotificationsState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 
