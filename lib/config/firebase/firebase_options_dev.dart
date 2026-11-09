@@ -23,14 +23,13 @@ class DevFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDkDmz0_Ee1GOD74Fxw23SYVmzTEP_-Odg',
-    appId: '1:947607550746:web:e8bb6c77a323751a720aa3',
+    appId: '1:947607550746:web:e194da2c2573c229720aa3',
     messagingSenderId: '947607550746',
     projectId: 'elzefir-dev',
     authDomain: 'elzefir-dev.firebaseapp.com',
     storageBucket: 'elzefir-dev.firebasestorage.app',
-    measurementId: 'G-TTNHN9CD8X',
+    measurementId: 'G-271D93E0HH',
   );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCrQbuzT6edhEEEJj6b1eT2l8cU-NgfTkQ',
     appId: '1:947607550746:android:52911c2af3413117720aa3',
