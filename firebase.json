@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "elzefir-dash-dev",
     "public": "build/web",
     "ignore": [
       "firebase.json",
