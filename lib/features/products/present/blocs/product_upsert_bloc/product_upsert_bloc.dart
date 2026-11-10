@@ -18,6 +18,14 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
     : super(const ProductUpsertState.initial()) {
     on<ProductUpsertEvent>((event, emit) async {
       await event.when(
+        reset: () {
+          emit(
+            const ProductUpsertState.loaded(
+              productUpsertReq: ProductUpsertReqEntity(),
+              formzSubmissionStatus: .initial,
+            ),
+          );
+        },
         dataChanged: (productUpsertReq) {
           state.maybeMap(
             loaded: (state) {
@@ -90,8 +98,9 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
   }) {
     return (Formz.validate([
           productUpsertReq.name ?? const GenericFormInput.pure(),
-          productUpsertReq.title ?? const EmailFormInput.pure(),
-          productUpsertReq.description ?? const PasswordFormInput.pure(),
+          productUpsertReq.title ?? const GenericFormInput.pure(),
+          productUpsertReq.description ?? const GenericFormInput.pure(),
+          productUpsertReq.price ?? const GenericFormInput.pure(),
         ]))
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.failure;

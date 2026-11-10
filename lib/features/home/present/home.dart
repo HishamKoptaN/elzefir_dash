@@ -4,9 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/di/dependency_injection.dart';
 import '../../categories/present/blocs/bloc/categories_bloc.dart';
-import '../../categories/present/view/widgets/categories_view.dart';
-import '../../products/present/view/products_view.dart';
 import 'bloc/home_bloc.dart';
+import 'widgets/dashboard_nav.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key, required this.child, required this.title});
@@ -28,68 +27,54 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final canGoBack = context.canPop();
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title, style: context.textTheme.displayLarge),
-          leading: !canGoBack
-              ? null
-              : IconButton(
-                  onPressed: () {
-                    if (canGoBack) {
-                      context.pop();
-                    } else {
-                      Scaffold.of(context).openDrawer();
-                    }
-                  },
-                  icon: Icon(canGoBack ? Icons.arrow_back : Icons.menu),
-                ),
-        ),
-
-        drawer: canGoBack
-            ? null
-            : Drawer(
-                width: 200.w,
-                child: Column(
-                  children: [
-                    UserAccountsDrawerHeader(
-                      accountName: Text('أحمد محمد'),
-                      accountEmail: Text(' [EMAIL_ADDRESS]'),
-                      currentAccountPicture: CircleAvatar(
-                        child: Icon(Icons.person, size: 48.r),
-                      ),
-                      decoration: BoxDecoration(
-                        color: context.colorScheme.primary,
-                      ),
-                    ),
-                    ListTile(
-                      onTap: () {
-                        context.goNamed(ProductsView.routeName);
-                      },
-                      leading: Icon(Icons.shopping_cart),
-                      title: Text('المنتجات'),
-                    ),
-                    ListTile(
-                      onTap: () {
-                        context.goNamed(CategoriesView.routeName);
-                      },
-                      leading: Icon(Icons.category),
-                      title: Text('التصنيفات'),
-                    ),
-
-                    ListTile(
-                      onTap: () {
-                        context.goNamed(ProductsView.routeName);
-                      },
-                      leading: Icon(Icons.settings),
-                      title: Text('الإعدادات'),
-                    ),
-                  ],
+    final isWide = MediaQuery.sizeOf(context).width >= 600;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title, style: context.textTheme.displayLarge),
+        leading: canGoBack
+            ? IconButton(
+                tooltip: 'رجوع',
+                onPressed: () {
+                  return context.pop();
+                },
+                icon: const Icon(Icons.arrow_back),
+              )
+            : Padding(
+                padding: .all(10.r),
+                child: Icon(
+                  Icons.storefront_rounded,
+                  color: context.colorScheme.primary,
                 ),
               ),
-
-        body: widget.child,
+        actions: [
+          if (!canGoBack)
+            Padding(
+              padding: .symmetric(horizontal: 12.w),
+              child: Center(
+                child: Text(
+                  'لوحة التحكم',
+                  style: context.textTheme.labelLarge?.copyWith(
+                    color: context.colorScheme.onSurface.withValues(alpha: 0.5),
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
+      body: SafeArea(
+        child: isWide
+            ? Row(
+                children: [
+                  const DashboardNav(isRail: true),
+                  const VerticalDivider(width: 1, thickness: 1),
+                  Expanded(child: widget.child),
+                ],
+              )
+            : widget.child,
+      ),
+      bottomNavigationBar: isWide || canGoBack
+          ? null
+          : const DashboardNav(isRail: false),
     );
   }
 }
