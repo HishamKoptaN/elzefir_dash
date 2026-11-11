@@ -75,6 +75,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                     ProductsWidget(
                       key: productsKey,
                       products: state.homeRes?.products ?? [],
+                      shrinkWrap: true,
                     ),
                     AboutSection(key: aboutKey),
                     FooterWidget(key: contactKey),

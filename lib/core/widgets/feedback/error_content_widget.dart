@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../utils/extensions/theme_ext.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   final String message;
@@ -29,34 +32,38 @@ class CustomErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon ?? Icons.error_outline,
-            size: iconSize ?? 64,
-            // color: iconColor ?? AppColors.error,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            message,
-            // style: AppTextStyles.bodyLarge.copyWith(
-            //   color: textColor ?? AppColors.error,
-            // ),
-            textAlign: TextAlign.center,
-          ),
-          if (showRetryButton && onRetry != null) ...[
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: onRetry!,
-              style: ElevatedButton.styleFrom(
-                // backgroundColor: buttonColor ?? AppColors.brandMint,
-                foregroundColor: buttonTextColor ?? Colors.white,
-              ),
-              child: Text(retryText ?? 'Retry'),
+      child: Padding(
+        padding: .all(24.r),
+        child: Column(
+          mainAxisSize: .min,
+          spacing: 16.h,
+          children: [
+            Icon(
+              icon ?? Icons.cloud_off_rounded,
+              size: iconSize ?? 56.r,
+              color: iconColor ?? context.colorScheme.error,
             ),
+            Text(
+              message,
+              textAlign: .center,
+              style: context.textTheme.titleMedium?.copyWith(
+                color: textColor ?? context.colorScheme.onSurface,
+              ),
+            ),
+            if (showRetryButton && onRetry != null)
+              FilledButton.icon(
+                onPressed: onRetry,
+                style: buttonColor != null
+                    ? FilledButton.styleFrom(
+                        backgroundColor: buttonColor,
+                        foregroundColor: buttonTextColor,
+                      )
+                    : null,
+                icon: const Icon(Icons.refresh_rounded),
+                label: Text(retryText ?? 'إعادة المحاولة'),
+              ),
           ],
-        ],
+        ),
       ),
     );
   }

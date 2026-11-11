@@ -1,10 +1,11 @@
-import 'package:alzefr_dash/core/widgets/feedback/empty_widget.dart';
 import 'package:alzefr_dash/core/widgets/feedback/error_content_widget.dart';
-import 'package:alzefr_dash/features/products/present/view/products_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../blocs/bloc/products_bloc.dart';
+import 'upsert_product_view.dart';
+import 'widgets/list/products_content.dart';
 
 class ProductsView extends StatefulWidget {
   const ProductsView({super.key});
@@ -31,14 +32,12 @@ class _ProductsViewState extends State<ProductsView> {
       builder: (context, state) {
         return state.maybeMap(
           loaded: (state) {
-            final products = state.products ?? [];
-            if (products.isEmpty) {
-              return const EmptyWidget(
-                icon: Icons.shopping_basket_outlined,
-                text: 'لا توجد منتجات',
-              );
-            }
-            return ProductsWidget(products: products);
+            return ProductsContent(
+              products: state.products ?? [],
+              onAdd: () {
+                context.pushNamed(UpsertProductView.routeName);
+              },
+            );
           },
           failure: (state) {
             final error = state.apiErrorModel;
@@ -48,7 +47,6 @@ class _ProductsViewState extends State<ProductsView> {
                 .join(' - ');
             return CustomErrorWidget(
               message: message.isEmpty ? 'تعذّر تحميل المنتجات' : message,
-              retryText: 'إعادة المحاولة',
               onRetry: () => _bloc.add(ProductsEvent.get()),
             );
           },

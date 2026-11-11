@@ -19,6 +19,14 @@ class CategoryUpsertBloc
     : super(const CategoryUpsertState.initial()) {
     on<CategoryUpsertEvent>((event, emit) async {
       await event.when(
+        reset: () {
+          emit(
+            const CategoryUpsertState.loaded(
+              categoryUpsertReq: CategoryUpsertReqEntity(),
+              formzSubmissionStatus: .initial,
+            ),
+          );
+        },
         dataChanged: (categoryUpsertReq) {
           state.maybeMap(
             loaded: (state) {

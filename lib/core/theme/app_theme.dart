@@ -29,9 +29,23 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
         centerTitle: true,
+        elevation: 0,
+        scrolledUnderElevation: 1,
         titleTextStyle: context.textTheme.displayLarge,
         foregroundColor: Colors.black,
         toolbarTextStyle: context.textTheme.bodyLarge,
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: _light.surface,
+        elevation: 2,
+        indicatorColor: _light.primary.withValues(alpha: 0.12),
+        labelTextStyle: WidgetStatePropertyAll(context.textTheme.labelLarge),
+      ),
+      navigationRailTheme: NavigationRailThemeData(
+        backgroundColor: _light.surface,
+        indicatorColor: _light.primary.withValues(alpha: 0.12),
+        selectedLabelTextStyle: context.textTheme.labelLarge,
+        unselectedLabelTextStyle: context.textTheme.labelLarge,
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
@@ -45,7 +59,12 @@ class AppTheme {
         color: Colors.white,
         strokeWidth: 2,
       ),
-      cardTheme: CardThemeData(color: _light.surface, elevation: 4),
+      cardTheme: CardThemeData(
+        color: _light.surface,
+        elevation: 1,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: .circular(14.r)),
+      ),
       tooltipTheme: TooltipThemeData(
         textStyle: TextStyle(fontSize: 20.sp.rf(context), color: Colors.white),
         decoration: BoxDecoration(
@@ -61,7 +80,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 14.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+          shape: RoundedRectangleBorder(borderRadius: .circular(10.r)),
           backgroundColor: _light.primary,
           foregroundColor: Colors.white,
           disabledBackgroundColor: _light.textSecondary.withValues(alpha: 0.24),
@@ -77,7 +96,7 @@ class AppTheme {
           foregroundColor: context.colorScheme.onPrimary,
           elevation: 0,
           shape: RoundedRectangleBorder(borderRadius: .circular(8.r)),
-          padding: EdgeInsets.symmetric(horizontal: 64.w, vertical: 0.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0.h),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(

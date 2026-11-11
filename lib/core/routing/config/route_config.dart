@@ -10,6 +10,7 @@ import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
 import '../../../features/categories/domain/entities/categories_res_entity.dart';
+import '../../../features/categories/present/view/upsert_category_view.dart';
 import '../../../features/categories/present/view/widgets/categories_view.dart';
 import '../../../features/home/present/home.dart';
 import '../../../features/products/domain/entities/product_entity.dart';
@@ -111,7 +112,7 @@ class RouteConfig {
                 path: UpsertProductView.routeName,
                 builder: (context, state) {
                   return UpsertProductView(
-                    product: state.extra as ProductEntity,
+                    product: state.extra as ProductEntity?,
                   );
                 },
               ),
@@ -121,9 +122,19 @@ class RouteConfig {
             name: CategoriesView.routeName,
             path: '/${CategoriesView.routeName}',
             builder: (context, state) {
-              final category = state.extra as CategoryEntity?;
               return CategoriesView();
             },
+            routes: [
+              appRoute(
+                name: UpsertCategoryView.routeName,
+                path: 'upsert',
+                builder: (context, state) {
+                  return UpsertCategoryView(
+                    category: state.extra as CategoryEntity?,
+                  );
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -138,6 +149,8 @@ class RouteConfig {
         return state.extra == null ? 'إضافة منتج جديد' : 'تعديل منتج';
       case '/categories':
         return 'التصنيفات';
+      case '/categories/upsert':
+        return state.extra == null ? 'إضافة تصنيف جديد' : 'تعديل تصنيف';
 
       default:
         return '';
