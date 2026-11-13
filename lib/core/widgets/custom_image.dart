@@ -1,7 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../utils/extensions/responsive_icon_extension .dart';
 import '../utils/storage_url.dart';
 
@@ -21,9 +23,9 @@ class CustomImage extends StatelessWidget {
   final BorderRadius borderRadius;
   final Color backgroundColor;
 
-  /// Firestore keeps uploaded images as public-disk relative paths; resolve them
-  /// to the backend `/storage/` URL, leave assets and local files untouched.
-  String get _resolvedImage => resolveStoredImageUrl(image);
+  String get _resolvedImage {
+    return resolveStoredImageUrl(image);
+  }
 
   bool get _isNetwork {
     return _resolvedImage.startsWith('http://') ||

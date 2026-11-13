@@ -13,8 +13,10 @@ import '../../../features/categories/domain/entities/categories_res_entity.dart'
 import '../../../features/categories/present/view/upsert_category_view.dart';
 import '../../../features/categories/present/view/widgets/categories_view.dart';
 import '../../../features/home/present/home.dart';
+import '../../../features/home/present/restaurant_page_view.dart';
 import '../../../features/products/domain/entities/product_entity.dart';
 import '../../../features/products/present/view/upsert_product_view.dart';
+import '../../../features/working_hours/present/view/working_hours_view.dart';
 import '../../utils/extensions/theme_ext.dart';
 import '../app_route.dart';
 import '../middlewares/guards/app_guards.dart';
@@ -78,6 +80,13 @@ class RouteConfig {
         },
       ),
       appRoute(
+        name: RestaurantPageView.routeName,
+        path: '/${RestaurantPageView.routeName}',
+        builder: (context, state) {
+          return const RestaurantPageView();
+        },
+      ),
+      appRoute(
         name: SignUpView.routeName,
         path: '/${SignUpView.routeName}',
         builder: (context, state) {
@@ -119,6 +128,13 @@ class RouteConfig {
             ],
           ),
           appRoute(
+            name: WorkingHoursView.routeName,
+            path: '/${WorkingHoursView.routeName}',
+            builder: (context, state) {
+              return const WorkingHoursView();
+            },
+          ),
+          appRoute(
             name: CategoriesView.routeName,
             path: '/${CategoriesView.routeName}',
             builder: (context, state) {
@@ -151,6 +167,8 @@ class RouteConfig {
         return 'التصنيفات';
       case '/categories/upsert':
         return state.extra == null ? 'إضافة تصنيف جديد' : 'تعديل تصنيف';
+      case '/working-hours':
+        return 'ساعات العمل';
 
       default:
         return '';

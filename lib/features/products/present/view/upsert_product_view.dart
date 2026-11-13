@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:alzefr_dash/core/di/dependency_injection.dart';
 import 'package:alzefr_dash/core/widgets/feedback/app_snackbar.dart';
 import 'package:alzefr_dash/features/categories/present/blocs/bloc/categories_bloc.dart';
+
 import '../../domain/entities/product_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
 import '../blocs/bloc/products_bloc.dart';
@@ -54,7 +55,7 @@ class _UpsertProductViewState extends State<UpsertProductView> {
           success: () {
             // The list is cached in a singleton bloc, so pull it again to show
             // the image that was just uploaded.
-            getIt<ProductsBloc>().add(ProductsEvent.get());
+            getIt<ProductsBloc>().add(.get());
             context.showSuccessSnackBar(
               title: 'تم الحفظ',
               message: 'تم حفظ المنتج بنجاح',

@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
+import '../../../../../core/utils/storage_url.dart';
 import '../../../../../core/widgets/camera_button_widget.dart';
 
 class ProfileCardWidget extends StatelessWidget {
@@ -123,9 +124,14 @@ class ProfileCardWidget extends StatelessWidget {
     if (selectedImage != null) {
       avatarImage = FileImage(selectedImage!);
     } else if (imageUrl != null && imageUrl!.isNotEmpty) {
-      avatarImage = NetworkImage(
-        '$imageUrl?t=${DateTime.now().millisecondsSinceEpoch}',
-      );
+      // The avatar comes from the backend public disk as a relative path, so it
+      // needs the same `/storage/` prefix as product and category images.
+      final resolved = resolveStoredImageUrl(imageUrl!);
+      if (resolved.isNotEmpty) {
+        avatarImage = NetworkImage(
+          '$resolved?t=${DateTime.now().millisecondsSinceEpoch}',
+        );
+      }
     }
     final double radius = 50;
     return CircleAvatar(
@@ -140,7 +146,7 @@ class ProfileCardWidget extends StatelessWidget {
         //   shape: BoxShape.circle,
         //   image:
         // ),
-        backgroundImage: avatarImage != null ? NetworkImage(imageUrl!) : null,
+        backgroundImage: avatarImage,
         child: avatarImage == null
             ? Center(
                 child: FaIcon(

@@ -2,6 +2,7 @@ import 'package:alzefr_dash/core/widgets/feedback/error_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../core/di/dependency_injection.dart';
 import '../blocs/bloc/products_bloc.dart';
 import 'upsert_product_view.dart';
@@ -17,7 +18,9 @@ class ProductsView extends StatefulWidget {
 }
 
 class _ProductsViewState extends State<ProductsView> {
-  ProductsBloc get _bloc => getIt<ProductsBloc>();
+  ProductsBloc get _bloc {
+    return getIt<ProductsBloc>();
+  }
 
   @override
   void initState() {
@@ -42,12 +45,18 @@ class _ProductsViewState extends State<ProductsView> {
           failure: (state) {
             final error = state.apiErrorModel;
             final message = [error.title, error.message]
-                .map((part) => part.trim())
-                .where((part) => part.isNotEmpty)
+                .map((part) {
+                  return part.trim();
+                })
+                .where((part) {
+                  return part.isNotEmpty;
+                })
                 .join(' - ');
             return CustomErrorWidget(
               message: message.isEmpty ? 'تعذّر تحميل المنتجات' : message,
-              onRetry: () => _bloc.add(ProductsEvent.get()),
+              onRetry: () {
+                _bloc.add(.get());
+              },
             );
           },
           orElse: () {

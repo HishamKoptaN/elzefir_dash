@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../categories/present/view/widgets/categories_view.dart';
 import '../../../products/present/view/products_view.dart';
+import '../../../working_hours/present/view/working_hours_view.dart';
 
 class DashboardNav extends StatelessWidget {
   const DashboardNav({super.key, required this.isRail});
@@ -23,6 +24,12 @@ class DashboardNav extends StatelessWidget {
       label: 'التصنيفات',
       icon: Icons.category_outlined,
       selectedIcon: Icons.category,
+    ),
+    (
+      route: WorkingHoursView.routeName,
+      label: 'ساعات العمل',
+      icon: Icons.schedule_outlined,
+      selectedIcon: Icons.schedule,
     ),
   ];
 

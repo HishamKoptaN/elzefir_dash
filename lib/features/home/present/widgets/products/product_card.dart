@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/utils/storage_url.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import '../../../../products/present/view/upsert_product_view.dart';
 import '../editing_btn.dart';
@@ -17,6 +19,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = resolveStoredImageUrl(product.image);
+
     return Container(
       clipBehavior: .antiAlias,
       decoration: BoxDecoration(
@@ -36,7 +40,9 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: .start,
         children: [
-          Expanded(child: ProductImage(image: product.image)),
+          Expanded(
+            child: ProductImage(image: imageUrl),
+          ),
           Padding(
             padding: .all(12.r),
             child: Column(
@@ -77,7 +83,7 @@ class ProductCard extends StatelessWidget {
                         context.pushNamed(
                           UpsertProductView.routeName,
                           extra: product,
-                        );
+                        );  
                       },
                     ),
                   ],
