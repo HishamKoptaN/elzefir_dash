@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/di/dependency_injection.dart';
 import '../bloc/home_bloc.dart';
 import 'about/about.dart';
@@ -68,7 +69,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                       selectedCategoryId: state.selectedCategoryId,
                       onChanged: (categoryId) {
                         getIt<HomeBloc>().add(
-                          HomeEvent.selectCategoryId(id: categoryId),
+                          .selectCategoryId(id: categoryId),
                         );
                       },
                     ),

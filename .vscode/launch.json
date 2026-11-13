@@ -2,16 +2,16 @@
   "version": "0.3.0",
   "configurations": [
     {
-      "name": "Flutter Local (Android 📱)",
+      "name": "Android Local 📱",
       "type": "dart",
       "request": "launch",
-      "preLaunchTask": "Prepare Android Local Env",
+      "preLaunchTask": "run-adb-reverse",
       "program": "lib/main.dart",
       "flutterMode": "debug",
       "args": [
         "--flavor",
-        "local",
-        "--dart-define=ENV=local",
+        "dev",
+        "--dart-define=ENV=dev",
         "--track-widget-creation",
         "--no-enable-impeller"
       ],
@@ -20,7 +20,7 @@
       "showDebuggerOnStart": true
     },
     {
-      "name": "Flutter Local (Web 🌐)",
+      "name": "Local Web 🌐",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
@@ -36,7 +36,7 @@
       "deviceId": "chrome"
     },
     {
-      "name": "Flutter Dev (Android 📱)",
+      "name": "Android Dev 📱",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",

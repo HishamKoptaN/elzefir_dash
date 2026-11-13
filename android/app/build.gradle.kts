@@ -43,7 +43,8 @@ android {
         }
         create("dev") {
             dimension = "env"
-            applicationIdSuffix = ".dev"
+            //! لا نضيف applicationIdSuffix هنا: الحزمة com.elzefir.admin.dev
+            //! غير مسجّلة في google-services.json فت فشل processDevDebugGoogleServices.
             versionNameSuffix = "-dev"
             resValue("string", "app_name", "الإدارة Dev")
         }

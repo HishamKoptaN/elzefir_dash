@@ -12,15 +12,6 @@
       "problemMatcher": []
     },
     {
-      "label": "prepare-test-environment",
-      "dependsOn": [
-        "run-adb-reverse",
-        // "grant-notification-permission",
-      ],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-    {
       "label": "grant-notification-permission",
       "type": "shell",
       "command": "adb shell pm grant com.greensouq.app.dev android.permission.POST_NOTIFICATIONS",

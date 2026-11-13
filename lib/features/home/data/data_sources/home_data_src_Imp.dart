@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+
 import 'home_api.dart';
 import '../model/home_res_model.dart';
 import 'home_data_src.dart';
@@ -7,8 +8,4 @@ import 'home_data_src.dart';
 class HomeDataSrcImpl implements HomeDataSrc {
   final HomeApi api;
   HomeDataSrcImpl({required this.api});
-  @override
-  Future<HomeResModel> get() {
-    return api.get();
-  }
 }

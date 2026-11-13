@@ -2,6 +2,7 @@ import 'package:alzefr_dash/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/di/dependency_injection.dart';
 import '../../categories/present/blocs/bloc/categories_bloc.dart';
 import 'bloc/home_bloc.dart';
@@ -20,8 +21,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    getIt<HomeBloc>().add(HomeEvent.get());
-    getIt<CategoriesBloc>().add(CategoriesEvent.get());
+    getIt<CategoriesBloc>().add(.get());
   }
 
   @override

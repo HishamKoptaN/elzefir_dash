@@ -1,9 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'alzafr_dash.dart';
 import 'config/env_config.dart';
 import 'core/debug/utils/app_observer.dart';
-
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
