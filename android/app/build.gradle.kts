@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
-    // START: FlutterFire Configuration
     id("com.google.gms.google-services")
-    // END: FlutterFire Configuration
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -10,16 +8,13 @@ android {
     namespace = "com.elzefir.admin"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
-
     buildFeatures {
         resValues = true
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-
     defaultConfig {
         applicationId = "com.elzefir.admin"
         minSdk = flutter.minSdkVersion
@@ -27,7 +22,6 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
@@ -35,16 +29,8 @@ android {
     }   
     flavorDimensions += "env"
     productFlavors {
-        create("local") {
-            dimension = "env"
-            applicationIdSuffix = ".local"
-            versionNameSuffix = "-local"
-            resValue("string", "app_name", "الإدارة Local")
-        }
         create("dev") {
             dimension = "env"
-            //! لا نضيف applicationIdSuffix هنا: الحزمة com.elzefir.admin.dev
-            //! غير مسجّلة في google-services.json فت فشل processDevDebugGoogleServices.
             versionNameSuffix = "-dev"
             resValue("string", "app_name", "الإدارة Dev")
         }

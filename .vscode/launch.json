@@ -2,7 +2,7 @@
   "version": "0.3.0",
   "configurations": [
     {
-      "name": "Android Local 📱",
+      "name": "Android Dev 📱",
       "type": "dart",
       "request": "launch",
       "preLaunchTask": "run-adb-reverse",
@@ -20,7 +20,7 @@
       "showDebuggerOnStart": true
     },
     {
-      "name": "Local Web 🌐",
+      "name": "Dev Web 🌐",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
@@ -34,59 +34,6 @@
         "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
       ],
       "deviceId": "chrome"
-    },
-    {
-      "name": "Android Dev 📱",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--flavor",
-        "dev",
-        "--dart-define=ENV=dev",
-        "--track-widget-creation",
-        "--no-enable-impeller"
-      ],
-      "deviceId": "CPH2325",
-      "attachToExistingApp": false,
-      "showDebuggerOnStart": true
-    },
-    {
-      "name": "Flutter Dev (Web 🌐)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev",
-        "--web-port",
-        "8080",
-        "--web-hostname",
-        "localhost",
-        "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
-      ],
-      "deviceId": "chrome"
-    },
-    {
-      "name": "Flutter Dev (Linux 💻)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev"
-      ]
-    },
-    {
-      "name": "Flutter Dev (Windows 🖥️)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev"
-      ]
     },
   ]
 }

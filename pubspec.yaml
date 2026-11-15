@@ -3,8 +3,8 @@ description: "A new Flutter project."
 publish_to: "none"
 version: 1.0.0+1
 environment:
-  sdk: ^3.13.5
-  flutter: "3.47.7"
+  sdk: ^3.14.0
+  flutter: "3.50.0"
 dependencies:
   retrofit: ^4.9.0
   logger: ^2.6.0
