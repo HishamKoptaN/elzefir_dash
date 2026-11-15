@@ -61,6 +61,13 @@ class WorkingHours {
 
   bool get isValid => days.isNotEmpty && openMinutes != closeMinutes;
 
+  /// هل يوجد تغيير غير محفوظ مقارنةً بـ [saved]؟
+  ///
+  /// تعيش هذه القاعدة في طبقة الـ Domain حتى تعتمد عليها أزرار الحفظ.
+  bool hasChangesComparedTo(WorkingHours? saved) {
+    return saved == null || this != saved;
+  }
+
   /// هل المطعم مفتوح في اللحظة المحددة؟
   bool isOpenAt(DateTime dateTime) {
     final minutes = dateTime.hour * 60 + dateTime.minute;
