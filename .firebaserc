@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "elzefir-dev"
+  },
+  "targets": {
+    "elzefir-dev": {
+      "hosting": {
+        "elzefir-dash-dev": [
+          "elzefir-dash-dev"
+        ]
+      }
+    }
   }
 }
