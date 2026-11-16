@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../categories/data/model/categories_res_model.dart';
+import '../../../settlement_methods/data/model/settlement_method_model.dart';
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';
 
@@ -13,7 +15,10 @@ abstract class ProductModel with _$ProductModel {
     String? description,
     String? price,
     CategoryModel? category,
+    @JsonKey(name: 'settlement_methods')
+    List<SettlementMethodModel>? settlementMethods,
   }) = _ProductModel;
+
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
 }
