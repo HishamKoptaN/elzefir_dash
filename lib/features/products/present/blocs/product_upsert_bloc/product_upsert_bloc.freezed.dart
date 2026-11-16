@@ -445,11 +445,11 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus,  List<SettlementMethodEntity> availableMethods)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.productUpsertReq,_that.formzSubmissionStatus);case _Loading() when loading != null:
+return loaded(_that.productUpsertReq,_that.formzSubmissionStatus,_that.availableMethods);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.apiErrorModel);case _:
@@ -470,11 +470,11 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus,  List<SettlementMethodEntity> availableMethods)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loaded():
-return loaded(_that.productUpsertReq,_that.formzSubmissionStatus);case _Loading():
+return loaded(_that.productUpsertReq,_that.formzSubmissionStatus,_that.availableMethods);case _Loading():
 return loading();case _Success():
 return success();case _Failure():
 return failure(_that.apiErrorModel);case _:
@@ -494,11 +494,11 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus,  List<SettlementMethodEntity> availableMethods)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.productUpsertReq,_that.formzSubmissionStatus);case _Loading() when loading != null:
+return loaded(_that.productUpsertReq,_that.formzSubmissionStatus,_that.availableMethods);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.apiErrorModel);case _:
@@ -545,11 +545,18 @@ String toString() {
 
 
 class _Loaded implements ProductUpsertState {
-  const _Loaded({this.productUpsertReq, required this.formzSubmissionStatus});
+  const _Loaded({this.productUpsertReq, required this.formzSubmissionStatus,  List<SettlementMethodEntity> availableMethods = const []}): _availableMethods = availableMethods;
   
 
  final  ProductUpsertReqEntity? productUpsertReq;
  final  FormzSubmissionStatus formzSubmissionStatus;
+ final  List<SettlementMethodEntity> _availableMethods;
+@JsonKey() List<SettlementMethodEntity> get availableMethods {
+  if (_availableMethods is EqualUnmodifiableListView) return _availableMethods;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_availableMethods);
+}
+
 
 /// Create a copy of ProductUpsertState
 /// with the given fields replaced by the non-null parameter values.
@@ -561,18 +568,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus)&&const DeepCollectionEquality().equals(other.availableMethods, _availableMethods));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,productUpsertReq,formzSubmissionStatus);
+    return Object.hash(runtimeType,productUpsertReq,formzSubmissionStatus,const DeepCollectionEquality().hash(_availableMethods));
 }
 
 @override
 String toString() {
-    return 'ProductUpsertState.loaded(productUpsertReq: $productUpsertReq, formzSubmissionStatus: $formzSubmissionStatus)';
+    return 'ProductUpsertState.loaded(productUpsertReq: $productUpsertReq, formzSubmissionStatus: $formzSubmissionStatus, availableMethods: $availableMethods)';
 }
 
 
@@ -583,7 +590,7 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $ProductUpsertStateCopyWi
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- ProductUpsertReqEntity? productUpsertReq, FormzSubmissionStatus formzSubmissionStatus
+ ProductUpsertReqEntity? productUpsertReq, FormzSubmissionStatus formzSubmissionStatus, List<SettlementMethodEntity> availableMethods
 });
 
 
@@ -600,11 +607,12 @@ class __$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? productUpsertReq = freezed,Object? formzSubmissionStatus = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? productUpsertReq = freezed,Object? formzSubmissionStatus = null,Object? availableMethods = null,}) {
   return _then(_Loaded(
 productUpsertReq: freezed == productUpsertReq ? _self.productUpsertReq : productUpsertReq // ignore: cast_nullable_to_non_nullable
 as ProductUpsertReqEntity?,formzSubmissionStatus: null == formzSubmissionStatus ? _self.formzSubmissionStatus : formzSubmissionStatus // ignore: cast_nullable_to_non_nullable
-as FormzSubmissionStatus,
+as FormzSubmissionStatus,availableMethods: null == availableMethods ? _self._availableMethods : availableMethods // ignore: cast_nullable_to_non_nullable
+as List<SettlementMethodEntity>,
   ));
 }
 

@@ -38,9 +38,14 @@ class _UpsertProductViewState extends State<UpsertProductView> {
             categoryId: .dirty(
               value: widget.product?.category.id.toString() ?? '',
             ),
+            settlementMethods: widget.product?.settlementMethods ?? [],
           ),
         ),
       );
+      // Fetch available methods manually if not loaded
+      if (bloc.state.maybeMap(loaded: (s) => s.availableMethods.isEmpty, orElse: () => true)) {
+        bloc.add(const ProductUpsertEvent.reset());
+      }
     } else {
       bloc.add(const ProductUpsertEvent.reset());
     }
@@ -78,6 +83,7 @@ class _UpsertProductViewState extends State<UpsertProductView> {
               req: state.productUpsertReq ?? const ProductUpsertReqEntity(),
               status: state.formzSubmissionStatus,
               isNew: widget.product == null,
+              availableMethods: state.availableMethods,
             );
           },
           orElse: () {
