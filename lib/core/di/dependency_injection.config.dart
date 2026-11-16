@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:event_bus/event_bus.dart' as _i1017;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
@@ -107,6 +108,12 @@ import '../../features/profile/domain/repo/profile_repo.dart' as _i364;
 import '../../features/profile/domain/use_cases/profile_use_cases.dart'
     as _i995;
 import '../../features/profile/present/bloc/profile_bloc.dart' as _i475;
+import '../../features/settlement_methods/data/data_sources/settlement_methods_data_src.dart'
+    as _i245;
+import '../../features/settlement_methods/data/repo_impl/settlement_methods_repo_impl.dart'
+    as _i134;
+import '../../features/settlement_methods/domain/repo/settlement_methods_repo.dart'
+    as _i167;
 import '../events/pusher_event_bus.dart' as _i235;
 import '../networking/network_info.dart' as _i303;
 import '../services/auth_storage_service.dart' as _i250;
@@ -129,6 +136,7 @@ _i174.GetIt init(
   final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   final apiModule = _$ApiModule();
   final injectionModule = _$InjectionModule();
+  final firestoreModule = _$FirestoreModule();
   final dioModule = _$DioModule();
   gh.factory<_i250.AuthStorageService>(() => _i250.AuthStorageService());
   gh.singleton<_i557.Env>(() => apiModule.config);
@@ -146,6 +154,7 @@ _i174.GetIt init(
   gh.lazySingleton<_i749.FirebaseAuthService>(
     () => _i749.FirebaseAuthService(),
   );
+  gh.lazySingleton<_i974.FirebaseFirestore>(() => firestoreModule.firestore);
   gh.lazySingleton<_i432.SessionManager>(() => _i241.SessionManagerImpl());
   gh.singleton<_i303.NetworkInfoImpl>(
     () => injectionModule.networkInfoImpl(gh<_i161.InternetConnection>()),
@@ -165,6 +174,11 @@ _i174.GetIt init(
   );
   gh.singleton<_i303.NetworkInfo>(
     () => injectionModule.networkInfo(gh<_i303.NetworkInfoImpl>()),
+  );
+  gh.lazySingleton<_i245.SettlementMethodsDataSource>(
+    () => _i245.SettlementMethodsFirestoreDataSource(
+      gh<_i974.FirebaseFirestore>(),
+    ),
   );
   gh.lazySingleton<_i614.ForgotPassRepo>(
     () => _i877.ForgotPasswordRepositoryImpl(gh<_i59.FirebaseAuth>()),
@@ -211,6 +225,11 @@ _i174.GetIt init(
   );
   gh.lazySingleton<_i552.SignUpApi>(
     () => _i552.SignUpApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  );
+  gh.lazySingleton<_i167.SettlementMethodsRepo>(
+    () => _i134.SettlementMethodsRepoImpl(
+      gh<_i245.SettlementMethodsDataSource>(),
+    ),
   );
   gh.factory<_i629.SendPassResetEmailUseCase>(
     () => _i629.SendPassResetEmailUseCase(gh<_i614.ForgotPassRepo>()),
@@ -300,10 +319,6 @@ _i174.GetIt init(
   gh.singleton<_i340.ProductsBloc>(
     () => _i340.ProductsBloc(useCases: gh<_i956.ProductsUseCase>()),
   );
-  gh.lazySingleton<_i838.ProductUpsertBloc>(
-    () =>
-        _i838.ProductUpsertBloc(productsUseCases: gh<_i956.ProductsUseCase>()),
-  );
   gh.singleton<_i781.NotificationsBloc>(
     () => _i781.NotificationsBloc(gh<_i139.NotificationsUseCases>()),
   );
@@ -315,6 +330,12 @@ _i174.GetIt init(
   );
   gh.singleton<_i357.HomeUseCases>(
     () => _i357.HomeUseCases(homeRepo: gh<_i429.HomeRepo>()),
+  );
+  gh.lazySingleton<_i838.ProductUpsertBloc>(
+    () => _i838.ProductUpsertBloc(
+      productsUseCases: gh<_i956.ProductsUseCase>(),
+      settlementMethodsRepo: gh<_i167.SettlementMethodsRepo>(),
+    ),
   );
   gh.lazySingleton<_i941.SignInUseCases>(
     () => _i941.SignInUseCases(gh<_i305.SignInRepo>()),
@@ -332,5 +353,7 @@ _i174.GetIt init(
 class _$ApiModule extends _i158.ApiModule {}
 
 class _$InjectionModule extends _i212.InjectionModule {}
+
+class _$FirestoreModule extends _i245.FirestoreModule {}
 
 class _$DioModule extends _i374.DioModule {}
