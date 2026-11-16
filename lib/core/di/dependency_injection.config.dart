@@ -114,6 +114,8 @@ import '../../features/settlement_methods/data/repo_impl/settlement_methods_repo
     as _i134;
 import '../../features/settlement_methods/domain/repo/settlement_methods_repo.dart'
     as _i167;
+import '../../features/settlement_methods/present/blocs/settlement_methods_bloc.dart'
+    as _i45;
 import '../events/pusher_event_bus.dart' as _i235;
 import '../networking/network_info.dart' as _i303;
 import '../services/auth_storage_service.dart' as _i250;
@@ -242,6 +244,11 @@ _i174.GetIt init(
   );
   gh.lazySingleton<_i192.ResetPassBloc>(
     () => _i192.ResetPassBloc(gh<_i992.ResetPassUseCases>()),
+  );
+  gh.lazySingleton<_i45.SettlementMethodsBloc>(
+    () => _i45.SettlementMethodsBloc(
+      settlementMethodsRepo: gh<_i167.SettlementMethodsRepo>(),
+    ),
   );
   gh.lazySingleton<_i364.ProfileRepo>(
     () =>

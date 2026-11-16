@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductEntity {
 
- int get id; String get name; String get title; String get description; String get price; String get image; CategoryEntity get category; List<SettlementMethodEntity> get settlementMethods;
+ int get id; String get name; String get title; String get description; String get price; String get image; CategoryEntity get category; List<SettlementMethodEntity> get settlementMethods; List<ProductPriceVariantEntity> get priceVariants;
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $ProductEntityCopyWith<ProductEntity> get copyWith => _$ProductEntityCopyWithImp
 @override
 bool operator ==(Object other) {
   final _this = this as ProductEntity;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.category, _this.category) || other.category == _this.category)&&const DeepCollectionEquality().equals(other.settlementMethods, _this.settlementMethods));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.category, _this.category) || other.category == _this.category)&&const DeepCollectionEquality().equals(other.settlementMethods, _this.settlementMethods)&&const DeepCollectionEquality().equals(other.priceVariants, _this.priceVariants));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ProductEntity;
-  return Object.hash(runtimeType,_this.id,_this.name,_this.title,_this.description,_this.price,_this.image,_this.category,const DeepCollectionEquality().hash(_this.settlementMethods));
+  return Object.hash(runtimeType,_this.id,_this.name,_this.title,_this.description,_this.price,_this.image,_this.category,const DeepCollectionEquality().hash(_this.settlementMethods),const DeepCollectionEquality().hash(_this.priceVariants));
 }
 
 @override
 String toString() {
   final _this = this as ProductEntity;
-  return 'ProductEntity(id: ${_this.id}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, image: ${_this.image}, category: ${_this.category}, settlementMethods: ${_this.settlementMethods})';
+  return 'ProductEntity(id: ${_this.id}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, image: ${_this.image}, category: ${_this.category}, settlementMethods: ${_this.settlementMethods}, priceVariants: ${_this.priceVariants})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProductEntityCopyWith<$Res>  {
   factory $ProductEntityCopyWith(ProductEntity value, $Res Function(ProductEntity) _then) = _$ProductEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String title, String description, String price, String image, CategoryEntity category, List<SettlementMethodEntity> settlementMethods
+ int id, String name, String title, String description, String price, String image, CategoryEntity category, List<SettlementMethodEntity> settlementMethods, List<ProductPriceVariantEntity> priceVariants
 });
 
 
@@ -68,7 +68,7 @@ class _$ProductEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? image = null,Object? category = null,Object? settlementMethods = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? image = null,Object? category = null,Object? settlementMethods = null,Object? priceVariants = null,}) {
   return _then(ProductEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,8 @@ as String,price: null == price ? _self.price : price // ignore: cast_nullable_to
 as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as CategoryEntity,settlementMethods: null == settlementMethods ? _self.settlementMethods : settlementMethods // ignore: cast_nullable_to_non_nullable
-as List<SettlementMethodEntity>,
+as List<SettlementMethodEntity>,priceVariants: null == priceVariants ? _self.priceVariants : priceVariants // ignore: cast_nullable_to_non_nullable
+as List<ProductPriceVariantEntity>,
   ));
 }
 /// Create a copy of ProductEntity
@@ -172,10 +173,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String title,  String description,  String price,  String image,  CategoryEntity category,  List<SettlementMethodEntity> settlementMethods)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String title,  String description,  String price,  String image,  CategoryEntity category,  List<SettlementMethodEntity> settlementMethods,  List<ProductPriceVariantEntity> priceVariants)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
-return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.image,_that.category,_that.settlementMethods);case _:
+return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.image,_that.category,_that.settlementMethods,_that.priceVariants);case _:
   return orElse();
 
 }
@@ -193,10 +194,10 @@ return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String title,  String description,  String price,  String image,  CategoryEntity category,  List<SettlementMethodEntity> settlementMethods)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String title,  String description,  String price,  String image,  CategoryEntity category,  List<SettlementMethodEntity> settlementMethods,  List<ProductPriceVariantEntity> priceVariants)  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity():
-return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.image,_that.category,_that.settlementMethods);case _:
+return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.image,_that.category,_that.settlementMethods,_that.priceVariants);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -213,10 +214,10 @@ return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String title,  String description,  String price,  String image,  CategoryEntity category,  List<SettlementMethodEntity> settlementMethods)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String title,  String description,  String price,  String image,  CategoryEntity category,  List<SettlementMethodEntity> settlementMethods,  List<ProductPriceVariantEntity> priceVariants)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
-return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.image,_that.category,_that.settlementMethods);case _:
+return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.image,_that.category,_that.settlementMethods,_that.priceVariants);case _:
   return null;
 
 }
@@ -228,7 +229,7 @@ return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_t
 
 
 class _ProductEntity implements ProductEntity {
-  const _ProductEntity({this.id = 0, this.name = '', this.title = '', this.description = '', this.price = '', this.image = '', this.category = const CategoryEntity(),  List<SettlementMethodEntity> settlementMethods = const []}): _settlementMethods = settlementMethods;
+  const _ProductEntity({this.id = 0, this.name = '', this.title = '', this.description = '', this.price = '', this.image = '', this.category = const CategoryEntity(),  List<SettlementMethodEntity> settlementMethods = const [],  List<ProductPriceVariantEntity> priceVariants = const []}): _settlementMethods = settlementMethods,_priceVariants = priceVariants;
   
 
 @override@JsonKey() final  int id;
@@ -245,6 +246,13 @@ class _ProductEntity implements ProductEntity {
   return EqualUnmodifiableListView(_settlementMethods);
 }
 
+ final  List<ProductPriceVariantEntity> _priceVariants;
+@override@JsonKey() List<ProductPriceVariantEntity> get priceVariants {
+  if (_priceVariants is EqualUnmodifiableListView) return _priceVariants;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_priceVariants);
+}
+
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -256,18 +264,18 @@ _$ProductEntityCopyWith<_ProductEntity> get copyWith => __$ProductEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.image, image) || other.image == image)&&(identical(other.category, category) || other.category == category)&&const DeepCollectionEquality().equals(other.settlementMethods, _settlementMethods));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.image, image) || other.image == image)&&(identical(other.category, category) || other.category == category)&&const DeepCollectionEquality().equals(other.settlementMethods, _settlementMethods)&&const DeepCollectionEquality().equals(other.priceVariants, _priceVariants));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,name,title,description,price,image,category,const DeepCollectionEquality().hash(_settlementMethods));
+    return Object.hash(runtimeType,id,name,title,description,price,image,category,const DeepCollectionEquality().hash(_settlementMethods),const DeepCollectionEquality().hash(_priceVariants));
 }
 
 @override
 String toString() {
-    return 'ProductEntity(id: $id, name: $name, title: $title, description: $description, price: $price, image: $image, category: $category, settlementMethods: $settlementMethods)';
+    return 'ProductEntity(id: $id, name: $name, title: $title, description: $description, price: $price, image: $image, category: $category, settlementMethods: $settlementMethods, priceVariants: $priceVariants)';
 }
 
 
@@ -278,7 +286,7 @@ abstract mixin class _$ProductEntityCopyWith<$Res> implements $ProductEntityCopy
   factory _$ProductEntityCopyWith(_ProductEntity value, $Res Function(_ProductEntity) _then) = __$ProductEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String title, String description, String price, String image, CategoryEntity category, List<SettlementMethodEntity> settlementMethods
+ int id, String name, String title, String description, String price, String image, CategoryEntity category, List<SettlementMethodEntity> settlementMethods, List<ProductPriceVariantEntity> priceVariants
 });
 
 
@@ -295,7 +303,7 @@ class __$ProductEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? image = null,Object? category = null,Object? settlementMethods = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? image = null,Object? category = null,Object? settlementMethods = null,Object? priceVariants = null,}) {
   return _then(_ProductEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -305,7 +313,8 @@ as String,price: null == price ? _self.price : price // ignore: cast_nullable_to
 as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as CategoryEntity,settlementMethods: null == settlementMethods ? _self._settlementMethods : settlementMethods // ignore: cast_nullable_to_non_nullable
-as List<SettlementMethodEntity>,
+as List<SettlementMethodEntity>,priceVariants: null == priceVariants ? _self._priceVariants : priceVariants // ignore: cast_nullable_to_non_nullable
+as List<ProductPriceVariantEntity>,
   ));
 }
 

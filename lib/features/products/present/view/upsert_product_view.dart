@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:alzefr_dash/core/di/dependency_injection.dart';
 import 'package:alzefr_dash/core/widgets/feedback/app_snackbar.dart';
 import 'package:alzefr_dash/features/categories/present/blocs/bloc/categories_bloc.dart';
+import 'package:alzefr_dash/features/settlement_methods/present/blocs/settlement_methods_bloc.dart';
 
 import '../../domain/entities/product_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
@@ -42,10 +43,6 @@ class _UpsertProductViewState extends State<UpsertProductView> {
           ),
         ),
       );
-      // Fetch available methods manually if not loaded
-      if (bloc.state.maybeMap(loaded: (s) => s.availableMethods.isEmpty, orElse: () => true)) {
-        bloc.add(const ProductUpsertEvent.reset());
-      }
     } else {
       bloc.add(const ProductUpsertEvent.reset());
     }
@@ -58,8 +55,6 @@ class _UpsertProductViewState extends State<UpsertProductView> {
       listener: (context, state) {
         state.maybeWhen(
           success: () {
-            // The list is cached in a singleton bloc, so pull it again to show
-            // the image that was just uploaded.
             getIt<ProductsBloc>().add(.get());
             context.showSuccessSnackBar(
               title: 'تم الحفظ',
@@ -79,11 +74,23 @@ class _UpsertProductViewState extends State<UpsertProductView> {
       builder: (context, state) {
         return state.maybeMap(
           loaded: (state) {
-            return ProductUpsertForm(
-              req: state.productUpsertReq ?? const ProductUpsertReqEntity(),
-              status: state.formzSubmissionStatus,
-              isNew: widget.product == null,
-              availableMethods: state.availableMethods,
+            return BlocBuilder<SettlementMethodsBloc, SettlementMethodsState>(
+              bloc: getIt<SettlementMethodsBloc>(),
+              builder: (context, settlementState) {
+                return settlementState.maybeMap(
+                  loaded: (s) {
+                    return ProductUpsertForm(
+                      req: state.productUpsertReq ?? const ProductUpsertReqEntity(),
+                      status: state.formzSubmissionStatus,
+                      isNew: widget.product == null,
+                      availableMethods: s.availableMethods,
+                    );
+                  },
+                  orElse: () {
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                );
+              },
             );
           },
           orElse: () {

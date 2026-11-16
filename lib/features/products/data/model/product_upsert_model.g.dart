@@ -19,6 +19,9 @@ _ProductUpsertReqModel _$ProductUpsertReqModelFromJson(
   settlementMethodIds: (json['settlement_methods'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
+  priceVariants: (json['price_variants'] as List<dynamic>?)
+      ?.map((e) => e as Map<String, dynamic>)
+      .toList(),
 );
 
 Map<String, dynamic> _$ProductUpsertReqModelToJson(
@@ -32,4 +35,5 @@ Map<String, dynamic> _$ProductUpsertReqModelToJson(
   'price': instance.price,
   'category_id': instance.categoryId,
   'settlement_methods': instance.settlementMethodIds,
+  'price_variants': instance.priceVariants,
 };

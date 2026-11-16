@@ -20,17 +20,13 @@
       "showDebuggerOnStart": true
     },
     {
-      "name": "Dev Web 🌐",
+      "name": "Web Dev 🌐",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
       "flutterMode": "debug",
       "args": [
         "--dart-define=ENV=local",
-        "--web-port",
-        "8080",
-        "--web-hostname",
-        "localhost",
         "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
       ],
       "deviceId": "chrome"

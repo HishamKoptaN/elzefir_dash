@@ -106,8 +106,14 @@ class ProductFormFields extends StatelessWidget {
         SettlementMethodSelector(
           allMethods: availableMethods,
           selectedMethods: req.settlementMethods,
-          onChanged: (methods) {
-            return _changed(req.copyWith(settlementMethods: methods));
+          priceVariants: req.priceVariants,
+          onChanged: (methods, priceVariants) {
+            return _changed(
+              req.copyWith(
+                settlementMethods: methods,
+                priceVariants: priceVariants,
+              ),
+            );
           },
         ),
       ],

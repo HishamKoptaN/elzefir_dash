@@ -17,6 +17,8 @@ abstract class ProductModel with _$ProductModel {
     CategoryModel? category,
     @JsonKey(name: 'settlement_methods')
     List<SettlementMethodModel>? settlementMethods,
+    @JsonKey(name: 'price_variants')
+    List<Map<String, dynamic>>? priceVariants,
   }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

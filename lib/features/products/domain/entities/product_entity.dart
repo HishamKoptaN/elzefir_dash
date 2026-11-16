@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../categories/domain/entities/categories_res_entity.dart';
 import '../../../settlement_methods/domain/entities/settlement_method_entity.dart';
+import 'product_price_variant_entity.dart';
 part 'product_entity.freezed.dart';
 
 @freezed
@@ -15,6 +16,7 @@ abstract class ProductEntity with _$ProductEntity {
     @Default('') String image,
     @Default(CategoryEntity()) CategoryEntity category,
     @Default([]) List<SettlementMethodEntity> settlementMethods,
+    @Default([]) List<ProductPriceVariantEntity> priceVariants,
   }) = _ProductEntity;
 }
 

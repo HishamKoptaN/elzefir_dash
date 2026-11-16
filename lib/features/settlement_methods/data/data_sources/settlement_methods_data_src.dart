@@ -20,7 +20,8 @@ class SettlementMethodsFirestoreDataSource implements SettlementMethodsDataSourc
 
   @override
   Future<List<SettlementMethodModel>> getSettlementMethods() async {
-    final snapshot = await _firestore.collection('settlement_methods').where('enabled', isEqualTo: true).get();
+    final snapshot = await _firestore.collection('settlement_methods').get();
+    print('[SettlementMethods] Fetched ${snapshot.docs.length} documents');
     return snapshot.docs
         .map((doc) => SettlementMethodModel.fromJson({...doc.data(), 'id': doc.id}))
         .toList();
