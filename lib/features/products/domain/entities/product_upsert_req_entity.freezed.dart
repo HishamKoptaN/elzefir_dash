@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductUpsertReqEntity {
 
- int? get id; GenericFormInput? get imageUrl; XFileFormInput? get imageFile; GenericFormInput? get name; GenericFormInput? get title; GenericFormInput? get description; GenericFormInput? get price; GenericFormInput? get categoryId; bool? get enabled;
+ int? get id; GenericFormInput? get imageUrl; XFileFormInput? get imageFile; GenericFormInput? get name; GenericFormInput? get title; GenericFormInput? get description; GenericFormInput? get price; GenericFormInput? get categoryId; List<SettlementMethodEntity> get settlementMethods; bool? get enabled;
 /// Create a copy of ProductUpsertReqEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $ProductUpsertReqEntityCopyWith<ProductUpsertReqEntity> get copyWith => _$Produc
 @override
 bool operator ==(Object other) {
   final _this = this as ProductUpsertReqEntity;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertReqEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.imageFile, _this.imageFile) || other.imageFile == _this.imageFile)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.enabled, _this.enabled) || other.enabled == _this.enabled));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertReqEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.imageFile, _this.imageFile) || other.imageFile == _this.imageFile)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&const DeepCollectionEquality().equals(other.settlementMethods, _this.settlementMethods)&&(identical(other.enabled, _this.enabled) || other.enabled == _this.enabled));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ProductUpsertReqEntity;
-  return Object.hash(runtimeType,_this.id,_this.imageUrl,_this.imageFile,_this.name,_this.title,_this.description,_this.price,_this.categoryId,_this.enabled);
+  return Object.hash(runtimeType,_this.id,_this.imageUrl,_this.imageFile,_this.name,_this.title,_this.description,_this.price,_this.categoryId,const DeepCollectionEquality().hash(_this.settlementMethods),_this.enabled);
 }
 
 @override
 String toString() {
   final _this = this as ProductUpsertReqEntity;
-  return 'ProductUpsertReqEntity(id: ${_this.id}, imageUrl: ${_this.imageUrl}, imageFile: ${_this.imageFile}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, categoryId: ${_this.categoryId}, enabled: ${_this.enabled})';
+  return 'ProductUpsertReqEntity(id: ${_this.id}, imageUrl: ${_this.imageUrl}, imageFile: ${_this.imageFile}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, categoryId: ${_this.categoryId}, settlementMethods: ${_this.settlementMethods}, enabled: ${_this.enabled})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProductUpsertReqEntityCopyWith<$Res>  {
   factory $ProductUpsertReqEntityCopyWith(ProductUpsertReqEntity value, $Res Function(ProductUpsertReqEntity) _then) = _$ProductUpsertReqEntityCopyWithImpl;
 @useResult
 $Res call({
- int? id, GenericFormInput? imageUrl, XFileFormInput? imageFile, GenericFormInput? name, GenericFormInput? title, GenericFormInput? description, GenericFormInput? price, GenericFormInput? categoryId, bool? enabled
+ int? id, GenericFormInput? imageUrl, XFileFormInput? imageFile, GenericFormInput? name, GenericFormInput? title, GenericFormInput? description, GenericFormInput? price, GenericFormInput? categoryId, List<SettlementMethodEntity> settlementMethods, bool? enabled
 });
 
 
@@ -68,7 +68,7 @@ class _$ProductUpsertReqEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertReqEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? imageUrl = freezed,Object? imageFile = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? enabled = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? imageUrl = freezed,Object? imageFile = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? settlementMethods = null,Object? enabled = freezed,}) {
   return _then(ProductUpsertReqEntity(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,8 @@ as GenericFormInput?,title: freezed == title ? _self.title : title // ignore: ca
 as GenericFormInput?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
-as GenericFormInput?,enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
+as GenericFormInput?,settlementMethods: null == settlementMethods ? _self.settlementMethods : settlementMethods // ignore: cast_nullable_to_non_nullable
+as List<SettlementMethodEntity>,enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
 }
@@ -164,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  GenericFormInput? title,  GenericFormInput? description,  GenericFormInput? price,  GenericFormInput? categoryId,  bool? enabled)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  GenericFormInput? title,  GenericFormInput? description,  GenericFormInput? price,  GenericFormInput? categoryId,  List<SettlementMethodEntity> settlementMethods,  bool? enabled)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqEntity() when $default != null:
-return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.enabled);case _:
+return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.settlementMethods,_that.enabled);case _:
   return orElse();
 
 }
@@ -185,10 +186,10 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  GenericFormInput? title,  GenericFormInput? description,  GenericFormInput? price,  GenericFormInput? categoryId,  bool? enabled)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  GenericFormInput? title,  GenericFormInput? description,  GenericFormInput? price,  GenericFormInput? categoryId,  List<SettlementMethodEntity> settlementMethods,  bool? enabled)  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqEntity():
-return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.enabled);case _:
+return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.settlementMethods,_that.enabled);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +206,10 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  GenericFormInput? title,  GenericFormInput? description,  GenericFormInput? price,  GenericFormInput? categoryId,  bool? enabled)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  GenericFormInput? imageUrl,  XFileFormInput? imageFile,  GenericFormInput? name,  GenericFormInput? title,  GenericFormInput? description,  GenericFormInput? price,  GenericFormInput? categoryId,  List<SettlementMethodEntity> settlementMethods,  bool? enabled)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqEntity() when $default != null:
-return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.enabled);case _:
+return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.settlementMethods,_that.enabled);case _:
   return null;
 
 }
@@ -220,7 +221,7 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_
 
 
 class _ProductUpsertReqEntity implements ProductUpsertReqEntity {
-  const _ProductUpsertReqEntity({this.id, this.imageUrl, this.imageFile, this.name, this.title, this.description, this.price, this.categoryId, this.enabled});
+  const _ProductUpsertReqEntity({this.id, this.imageUrl, this.imageFile, this.name, this.title, this.description, this.price, this.categoryId,  List<SettlementMethodEntity> settlementMethods = const [], this.enabled}): _settlementMethods = settlementMethods;
   
 
 @override final  int? id;
@@ -231,6 +232,13 @@ class _ProductUpsertReqEntity implements ProductUpsertReqEntity {
 @override final  GenericFormInput? description;
 @override final  GenericFormInput? price;
 @override final  GenericFormInput? categoryId;
+ final  List<SettlementMethodEntity> _settlementMethods;
+@override@JsonKey() List<SettlementMethodEntity> get settlementMethods {
+  if (_settlementMethods is EqualUnmodifiableListView) return _settlementMethods;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_settlementMethods);
+}
+
 @override final  bool? enabled;
 
 /// Create a copy of ProductUpsertReqEntity
@@ -243,18 +251,18 @@ _$ProductUpsertReqEntityCopyWith<_ProductUpsertReqEntity> get copyWith => __$Pro
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductUpsertReqEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.imageFile, imageFile) || other.imageFile == imageFile)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.enabled, enabled) || other.enabled == enabled));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductUpsertReqEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.imageFile, imageFile) || other.imageFile == imageFile)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&const DeepCollectionEquality().equals(other.settlementMethods, _settlementMethods)&&(identical(other.enabled, enabled) || other.enabled == enabled));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,imageUrl,imageFile,name,title,description,price,categoryId,enabled);
+    return Object.hash(runtimeType,id,imageUrl,imageFile,name,title,description,price,categoryId,const DeepCollectionEquality().hash(_settlementMethods),enabled);
 }
 
 @override
 String toString() {
-    return 'ProductUpsertReqEntity(id: $id, imageUrl: $imageUrl, imageFile: $imageFile, name: $name, title: $title, description: $description, price: $price, categoryId: $categoryId, enabled: $enabled)';
+    return 'ProductUpsertReqEntity(id: $id, imageUrl: $imageUrl, imageFile: $imageFile, name: $name, title: $title, description: $description, price: $price, categoryId: $categoryId, settlementMethods: $settlementMethods, enabled: $enabled)';
 }
 
 
@@ -265,7 +273,7 @@ abstract mixin class _$ProductUpsertReqEntityCopyWith<$Res> implements $ProductU
   factory _$ProductUpsertReqEntityCopyWith(_ProductUpsertReqEntity value, $Res Function(_ProductUpsertReqEntity) _then) = __$ProductUpsertReqEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, GenericFormInput? imageUrl, XFileFormInput? imageFile, GenericFormInput? name, GenericFormInput? title, GenericFormInput? description, GenericFormInput? price, GenericFormInput? categoryId, bool? enabled
+ int? id, GenericFormInput? imageUrl, XFileFormInput? imageFile, GenericFormInput? name, GenericFormInput? title, GenericFormInput? description, GenericFormInput? price, GenericFormInput? categoryId, List<SettlementMethodEntity> settlementMethods, bool? enabled
 });
 
 
@@ -282,7 +290,7 @@ class __$ProductUpsertReqEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertReqEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? imageUrl = freezed,Object? imageFile = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? enabled = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? imageUrl = freezed,Object? imageFile = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? settlementMethods = null,Object? enabled = freezed,}) {
   return _then(_ProductUpsertReqEntity(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -292,7 +300,8 @@ as GenericFormInput?,title: freezed == title ? _self.title : title // ignore: ca
 as GenericFormInput?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as GenericFormInput?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
-as GenericFormInput?,enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
+as GenericFormInput?,settlementMethods: null == settlementMethods ? _self._settlementMethods : settlementMethods // ignore: cast_nullable_to_non_nullable
+as List<SettlementMethodEntity>,enabled: freezed == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
 }

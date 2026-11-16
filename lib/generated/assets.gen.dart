@@ -46,82 +46,8 @@ class $AssetsLogosGen {
   ];
 }
 
-class $AssetsMockGen {
-  const $AssetsMockGen();
-
-  /// File path: assets/mock/about.png
-  AssetGenImage get aboutPng => const AssetGenImage('assets/mock/about.png');
-
-  /// File path: assets/mock/about.svg
-  String get aboutSvg => 'assets/mock/about.svg';
-
-  /// File path: assets/mock/fried_fish_fillet.png
-  AssetGenImage get friedFishFillet =>
-      const AssetGenImage('assets/mock/fried_fish_fillet.png');
-
-  /// File path: assets/mock/fried_squid.png
-  AssetGenImage get friedSquid =>
-      const AssetGenImage('assets/mock/fried_squid.png');
-
-  /// File path: assets/mock/fried_tilapia.png
-  AssetGenImage get friedTilapia =>
-      const AssetGenImage('assets/mock/fried_tilapia.png');
-
-  /// File path: assets/mock/grilled_mullet.png
-  AssetGenImage get grilledMullet =>
-      const AssetGenImage('assets/mock/grilled_mullet.png');
-
-  /// File path: assets/mock/grilled_shrimp.png
-  AssetGenImage get grilledShrimp =>
-      const AssetGenImage('assets/mock/grilled_shrimp.png');
-
-  /// File path: assets/mock/grilled_tilapia.png
-  AssetGenImage get grilledTilapia =>
-      const AssetGenImage('assets/mock/grilled_tilapia.png');
-
-  /// File path: assets/mock/grilled_tuna_fish.png
-  AssetGenImage get grilledTunaFish =>
-      const AssetGenImage('assets/mock/grilled_tuna_fish.png');
-
-  /// File path: assets/mock/offer.png
-  AssetGenImage get offer => const AssetGenImage('assets/mock/offer.png');
-
-  /// File path: assets/mock/saled.png
-  AssetGenImage get saled => const AssetGenImage('assets/mock/saled.png');
-
-  /// File path: assets/mock/sayadieh_rice.png
-  AssetGenImage get sayadiehRice =>
-      const AssetGenImage('assets/mock/sayadieh_rice.png');
-
-  /// File path: assets/mock/seafood_soup.png
-  AssetGenImage get seafoodSoup =>
-      const AssetGenImage('assets/mock/seafood_soup.png');
-
-  /// File path: assets/mock/tahini.png
-  AssetGenImage get tahini => const AssetGenImage('assets/mock/tahini.png');
-
-  /// List of all assets
-  List<dynamic> get values => [
-    aboutPng,
-    aboutSvg,
-    friedFishFillet,
-    friedSquid,
-    friedTilapia,
-    grilledMullet,
-    grilledShrimp,
-    grilledTilapia,
-    grilledTunaFish,
-    offer,
-    saled,
-    sayadiehRice,
-    seafoodSoup,
-    tahini,
-  ];
-}
-
 abstract final class Assets {
   static const $AssetsLogosGen logos = $AssetsLogosGen();
-  static const $AssetsMockGen mock = $AssetsMockGen();
 }
 
 class AssetGenImage {
