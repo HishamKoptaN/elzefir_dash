@@ -12,6 +12,7 @@ abstract class ProductUpsertReqModel with _$ProductUpsertReqModel {
     String? description,
     String? price,
     @JsonKey(name: 'category_id') String? categoryId,
+    @JsonKey(name: 'settlement_methods') List<String>? settlementMethodIds,
   }) = _ProductUpsertReqModel;
   factory ProductUpsertReqModel.fromJson(Map<String, dynamic> json) =>
       _$ProductUpsertReqModelFromJson(json);

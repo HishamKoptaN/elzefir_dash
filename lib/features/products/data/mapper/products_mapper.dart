@@ -1,5 +1,6 @@
 import '../../../categories/data/mapper/categories_mapper.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
+import '../../../settlement_methods/data/mapper/settlement_method_mapper.dart';
 import '../../domain/entities/product_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
 import '../model/product_model.dart';
@@ -15,6 +16,9 @@ extension ProductModelMapper on ProductModel {
       price: price ?? '',
       image: image ?? '',
       category: category?.toEntity() ?? CategoryEntity(),
+      settlementMethods:
+          settlementMethods?.map((e) => e.toEntity()).toList() ??
+          [],
     );
   }
 }
@@ -42,6 +46,7 @@ extension ProductUpsertReqEntityToModel on ProductUpsertReqEntity {
       price: price?.value,
       image: imageUrl?.value,
       categoryId: categoryId?.value,
+      settlementMethodIds: settlementMethods.map((e) => e.id).toList(),
     );
   }
 }

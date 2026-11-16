@@ -6,6 +6,7 @@ class ProductUpsertState with _$ProductUpsertState {
   const factory ProductUpsertState.loaded({
     ProductUpsertReqEntity? productUpsertReq,
     required FormzSubmissionStatus formzSubmissionStatus,
+    @Default([]) List<SettlementMethodEntity> availableMethods,
   }) = _Loaded;
   const factory ProductUpsertState.loading() = _Loading;
   const factory ProductUpsertState.success() = _Success;

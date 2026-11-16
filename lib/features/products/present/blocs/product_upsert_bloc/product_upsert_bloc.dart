@@ -3,8 +3,11 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
+import '../../../../settlement_methods/domain/entities/settlement_method_entity.dart';
+import '../../../../settlement_methods/domain/repo/settlement_methods_repo.dart';
 import '../../../domain/entities/product_upsert_req_entity.dart';
 import '../../../domain/use_cases/products_use_cases.dart';
 part 'product_upsert_bloc.freezed.dart';
@@ -14,15 +17,24 @@ part 'product_upsert_state.dart';
 @lazySingleton
 class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
   final ProductsUseCase productsUseCases;
-  ProductUpsertBloc({required this.productsUseCases})
-    : super(const ProductUpsertState.initial()) {
+  final SettlementMethodsRepo settlementMethodsRepo;
+  ProductUpsertBloc({
+    required this.productsUseCases,
+    required this.settlementMethodsRepo,
+  }) : super(const ProductUpsertState.initial()) {
     on<ProductUpsertEvent>((event, emit) async {
       await event.when(
-        reset: () {
-          emit(
-            const ProductUpsertState.loaded(
-              productUpsertReq: ProductUpsertReqEntity(),
-              formzSubmissionStatus: .initial,
+        reset: () async {
+          emit(const ProductUpsertState.loading());
+          final methodsRes = await settlementMethodsRepo.getSettlementMethods();
+          methodsRes.fold(
+            (l) => emit(ProductUpsertState.failure(apiErrorModel: l)),
+            (methods) => emit(
+              ProductUpsertState.loaded(
+                productUpsertReq: ProductUpsertReqEntity(),
+                formzSubmissionStatus: .initial,
+                availableMethods: methods,
+              ),
             ),
           );
         },
@@ -35,10 +47,11 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
               );
             },
             orElse: () {
+              // Should not happen, but fallback
               emit(
                 ProductUpsertState.loaded(
                   productUpsertReq: productUpsertReq,
-                  formzSubmissionStatus: .initial,
+                  formzSubmissionStatus: FormzSubmissionStatus.initial,
                 ),
               );
             },
@@ -101,7 +114,8 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
           productUpsertReq.title ?? const GenericFormInput.pure(),
           productUpsertReq.description ?? const GenericFormInput.pure(),
           productUpsertReq.price ?? const GenericFormInput.pure(),
-        ]))
+        ]) &&
+        productUpsertReq.settlementMethods.isNotEmpty)
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.failure;
   }

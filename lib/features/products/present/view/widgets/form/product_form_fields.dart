@@ -9,12 +9,19 @@ import 'package:alzefr_dash/core/widgets/forms/labeled_field.dart';
 import 'package:alzefr_dash/features/products/domain/entities/product_upsert_req_entity.dart';
 import 'package:alzefr_dash/features/products/present/blocs/product_upsert_bloc/product_upsert_bloc.dart';
 
+import '../../../../../settlement_methods/domain/entities/settlement_method_entity.dart';
 import 'category_dropdown.dart';
+import 'settlement_method_selector.dart';
 
 class ProductFormFields extends StatelessWidget {
-  const ProductFormFields({super.key, required this.req});
+  const ProductFormFields({
+    super.key,
+    required this.req,
+    required this.availableMethods,
+  });
 
   final ProductUpsertReqEntity req;
+  final List<SettlementMethodEntity> availableMethods;
 
   void _changed(ProductUpsertReqEntity updated) {
     getIt<ProductUpsertBloc>().add(
@@ -94,6 +101,13 @@ class ProductFormFields extends StatelessWidget {
             return _changed(
               req.copyWith(categoryId: GenericFormInput.dirty(value: value)),
             );
+          },
+        ),
+        SettlementMethodSelector(
+          allMethods: availableMethods,
+          selectedMethods: req.settlementMethods,
+          onChanged: (methods) {
+            return _changed(req.copyWith(settlementMethods: methods));
           },
         ),
       ],
