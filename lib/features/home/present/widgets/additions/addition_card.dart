@@ -4,6 +4,7 @@ import '../../../../../core/widgets/custom_image.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import '../products/category_badge_widget.dart';
 import '../products/product_card.dart';
+import '../products/price_widget.dart';
 
 class AdditionCard extends StatefulWidget {
   final AdditionEntity addition;

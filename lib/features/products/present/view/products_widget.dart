@@ -29,7 +29,9 @@ class ProductsWidget extends StatelessWidget {
       itemCount: products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount.toInt(),
-        childAspectRatio: 0.9,
+        // Slightly taller than wide so the description and price fit without
+        // overflowing.
+        childAspectRatio: 0.8,
         mainAxisSpacing: 16.h,
         crossAxisSpacing: 16.w,
       ),

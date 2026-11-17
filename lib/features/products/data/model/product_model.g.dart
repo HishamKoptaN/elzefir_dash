@@ -17,14 +17,6 @@ _ProductModel _$ProductModelFromJson(Map<String, dynamic> json) =>
       category: json['category'] == null
           ? null
           : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
-      settlementMethods: (json['settlement_methods'] as List<dynamic>?)
-          ?.map(
-            (e) => SettlementMethodModel.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-      priceVariants: (json['price_variants'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
-          .toList(),
     );
 
 Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
@@ -36,8 +28,6 @@ Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
       'description': instance.description,
       'price': instance.price,
       'category': instance.category,
-      'settlement_methods': instance.settlementMethods,
-      'price_variants': instance.priceVariants,
     };
 
 _AdditionModel _$AdditionModelFromJson(Map<String, dynamic> json) =>

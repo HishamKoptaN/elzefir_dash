@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductUpsertReqModel {
 
- int? get id; String? get image; String? get name; String? get title; String? get description; String? get price;@JsonKey(name: 'category_id') String? get categoryId;@JsonKey(name: 'settlement_methods') List<String>? get settlementMethodIds;@JsonKey(name: 'price_variants') List<Map<String, dynamic>>? get priceVariants;
+ int? get id; String? get image; String? get name; String? get title; String? get description; num? get price;@JsonKey(name: 'category_id') String? get categoryId;
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $ProductUpsertReqModelCopyWith<ProductUpsertReqModel> get copyWith => _$ProductU
 @override
 bool operator ==(Object other) {
   final _this = this as ProductUpsertReqModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertReqModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&const DeepCollectionEquality().equals(other.settlementMethodIds, _this.settlementMethodIds)&&const DeepCollectionEquality().equals(other.priceVariants, _this.priceVariants));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertReqModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductUpsertReqModel;
-  return Object.hash(runtimeType,_this.id,_this.image,_this.name,_this.title,_this.description,_this.price,_this.categoryId,const DeepCollectionEquality().hash(_this.settlementMethodIds),const DeepCollectionEquality().hash(_this.priceVariants));
+  return Object.hash(runtimeType,_this.id,_this.image,_this.name,_this.title,_this.description,_this.price,_this.categoryId);
 }
 
 @override
 String toString() {
   final _this = this as ProductUpsertReqModel;
-  return 'ProductUpsertReqModel(id: ${_this.id}, image: ${_this.image}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, categoryId: ${_this.categoryId}, settlementMethodIds: ${_this.settlementMethodIds}, priceVariants: ${_this.priceVariants})';
+  return 'ProductUpsertReqModel(id: ${_this.id}, image: ${_this.image}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, categoryId: ${_this.categoryId})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $ProductUpsertReqModelCopyWith<$Res>  {
   factory $ProductUpsertReqModelCopyWith(ProductUpsertReqModel value, $Res Function(ProductUpsertReqModel) _then) = _$ProductUpsertReqModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, String? price,@JsonKey(name: 'category_id') String? categoryId,@JsonKey(name: 'settlement_methods') List<String>? settlementMethodIds,@JsonKey(name: 'price_variants') List<Map<String, dynamic>>? priceVariants
+ int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId
 });
 
 
@@ -71,7 +71,7 @@ class _$ProductUpsertReqModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? settlementMethodIds = freezed,Object? priceVariants = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,}) {
   return _then(ProductUpsertReqModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -79,10 +79,8 @@ as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as String?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
-as String?,settlementMethodIds: freezed == settlementMethodIds ? _self.settlementMethodIds : settlementMethodIds // ignore: cast_nullable_to_non_nullable
-as List<String>?,priceVariants: freezed == priceVariants ? _self.priceVariants : priceVariants // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>?,
+as num?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -167,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price, @JsonKey(name: 'category_id')  String? categoryId, @JsonKey(name: 'settlement_methods')  List<String>? settlementMethodIds, @JsonKey(name: 'price_variants')  List<Map<String, dynamic>>? priceVariants)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel() when $default != null:
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.settlementMethodIds,_that.priceVariants);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
   return orElse();
 
 }
@@ -188,10 +186,10 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price, @JsonKey(name: 'category_id')  String? categoryId, @JsonKey(name: 'settlement_methods')  List<String>? settlementMethodIds, @JsonKey(name: 'price_variants')  List<Map<String, dynamic>>? priceVariants)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel():
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.settlementMethodIds,_that.priceVariants);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -208,10 +206,10 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price, @JsonKey(name: 'category_id')  String? categoryId, @JsonKey(name: 'settlement_methods')  List<String>? settlementMethodIds, @JsonKey(name: 'price_variants')  List<Map<String, dynamic>>? priceVariants)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel() when $default != null:
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.settlementMethodIds,_that.priceVariants);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
   return null;
 
 }
@@ -223,7 +221,7 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 @JsonSerializable()
 
 class _ProductUpsertReqModel implements ProductUpsertReqModel {
-  const _ProductUpsertReqModel({this.id, this.image, this.name, this.title, this.description, this.price, @JsonKey(name: 'category_id') this.categoryId, @JsonKey(name: 'settlement_methods')  List<String>? settlementMethodIds, @JsonKey(name: 'price_variants')  List<Map<String, dynamic>>? priceVariants}): _settlementMethodIds = settlementMethodIds,_priceVariants = priceVariants;
+  const _ProductUpsertReqModel({this.id, this.image, this.name, this.title, this.description, this.price, @JsonKey(name: 'category_id') this.categoryId});
   factory _ProductUpsertReqModel.fromJson(Map<String, dynamic> json) => _$ProductUpsertReqModelFromJson(json);
 
 @override final  int? id;
@@ -231,26 +229,8 @@ class _ProductUpsertReqModel implements ProductUpsertReqModel {
 @override final  String? name;
 @override final  String? title;
 @override final  String? description;
-@override final  String? price;
+@override final  num? price;
 @override@JsonKey(name: 'category_id') final  String? categoryId;
- final  List<String>? _settlementMethodIds;
-@override@JsonKey(name: 'settlement_methods') List<String>? get settlementMethodIds {
-  final value = _settlementMethodIds;
-  if (value == null) return null;
-  if (_settlementMethodIds is EqualUnmodifiableListView) return _settlementMethodIds;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
- final  List<Map<String, dynamic>>? _priceVariants;
-@override@JsonKey(name: 'price_variants') List<Map<String, dynamic>>? get priceVariants {
-  final value = _priceVariants;
-  if (value == null) return null;
-  if (_priceVariants is EqualUnmodifiableListView) return _priceVariants;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
 
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
@@ -265,18 +245,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductUpsertReqModel&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&const DeepCollectionEquality().equals(other.settlementMethodIds, _settlementMethodIds)&&const DeepCollectionEquality().equals(other.priceVariants, _priceVariants));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductUpsertReqModel&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,image,name,title,description,price,categoryId,const DeepCollectionEquality().hash(_settlementMethodIds),const DeepCollectionEquality().hash(_priceVariants));
+    return Object.hash(runtimeType,id,image,name,title,description,price,categoryId);
 }
 
 @override
 String toString() {
-    return 'ProductUpsertReqModel(id: $id, image: $image, name: $name, title: $title, description: $description, price: $price, categoryId: $categoryId, settlementMethodIds: $settlementMethodIds, priceVariants: $priceVariants)';
+    return 'ProductUpsertReqModel(id: $id, image: $image, name: $name, title: $title, description: $description, price: $price, categoryId: $categoryId)';
 }
 
 
@@ -287,7 +267,7 @@ abstract mixin class _$ProductUpsertReqModelCopyWith<$Res> implements $ProductUp
   factory _$ProductUpsertReqModelCopyWith(_ProductUpsertReqModel value, $Res Function(_ProductUpsertReqModel) _then) = __$ProductUpsertReqModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, String? price,@JsonKey(name: 'category_id') String? categoryId,@JsonKey(name: 'settlement_methods') List<String>? settlementMethodIds,@JsonKey(name: 'price_variants') List<Map<String, dynamic>>? priceVariants
+ int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId
 });
 
 
@@ -304,7 +284,7 @@ class __$ProductUpsertReqModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? settlementMethodIds = freezed,Object? priceVariants = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,}) {
   return _then(_ProductUpsertReqModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -312,10 +292,8 @@ as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as String?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
-as String?,settlementMethodIds: freezed == settlementMethodIds ? _self._settlementMethodIds : settlementMethodIds // ignore: cast_nullable_to_non_nullable
-as List<String>?,priceVariants: freezed == priceVariants ? _self._priceVariants : priceVariants // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>?,
+as num?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

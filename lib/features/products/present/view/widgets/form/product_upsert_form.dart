@@ -8,19 +8,15 @@ import 'package:alzefr_dash/core/widgets/forms/form_save_button.dart';
 import 'package:alzefr_dash/core/widgets/forms/image_picker_field.dart';
 import 'package:alzefr_dash/features/products/domain/entities/product_upsert_req_entity.dart';
 
-import '../../../../../settlement_methods/domain/entities/settlement_method_entity.dart';
 import '../../../blocs/product_upsert_bloc/product_upsert_bloc.dart';
 import 'product_form_fields.dart';
 
 class ProductUpsertForm extends StatelessWidget {
-  final List<SettlementMethodEntity> availableMethods;
-
   const ProductUpsertForm({
     super.key,
     required this.req,
     required this.status,
     required this.isNew,
-    required this.availableMethods,
   });
 
   final ProductUpsertReqEntity req;
@@ -52,7 +48,7 @@ class ProductUpsertForm extends StatelessWidget {
                   );
                 },
               ),
-              ProductFormFields(req: req, availableMethods: availableMethods),
+              ProductFormFields(req: req),
               FormSaveButton(
                 label: isNew ? 'إضافة المنتج' : 'حفظ التعديلات',
                 status: status,
@@ -62,6 +58,17 @@ class ProductUpsertForm extends StatelessWidget {
                   );
                 },
               ),
+              // The save button stays disabled until the form is valid, so say
+              // what is missing instead of leaving it unexplained.
+              if (status == FormzSubmissionStatus.failure)
+                Text(
+                  'أكمل الحقول المطلوبة وأدخل سعرًا رقميًا صالحًا',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                ),
               SizedBox(height: 8.h),
             ],
           ),

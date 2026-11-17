@@ -6,8 +6,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
-import '../../../../settlement_methods/domain/entities/settlement_method_entity.dart';
-import '../../../../settlement_methods/domain/repo/settlement_methods_repo.dart';
+import '../../../../../core/utils/price_input.dart';
 import '../../../domain/entities/product_upsert_req_entity.dart';
 import '../../../domain/use_cases/products_use_cases.dart';
 part 'product_upsert_bloc.freezed.dart';
@@ -17,24 +16,14 @@ part 'product_upsert_state.dart';
 @lazySingleton
 class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
   final ProductsUseCase productsUseCases;
-  final SettlementMethodsRepo settlementMethodsRepo;
-  ProductUpsertBloc({
-    required this.productsUseCases,
-    required this.settlementMethodsRepo,
-  }) : super(const ProductUpsertState.initial()) {
+  ProductUpsertBloc({required this.productsUseCases})
+    : super(const ProductUpsertState.initial()) {
     on<ProductUpsertEvent>((event, emit) async {
       await event.when(
         reset: () async {
-          emit(const ProductUpsertState.loading());
-          final methodsRes = await settlementMethodsRepo.getSettlementMethods();
-          methodsRes.fold(
-            (l) => emit(ProductUpsertState.failure(apiErrorModel: l)),
-            (methods) => emit(
-              ProductUpsertState.loaded(
-                productUpsertReq: ProductUpsertReqEntity(),
-                formzSubmissionStatus: .initial,
-                availableMethods: methods,
-              ),
+          emit(
+            const ProductUpsertState.loaded(
+              formzSubmissionStatus: FormzSubmissionStatus.initial,
             ),
           );
         },
@@ -47,7 +36,6 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
               );
             },
             orElse: () {
-              // Should not happen, but fallback
               emit(
                 ProductUpsertState.loaded(
                   productUpsertReq: productUpsertReq,
@@ -60,6 +48,24 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
         upsert: () async {
           await state.mapOrNull(
             loaded: (state) async {
+              final req = state.productUpsertReq;
+              // The save button is disabled while the form is invalid, but the
+              // event can be dispatched some other way, so never write an
+              // invalid product: report why through the error state instead.
+              if (req == null ||
+                  _validateForm(productUpsertReq: req) !=
+                      FormzSubmissionStatus.success) {
+                emitCustomLoaded(
+                  emit: emit,
+                  state: state,
+                  errorInfo: const ErrorInfo(
+                    title: 'بيانات غير مكتملة',
+                    message: 'أكمل بيانات المنتج (الاسم، الوصف، السعر) قبل الحفظ',
+                  ),
+                );
+                return;
+              }
+
               emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(formzSubmissionStatus: .inProgress),
@@ -73,8 +79,12 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
                     emitCustomLoaded(emit: emit, state: state);
                   },
                   failure: (apiErrorModel) async {
-                    emit(
-                      ProductUpsertState.failure(apiErrorModel: apiErrorModel),
+                    // Keep the loaded form (and everything typed into it) so the
+                    // admin can fix the problem and retry instead of losing it.
+                    emitCustomLoaded(
+                      emit: emit,
+                      state: state,
+                      errorInfo: apiErrorModel,
                     );
                   },
                 );
@@ -89,12 +99,15 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
     required Emitter<ProductUpsertState> emit,
     required _Loaded state,
     FormzSubmissionStatus? formzSubmissionStatus,
+    ErrorInfo? errorInfo,
   }) {
     emit(
       state.copyWith(
         formzSubmissionStatus:
             formzSubmissionStatus ??
             _validateForm(productUpsertReq: state.productUpsertReq!),
+        // Cleared on every other emission, so an error is reported once.
+        errorInfo: errorInfo,
       ),
     );
   }
@@ -115,7 +128,7 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
           productUpsertReq.description ?? const GenericFormInput.pure(),
           productUpsertReq.price ?? const GenericFormInput.pure(),
         ]) &&
-        productUpsertReq.settlementMethods.isNotEmpty)
+        isValidPrice(productUpsertReq.price?.value ?? ''))
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.failure;
   }

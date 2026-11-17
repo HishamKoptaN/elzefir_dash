@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:alzefr_dash/core/di/dependency_injection.dart';
+import 'package:alzefr_dash/core/errors/models/error_info.dart';
 import 'package:alzefr_dash/core/widgets/feedback/app_snackbar.dart';
 import 'package:alzefr_dash/features/categories/present/blocs/bloc/categories_bloc.dart';
-import 'package:alzefr_dash/features/settlement_methods/present/blocs/settlement_methods_bloc.dart';
 
 import '../../domain/entities/product_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
 import '../blocs/bloc/products_bloc.dart';
 import '../blocs/product_upsert_bloc/product_upsert_bloc.dart';
 import 'widgets/form/product_upsert_form.dart';
+
+String _errorMessage(ErrorInfo errorInfo) {
+  final message = errorInfo.message.trim();
+  return message.isEmpty ? 'تعذّر حفظ المنتج' : message;
+}
 
 class UpsertProductView extends StatefulWidget {
   const UpsertProductView({super.key, required this.product});
@@ -39,7 +44,6 @@ class _UpsertProductViewState extends State<UpsertProductView> {
             categoryId: .dirty(
               value: widget.product?.category.id.toString() ?? '',
             ),
-            settlementMethods: widget.product?.settlementMethods ?? [],
           ),
         ),
       );
@@ -53,8 +57,8 @@ class _UpsertProductViewState extends State<UpsertProductView> {
     return BlocConsumer<ProductUpsertBloc, ProductUpsertState>(
       bloc: getIt<ProductUpsertBloc>(),
       listener: (context, state) {
-        state.maybeWhen(
-          success: () {
+        state.maybeMap(
+          success: (_) {
             getIt<ProductsBloc>().add(.get());
             context.showSuccessSnackBar(
               title: 'تم الحفظ',
@@ -62,11 +66,22 @@ class _UpsertProductViewState extends State<UpsertProductView> {
             );
             context.pop();
           },
-          failure: (errorInfo) {
-            final message = errorInfo.message.trim().isEmpty
-                ? 'تعذّر حفظ المنتج'
-                : errorInfo.message.trim();
-            context.showErrorSnackBar(title: 'خطأ', message: message);
+          // A failed save keeps the form loaded with the admin's input, so the
+          // reason is reported here while they stay on the form to retry.
+          loaded: (loaded) {
+            final errorInfo = loaded.errorInfo;
+            if (errorInfo != null) {
+              context.showErrorSnackBar(
+                title: 'خطأ',
+                message: _errorMessage(errorInfo),
+              );
+            }
+          },
+          failure: (failure) {
+            context.showErrorSnackBar(
+              title: 'خطأ',
+              message: _errorMessage(failure.apiErrorModel),
+            );
           },
           orElse: () {},
         );
@@ -74,23 +89,10 @@ class _UpsertProductViewState extends State<UpsertProductView> {
       builder: (context, state) {
         return state.maybeMap(
           loaded: (state) {
-            return BlocBuilder<SettlementMethodsBloc, SettlementMethodsState>(
-              bloc: getIt<SettlementMethodsBloc>(),
-              builder: (context, settlementState) {
-                return settlementState.maybeMap(
-                  loaded: (s) {
-                    return ProductUpsertForm(
-                      req: state.productUpsertReq ?? const ProductUpsertReqEntity(),
-                      status: state.formzSubmissionStatus,
-                      isNew: widget.product == null,
-                      availableMethods: s.availableMethods,
-                    );
-                  },
-                  orElse: () {
-                    return const Center(child: CircularProgressIndicator());
-                  },
-                );
-              },
+            return ProductUpsertForm(
+              req: state.productUpsertReq ?? const ProductUpsertReqEntity(),
+              status: state.formzSubmissionStatus,
+              isNew: widget.product == null,
             );
           },
           orElse: () {

@@ -8,10 +8,9 @@ import '../../../../products/domain/entities/product_entity.dart';
 import '../../../../products/present/view/upsert_product_view.dart';
 import '../editing_btn.dart';
 import 'category_badge_widget.dart';
-import 'price_widget.dart';
 import 'product_image.dart';
 
-export 'price_widget.dart';
+import 'price_widget.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductEntity product;

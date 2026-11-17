@@ -14,14 +14,8 @@ _ProductUpsertReqModel _$ProductUpsertReqModelFromJson(
   name: json['name'] as String?,
   title: json['title'] as String?,
   description: json['description'] as String?,
-  price: json['price'] as String?,
+  price: json['price'] as num?,
   categoryId: json['category_id'] as String?,
-  settlementMethodIds: (json['settlement_methods'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  priceVariants: (json['price_variants'] as List<dynamic>?)
-      ?.map((e) => e as Map<String, dynamic>)
-      .toList(),
 );
 
 Map<String, dynamic> _$ProductUpsertReqModelToJson(
@@ -34,6 +28,4 @@ Map<String, dynamic> _$ProductUpsertReqModelToJson(
   'description': instance.description,
   'price': instance.price,
   'category_id': instance.categoryId,
-  'settlement_methods': instance.settlementMethodIds,
-  'price_variants': instance.priceVariants,
 };

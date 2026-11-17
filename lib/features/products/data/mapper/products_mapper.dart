@@ -1,11 +1,19 @@
+import '../../../../core/utils/price_input.dart';
 import '../../../categories/data/mapper/categories_mapper.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
-import '../../../settlement_methods/data/mapper/settlement_method_mapper.dart';
 import '../../domain/entities/product_entity.dart';
-import '../../domain/entities/product_price_variant_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
 import '../model/product_model.dart';
 import '../model/product_upsert_model.dart';
+
+/// Rewrites a raw product document into the shape [ProductModel] reads, so
+/// documents saved while the price was a string keep loading: the stored value
+/// (number or Arabic-Indic digits) lands as ASCII price text either way.
+Map<String, dynamic> normalizeProductJson(Map<String, dynamic> json) {
+  final normalized = Map<String, dynamic>.from(json);
+  normalized['price'] = priceToText(json['price']);
+  return normalized;
+}
 
 extension ProductModelMapper on ProductModel {
   ProductEntity toEntity() {
@@ -14,18 +22,9 @@ extension ProductModelMapper on ProductModel {
       name: name ?? '',
       title: title ?? '',
       description: description ?? '',
-      price: price ?? '',
+      price: priceToText(price),
       image: image ?? '',
       category: category?.toEntity() ?? CategoryEntity(),
-      settlementMethods:
-          settlementMethods?.map((e) => e.toEntity()).toList() ??
-          [],
-      priceVariants:
-          priceVariants?.map((e) => ProductPriceVariantEntity(
-            settlementMethodId: e['settlement_method_id'] ?? '',
-            price: e['price'] ?? '',
-          )).toList() ??
-          [],
     );
   }
 }
@@ -50,14 +49,9 @@ extension ProductUpsertReqEntityToModel on ProductUpsertReqEntity {
       name: name?.value,
       title: title?.value,
       description: description?.value,
-      price: price?.value,
+      price: parsePriceNumber(price?.value ?? ''),
       image: imageUrl?.value,
       categoryId: categoryId?.value,
-      settlementMethodIds: settlementMethods.map((e) => e.id).toList(),
-      priceVariants: priceVariants.map((e) => {
-        'settlement_method_id': e.settlementMethodId,
-        'price': e.price,
-      }).toList(),
     );
   }
 }
