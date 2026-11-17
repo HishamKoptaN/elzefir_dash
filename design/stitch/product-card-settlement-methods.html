@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كروت المنيو المحدثة - أسماك الزفر</title>
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            brandNavy: '#124370',
+            brandNavyDark: '#0b2b48',
+            brandCoral: '#F47A53',
+            brandCoralLight: '#ff8e68',
+            brandCoralBg: '#FFF1EC',
+            brandIce: '#F4FAFD',
+            brandMuted: '#627685',
+            brandBorder: '#E2EBF1',
+          },
+          boxShadow: {
+            card: '0 4px 20px rgba(18, 67, 112, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#F4FAFD] to-[#E9F2F7] min-h-screen py-8 px-4 flex flex-col items-center justify-start text-[#124370]">
+
+  <!-- Container (max-w-md centered) -->
+  <main class="w-full max-w-md mx-auto flex flex-col gap-5">
+
+    <!-- Header Section -->
+    <header class="text-center pt-2 pb-1 flex flex-col items-center gap-1.5">
+      <!-- Badge: طازج يومياً -->
+      <div class="inline-flex items-center gap-1.5 bg-white/90 border border-[#E2EBF1] shadow-sm rounded-full px-3 py-1 mb-1">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-bold text-[#124370]">طازج يومياً</span>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="text-xs font-bold text-[#F47A53] tracking-wide">تصميم كروت المنيو المحدثة</p>
+
+      <!-- Main Title -->
+      <h1 class="text-xl sm:text-2xl font-black text-[#124370] tracking-tight">الأطباق والأسماك المميزة</h1>
+    </header>
+
+    <!-- Cards List -->
+    <section class="flex flex-col gap-4">
+
+      <!-- Card 1: سمك بوري سنجاري فاخر -->
+      <article class="bg-white rounded-2xl p-3 border border-[#E2EBF1] shadow-card flex flex-col gap-3 transition-transform duration-200 hover:-translate-y-0.5">
+        <!-- Top part: Image + Content -->
+        <div class="flex gap-3 items-start">
+          
+          <!-- Image Container (112x112 px) -->
+          <div class="relative w-[112px] h-[112px] flex-shrink-0 rounded-xl overflow-hidden bg-slate-100 border border-[#E2EBF1]">
+            <img 
+              src="https://lh3.googleusercontent.com/aida/ALJJyrBwg88Vc2wF3-rch0vdJMpHP_MXMPUnBrPhpoVUbFsn2eHbGhziElkIwvSSVmKa_oYtiOo16fEbSLhoufdzIkI_f4PkiHNuAoNfaqj1Gb4g0yj8HR4-M_SEi0rDY2VEFWe9Rov1wd4gQY4t_nG7hMTG89GhAvxFzC_MGRj1vOr-Y4f1eLlreOEc4ZNPk3bUKmkFuPaLk5dct4XjPYefRWh84bvQbnY6DovW3_3BHXnGZ8Yc1ytXSt3frakm" 
+              alt="سمك بوري سنجاري فاخر" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            
+            <!-- Category Badge (Top) -->
+            <div class="absolute top-1.5 right-1.5 bg-[#124370]/85 backdrop-blur-[2px] rounded-full px-2 py-0.5 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#F47A53]"></span>
+              <span class="text-[10px] font-bold text-white leading-none">سنجاري</span>
+            </div>
+
+            <!-- Bottom Badges: Rating & Weight -->
+            <div class="absolute bottom-1 inset-x-1 flex items-center justify-between pointer-events-none">
+              <span class="bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none flex items-center gap-0.5">
+                500 جم
+              </span>
+              <span class="bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none flex items-center gap-0.5">
+                <span class="text-amber-400">★</span> 4.9
+              </span>
+            </div>
+          </div>
+
+          <!-- Content Details -->
+          <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+            <!-- Title Row & Favorite -->
+            <div class="flex items-center justify-between gap-1">
+              <h2 class="text-base font-bold text-[#124370] truncate">سمك بوري سنجاري فاخر</h2>
+              <button aria-label="أضف للمفضلة" class="text-slate-400 hover:text-[#F47A53] transition-colors p-0.5 flex-shrink-0">
+                <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Description (2 lines clamp) -->
+            <p class="text-xs text-[#627685] line-clamp-2 leading-relaxed">
+              مفتوح سنجاري متبل بخلطة الخضار السرية مع زيت الزيتون والليمون المعصفر والتسوية الممتازة في الفرن.
+            </p>
+
+            <!-- Cooking Methods Chips -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">سنجاري</span>
+                <span class="text-[#F47A53]">180 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">مشوي ردة</span>
+                <span class="text-[#F47A53]">180 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">زيت وليمون</span>
+                <span class="text-[#F47A53]">195 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">طاجن</span>
+                <span class="text-[#F47A53]">195 ج.م</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer: Price & Add Button -->
+        <div class="pt-2.5 mt-0.5 border-t border-[#E2EBF1] flex items-center justify-between">
+          <!-- Price on Right (in RTL layout) -->
+          <div class="flex items-baseline gap-1">
+            <span class="text-[11px] font-bold text-[#124370]/75">يبدأ من</span>
+            <span class="text-lg font-black text-[#124370] leading-none">180</span>
+            <span class="text-xs font-bold text-[#124370]">ج.م</span>
+            <span class="text-[10px] font-medium text-[#627685]">/ وجبة</span>
+          </div>
+
+          <!-- Add Button on Left (in RTL layout) -->
+          <button class="bg-[#F47A53] hover:bg-[#ff8e68] active:scale-95 text-white font-bold text-xs px-3.5 py-1.5 rounded-xl shadow-sm flex items-center gap-1.5 transition-all">
+            <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span>إضافة</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 2: طاجن مأكولات بحرية فيليه -->
+      <article class="bg-white rounded-2xl p-3 border border-[#E2EBF1] shadow-card flex flex-col gap-3 transition-transform duration-200 hover:-translate-y-0.5">
+        <!-- Top part: Image + Content -->
+        <div class="flex gap-3 items-start">
+          
+          <!-- Image Container (112x112 px) -->
+          <div class="relative w-[112px] h-[112px] flex-shrink-0 rounded-xl overflow-hidden bg-slate-100 border border-[#E2EBF1]">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuATwn1mWHLBXfXJs7AtsFiaqO8jTBVn-BtMuC3b2L67iCl7O0aVXXqMxhy0cbH-5tM5oK6AaL9hE8yypG71fkxx_Grn0yUUY5Y3YhIxh1Z2OVYaflcU47R1ns8aAnhQvVw66joS9atMfb6R3sO4JN2XQWkatnNuSPefmROyUZdf3z6VR-oFAId3vYat1fuK6XvEO6UyuF9LcT45vQ87-sVcKFePeuczry6Ray9MNd3Li4HPjzMzM4pRPgTko8rXkDo322zja0XBYDsh" 
+              alt="طاجن مأكولات بحرية فيليه" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            
+            <!-- Category Badge (Top) -->
+            <div class="absolute top-1.5 right-1.5 bg-[#124370]/85 backdrop-blur-[2px] rounded-full px-2 py-0.5 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#F47A53]"></span>
+              <span class="text-[10px] font-bold text-white leading-none">طواجن</span>
+            </div>
+
+            <!-- Bottom Badges: Rating & Weight -->
+            <div class="absolute bottom-1 inset-x-1 flex items-center justify-between pointer-events-none">
+              <span class="bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none flex items-center gap-0.5">
+                طاجن فخار
+              </span>
+              <span class="bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none flex items-center gap-0.5">
+                <span class="text-amber-400">★</span> 4.8
+              </span>
+            </div>
+          </div>
+
+          <!-- Content Details -->
+          <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+            <!-- Title Row & Favorite -->
+            <div class="flex items-center justify-between gap-1">
+              <h2 class="text-base font-bold text-[#124370] truncate">طاجن مأكولات بحرية فيليه</h2>
+              <button aria-label="أضف للمفضلة" class="text-slate-400 hover:text-[#F47A53] transition-colors p-0.5 flex-shrink-0">
+                <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Description (2 lines clamp) -->
+            <p class="text-xs text-[#627685] line-clamp-2 leading-relaxed">
+              قطع فيليه طازجة ومخلية مع صوص الزفر السري وخضار مشوي بالفرن ونكهة بلدية غنية ومسبكة.
+            </p>
+
+            <!-- Cooking Methods Chips -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">طاجن صلصة حارة</span>
+                <span class="text-[#F47A53]">195 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">طاجن كريمة</span>
+                <span class="text-[#F47A53]">210 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">طاجن ميكس جبن</span>
+                <span class="text-[#F47A53]">225 ج.م</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer: Price & Add Button -->
+        <div class="pt-2.5 mt-0.5 border-t border-[#E2EBF1] flex items-center justify-between">
+          <!-- Price on Right (in RTL layout) -->
+          <div class="flex items-baseline gap-1">
+            <span class="text-[11px] font-bold text-[#124370]/75">يبدأ من</span>
+            <span class="text-lg font-black text-[#124370] leading-none">195</span>
+            <span class="text-xs font-bold text-[#124370]">ج.م</span>
+            <span class="text-[10px] font-medium text-[#627685]">/ طاجن</span>
+          </div>
+
+          <!-- Add Button on Left (in RTL layout) -->
+          <button class="bg-[#F47A53] hover:bg-[#ff8e68] active:scale-95 text-white font-bold text-xs px-3.5 py-1.5 rounded-xl shadow-sm flex items-center gap-1.5 transition-all">
+            <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span>إضافة</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 3: سمك بلطي مقلي ذهبي -->
+      <article class="bg-white rounded-2xl p-3 border border-[#E2EBF1] shadow-card flex flex-col gap-3 transition-transform duration-200 hover:-translate-y-0.5">
+        <!-- Top part: Image + Content -->
+        <div class="flex gap-3 items-start">
+          
+          <!-- Image Container (112x112 px) -->
+          <div class="relative w-[112px] h-[112px] flex-shrink-0 rounded-xl overflow-hidden bg-slate-100 border border-[#E2EBF1]">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMMescussbmxvVh42N8Dqe68qC632SzMWfzaqsAKJS_NBAEjzp9DSODOhHJWJfDeJlQkZxFi_Tlt0-lYMw9Cx09rNNO4aEIMLoInHMuCZHaCQHqlnjR-wE6NdXFaZiY_VWsj9tO6KaR1FBibWENEij2He569O9QLGbTKdCruaCikedklgx1jP9uBdvPbHuhrNc4laC22xhMJoP9L5JBU9Q6afC1YLunolNXE0AM8aHsHmAculSDzNvpMTHZLKujATyPR6D7Ax93cBJ" 
+              alt="سمك بلطي مقلي ذهبي" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            
+            <!-- Category Badge (Top) -->
+            <div class="absolute top-1.5 right-1.5 bg-[#124370]/85 backdrop-blur-[2px] rounded-full px-2 py-0.5 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#F47A53]"></span>
+              <span class="text-[10px] font-bold text-white leading-none">مقلي مقرمش</span>
+            </div>
+
+            <!-- Bottom Badges: Rating & Cut type -->
+            <div class="absolute bottom-1 inset-x-1 flex items-center justify-between pointer-events-none">
+              <span class="bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none flex items-center gap-0.5">
+                خصوصي
+              </span>
+              <span class="bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none flex items-center gap-0.5">
+                <span class="text-amber-400">★</span> 4.9
+              </span>
+            </div>
+          </div>
+
+          <!-- Content Details -->
+          <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+            <!-- Title Row & Favorite -->
+            <div class="flex items-center justify-between gap-1">
+              <h2 class="text-base font-bold text-[#124370] truncate">سمك بلطي مقلي ذهبي</h2>
+              <button aria-label="أضف للمفضلة" class="text-slate-400 hover:text-[#F47A53] transition-colors p-0.5 flex-shrink-0">
+                <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Description (2 lines clamp) -->
+            <p class="text-xs text-[#627685] line-clamp-2 leading-relaxed">
+              بلطي بلدي طازج مقلي ذهبي بتتبيلة الشيف الخاصة مع ليمون وبقدونس طازج ورشة بهار الزفر الشهية.
+            </p>
+
+            <!-- Cooking Methods Chips -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">مقلي مقرمش</span>
+                <span class="text-[#F47A53]">120 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">مشوي ردة</span>
+                <span class="text-[#F47A53]">120 ج.م</span>
+              </span>
+              <span class="bg-[#F4FAFD] border border-[#E2EBF1] rounded-full px-2 py-0.5 text-[10px] font-bold flex items-center gap-1">
+                <span class="text-[#124370]">سنجاري بلدي</span>
+                <span class="text-[#F47A53]">135 ج.م</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer: Price & Add Button -->
+        <div class="pt-2.5 mt-0.5 border-t border-[#E2EBF1] flex items-center justify-between">
+          <!-- Price on Right (in RTL layout) -->
+          <div class="flex items-baseline gap-1">
+            <span class="text-[11px] font-bold text-[#124370]/75">يبدأ من</span>
+            <span class="text-lg font-black text-[#124370] leading-none">120</span>
+            <span class="text-xs font-bold text-[#124370]">ج.م</span>
+            <span class="text-[10px] font-medium text-[#627685]">/ كجم</span>
+          </div>
+
+          <!-- Add Button on Left (in RTL layout) -->
+          <button class="bg-[#F47A53] hover:bg-[#ff8e68] active:scale-95 text-white font-bold text-xs px-3.5 py-1.5 rounded-xl shadow-sm flex items-center gap-1.5 transition-all">
+            <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span>إضافة</span>
+          </button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Footer Tokens Bar -->
+    <footer class="mt-4 pt-3 border-t border-[#E2EBF1]/80 flex items-center justify-center gap-4 text-xs font-bold text-[#627685]">
+      <div class="flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-[#E2EBF1] shadow-2xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#124370]"></span>
+        <span>كحلي #124370</span>
+      </div>
+      <div class="flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-[#E2EBF1] shadow-2xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#F47A53]"></span>
+        <span>مرجاني #F47A53</span>
+      </div>
+      <div class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-lg border border-[#E2EBF1] shadow-2xs text-[#124370]">
+        <svg class="w-3.5 h-3.5 text-[#627685]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        </svg>
+        <span>112px×112</span>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
