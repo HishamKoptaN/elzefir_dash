@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../domain/entities/notification_entity.dart';
 
 class NewUserRegistered extends StatelessWidget {

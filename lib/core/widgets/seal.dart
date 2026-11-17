@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class SealWidget extends StatelessWidget {
   const SealWidget({super.key});

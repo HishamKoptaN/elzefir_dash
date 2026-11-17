@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 
 import 'home_api.dart';
-import '../model/home_res_model.dart';
 import 'home_data_src.dart';
 
 @Singleton(as: HomeDataSrc)

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../working_hours/present/widgets/working_hours_display.dart';
 import 'contacts_items.dart';
 import 'footer_widget.dart';

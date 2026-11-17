@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/errors/models/error_info.dart';
-import '../../../../../../core/networking/api_result.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 

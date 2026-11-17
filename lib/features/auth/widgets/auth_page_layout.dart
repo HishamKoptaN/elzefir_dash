@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import '../../../core/utils/device_helper.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
 
 class AuthPageLayout extends StatelessWidget {

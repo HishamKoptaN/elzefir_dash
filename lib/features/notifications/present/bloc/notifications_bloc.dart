@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/errors/models/error_info.dart';
-import '../../../../core/networking/api_result.dart';
 import '../../domain/entities/notification_entity.dart';
 import '../../domain/usecases/notifications_use_cases.dart';
 part 'notifications_bloc.freezed.dart';

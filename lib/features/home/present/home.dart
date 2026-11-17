@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/di/dependency_injection.dart';
 import '../../categories/present/blocs/bloc/categories_bloc.dart';
-import 'bloc/home_bloc.dart';
 import 'widgets/dashboard_nav.dart';
 
 class HomeView extends StatefulWidget {

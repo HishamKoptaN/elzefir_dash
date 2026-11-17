@@ -1,8 +1,6 @@
 import 'package:universal_io/io.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
-import '../../../../../../core/theme/app_colors.dart';
 
 Widget buildProfileAvatar({
   required String image,

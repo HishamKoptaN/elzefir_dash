@@ -8,7 +8,6 @@ import '../../../../../core/globals/database/shared_pref_keys.dart';
 import '../../../../../core/services/auth_storage_service.dart';
 import '../../../../../core/services/device_service.dart';
 import '../../../../../core/services/token_service.dart';
-import '../../../../firebase_messaging/firebase_messaging_service.dart';
 import '../../domain/repo/auth_repo.dart';
 import '../datasources/auth_api.dart';
 import '../models/exchange_token_req_body_model.dart';

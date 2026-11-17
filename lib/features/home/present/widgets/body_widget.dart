@@ -8,7 +8,6 @@ import 'about/about.dart';
 import 'categories_nav.dart';
 import 'footer/footer_widget.dart';
 import '../../../products/present/view/products_widget.dart';
-import 'home_app_bar/home_app_bar.dart';
 
 class BodyWidget extends StatefulWidget {
   const BodyWidget({super.key});

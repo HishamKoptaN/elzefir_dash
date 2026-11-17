@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
-import '../../features/home/present/home.dart';
 import '../../features/products/present/view/products_view.dart';
 import '../globals/global_variable.dart';
 import '../di/dependency_injection.dart';
