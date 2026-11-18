@@ -9,11 +9,20 @@ import 'package:alzefr_dash/core/widgets/feedback/app_snackbar.dart';
 import '../../blocs/bloc/categories_bloc.dart';
 import '../upsert_category_view.dart';
 import 'categories_header.dart';
+import 'categories_kpi_strip.dart';
+import 'categories_search_field.dart';
 import 'category_card.dart';
 
-class CategoriesView extends StatelessWidget {
+class CategoriesView extends StatefulWidget {
   const CategoriesView({super.key});
   static const String routeName = 'categories';
+
+  @override
+  State<CategoriesView> createState() => _CategoriesViewState();
+}
+
+class _CategoriesViewState extends State<CategoriesView> {
+  String _query = '';
 
   void _openUpsert(BuildContext context) {
     context.pushNamed(UpsertCategoryView.routeName);
@@ -43,6 +52,14 @@ class CategoriesView extends StatelessWidget {
         return state.maybeWhen(
           loaded: (categories, loading) {
             final items = categories ?? [];
+            final query = _query.trim().toLowerCase();
+            final filtered = query.isEmpty
+                ? items
+                : items
+                      .where((item) {
+                        return item.name.toLowerCase().contains(query);
+                      })
+                      .toList();
             return Column(
               children: [
                 CategoriesHeader(
@@ -51,6 +68,15 @@ class CategoriesView extends StatelessWidget {
                     return _openUpsert(context);
                   },
                 ),
+                if (items.isNotEmpty) CategoriesKpiStrip(categories: items),
+                if (items.isNotEmpty)
+                  CategoriesSearchField(
+                    onChanged: (value) {
+                      setState(() {
+                        _query = value;
+                      });
+                    },
+                  ),
                 Expanded(
                   child: items.isEmpty
                       ? EmptyWidget(
@@ -62,11 +88,17 @@ class CategoriesView extends StatelessWidget {
                             return _openUpsert(context);
                           },
                         )
+                      : filtered.isEmpty
+                      ? const EmptyWidget(
+                          icon: Icons.search_off_rounded,
+                          text: 'لا توجد نتائج لبحثك',
+                          hint: 'جرّب كلمة بحث أخرى أو امسح البحث لعرض كل التصنيفات',
+                        )
                       : ListView.builder(
-                          padding: .only(bottom: 24.h),
-                          itemCount: items.length,
+                          padding: .fromLTRB(0, 4.h, 0, 24.h),
+                          itemCount: filtered.length,
                           itemBuilder: (context, index) {
-                            return CategoryCard(category: items[index]);
+                            return CategoryCard(category: filtered[index]);
                           },
                         ),
                 ),
