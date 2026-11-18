@@ -85,6 +85,9 @@ class _WorkingHoursViewState extends State<WorkingHoursView> {
             _pickTime(isOpen: false);
           },
           onSave: _save,
+          onReset: () {
+            _controller.resetToSaved();
+          },
         );
       },
     );
