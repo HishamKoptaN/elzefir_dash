@@ -8,7 +8,6 @@ Future<void> pumpDashboard(
   Widget child, {
   Size size = const Size(1440, 900),
   double textScale = 1,
-  bool settle = true,
 }) async {
   tester.view.devicePixelRatio = 1;
   tester.view.physicalSize = size;
@@ -34,7 +33,5 @@ Future<void> pumpDashboard(
       },
     ),
   );
-  if (settle) {
-    await tester.pumpAndSettle();
-  }
+  await tester.pumpAndSettle();
 }
