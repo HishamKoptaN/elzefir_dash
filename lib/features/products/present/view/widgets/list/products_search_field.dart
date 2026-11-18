@@ -36,6 +36,14 @@ class _ProductsSearchFieldState extends State<ProductsSearchField> {
         style: context.textTheme.bodyLarge,
         decoration: InputDecoration(
           hintText: 'ابحث عن منتج بالاسم أو التصنيف...',
+          hintStyle: context.textTheme.bodyLarge?.copyWith(
+            color: context.colorScheme.onSurfaceVariant,
+          ),
+          isDense: true,
+          contentPadding: .symmetric(horizontal: 12.r, vertical: 12.r),
+          constraints: const BoxConstraints(
+            minHeight: kMinInteractiveDimension,
+          ),
           prefixIcon: const Icon(Icons.search_rounded),
           suffixIcon: _controller.text.isEmpty
               ? null

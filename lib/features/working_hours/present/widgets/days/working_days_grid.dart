@@ -19,12 +19,12 @@ class WorkingDaysGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final columns = switch (constraints.maxWidth) {
-          >= 1024 => weekdayNames.length,
-          >= 600 => 4,
-          _ => 2,
-        };
-        final spacing = 10.w;
+        final spacing = 10.r;
+        final minItemWidth = 140.r * MediaQuery.textScalerOf(context).scale(1);
+        final columns =
+            ((constraints.maxWidth + spacing) / (minItemWidth + spacing))
+                .floor()
+                .clamp(1, weekdayNames.length);
         final itemWidth =
             (constraints.maxWidth - spacing * (columns - 1)) / columns;
         return Wrap(
