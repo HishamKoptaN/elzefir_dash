@@ -1,4 +1,3 @@
-import 'package:alzefr_dash/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
@@ -9,48 +8,50 @@ class AppTheme {
   static const AppColors _light = LightColors();
   static const AppColors _dark = DarkColors();
   static ThemeData lightTheme(BuildContext context) {
+    final textTheme = getLightTextTheme(context: context);
+    final colorScheme = ColorScheme.light(
+      primary: _light.primary,
+      onPrimary: Colors.white,
+      secondary: const Color(0xFF48A999),
+      onSecondary: Colors.white,
+      tertiary: const Color(0xFFFF7F50),
+      onTertiary: Colors.white,
+      surface: _light.surface,
+      surfaceContainer: _light.surface,
+      surfaceContainerHigh: const Color(0xFFF1F5F9),
+      surfaceContainerHighest: const Color(0xFFE2E8F0),
+      onSurface: _light.textPrimary,
+      outline: const Color(0xFFE2E8F0),
+      error: AppColors.danger,
+    );
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
       fontFamily: 'NotoNaskhArabic',
       scaffoldBackgroundColor: _light.background,
-      textTheme: getLightTextTheme(context: context),
-      colorScheme: ColorScheme.light(
-        primary: _light.primary,
-        onPrimary: Colors.white,
-        secondary: const Color(0xFF48A999),
-        onSecondary: Colors.white,
-        tertiary: const Color(0xFFFF7F50),
-        onTertiary: Colors.white,
-        surface: _light.surface,
-        surfaceContainer: _light.surface,
-        surfaceContainerHigh: const Color(0xFFF1F5F9),
-        surfaceContainerHighest: const Color(0xFFE2E8F0),
-        onSurface: _light.textPrimary,
-        outline: const Color(0xFFE2E8F0),
-        error: AppColors.danger,
-      ),
+      textTheme: textTheme,
+      colorScheme: colorScheme,
 
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 1,
-        titleTextStyle: context.textTheme.displayLarge,
+        titleTextStyle: textTheme.displayLarge,
         foregroundColor: _light.textPrimary,
-        toolbarTextStyle: context.textTheme.bodyLarge,
+        toolbarTextStyle: textTheme.bodyLarge,
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: _light.surface,
         elevation: 2,
         indicatorColor: _light.primary.withValues(alpha: 0.12),
-        labelTextStyle: WidgetStatePropertyAll(context.textTheme.labelLarge),
+        labelTextStyle: WidgetStatePropertyAll(textTheme.labelLarge),
       ),
       navigationRailTheme: NavigationRailThemeData(
         backgroundColor: _light.surface,
         indicatorColor: _light.primary.withValues(alpha: 0.12),
-        selectedLabelTextStyle: context.textTheme.labelLarge,
-        unselectedLabelTextStyle: context.textTheme.labelLarge,
+        selectedLabelTextStyle: textTheme.labelLarge,
+        unselectedLabelTextStyle: textTheme.labelLarge,
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
@@ -94,11 +95,11 @@ class AppTheme {
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          textStyle: context.textTheme.labelLarge,
+          textStyle: textTheme.labelLarge,
           minimumSize: Size(120.w, 48.h),
           maximumSize: Size(.infinity, 48.h),
-          backgroundColor: context.colorScheme.primary,
-          foregroundColor: context.colorScheme.onPrimary,
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
           elevation: 0,
           shape: RoundedRectangleBorder(borderRadius: .circular(8.r)),
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0.h),
