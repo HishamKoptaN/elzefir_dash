@@ -12,18 +12,23 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      fontFamily: 'FreeSerif',
+      fontFamily: 'NotoNaskhArabic',
       scaffoldBackgroundColor: _light.background,
       textTheme: getLightTextTheme(context: context),
       colorScheme: ColorScheme.light(
         primary: _light.primary,
         onPrimary: Colors.white,
-        secondary: const Color(0xFFFBECE6),
-        tertiary: const Color(0xFFC88A67),
-        surface: _light.background,
+        secondary: const Color(0xFF48A999),
+        onSecondary: Colors.white,
+        tertiary: const Color(0xFFFF7F50),
+        onTertiary: Colors.white,
+        surface: _light.surface,
         surfaceContainer: _light.surface,
-        error: AppColors.danger,
+        surfaceContainerHigh: const Color(0xFFF1F5F9),
+        surfaceContainerHighest: const Color(0xFFE2E8F0),
         onSurface: _light.textPrimary,
+        outline: const Color(0xFFE2E8F0),
+        error: AppColors.danger,
       ),
 
       appBarTheme: AppBarTheme(
@@ -32,7 +37,7 @@ class AppTheme {
         elevation: 0,
         scrolledUnderElevation: 1,
         titleTextStyle: context.textTheme.displayLarge,
-        foregroundColor: Colors.black,
+        foregroundColor: _light.textPrimary,
         toolbarTextStyle: context.textTheme.bodyLarge,
       ),
       navigationBarTheme: NavigationBarThemeData(
