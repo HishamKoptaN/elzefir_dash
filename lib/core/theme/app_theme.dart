@@ -34,24 +34,47 @@ class AppTheme {
 
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
-        centerTitle: true,
+        centerTitle: false,
         elevation: 0,
         scrolledUnderElevation: 1,
-        titleTextStyle: textTheme.displayLarge,
-        foregroundColor: _light.textPrimary,
+        titleTextStyle: textTheme.titleLarge?.copyWith(
+          color: _light.textPrimary,
+        ),
+        foregroundColor: _light.primary,
         toolbarTextStyle: textTheme.bodyLarge,
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: _light.surface,
         elevation: 2,
         indicatorColor: _light.primary.withValues(alpha: 0.12),
-        labelTextStyle: WidgetStatePropertyAll(textTheme.labelLarge),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          return IconThemeData(
+            color: states.contains(WidgetState.selected)
+                ? _light.primary
+                : _light.textSecondary,
+          );
+        }),
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final selected = states.contains(WidgetState.selected);
+          return textTheme.labelLarge!.copyWith(
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            color: selected ? _light.primary : _light.textSecondary,
+          );
+        }),
       ),
       navigationRailTheme: NavigationRailThemeData(
         backgroundColor: _light.surface,
         indicatorColor: _light.primary.withValues(alpha: 0.12),
-        selectedLabelTextStyle: textTheme.labelLarge,
-        unselectedLabelTextStyle: textTheme.labelLarge,
+        indicatorShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+        ),
+        selectedLabelTextStyle: textTheme.labelLarge?.copyWith(
+          fontWeight: FontWeight.w700,
+          color: _light.primary,
+        ),
+        unselectedLabelTextStyle: textTheme.labelLarge?.copyWith(
+          color: _light.textSecondary,
+        ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
