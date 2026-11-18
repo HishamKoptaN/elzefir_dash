@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/storage_url.dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/camera_button_widget.dart';
 
 class ProfileCardWidget extends StatelessWidget {
@@ -38,8 +39,9 @@ class ProfileCardWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       margin: EdgeInsets.only(top: 25.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFF2F4FB),
-        border: Border.all(color: const Color(0xFF3D42DF), width: 1),
+        color: context.colorScheme.surface,
+        borderRadius: .circular(16.r),
+        border: Border.all(color: context.colorScheme.outline),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
@@ -54,7 +56,7 @@ class ProfileCardWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                avatar(),
+                avatar(context),
                 Gap(7.5.w),
                 DataWidget(
                   isEditing: isEditing,
@@ -72,7 +74,7 @@ class ProfileCardWidget extends StatelessWidget {
               spacing: 5.h,
               children: [
                 Gap(5.h),
-                avatar(),
+                avatar(context),
                 DataWidget(
                   isEditing: isEditing,
                   name: name,
@@ -85,10 +87,10 @@ class ProfileCardWidget extends StatelessWidget {
     );
   }
 
-  Widget avatar() {
+  Widget avatar(BuildContext context) {
     return Stack(
       children: [
-        _buildAvatarImage(),
+        _buildAvatarImage(context),
         if (isEditing)
           Positioned(
             bottom: 5.h,
@@ -117,7 +119,7 @@ class ProfileCardWidget extends StatelessWidget {
   //             : null,
   //       ),
   //     )
-  Widget _buildAvatarImage() {
+  Widget _buildAvatarImage(BuildContext context) {
     ImageProvider? avatarImage;
     if (selectedImage != null) {
       avatarImage = FileImage(selectedImage!);
@@ -132,9 +134,10 @@ class ProfileCardWidget extends StatelessWidget {
       }
     }
     final double radius = 50;
+    final scheme = context.colorScheme;
     return CircleAvatar(
       radius: radius,
-      backgroundColor: Colors.black,
+      backgroundColor: scheme.primary,
       child: CircleAvatar(
         radius: radius - 2,
         // width: 140.w,
@@ -149,7 +152,7 @@ class ProfileCardWidget extends StatelessWidget {
             ? Center(
                 child: FaIcon(
                   FontAwesomeIcons.circleUser,
-                  color: Colors.white,
+                  color: scheme.onPrimary,
                   size: 50,
                 ),
               )
@@ -195,7 +198,7 @@ class DataWidget extends StatelessWidget {
                 username,
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.grey[600],
+                  color: context.colorScheme.onSurface.withValues(alpha: 0.6),
                   fontWeight: FontWeight.w500,
                   fontStyle: FontStyle.italic,
                 ),
@@ -210,7 +213,7 @@ class DataWidget extends StatelessWidget {
               decoration: InputDecoration(
                 filled: isEditing,
                 fillColor: isEditing
-                    ? Colors.white.withValues(alpha: 0.5)
+                    ? context.colorScheme.surfaceContainerHigh
                     : Colors.transparent,
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: isEditing ? 12.w : 0,
@@ -218,14 +221,14 @@ class DataWidget extends StatelessWidget {
                 ),
                 border: OutlineInputBorder(
                   borderSide: isEditing
-                      ? BorderSide(color: const Color(0xFF3D42DF))
+                      ? BorderSide(color: context.colorScheme.primary)
                       : BorderSide.none,
                 ),
                 hintText: "اسم المستخدم",
               ),
               style: TextStyle(
                 fontSize: 20.sp,
-                color: Colors.grey[600],
+                color: context.colorScheme.onSurface.withValues(alpha: 0.6),
                 fontWeight: FontWeight.w500,
                 fontStyle: FontStyle.italic,
               ),
@@ -234,20 +237,6 @@ class DataWidget extends StatelessWidget {
               },
             ),
           Gap(14.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
-            decoration: BoxDecoration(
-              color: const Color(0xFF3D42DF).withValues(alpha: 0.1),
-            ),
-            child: Text(
-              'role',
-              style: TextStyle(
-                fontSize: 18.sp,
-                color: const Color(0xFF3D42DF),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -271,7 +260,7 @@ class NameWidget extends StatelessWidget {
     var textStyle = TextStyle(
       fontSize: 26.sp,
       fontWeight: FontWeight.w800,
-      color: const Color(0xFF1A1A1A),
+      color: context.colorScheme.onSurface,
     );
     return !isEditing
         ? Text(name, style: textStyle)
@@ -284,12 +273,12 @@ class NameWidget extends StatelessWidget {
             decoration: InputDecoration(
               filled: isEditing,
               fillColor: isEditing
-                  ? Colors.white.withValues(alpha: 0.5)
+                  ? context.colorScheme.surfaceContainerHigh
                   : Colors.transparent,
               contentPadding: EdgeInsets.symmetric(vertical: 8.h),
               border: OutlineInputBorder(
                 borderSide: isEditing
-                    ? BorderSide(color: const Color(0xFF3D42DF))
+                    ? BorderSide(color: context.colorScheme.primary)
                     : BorderSide.none,
               ),
               hintText: "الاسم",

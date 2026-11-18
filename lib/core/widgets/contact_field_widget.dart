@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../utils/extensions/theme_ext.dart';
+
 class ContactFieldWidget extends StatelessWidget {
   final String title;
   final String value;
@@ -30,10 +32,10 @@ class ContactFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150.h,
-      width: 1055.w,
+      constraints: const BoxConstraints(minHeight: 120),
+      width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: context.colorScheme.surfaceContainerHigh,
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       child: Row(
@@ -49,7 +51,7 @@ class ContactFieldWidget extends StatelessWidget {
                       width: 20.w,
                       height: 20.w,
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: context.colorScheme.secondary,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -61,11 +63,8 @@ class ContactFieldWidget extends StatelessWidget {
                     SizedBox(width: 8.w),
                     Text(
                       title,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                        height: 1,
+                      style: context.textTheme.titleMedium?.copyWith(
+                        color: context.colorScheme.onSurface,
                       ),
                     ),
                   ],
@@ -90,10 +89,10 @@ class ContactFieldWidget extends StatelessWidget {
                               : null,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderSide: BorderSide(color: context.colorScheme.outline),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF3D42DF)),
+                              borderSide: BorderSide(color: context.colorScheme.primary),
                             ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 12.w,
@@ -102,7 +101,7 @@ class ContactFieldWidget extends StatelessWidget {
                           ),
                           style: TextStyle(
                             fontSize: 20.sp,
-                            color: const Color(0xFF696974),
+                            color: context.colorScheme.onSurface.withValues(alpha: 0.6),
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -112,7 +111,7 @@ class ContactFieldWidget extends StatelessWidget {
                         value,
                         style: TextStyle(
                           fontSize: 20.sp,
-                          color: const Color(0xFF696974),
+                          color: context.colorScheme.onSurface.withValues(alpha: 0.6),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -128,13 +127,7 @@ class ContactFieldWidget extends StatelessWidget {
                 child: FilledButton.icon(
                   onPressed: onButtonPressed,
                   icon: Icon(Icons.edit_rounded, size: 18.r),
-                  label: Text(
-                    'تعديل ',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  label: Text('تعديل', style: context.textTheme.labelLarge),
                 ),
               ),
             ),

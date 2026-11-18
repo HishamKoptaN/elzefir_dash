@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../utils/extensions/theme_ext.dart';
+
 class BgContainerWidget extends StatelessWidget {
   final Widget child;
   final double? width;
@@ -25,7 +27,7 @@ class BgContainerWidget extends StatelessWidget {
       margin: margin,
       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
