@@ -15,7 +15,7 @@
 | | |
 |---|---|
 | السكرين | `8f7d1fb5c3da48a1aec7df5e83242c91` — «كروت منيو أسماك الزفر - مع طرق التسوية (موبايل)» |
-| الملفات | `product-card-settlement-methods.html` + `product-card-settlement-methods.png` (ما زالت في جذر المجلد، لم تُنقل إلى `archive/`) |
+| الملفات | `archive/product-card-settlement-methods.html` + `archive/product-card-settlement-methods.png` |
 | ليه أرشيف | كان يعرض شيبس لكل طريقة تسوية مع سعرها؛ أسعار طرق التسوية ومتغيرات السعر اتلغت في `141a278`. يُحتفظ به كسجل تصميمي فقط |
 
 **القاعدة:** أي تنفيذ أو مراجعة للـUI تبدأ من ملفات «المرجع الحالي»؛ ملفات الأرشيف تُقرأ للتاريخ فقط.
