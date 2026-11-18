@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>إضافة وتعديل منتج - أسماك الزفر</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!--
+  تصدير كامل محفوظ في Canvas Stitch (Screen: 3f2fbbe2fcd64ff7810a61f300d78392).
+  النسخة الكاملة متاحة للتحميل عبر MCP: stitch.download_file(
+    name: 'projects/10038201372055056727/files/de6d689cf88d428b96730cf7db62e95d',
+  )
+  هذا الملف مقتطع (head + skeleton) للمرجع فقط.
+-->
+</head>
+<body class="bg-surface font-body text-on-surface flex flex-col min-h-screen">
+<!-- BEGIN: TopAppBar -->
+<header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-3"><button aria-label="رجوع" class="w-11 h-11 flex items-center justify-center rounded-lg text-primary hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><h1 class="text-lg font-headline font-bold tracking-tight text-primary">إضافة وتعديل منتج</h1></div></div></header>
+<!-- END: TopAppBar -->
+<main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full pb-32">
+<div class="px-4 py-4 space-y-4">
+<!-- Card 0: Image Upload & Preview -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-3"><span class="font-headline font-bold text-sm text-primary">صورة الصنف الرئيسية</span><span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container">صورة نشطة</span></div>
+<div class="relative w-full h-52 rounded-lg overflow-hidden bg-surface-container-low group"><img alt="سمك بوري مشوي بالردة" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/…"/>
+<button aria-label="حذف الصورة" class="absolute top-3 left-3 w-9 h-9 rounded-full bg-error text-on-error flex items-center justify-center" title="حذف الصورة" type="button"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+<div class="absolute bottom-3 inset-x-3 flex items-center justify-between gap-2"><label class="flex-1 cursor-pointer"><input accept="image/*" class="sr-only" type="file"/><div class="bg-surface-container-lowest/95 backdrop-blur-md text-primary font-headline font-semibold text-xs py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 shadow-sm"><span class="material-symbols-outlined text-[18px]">photo_camera</span><span>تغيير الصورة</span></div></label></div>
+</div>
+</div>
+<!-- Card 1: Basic Info -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm space-y-4">
+<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[18px]">info</span></div><div><h2 class="font-headline font-bold text-sm text-on-surface">معلومات المنتج الأساسية</h2><p class="text-[11px] text-outline">اسم المنتج ووصفه الترويجي داخل المنيو</p></div></div>
+<!-- Fields: اسم المنتج / الاسم الظاهر للزبائن / وصف المنتج — required markers + helper text + hint placeholders -->
+</div>
+<!-- Card 2: Price & Category -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm space-y-4">
+<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[18px]">payments</span></div><div><h2 class="font-headline font-bold text-sm text-on-surface">السعر والتصنيف</h2><p class="text-[11px] text-outline">تسعير الصنف، التصنيف الإداري وحالة التوفر</p></div></div>
+<!-- Fields: السعر (ج.م) + quick adjust pills + التصنيف select -->
+</div>
+</div>
+<!-- Sticky Bottom Save Bar -->
+<div class="fixed bottom-0 inset-x-0 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.06)] px-4 py-3 pb-safe z-40">
+<div class="max-w-md mx-auto flex items-center gap-2.5">
+<button class="h-12 px-5 rounded-lg bg-surface-container text-on-surface-variant font-headline font-semibold text-sm" onclick="history.back()" type="button">إلغاء</button>
+<button class="flex-1 h-12 rounded-lg bg-primary text-on-primary font-headline font-bold text-sm shadow-md flex items-center justify-center gap-2" id="saveBtn" type="button"><span class="material-symbols-outlined text-[20px]">save</span><span>حفظ التعديلات</span></button>
+</div>
+</div>
+</div></main>
+</body></html>
