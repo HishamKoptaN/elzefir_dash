@@ -3,7 +3,7 @@ export 'common/section_card.dart';
 export 'common/section_header.dart';
 export 'common/working_hours_header.dart';
 export 'days/select_all_days_button.dart';
-export 'days/working_day_chip.dart';
+export 'days/working_day_row.dart';
 export 'days/working_days_card.dart';
 export 'preview/working_hours_preview_card.dart';
 export 'times/working_hours_notice.dart';

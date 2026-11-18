@@ -34,10 +34,14 @@ class SelectAllDaysButton extends StatelessWidget {
                 size: 14.r,
                 color: context.colorScheme.primary,
               ),
-              Text(
-                allSelected ? 'إلغاء تحديد الكل' : 'تحديد كل الأيام',
-                style: context.textTheme.labelLarge?.copyWith(
-                  color: context.colorScheme.primary,
+              Flexible(
+                child: Text(
+                  allSelected ? 'إلغاء تحديد الكل' : 'تحديد كل الأيام',
+                  maxLines: 1,
+                  overflow: .ellipsis,
+                  style: context.textTheme.labelLarge?.copyWith(
+                    color: context.colorScheme.primary,
+                  ),
                 ),
               ),
             ],
