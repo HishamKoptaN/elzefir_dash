@@ -58,16 +58,14 @@ class ProductUpsertForm extends StatelessWidget {
                   );
                 },
               ),
-              // The save button stays disabled until the form is valid, so say
-              // what is missing instead of leaving it unexplained.
-              if (status == FormzSubmissionStatus.failure)
+              if (status == FormzSubmissionStatus.failure ||
+                  req.title?.isNotValid == true ||
+                  req.description?.isNotValid == true)
                 Text(
-                  'أكمل الحقول المطلوبة وأدخل سعرًا رقميًا صالحًا',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: Theme.of(context).colorScheme.error,
-                  ),
+                  'أكمل الاسم الظاهر للزبائن والوصف وبقية الحقول المطلوبة، وأدخل سعرًا رقميًا صالحًا',
+                  textAlign: .center,
+                  style: Theme.of(context).textTheme.bodySmall
+                      ?.copyWith(color: Theme.of(context).colorScheme.error),
                 ),
               SizedBox(height: 8.h),
             ],

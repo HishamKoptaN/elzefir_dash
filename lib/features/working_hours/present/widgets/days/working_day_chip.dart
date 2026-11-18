@@ -28,7 +28,10 @@ class WorkingDayChip extends StatelessWidget {
         onTap: onTap,
         borderRadius: radius,
         child: Container(
-          padding: .symmetric(horizontal: 12.w, vertical: 14.h),
+          constraints: const BoxConstraints(
+            minHeight: kMinInteractiveDimension,
+          ),
+          padding: .symmetric(horizontal: 12.r, vertical: 14.r),
           decoration: BoxDecoration(
             borderRadius: radius,
             border: Border.all(
@@ -38,10 +41,12 @@ class WorkingDayChip extends StatelessWidget {
             ),
           ),
           child: Row(
-            spacing: 8.w,
+            spacing: 8.r,
             children: [
               FaIcon(
-                selected ? FontAwesomeIcons.solidCircleCheck : FontAwesomeIcons.circle,
+                selected
+                    ? FontAwesomeIcons.solidCircleCheck
+                    : FontAwesomeIcons.circle,
                 size: 16.r,
                 color: selected
                     ? scheme.primary
@@ -50,6 +55,8 @@ class WorkingDayChip extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
+                  maxLines: 1,
+                  overflow: .ellipsis,
                   style: context.textTheme.titleSmall?.copyWith(
                     color: selected ? scheme.primary : scheme.onSurface,
                     fontWeight: selected ? .bold : .normal,

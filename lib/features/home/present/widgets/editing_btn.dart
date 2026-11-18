@@ -19,8 +19,8 @@ class CustomOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = OutlinedButton.styleFrom(
       foregroundColor: context.colorScheme.primary,
-      minimumSize: Size(88.w, 44.h),
-      padding: .symmetric(horizontal: 16.w, vertical: 8.h),
+      minimumSize: Size(88.r, kMinInteractiveDimension),
+      padding: .symmetric(horizontal: 16.r, vertical: 8.r),
       side: BorderSide(
         color: context.colorScheme.primary.withValues(alpha: 0.4),
       ),

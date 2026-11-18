@@ -1,37 +1,54 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../categories/domain/entities/categories_res_entity.dart';
 import '../../../../domain/entities/product_entity.dart';
 import '../../products_widget.dart';
 import 'products_header.dart';
 import 'products_search_field.dart';
+
 import 'package:alzefr_dash/core/widgets/feedback/empty_widget.dart';
 
 class ProductsContent extends StatefulWidget {
   const ProductsContent({
     super.key,
     required this.products,
+    required this.categories,
     required this.onAdd,
   });
 
   final List<ProductEntity> products;
+  final List<CategoryEntity> categories;
   final VoidCallback onAdd;
 
   @override
-  State<ProductsContent> createState() => _ProductsContentState();
+  State<ProductsContent> createState() {
+    return _ProductsContentState();
+  }
 }
 
 class _ProductsContentState extends State<ProductsContent> {
   String _query = '';
 
   List<ProductEntity> get _filtered {
+    final categories = {for (final c in widget.categories) c.id: c};
+    final products = widget.products.map((product) {
+      return product.copyWith(
+        category: categories[product.category.id] ?? product.category,
+      );
+    }).toList();
     final query = _query.trim().toLowerCase();
     if (query.isEmpty) {
-      return widget.products;
+      return products;
     }
-    return widget.products.where((p) {
-      return [p.title, p.name, p.description, p.category.name].any(
-        (field) => field.toLowerCase().contains(query),
-      );
+    return products.where((product) {
+      return [
+        product.title,
+        product.name,
+        product.description,
+        product.category.name,
+      ].any((field) {
+        return field.toLowerCase().contains(query);
+      });
     }).toList();
   }
 
