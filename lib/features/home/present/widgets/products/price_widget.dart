@@ -37,10 +37,15 @@ class PriceWidget extends StatelessWidget {
           ),
         ),
         SizedBox(width: 4.w),
-        Text(
-          currency,
-          style: context.textTheme.labelMedium?.copyWith(
-            color: context.colorScheme.onSurface.withValues(alpha: 0.6),
+        // Flexible so a squeezed price shrinks instead of overflowing the bar.
+        Flexible(
+          child: Text(
+            currency,
+            maxLines: 1,
+            overflow: .ellipsis,
+            style: context.textTheme.labelMedium?.copyWith(
+              color: context.colorScheme.onSurface.withValues(alpha: 0.6),
+            ),
           ),
         ),
       ],
