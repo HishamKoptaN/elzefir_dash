@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ساعات العمل - Maritime Admin</title>
+<!--
+  تصدير كامل محفوظ في Canvas Stitch (Screen: 73b5a899b9a848f7b88c7b46b0c328cc).
+  النسخة الكاملة متاحة للتحميل عبر MCP: stitch.download_file(
+    name: 'projects/10038201372055056727/files/ffecfa6357a34ab68905e079d583e82f',
+  )
+  هذا الملف مقتطع (head + skeleton) للمرجع فقط.
+-->
+</head>
+<body class="bg-surface text-on-surface min-h-full flex justify-center">
+<div class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col relative pb-24 shadow-sm border-x border-outline-variant/20">
+<!-- 1. Top App Bar -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest px-4 h-16 flex items-center justify-between">
+<a class="flex items-center gap-1 text-primary font-medium text-sm" href="#"><span class="material-symbols-outlined text-[18px]">arrow_forward</span><span>لوحة التحكم</span></a>
+<h2 class="font-headline font-bold text-base text-primary">ساعات العمل</h2>
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary border border-outline-variant/30"><span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span></div>
+</header>
+<main class="flex-1 px-4 py-5 flex flex-col gap-5"><div class="flex flex-col w-full gap-5">
+<!-- 1. Header & Live Indicator -->
+<section class="flex flex-col gap-2">
+<h1 class="text-2xl font-bold font-headline text-primary">ساعات العمل</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed">حدّد أيام العمل ووقت الفتح والإغلاق، وستظهر هذه الإعدادات مباشرة في واجهة الزبائن وقائمة المنيو الإلكتروني.</p>
+</section>
+<!-- 2. Working Days Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[22px]">calendar_month</span></div>
+<div><h2 class="text-base font-bold text-on-surface">أيام العمل</h2><p class="text-xs text-on-surface-variant">اختر أيام استقبال الطلبات</p></div>
+</div>
+<button class="text-xs font-semibold bg-surface-container-high text-primary px-3 py-1.5 rounded-full" id="toggle-all-btn" type="button">تحديد كل الأيام</button>
+</div>
+<!-- Days rows: full-width; active = navy fill + teal check; inactive = surface-low + close icon; badge «يوم عمل»/«عطلة أسبوعية» -->
+<div class="grid grid-cols-1 gap-2" id="days-container">
+<!-- السبت (نشط) / الأحد (نشط) / الاثنين (عطلة) / الثلاثاء (عطلة) / الأربعاء (عطلة) / الخميس (نشط) / الجمعة (نشط) -->
+</div>
+<div class="flex items-center gap-2.5 bg-surface-container-low px-3 py-2.5 rounded-xl text-on-surface-variant text-xs"><span class="material-symbols-outlined text-[18px] text-secondary">info</span><span>الأيام المحددة: <strong class="text-primary font-bold">السبت، الأحد، الخميس، الجمعة</strong> (4 أيام أسبوعياً)</span></div>
+</section>
+<!-- 3. Operating Hours Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-[22px]">schedule</span></div>
+<div><h2 class="text-base font-bold text-on-surface">مواعيد الدوام اليومي</h2><p class="text-xs text-on-surface-variant">فترة العمل الرسمية للطلبات</p></div>
+</div>
+</div>
+<!-- Time Pickers Row: 10:00 صباحاً / 11:30 مساءً — amber sun / navy moon tiles -->
+<div class="grid grid-cols-2 gap-3"><!-- open-tile / close-tile --></div>
+<!-- Duration Badge -->
+<div class="flex items-center justify-between bg-secondary-container/50 text-on-secondary-container px-3.5 py-2.5 rounded-xl"><div class="flex items-center gap-2 text-xs font-medium"><span class="material-symbols-outlined text-[18px]">timelapse</span><span>إجمالي ساعات العمل اليومية</span></div><span class="text-xs font-bold">13.5 ساعة</span></div>
+</section>
+<!-- 4. Live Customer Preview Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between"><div class="flex items-center gap-2 text-primary font-bold text-sm"><span class="material-symbols-outlined text-[18px]">visibility</span><span>المعاينة المباشرة للمطعم</span></div><span class="text-[10px] font-semibold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-md">عرض الزبون</span></div>
+<div class="bg-surface rounded-xl p-3.5 flex flex-col gap-3">
+<div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span></span><span class="font-bold text-xs text-secondary">مفتوح الآن لاستقبال الطلبات</span></div><span class="text-[11px] text-on-surface-variant">يغلق 11:30 م</span></div>
+<!-- Schedule Display Box: أيام الاستقبال / ساعات الاستقبال / أيام العطلة -->
+<div class="bg-surface-container-lowest rounded-lg p-2.5 flex flex-col gap-1.5 text-xs"><!-- rows --></div>
+</div>
+</section>
+<!-- 5. Action Buttons & Confirmation -->
+<section class="flex flex-col gap-2.5 pt-1">
+<button class="w-full h-14 bg-primary text-on-primary font-bold rounded-2xl flex items-center justify-center gap-2 shadow-sm" id="save-btn" type="button"><span class="material-symbols-outlined text-[20px]">save</span><span>حفظ التغييرات</span></button>
+</section>
+</div></main>
+</div>
+</body></html>
