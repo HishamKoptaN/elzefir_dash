@@ -152,6 +152,34 @@ String formatClock(int minutes) {
   return '$hour12:${minute.toString().padLeft(2, '0')} $suffix';
 }
 
+/// الوقت بنظام 12 ساعة مقسمًا إلى نص الوقت وكلمة صباحًا/مساءً،
+/// مثل («10:30»، «صباحاً»).
+({String time, String suffix}) clockParts12(int minutes) {
+  final normalized = minutes % (24 * 60);
+  final hour24 = normalized ~/ 60;
+  final minute = normalized % 60;
+  final suffix = hour24 < 12 ? 'صباحاً' : 'مساءً';
+  var hour12 = hour24 % 12;
+  if (hour12 == 0) hour12 = 12;
+  return (
+    time: '$hour12:${minute.toString().padLeft(2, '0')}',
+    suffix: suffix,
+  );
+}
+
+/// إجمالي مدة العمل اليومية كنص مثل «13.5 ساعة»، مع مراعاة امتداد
+/// وقت الإغلاق بعد منتصف الليل.
+String formatWorkingHoursDuration(int openMinutes, int closeMinutes) {
+  final minutes = closeMinutes > openMinutes
+      ? closeMinutes - openMinutes
+      : 1440 - openMinutes + closeMinutes;
+  final hours = minutes / 60;
+  final whole = hours.floor();
+  final fraction = hours - whole;
+  if (fraction == 0) return '$whole ساعة';
+  return '${hours.toStringAsFixed(1)} ساعة';
+}
+
 /// وصف مختصر للأيام المختارة بالترتيب العربي، مثل "السبت، الأحد، الاثنين".
 String formatWorkingDays(Set<int> days) {
   final selected = weekdayNames.keys.where(days.contains).toList();
