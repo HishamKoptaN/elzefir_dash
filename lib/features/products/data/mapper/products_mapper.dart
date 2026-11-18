@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../../core/utils/price_input.dart';
 import '../../../categories/data/mapper/categories_mapper.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
@@ -12,6 +14,14 @@ import '../model/product_upsert_model.dart';
 Map<String, dynamic> normalizeProductJson(Map<String, dynamic> json) {
   final normalized = Map<String, dynamic>.from(json);
   normalized['price'] = priceToText(json['price']);
+  final categoryId = json['category_id'];
+  if (categoryId != null) {
+    normalized['category'] = {
+      'id': categoryId is DocumentReference
+          ? int.parse(categoryId.id)
+          : categoryId,
+    };
+  }
   return normalized;
 }
 
