@@ -27,7 +27,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      fontFamily: 'NotoNaskhArabic',
+      fontFamily: 'Cairo',
       scaffoldBackgroundColor: _light.background,
       textTheme: textTheme,
       colorScheme: colorScheme,
@@ -195,7 +195,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      fontFamily: 'NotoNaskhArabic',
+      fontFamily: 'Cairo',
       scaffoldBackgroundColor: _dark.background,
       colorScheme: ColorScheme.dark(
         primary: _dark.primary,
