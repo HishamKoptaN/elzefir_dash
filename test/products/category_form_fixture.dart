@@ -1,23 +1,23 @@
-import 'dart:async';
-
 import 'package:alzefr_dash/core/di/dependency_injection.dart';
 import 'package:alzefr_dash/core/networking/api_result.dart';
 import 'package:alzefr_dash/features/categories/domain/entities/categories_res_entity.dart';
-import 'package:alzefr_dash/features/categories/domain/use_cases/categories_use_cases.dart';
 import 'package:alzefr_dash/features/categories/present/blocs/bloc/categories_bloc.dart';
 import 'package:alzefr_dash/features/products/data/mapper/products_mapper.dart';
 import 'package:alzefr_dash/features/products/data/model/product_model.dart';
 import 'package:alzefr_dash/features/products/domain/entities/product_entity.dart';
-import 'package:alzefr_dash/features/products/domain/use_cases/products_use_cases.dart';
 import 'package:alzefr_dash/features/products/present/blocs/product_upsert_bloc/product_upsert_bloc.dart';
 import 'package:alzefr_dash/features/products/present/view/upsert_product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../support/fake_use_cases.dart';
+
 class CategoryFormFixture {
-  final categories = _CategoriesUseCases();
+  final categories = FakeCategoriesUseCases();
   late final categoriesBloc = CategoriesBloc(categoriesUseCases: categories);
-  final productBloc = ProductUpsertBloc(productsUseCases: _ProductsUseCase());
+  final productBloc = ProductUpsertBloc(
+    productsUseCases: FakeProductsUseCases(),
+  );
 
   void register() {
     getIt.registerSingleton<CategoriesBloc>(categoriesBloc);
@@ -26,7 +26,7 @@ class CategoryFormFixture {
 
   void loadCategories() {
     categories.result.complete(
-      const .success(
+      const ApiResult.success(
         data: [
           CategoryEntity(id: 7, name: 'مشويات'),
           CategoryEntity(id: 8, name: 'مقبلات'),
@@ -68,26 +68,5 @@ class CategoryFormFixture {
         );
       },
     );
-  }
-}
-
-class _CategoriesUseCases implements CategoriesUseCases {
-  final result = Completer<ApiResult<List<CategoryEntity>>>();
-
-  @override
-  Future<ApiResult<List<CategoryEntity>>> get() {
-    return result.future;
-  }
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) {
-    throw UnimplementedError();
-  }
-}
-
-class _ProductsUseCase implements ProductsUseCase {
-  @override
-  dynamic noSuchMethod(Invocation invocation) {
-    throw UnimplementedError();
   }
 }
