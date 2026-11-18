@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>إدارة التصنيفات - أسماك الزفر</title>
+<!-- Google Fonts: Cairo & Tajawal for Arabic Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=Tajawal:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!--
+  تصدير كامل محفوظ في Canvas Stitch (Screen: 20c2f95434df4ef6a4bf09e2c4880c57).
+  النسخة الكاملة متاحة للتحميل عبر MCP: stitch.download_file(
+    name: 'projects/10038201372055056727/files/9fdc9fb70b1240908e8797bc3e6c9e96',
+  )
+  هذا الملف مقتطع (head + body skeleton) للمرجع فقط.
+-->
+</head>
+<body class="bg-slate-100 flex justify-center text-slate-800 antialiased min-h-screen">
+<!-- Mobile Screen Frame Container (iOS standard proportions) -->
+<div class="w-full max-w-[430px] min-h-screen bg-[#F8FAFC] flex flex-col relative shadow-2xl border-x border-slate-200/80">
+<!-- BEGIN: TopAppBar -->
+<header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-4 py-3" data-purpose="top-navigation-bar">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-brand-navy/10 text-brand-navy flex items-center justify-center shadow-inner">
+<svg class="w-5 h-5 text-brand-navy" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h1 class="font-bold text-sm text-slate-900 tracking-tight leading-none">لوحة التحكم</h1>
+<span class="bg-brand-navy/10 text-brand-navy text-[10px] font-bold px-1.5 py-0.5 rounded tracking-normal">التصنيفات</span>
+</div>
+<p class="text-xs text-slate-500 font-medium mt-0.5">أسماك الزفر البحرية</p>
+</div>
+</div>
+</div>
+</header>
+<!-- END: TopAppBar -->
+<!-- Main Scrollable Body Content -->
+<main class="flex-1 pb-24 px-4 pt-4 space-y-4">
+<!-- BEGIN: ContentHeader -->
+<section class="flex items-center justify-between gap-3" data-purpose="page-title-and-primary-action"><div>
+<h2 class="text-xl font-bold text-slate-900 tracking-tight">إدارة التصنيفات</h2>
+<p class="text-xs text-slate-500 font-medium mt-0.5">تنظيم أقسام المنيو وترتيب الأطباق البحرية</p>
+</div>
+<button class="inline-flex items-center gap-1.5 bg-brand-navy hover:bg-brand-navy-dark active:scale-95 transition text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-md shadow-brand-navy/20 shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>إضافة تصنيف</span></button></section>
+<!-- END: ContentHeader -->
+<!-- BEGIN: CompactKPIStrip -->
+<section class="grid grid-cols-3 gap-2.5" data-purpose="quick-metrics-overview">
+<div class="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-card flex flex-col justify-between"><span class="text-[11px] font-semibold text-slate-600">إجمالي التصنيفات</span><div class="mt-2.5"><span class="text-xl font-black text-slate-900">6</span> <span class="text-[10px] text-slate-500 font-bold">أقسام</span></div></div>
+<div class="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-card flex flex-col justify-between"><span class="text-[11px] font-semibold text-slate-600">المنتجات المندرجة</span><div class="mt-2.5"><span class="text-xl font-black text-slate-900">28</span> <span class="text-[10px] text-slate-500 font-bold">طبق</span></div></div>
+<div class="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-card flex flex-col justify-between"><span class="text-[11px] font-semibold text-slate-600">الأكثر طلباً</span><div class="mt-2.5"><p class="text-xs font-bold text-slate-900 truncate">أسماك بالكيلو</p><span class="text-[10px] text-brand-teal font-extrabold">8 أطباق نشطة</span></div></div>
+</section>
+<!-- END: CompactKPIStrip -->
+<!-- BEGIN: SearchAndCategoryFilters -->
+<section class="space-y-3 pt-1" data-purpose="filtering-controls">
+<div class="relative"><input class="w-full bg-white border border-slate-200/90 text-xs font-medium rounded-xl pr-9 pl-9 py-2.5 shadow-sm" placeholder="ابحث عن تصنيف أو اسم القسم..." type="search"/></div>
+</section>
+<!-- END: SearchAndCategoryFilters -->
+<!-- BEGIN: CategoriesFeed -->
+<section class="space-y-3" data-purpose="categories-feed">
+<article class="bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-card flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-slate-100 flex items-center justify-center"><img alt="أسماك بالكيلو" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/…"/></div>
+<div class="min-w-0"><h3 class="font-bold text-sm text-slate-900 truncate">أسماك بالكيلو</h3><p class="text-xs text-slate-500 font-medium">8 أطباق مندرجة • الترتيب: #1</p></div>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-700"><span>تعديل</span></button>
+</article>
+<article class="bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-card flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-12 h-12 rounded-xl bg-blue-50 border border-slate-200/60 flex items-center justify-center text-brand-navy shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div class="min-w-0"><h3 class="font-bold text-sm text-slate-900 truncate">وجبات وسندوتشات</h3><p class="text-xs text-slate-500 font-medium">4 أطباق مندرجة • الترتيب: #4</p></div>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-700"><span>تعديل</span></button>
+</article>
+</section>
+<!-- END: CategoriesFeed -->
+</main>
+<!-- BEGIN: PersistentBottomNav -->
+<nav class="sticky bottom-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-6 py-2 shadow-nav" data-purpose="bottom-tab-bar"><div class="flex items-center justify-between max-w-sm mx-auto">
+<a class="flex flex-col items-center justify-center py-1 px-3 text-slate-400" href="#products"><div class="w-10 h-8 flex items-center justify-center mb-0.5"></div><span class="text-[11px] font-semibold text-slate-500">المنتجات</span></a>
+<a aria-current="page" class="flex flex-col items-center justify-center py-1 px-3 text-brand-navy" href="#categories"><div class="w-10 h-8 rounded-xl bg-brand-navy/10 flex items-center justify-center mb-0.5 transition"></div><span class="text-[11px] font-bold text-brand-navy">التصنيفات</span></a>
+<a class="flex flex-col items-center justify-center py-1 px-3 text-slate-400" href="#hours"><div class="w-10 h-8 flex items-center justify-center mb-0.5"></div><span class="text-[11px] font-semibold text-slate-500">ساعات العمل</span></a>
+</div></nav>
+<!-- END: PersistentBottomNav -->
+</div>
+</body></html>
