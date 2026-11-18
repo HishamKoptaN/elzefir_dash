@@ -9,6 +9,12 @@
 // ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
 
 abstract final class FontFamily {
+  /// Font family: BeVietnamPro
+  static const String beVietnamPro = 'BeVietnamPro';
+
+  /// Font family: Cairo
+  static const String cairo = 'Cairo';
+
   /// Font family: NotoNaskhArabic
   static const String notoNaskhArabic = 'NotoNaskhArabic';
 }
