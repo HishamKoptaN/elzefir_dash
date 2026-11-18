@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -12,9 +12,8 @@ part 'notifications_state.dart';
 @singleton
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   final NotificationsUseCases useCases;
-  StreamSubscription<List<NotificationEntity>>? _notsSub;
 
-  NotificationsBloc(this.useCases) : super(NotificationsState.initial()) {
+  NotificationsBloc(this.useCases) : super(const NotificationsState.initial()) {
     on<NotificationsEvent>((event, emit) async {
       await event.when(
         watch: () async {
@@ -45,40 +44,16 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
           );
         },
         markAsRead: (id) async {
-          // final idx = _notifications.indexWhere((n) => n.id == id);
-          // if (idx != -1) {
-          //   final updated = _notifications[idx].copyWith(read: true);
-          //   _notifications[idx] = updated;
-          //   emit(
-          //     NotificationsState.loaded(
-          //       notifications: _notifications,
-          //       hasMore: _hasMore,
-          //     ),
-          //   );
-          // }
-          // final res = await useCases.markAsRead(id: id);
-          // await res.when(
-          //   success: (_) async {},
-          //   failure: (apiErrorModel) async {
-          //     // revert if failed
-          //     if (idx != -1) {
-          //       _notifications[idx] =
-          //           _notifications[idx].copyWith(read: false);
-          //       emit(NotificationsState.loaded(
-          //         notifications: _notifications,
-          //         hasMore: _hasMore,
-          //       ),);
-          //     }
-          //   },
-          // );
+          await useCases.markAsRead(id: id);
+        },
+        markAllAsRead: () async {
+          await useCases.markAllAsRead();
         },
       );
-    });
-  }
-
-  @override
-  Future<void> close() {
-    _notsSub?.cancel();
-    return super.close();
+    },
+        // watch() stays subscribed forever, so every event type must process
+        // concurrently — otherwise markAsRead queues behind the never-ending
+        // watch handler and never runs.
+        transformer: concurrent());
   }
 }

@@ -56,12 +56,13 @@ extension NotificationsEventPatterns on NotificationsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Watch value)?  watch,TResult Function( _MarkAsRead value)?  markAsRead,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Watch value)?  watch,TResult Function( _MarkAsRead value)?  markAsRead,TResult Function( _MarkAllAsRead value)?  markAllAsRead,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Watch() when watch != null:
 return watch(_that);case _MarkAsRead() when markAsRead != null:
-return markAsRead(_that);case _:
+return markAsRead(_that);case _MarkAllAsRead() when markAllAsRead != null:
+return markAllAsRead(_that);case _:
   return orElse();
 
 }
@@ -79,12 +80,13 @@ return markAsRead(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Watch value)  watch,required TResult Function( _MarkAsRead value)  markAsRead,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Watch value)  watch,required TResult Function( _MarkAsRead value)  markAsRead,required TResult Function( _MarkAllAsRead value)  markAllAsRead,}){
 final _that = this;
 switch (_that) {
 case _Watch():
 return watch(_that);case _MarkAsRead():
-return markAsRead(_that);case _:
+return markAsRead(_that);case _MarkAllAsRead():
+return markAllAsRead(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -101,12 +103,13 @@ return markAsRead(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Watch value)?  watch,TResult? Function( _MarkAsRead value)?  markAsRead,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Watch value)?  watch,TResult? Function( _MarkAsRead value)?  markAsRead,TResult? Function( _MarkAllAsRead value)?  markAllAsRead,}){
 final _that = this;
 switch (_that) {
 case _Watch() when watch != null:
 return watch(_that);case _MarkAsRead() when markAsRead != null:
-return markAsRead(_that);case _:
+return markAsRead(_that);case _MarkAllAsRead() when markAllAsRead != null:
+return markAllAsRead(_that);case _:
   return null;
 
 }
@@ -123,11 +126,12 @@ return markAsRead(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  watch,TResult Function( String id)?  markAsRead,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  watch,TResult Function( String id)?  markAsRead,TResult Function()?  markAllAsRead,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Watch() when watch != null:
 return watch();case _MarkAsRead() when markAsRead != null:
-return markAsRead(_that.id);case _:
+return markAsRead(_that.id);case _MarkAllAsRead() when markAllAsRead != null:
+return markAllAsRead();case _:
   return orElse();
 
 }
@@ -145,11 +149,12 @@ return markAsRead(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  watch,required TResult Function( String id)  markAsRead,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  watch,required TResult Function( String id)  markAsRead,required TResult Function()  markAllAsRead,}) {final _that = this;
 switch (_that) {
 case _Watch():
 return watch();case _MarkAsRead():
-return markAsRead(_that.id);case _:
+return markAsRead(_that.id);case _MarkAllAsRead():
+return markAllAsRead();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -166,11 +171,12 @@ return markAsRead(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  watch,TResult? Function( String id)?  markAsRead,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  watch,TResult? Function( String id)?  markAsRead,TResult? Function()?  markAllAsRead,}) {final _that = this;
 switch (_that) {
 case _Watch() when watch != null:
 return watch();case _MarkAsRead() when markAsRead != null:
-return markAsRead(_that.id);case _:
+return markAsRead(_that.id);case _MarkAllAsRead() when markAllAsRead != null:
+return markAllAsRead();case _:
   return null;
 
 }
@@ -277,6 +283,38 @@ as String,
 
 
 }
+
+/// @nodoc
+
+
+class _MarkAllAsRead implements NotificationsEvent {
+  const _MarkAllAsRead();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MarkAllAsRead);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+    return 'NotificationsEvent.markAllAsRead()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$NotificationsState {
