@@ -1,10 +1,14 @@
 import 'package:alzefr_dash/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/di/dependency_injection.dart';
 import '../../categories/present/blocs/bloc/categories_bloc.dart';
+import '../../notifications/present/bloc/notifications_bloc.dart';
+import '../../notifications/present/view/notifications_view.dart';
+import '../../profile/present/views/profile_view.dart';
 import 'widgets/dashboard_nav.dart';
 
 class HomeView extends StatefulWidget {
@@ -21,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     getIt<CategoriesBloc>().add(.get());
+    getIt<NotificationsBloc>().add(const .watch());
   }
 
   Widget _rootTitle(BuildContext context) {
@@ -85,6 +90,40 @@ class _HomeViewState extends State<HomeView> {
                 icon: const Icon(Icons.arrow_back),
               )
             : null,
+        actions: [
+          if (!canGoBack) ...[
+            BlocBuilder<NotificationsBloc, NotificationsState>(
+              bloc: getIt<NotificationsBloc>(),
+              builder: (context, state) {
+                final unread = state.mapOrNull(
+                          loaded: (s) {
+                            return s.unreadCount;
+                          },
+                        ) ??
+                        0;
+                return IconButton(
+                  tooltip: 'الإشعارات',
+                  onPressed: () {
+                    context.pushNamed(NotificationsView.routeName);
+                  },
+                  icon: Badge.count(
+                    count: unread,
+                    isLabelVisible: unread > 0,
+                    child: const Icon(Icons.notifications_none_rounded),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              tooltip: 'الملف الشخصي',
+              onPressed: () {
+                context.pushNamed(ProfileView.routeName);
+              },
+              icon: const Icon(Icons.person_outline_rounded),
+            ),
+            SizedBox(width: 4.w),
+          ],
+        ],
       ),
       body: SafeArea(
         child: isWide

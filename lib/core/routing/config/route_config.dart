@@ -14,6 +14,8 @@ import '../../../features/categories/present/view/upsert_category_view.dart';
 import '../../../features/categories/present/view/widgets/categories_view.dart';
 import '../../../features/home/present/home.dart';
 import '../../../features/home/present/restaurant_page_view.dart';
+import '../../../features/notifications/present/view/notifications_view.dart';
+import '../../../features/profile/present/views/profile_view.dart';
 import '../../../features/products/domain/entities/product_entity.dart';
 import '../../../features/products/present/view/upsert_product_view.dart';
 import '../../../features/working_hours/present/view/working_hours_view.dart';
@@ -152,6 +154,20 @@ class RouteConfig {
               ),
             ],
           ),
+          appRoute(
+            name: NotificationsView.routeName,
+            path: '/${NotificationsView.routeName}',
+            builder: (context, state) {
+              return const NotificationsView();
+            },
+          ),
+          appRoute(
+            name: ProfileView.routeName,
+            path: '/${ProfileView.routeName}',
+            builder: (context, state) {
+              return const ProfileView();
+            },
+          ),
         ],
       ),
     ];
@@ -169,6 +185,10 @@ class RouteConfig {
         return state.extra == null ? 'إضافة تصنيف جديد' : 'تعديل تصنيف';
       case '/working-hours':
         return 'ساعات العمل';
+      case '/notifications':
+        return 'الإشعارات';
+      case '/profile':
+        return 'الملف الشخصي';
 
       default:
         return '';
