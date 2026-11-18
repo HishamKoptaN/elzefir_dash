@@ -7,7 +7,7 @@ import '../../../domain/working_hours.dart';
 import '../common/section_card.dart';
 import '../common/section_header.dart';
 
-/// معاينة ملخص الإعدادات الحالية وحالتها المحفوظة.
+/// معاينة ملخص الإعدادات الحالية كما ستراها صفحة المطعم للزبون.
 class WorkingHoursPreviewCard extends StatelessWidget {
   const WorkingHoursPreviewCard({
     super.key,
@@ -18,27 +18,101 @@ class WorkingHoursPreviewCard extends StatelessWidget {
   final WorkingHours current;
   final WorkingHours? saved;
 
+  static Set<int> _offDays(Set<int> days) {
+    return weekdayNames.keys.toSet().difference(days);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final scheme = context.colorScheme;
+    final isOpenNow = current.isOpenAt(DateTime.now());
     return SectionCard(
       child: Column(
         crossAxisAlignment: .stretch,
-        spacing: 10.h,
+        spacing: 12.h,
         children: [
           SectionHeader(
-            title: 'المعاينة',
+            title: 'المعاينة المباشرة للمطعم',
             icon: FontAwesomeIcons.eye,
-            trailing: _StatusPill(isOpenNow: current.isOpenAt(DateTime.now())),
+            trailing: Container(
+              padding: .symmetric(horizontal: 10.w, vertical: 4.h),
+              decoration: BoxDecoration(
+                color: scheme.surfaceContainerHigh,
+                borderRadius: .circular(8.r),
+              ),
+              child: Text(
+                'عرض الزبون',
+                style: context.textTheme.labelMedium?.copyWith(
+                  color: scheme.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+            ),
           ),
-          Text(
-            formatWorkingHoursSummary(current),
-            style: context.textTheme.bodyLarge,
+          Container(
+            padding: .all(12.r),
+            decoration: BoxDecoration(
+              color: scheme.surfaceContainerLow,
+              borderRadius: .circular(12.r),
+            ),
+            child: Column(
+              crossAxisAlignment: .start,
+              spacing: 10.h,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 10.r,
+                      height: 10.r,
+                      decoration: BoxDecoration(
+                        color: isOpenNow ? scheme.secondary : scheme.error,
+                        shape: .circle,
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: Text(
+                        isOpenNow
+                            ? 'مفتوح الآن لاستقبال الطلبات'
+                            : 'مغلق الآن',
+                        style: context.textTheme.labelLarge?.copyWith(
+                          color: isOpenNow ? scheme.secondary : scheme.error,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      isOpenNow
+                          ? 'يغلق ${formatClock(current.closeMinutes)}'
+                          : 'يفتح ${formatClock(current.openMinutes)}',
+                      style: context.textTheme.labelMedium?.copyWith(
+                        color: scheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(height: 1, color: scheme.outline),
+                _PreviewRow(
+                  label: 'أيام الاستقبال:',
+                  value: formatWorkingDays(current.days),
+                  valueColor: scheme.primary,
+                ),
+                _PreviewRow(
+                  label: 'ساعات الاستقبال:',
+                  value:
+                      '${formatClock(current.openMinutes)} - ${formatClock(current.closeMinutes)}',
+                  valueColor: scheme.secondary,
+                ),
+                _PreviewRow(
+                  label: 'أيام العطلة:',
+                  value: formatWorkingDays(_offDays(current.days)),
+                ),
+              ],
+            ),
           ),
           if (saved != null)
             Text(
               'المحفوظ حاليًا: ${formatWorkingHoursSummary(saved!)}',
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: context.colorScheme.onSurface.withValues(alpha: 0.6),
+              style: context.textTheme.bodySmall?.copyWith(
+                color: scheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
         ],
@@ -47,32 +121,42 @@ class WorkingHoursPreviewCard extends StatelessWidget {
   }
 }
 
-class _StatusPill extends StatelessWidget {
-  const _StatusPill({required this.isOpenNow});
+class _PreviewRow extends StatelessWidget {
+  const _PreviewRow({
+    required this.label,
+    required this.value,
+    this.valueColor,
+  });
 
-  final bool isOpenNow;
+  final String label;
+  final String value;
+  final Color? valueColor;
 
   @override
   Widget build(BuildContext context) {
-    final tint = isOpenNow
-        ? context.colorScheme.primary
-        : context.colorScheme.error;
-    return Container(
-      padding: .symmetric(horizontal: 10.w, vertical: 5.h),
-      decoration: BoxDecoration(
-        color: tint.withValues(alpha: 0.1),
-        borderRadius: .circular(20.r),
-      ),
-      child: Row(
-        spacing: 6.w,
-        children: [
-          FaIcon(FontAwesomeIcons.solidCircle, size: 7.r, color: tint),
-          Text(
-            isOpenNow ? 'مفتوح الآن' : 'مغلق الآن',
-            style: context.textTheme.labelMedium?.copyWith(color: tint),
+    final scheme = context.colorScheme;
+    return Row(
+      children: [
+        Text(
+          label,
+          style: context.textTheme.bodyMedium?.copyWith(
+            color: scheme.onSurface.withValues(alpha: 0.7),
           ),
-        ],
-      ),
+        ),
+        const Spacer(),
+        Flexible(
+          child: Text(
+            value,
+            maxLines: 1,
+            overflow: .ellipsis,
+            textAlign: .left,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: valueColor ?? scheme.onSurface,
+              fontWeight: valueColor != null ? .bold : .normal,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

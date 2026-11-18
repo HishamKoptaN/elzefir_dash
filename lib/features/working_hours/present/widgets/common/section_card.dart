@@ -15,11 +15,16 @@ class SectionCard extends StatelessWidget {
     return Container(
       padding: padding ?? .all(16.r),
       decoration: BoxDecoration(
-        color: context.colorScheme.surfaceContainer,
-        borderRadius: .circular(20.r),
-        border: Border.all(
-          color: context.colorScheme.outlineVariant.withValues(alpha: 0.4),
-        ),
+        color: context.colorScheme.surface,
+        borderRadius: .circular(16.r),
+        border: Border.all(color: context.colorScheme.outline),
+        boxShadow: [
+          BoxShadow(
+            color: context.colorScheme.primary.withValues(alpha: 0.05),
+            offset: const Offset(0, 2),
+            blurRadius: 10,
+          ),
+        ],
       ),
       child: child,
     );

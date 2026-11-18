@@ -12,15 +12,19 @@ class WorkingHoursContent extends StatelessWidget {
     required this.onPickOpen,
     required this.onPickClose,
     required this.onSave,
+    required this.onReset,
   });
 
   final WorkingHoursController controller;
   final VoidCallback onPickOpen;
   final VoidCallback onPickClose;
   final VoidCallback onSave;
+  final VoidCallback onReset;
 
   @override
   Widget build(BuildContext context) {
+    final hasUnsavedChanges =
+        controller.current.hasChangesComparedTo(controller.saved);
     return SingleChildScrollView(
       padding: .symmetric(horizontal: 16.w, vertical: 16.h),
       child: Center(
@@ -52,6 +56,11 @@ class WorkingHoursContent extends StatelessWidget {
                 saving: controller.isSaving,
                 onPressed: onSave,
               ),
+              if (hasUnsavedChanges)
+                TextButton(
+                  onPressed: onReset,
+                  child: const Text('إلغاء واستعادة الإعدادات السابقة'),
+                ),
             ],
           ),
         ),
