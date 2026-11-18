@@ -25,13 +25,13 @@ class ProductsWidget extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: shrinkWrap,
       physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
-      padding: .fromLTRB(16.w, 8.h, 16.w, 24.h),
+      padding: .fromLTRB(16.w, 4.h, 16.w, 24.h),
       itemCount: products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount.toInt(),
         // Slightly taller than wide so the description and price fit without
         // overflowing.
-        childAspectRatio: 0.8,
+        childAspectRatio: 0.78,
         mainAxisSpacing: 16.h,
         crossAxisSpacing: 16.w,
       ),

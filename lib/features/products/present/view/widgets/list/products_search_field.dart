@@ -40,7 +40,7 @@ class _ProductsSearchFieldState extends State<ProductsSearchField> {
             color: context.colorScheme.onSurfaceVariant,
           ),
           isDense: true,
-          contentPadding: .symmetric(horizontal: 12.r, vertical: 12.r),
+          contentPadding: .symmetric(horizontal: 16.r, vertical: 12.r),
           constraints: const BoxConstraints(
             minHeight: kMinInteractiveDimension,
           ),
@@ -56,7 +56,7 @@ class _ProductsSearchFieldState extends State<ProductsSearchField> {
                   },
                   icon: const Icon(Icons.close_rounded),
                 ),
-          border: OutlineInputBorder(borderRadius: .circular(12.r)),
+          border: OutlineInputBorder(borderRadius: .circular(16.r)),
         ),
       ),
     );
