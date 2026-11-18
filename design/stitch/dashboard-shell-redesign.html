@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="mobile_tab" name="shell-type"/>
+<title>إدارة المنتجات - لوحة التحكم</title>
+<!--
+  تصدير كامل محفوظ في Canvas Stitch (Screen: 10608d248b484c0081948012e978dfa7).
+  النسخة الكاملة متاحة للتحميل عبر MCP: stitch.download_file(
+    name: 'projects/10038201372055056727/files/8361215570ab4ac98d8e0d138a9e39e5',
+  )
+  هذا الملف مقتطع (head + shell skeleton) للمرجع فقط.
+-->
+</head>
+<body class="bg-surface font-body text-on-surface antialiased flex flex-col min-h-screen">
+<!-- BEGIN: TopAppBar -->
+<header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-4 md:px-6 flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[22px]">storefront</span></div><div class="flex flex-col text-right"><h1 class="text-base font-headline font-bold leading-tight text-primary">لوحة التحكم</h1><span class="text-xs font-body font-medium text-on-surface-variant leading-normal">أسماك الزفر البحرية</span></div></div></div></header>
+<!-- END: TopAppBar -->
+<!-- BEGIN: Desktop Sidebar (hidden on mobile) -->
+<aside class="hidden md:flex flex-col w-64 fixed right-0 top-16 bottom-0 z-40 bg-surface-container-lowest px-3 py-6"><nav class="flex flex-col gap-2 w-full" data-active-classes="bg-primary/10 text-primary font-bold">
+<a aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors bg-primary/10 text-primary font-bold" href="#"><span class="material-symbols-outlined text-[22px]">restaurant_menu</span><span class="text-sm font-label">المنتجات</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" href="#"><span class="material-symbols-outlined text-[22px]">category</span><span class="text-sm font-label">التصنيفات</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" href="#"><span class="material-symbols-outlined text-[22px]">schedule</span><span class="text-sm font-label">ساعات العمل</span></a>
+</nav></aside>
+<!-- END: Desktop Sidebar -->
+<main class="flex flex-col relative w-full px-4 md:px-8 pb-24 md:pb-8 md:mr-64 bg-surface min-h-[calc(100vh-4rem)]">
+<div class="flex flex-col w-full pb-8 space-y-6">
+<!-- Overview Header & Action Button -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-1">
+<div class="flex flex-col"><div class="flex items-center gap-2"><h2 class="text-2xl font-bold font-headline text-primary">إدارة المنتجات</h2></div><p class="text-sm text-on-surface-variant font-body mt-0.5">قائمة وجبات وأسماك المنيو والأسعار الحالية المحدثة</p></div>
+<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container text-on-primary font-semibold text-sm shadow-md" onclick="toggleModal(true)"><span class="material-symbols-outlined text-[20px]">add</span><span>إضافة منتج جديد</span></button>
+</div>
+</div>
+</main>
+<!-- BEGIN: PersistentBottomNav (mobile) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-50 bg-surface-container-lowest/95 backdrop-blur-xl border-t border-outline-variant/20 h-16 flex justify-around items-center px-4 shadow-[0_-4px_16px_rgba(0,0,0,0.05)] pb-safe" data-purpose="bottom-tab-bar">
+<a class="flex flex-col items-center justify-center bg-primary/10 text-primary rounded-xl px-4 py-1.5" href="#"><span class="material-symbols-outlined text-[22px]">restaurant_menu</span><span class="text-[11px] font-bold mt-0.5">المنتجات</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface px-3 py-1" href="#"><span class="material-symbols-outlined text-[22px]">category</span><span class="text-[11px] font-medium mt-0.5">التصنيفات</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface px-3 py-1" href="#"><span class="material-symbols-outlined text-[22px]">schedule</span><span class="text-[11px] font-medium mt-0.5">ساعات العمل</span></a>
+</nav>
+<!-- END: PersistentBottomNav -->
+</body></html>
