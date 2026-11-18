@@ -23,13 +23,59 @@ class _HomeViewState extends State<HomeView> {
     getIt<CategoriesBloc>().add(.get());
   }
 
+  Widget _rootTitle(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 40.r,
+          height: 40.r,
+          decoration: BoxDecoration(
+            color: context.colorScheme.primary.withValues(alpha: 0.1),
+            borderRadius: .circular(12.r),
+          ),
+          child: Icon(
+            Icons.storefront_rounded,
+            color: context.colorScheme.primary,
+            size: 22.r,
+          ),
+        ),
+        SizedBox(width: 10.w),
+        Column(
+          mainAxisAlignment: .center,
+          crossAxisAlignment: .start,
+          children: [
+            Text(
+              'لوحة التحكم',
+              style: context.textTheme.titleLarge?.copyWith(
+                color: context.colorScheme.primary,
+              ),
+            ),
+            Text(
+              'أسماك الزفر البحرية',
+              style: context.textTheme.labelSmall?.copyWith(
+                color: context.colorScheme.onSurface.withValues(alpha: 0.55),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final canGoBack = context.canPop();
     final isWide = MediaQuery.sizeOf(context).width >= 600;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title, style: context.textTheme.displayLarge),
+        title: canGoBack
+            ? Text(
+                widget.title,
+                style: context.textTheme.titleLarge?.copyWith(
+                  color: context.colorScheme.onSurface,
+                ),
+              )
+            : _rootTitle(context),
         leading: canGoBack
             ? IconButton(
                 tooltip: 'رجوع',
@@ -38,34 +84,18 @@ class _HomeViewState extends State<HomeView> {
                 },
                 icon: const Icon(Icons.arrow_back),
               )
-            : Padding(
-                padding: .all(10.r),
-                child: Icon(
-                  Icons.storefront_rounded,
-                  color: context.colorScheme.primary,
-                ),
-              ),
-        actions: [
-          if (!canGoBack)
-            Padding(
-              padding: .symmetric(horizontal: 12.w),
-              child: Center(
-                child: Text(
-                  'لوحة التحكم',
-                  style: context.textTheme.labelLarge?.copyWith(
-                    color: context.colorScheme.onSurface.withValues(alpha: 0.5),
-                  ),
-                ),
-              ),
-            ),
-        ],
+            : null,
       ),
       body: SafeArea(
         child: isWide
             ? Row(
                 children: [
                   const DashboardNav(isRail: true),
-                  const VerticalDivider(width: 1, thickness: 1),
+                  VerticalDivider(
+                    width: 1,
+                    thickness: 1,
+                    color: context.colorScheme.outline,
+                  ),
                   Expanded(child: widget.child),
                 ],
               )
