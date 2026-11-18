@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../../categories/domain/entities/categories_res_entity.dart';
 import '../../../../domain/entities/product_entity.dart';
 import '../../products_widget.dart';
+import 'products_category_filter.dart';
 import 'products_header.dart';
+import 'products_kpi_strip.dart';
 import 'products_search_field.dart';
 
 import 'package:alzefr_dash/core/widgets/feedback/empty_widget.dart';
@@ -28,6 +30,7 @@ class ProductsContent extends StatefulWidget {
 
 class _ProductsContentState extends State<ProductsContent> {
   String _query = '';
+  int? _categoryId;
 
   List<ProductEntity> get _filtered {
     final categories = {for (final c in widget.categories) c.id: c};
@@ -36,11 +39,17 @@ class _ProductsContentState extends State<ProductsContent> {
         category: categories[product.category.id] ?? product.category,
       );
     }).toList();
+    final categoryId = _categoryId;
+    final scoped = categoryId == null
+        ? products
+        : products
+              .where((product) => product.category.id == categoryId)
+              .toList();
     final query = _query.trim().toLowerCase();
     if (query.isEmpty) {
-      return products;
+      return scoped;
     }
-    return products.where((product) {
+    return scoped.where((product) {
       return [
         product.title,
         product.name,
@@ -59,10 +68,26 @@ class _ProductsContentState extends State<ProductsContent> {
       children: [
         ProductsHeader(count: widget.products.length, onAdd: widget.onAdd),
         if (widget.products.isNotEmpty)
+          ProductsKpiStrip(
+            products: widget.products,
+            categoryCount: widget.categories.length,
+          ),
+        if (widget.products.isNotEmpty)
           ProductsSearchField(
             onChanged: (value) {
               setState(() {
                 _query = value;
+              });
+            },
+          ),
+        if (widget.products.isNotEmpty)
+          ProductsCategoryFilter(
+            products: widget.products,
+            categories: widget.categories,
+            selectedId: _categoryId,
+            onSelected: (id) {
+              setState(() {
+                _categoryId = id;
               });
             },
           ),

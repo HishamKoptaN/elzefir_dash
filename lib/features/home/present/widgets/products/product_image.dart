@@ -51,7 +51,7 @@ class ProductImage extends StatelessWidget {
         return _openPreview(context);
       },
       child: Container(
-        color: context.colorScheme.secondary.withValues(alpha: 0.4),
+        color: context.colorScheme.surfaceContainerHigh,
         width: .infinity,
         child: Stack(
           fit: .expand,

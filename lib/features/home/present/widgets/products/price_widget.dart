@@ -26,10 +26,14 @@ class PriceWidget extends StatelessWidget {
       crossAxisAlignment: .baseline,
       textBaseline: .alphabetic,
       children: [
-        Text(
-          '$prefix${formatCurrency(value: price)}',
-          style: context.textTheme.titleLarge?.copyWith(
-            color: context.colorScheme.primary,
+        Flexible(
+          child: Text(
+            '$prefix${formatCurrency(value: price)}',
+            maxLines: 1,
+            overflow: .ellipsis,
+            style: context.textTheme.titleLarge?.copyWith(
+              color: context.colorScheme.primary,
+            ),
           ),
         ),
         SizedBox(width: 4.w),

@@ -12,6 +12,8 @@ import 'product_image.dart';
 
 import 'price_widget.dart';
 
+/// كارت منتج بأسلوب Stitch: صورة في الأعلى، شارة التصنيف بامتداد كامل،
+/// ثم وصف مختصر، وشريط سفلي يفصل السعر وزر «تعديل» عن بقية المحتوى.
 class ProductCard extends StatelessWidget {
   final ProductEntity product;
   const ProductCard({super.key, required this.product});
@@ -23,69 +25,70 @@ class ProductCard extends StatelessWidget {
     return Container(
       clipBehavior: .antiAlias,
       decoration: BoxDecoration(
-        color: context.colorScheme.surfaceContainer,
-        borderRadius: .circular(14.r),
-        border: Border.all(
-          color: context.colorScheme.onSurface.withValues(alpha: 0.06),
-        ),
+        color: context.colorScheme.surface,
+        borderRadius: .circular(16.r),
+        border: Border.all(color: context.colorScheme.outline),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: context.colorScheme.primary.withValues(alpha: 0.05),
             offset: const Offset(0, 2),
-            blurRadius: 8,
+            blurRadius: 10,
           ),
         ],
       ),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: .stretch,
         children: [
           Expanded(
             child: ProductImage(image: imageUrl),
           ),
           Padding(
-            padding: .all(12.r),
+            padding: .fromLTRB(12.w, 10.h, 12.w, 8.h),
             child: Column(
               crossAxisAlignment: .start,
               spacing: 6.h,
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        product.title,
-                        maxLines: 1,
-                        overflow: .ellipsis,
-                        style: context.textTheme.titleLarge,
-                        textAlign: .right,
-                      ),
-                    ),
-                    SizedBox(width: 8.w),
-                    CategoryBadgeWidget(name: product.category.name),
-                  ],
+                CategoryBadgeWidget(name: product.category.name),
+                Text(
+                  product.title,
+                  maxLines: 1,
+                  overflow: .ellipsis,
+                  style: context.textTheme.titleMedium,
+                  textAlign: .right,
                 ),
                 Text(
                   product.description,
                   style: context.textTheme.bodySmall?.copyWith(
-                    color: context.colorScheme.onSurface.withValues(alpha: 0.6),
+                    color: context.colorScheme.onSurface.withValues(
+                      alpha: 0.6,
+                    ),
                   ),
                   textAlign: .right,
                   maxLines: 2,
                   overflow: .ellipsis,
                 ),
-                Row(
-                  children: [
-                    Expanded(child: PriceWidget(price: product.price)),
-                    CustomOutlinedButton(
-                      text: 'تعديل',
-                      icon: Icons.edit_outlined,
-                      onTap: () {
-                        context.pushNamed(
-                          UpsertProductView.routeName,
-                          extra: product,
-                        );  
-                      },
-                    ),
-                  ],
+              ],
+            ),
+          ),
+          Container(
+            padding: .symmetric(horizontal: 12.w, vertical: 8.h),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(color: context.colorScheme.outline),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(child: PriceWidget(price: product.price)),
+                CustomOutlinedButton(
+                  text: 'تعديل',
+                  icon: Icons.edit_outlined,
+                  onTap: () {
+                    context.pushNamed(
+                      UpsertProductView.routeName,
+                      extra: product,
+                    );
+                  },
                 ),
               ],
             ),
