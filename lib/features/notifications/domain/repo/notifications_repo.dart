@@ -6,4 +6,5 @@ abstract class NotificationsRepo {
   Future<void> saveNotification({required NotificationEntity notification});
   Future<ApiResult<void>> getNotifications();
   Future<ApiResult<void>> markAsRead({required String id});
+  Future<ApiResult<void>> markAllAsRead();
 }
