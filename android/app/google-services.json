@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "947607550746",
-    "project_id": "elzefir-dev",
-    "storage_bucket": "elzefir-dev.firebasestorage.app"
+    "project_number": "1057189524284",
+    "project_id": "elzefir-dbb8d",
+    "storage_bucket": "elzefir-dbb8d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:947607550746:android:52911c2af3413117720aa3",
+        "mobilesdk_app_id": "1:1057189524284:android:9d01e04329fc5816d62439",
         "android_client_info": {
           "package_name": "com.elzefir.admin"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCrQbuzT6edhEEEJj6b1eT2l8cU-NgfTkQ"
+          "current_key": "AIzaSyD8pjelajX2Rt9E7MYvy3qusrq3EoTHf8g"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:947607550746:android:a7e5617e9f22e647720aa3",
+        "mobilesdk_app_id": "1:1057189524284:android:06107869f4d9d617d62439",
         "android_client_info": {
           "package_name": "com.elzefir.app"
         }
@@ -34,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCrQbuzT6edhEEEJj6b1eT2l8cU-NgfTkQ"
+          "current_key": "AIzaSyD8pjelajX2Rt9E7MYvy3qusrq3EoTHf8g"
         }
       ],
       "services": {
