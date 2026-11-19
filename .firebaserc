@@ -9,6 +9,13 @@
           "elzefir-dash-dev"
         ]
       }
+    },
+    "elzefir-dbb8d": {
+      "hosting": {
+        "elzefir-dash": [
+          "elzefir-dash"
+        ]
+      }
     }
   }
 }
