@@ -56,11 +56,12 @@ extension ProductUpsertEventPatterns on ProductUpsertEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Upsert value)?  upsert,TResult Function( _DataChanged value)?  dataChanged,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Upsert value)?  upsert,TResult Function( _Reset value)?  reset,TResult Function( _DataChanged value)?  dataChanged,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Upsert() when upsert != null:
-return upsert(_that);case _DataChanged() when dataChanged != null:
+return upsert(_that);case _Reset() when reset != null:
+return reset(_that);case _DataChanged() when dataChanged != null:
 return dataChanged(_that);case _:
   return orElse();
 
@@ -79,11 +80,12 @@ return dataChanged(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Upsert value)  upsert,required TResult Function( _DataChanged value)  dataChanged,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Upsert value)  upsert,required TResult Function( _Reset value)  reset,required TResult Function( _DataChanged value)  dataChanged,}){
 final _that = this;
 switch (_that) {
 case _Upsert():
-return upsert(_that);case _DataChanged():
+return upsert(_that);case _Reset():
+return reset(_that);case _DataChanged():
 return dataChanged(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -101,11 +103,12 @@ return dataChanged(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Upsert value)?  upsert,TResult? Function( _DataChanged value)?  dataChanged,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Upsert value)?  upsert,TResult? Function( _Reset value)?  reset,TResult? Function( _DataChanged value)?  dataChanged,}){
 final _that = this;
 switch (_that) {
 case _Upsert() when upsert != null:
-return upsert(_that);case _DataChanged() when dataChanged != null:
+return upsert(_that);case _Reset() when reset != null:
+return reset(_that);case _DataChanged() when dataChanged != null:
 return dataChanged(_that);case _:
   return null;
 
@@ -123,10 +126,11 @@ return dataChanged(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  upsert,TResult Function( ProductUpsertReqEntity productUpsertReq)?  dataChanged,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  upsert,TResult Function()?  reset,TResult Function( ProductUpsertReqEntity productUpsertReq)?  dataChanged,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Upsert() when upsert != null:
-return upsert();case _DataChanged() when dataChanged != null:
+return upsert();case _Reset() when reset != null:
+return reset();case _DataChanged() when dataChanged != null:
 return dataChanged(_that.productUpsertReq);case _:
   return orElse();
 
@@ -145,10 +149,11 @@ return dataChanged(_that.productUpsertReq);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  upsert,required TResult Function( ProductUpsertReqEntity productUpsertReq)  dataChanged,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  upsert,required TResult Function()  reset,required TResult Function( ProductUpsertReqEntity productUpsertReq)  dataChanged,}) {final _that = this;
 switch (_that) {
 case _Upsert():
-return upsert();case _DataChanged():
+return upsert();case _Reset():
+return reset();case _DataChanged():
 return dataChanged(_that.productUpsertReq);case _:
   throw StateError('Unexpected subclass');
 
@@ -166,10 +171,11 @@ return dataChanged(_that.productUpsertReq);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  upsert,TResult? Function( ProductUpsertReqEntity productUpsertReq)?  dataChanged,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  upsert,TResult? Function()?  reset,TResult? Function( ProductUpsertReqEntity productUpsertReq)?  dataChanged,}) {final _that = this;
 switch (_that) {
 case _Upsert() when upsert != null:
-return upsert();case _DataChanged() when dataChanged != null:
+return upsert();case _Reset() when reset != null:
+return reset();case _DataChanged() when dataChanged != null:
 return dataChanged(_that.productUpsertReq);case _:
   return null;
 
@@ -202,6 +208,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
     return 'ProductUpsertEvent.upsert()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Reset implements ProductUpsertEvent {
+  const _Reset();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Reset);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+    return 'ProductUpsertEvent.reset()';
 }
 
 
@@ -407,11 +445,11 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus,  ErrorInfo? errorInfo)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.productUpsertReq,_that.formzSubmissionStatus);case _Loading() when loading != null:
+return loaded(_that.productUpsertReq,_that.formzSubmissionStatus,_that.errorInfo);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.apiErrorModel);case _:
@@ -432,11 +470,11 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus,  ErrorInfo? errorInfo)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loaded():
-return loaded(_that.productUpsertReq,_that.formzSubmissionStatus);case _Loading():
+return loaded(_that.productUpsertReq,_that.formzSubmissionStatus,_that.errorInfo);case _Loading():
 return loading();case _Success():
 return success();case _Failure():
 return failure(_that.apiErrorModel);case _:
@@ -456,11 +494,11 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( ProductUpsertReqEntity? productUpsertReq,  FormzSubmissionStatus formzSubmissionStatus,  ErrorInfo? errorInfo)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.productUpsertReq,_that.formzSubmissionStatus);case _Loading() when loading != null:
+return loaded(_that.productUpsertReq,_that.formzSubmissionStatus,_that.errorInfo);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.apiErrorModel);case _:
@@ -507,11 +545,14 @@ String toString() {
 
 
 class _Loaded implements ProductUpsertState {
-  const _Loaded({this.productUpsertReq, required this.formzSubmissionStatus});
+  const _Loaded({this.productUpsertReq, required this.formzSubmissionStatus, this.errorInfo});
   
 
  final  ProductUpsertReqEntity? productUpsertReq;
  final  FormzSubmissionStatus formzSubmissionStatus;
+/// Set when a save attempt failed: the form stays loaded (with the admin's
+/// input intact) so the attempt can simply be retried.
+ final  ErrorInfo? errorInfo;
 
 /// Create a copy of ProductUpsertState
 /// with the given fields replaced by the non-null parameter values.
@@ -523,18 +564,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.productUpsertReq, productUpsertReq) || other.productUpsertReq == productUpsertReq)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus)&&(identical(other.errorInfo, errorInfo) || other.errorInfo == errorInfo));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,productUpsertReq,formzSubmissionStatus);
+    return Object.hash(runtimeType,productUpsertReq,formzSubmissionStatus,errorInfo);
 }
 
 @override
 String toString() {
-    return 'ProductUpsertState.loaded(productUpsertReq: $productUpsertReq, formzSubmissionStatus: $formzSubmissionStatus)';
+    return 'ProductUpsertState.loaded(productUpsertReq: $productUpsertReq, formzSubmissionStatus: $formzSubmissionStatus, errorInfo: $errorInfo)';
 }
 
 
@@ -545,11 +586,11 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $ProductUpsertStateCopyWi
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- ProductUpsertReqEntity? productUpsertReq, FormzSubmissionStatus formzSubmissionStatus
+ ProductUpsertReqEntity? productUpsertReq, FormzSubmissionStatus formzSubmissionStatus, ErrorInfo? errorInfo
 });
 
 
-$ProductUpsertReqEntityCopyWith<$Res>? get productUpsertReq;
+$ProductUpsertReqEntityCopyWith<$Res>? get productUpsertReq;$ErrorInfoCopyWith<$Res>? get errorInfo;
 
 }
 /// @nodoc
@@ -562,11 +603,12 @@ class __$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? productUpsertReq = freezed,Object? formzSubmissionStatus = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? productUpsertReq = freezed,Object? formzSubmissionStatus = null,Object? errorInfo = freezed,}) {
   return _then(_Loaded(
 productUpsertReq: freezed == productUpsertReq ? _self.productUpsertReq : productUpsertReq // ignore: cast_nullable_to_non_nullable
 as ProductUpsertReqEntity?,formzSubmissionStatus: null == formzSubmissionStatus ? _self.formzSubmissionStatus : formzSubmissionStatus // ignore: cast_nullable_to_non_nullable
-as FormzSubmissionStatus,
+as FormzSubmissionStatus,errorInfo: freezed == errorInfo ? _self.errorInfo : errorInfo // ignore: cast_nullable_to_non_nullable
+as ErrorInfo?,
   ));
 }
 
@@ -581,6 +623,18 @@ $ProductUpsertReqEntityCopyWith<$Res>? get productUpsertReq {
 
   return $ProductUpsertReqEntityCopyWith<$Res>(_self.productUpsertReq!, (value) {
     return _then(_self.copyWith(productUpsertReq: value));
+  });
+}/// Create a copy of ProductUpsertState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ErrorInfoCopyWith<$Res>? get errorInfo {
+    if (_self.errorInfo == null) {
+    return null;
+  }
+
+  return $ErrorInfoCopyWith<$Res>(_self.errorInfo!, (value) {
+    return _then(_self.copyWith(errorInfo: value));
   });
 }
 }

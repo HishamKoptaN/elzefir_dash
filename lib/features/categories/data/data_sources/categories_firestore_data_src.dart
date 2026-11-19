@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/services/numeric_id_allocator.dart';
 import '../model/categories_res_model.dart';
 import '../model/category_upsert_model.dart';
 import 'categories_data_src.dart';
@@ -34,31 +35,29 @@ class CategoriesFirestoreDataSrc implements CategoriesDataSrc {
 
   @override
   Future<CategoryModel> upsert(CategoryUpsertReqModel req) async {
-    final id = req.id ?? await _nextCategoryId();
     final name = req.name ?? '';
     final image = req.image?.trim() ?? '';
-    final data = <String, dynamic>{
-      'id': id,
-      'name': name,
-      //! An empty image means "keep the one already stored".
-      if (image.isNotEmpty) 'image': image,
-    };
-    await _firestore
-        .collection(categoriesCollection)
-        .doc(id.toString())
-        .set(data, SetOptions(merge: true));
-    return CategoryModel(id: id, name: name, image: image);
-  }
+    final categories = _firestore.collection(categoriesCollection);
 
-  /// Categories are addressed by their numeric id, so new ones continue the
-  /// numbering of the highest id already stored.
-  Future<int> _nextCategoryId() async {
-    final latest = await _firestore
-        .collection(categoriesCollection)
-        .orderBy('id', descending: true)
-        .limit(1)
-        .get();
-    final highest = latest.docs.firstOrNull?['id'];
-    return (highest is num ? highest.toInt() : 0) + 1;
+    final idStart = req.id == null ? await numericIdStartAfter(categories) : 1;
+    late final int id;
+    await _firestore.runTransaction((transaction) async {
+      // The id is reserved and written in the same transaction, so concurrent
+      // saves cannot overwrite each other.
+      id =
+          req.id ??
+          await reserveNumericId(transaction, categories, startFrom: idStart);
+      transaction.set(
+        categories.doc(id.toString()),
+        <String, dynamic>{
+          'id': id,
+          'name': name,
+          //! An empty image means "keep the one already stored".
+          if (image.isNotEmpty) 'image': image,
+        },
+        SetOptions(merge: true),
+      );
+    });
+    return CategoryModel(id: id, name: name, image: image);
   }
 }

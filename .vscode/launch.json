@@ -2,43 +2,10 @@
   "version": "0.3.0",
   "configurations": [
     {
-      "name": "Flutter Local (Android 📱)",
+      "name": "Android Dev 📱",
       "type": "dart",
       "request": "launch",
-      "preLaunchTask": "Prepare Android Local Env",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--flavor",
-        "local",
-        "--dart-define=ENV=local",
-        "--track-widget-creation",
-        "--no-enable-impeller"
-      ],
-      "deviceId": "CPH2325",
-      "attachToExistingApp": false,
-      "showDebuggerOnStart": true
-    },
-    {
-      "name": "Flutter Local (Web 🌐)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=local",
-        "--web-port",
-        "8080",
-        "--web-hostname",
-        "localhost",
-        "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
-      ],
-      "deviceId": "chrome"
-    },
-    {
-      "name": "Flutter Dev (Android 📱)",
-      "type": "dart",
-      "request": "launch",
+      "preLaunchTask": "run-adb-reverse",
       "program": "lib/main.dart",
       "flutterMode": "debug",
       "args": [
@@ -53,40 +20,16 @@
       "showDebuggerOnStart": true
     },
     {
-      "name": "Flutter Dev (Web 🌐)",
+      "name": "Web Dev 🌐",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",
       "flutterMode": "debug",
       "args": [
-        "--dart-define=ENV=dev",
-        "--web-port",
-        "8080",
-        "--web-hostname",
-        "localhost",
+        "--dart-define=ENV=local",
         "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
       ],
       "deviceId": "chrome"
-    },
-    {
-      "name": "Flutter Dev (Linux 💻)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev"
-      ]
-    },
-    {
-      "name": "Flutter Dev (Windows 🖥️)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev"
-      ]
     },
   ]
 }

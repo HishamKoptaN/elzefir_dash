@@ -1,4 +1,8 @@
-import 'package:alzefr_dash/config/env_config.dart';
+/// Host that serves the backend public disk (the `/storage/…` files).
+///
+/// This is deliberately separate from the API base URL in `EnvConfig`: the
+/// dashboard API runs on a different server from the uploaded images.
+const String storageHostUrl = 'https://beige-elk-309228.hostingersite.com';
 
 /// Turns the image value stored in Firestore into something a widget can load.
 ///
@@ -11,12 +15,16 @@ String resolveStoredImageUrl(String image) {
   if (value.isEmpty) return value;
   if (Uri.parse(value).hasScheme) return value;
   if (value.startsWith('/') || value.startsWith('assets/')) return value;
-  return '${storageBaseUrl()}$value';
+  // Guard against paths that already carry the disk prefix
+  // (`storage/products/x.png`), so the URL never doubles `/storage/storage/`.
+  final path = value.replaceFirst(RegExp(r'^/+'), '').replaceFirst(
+    RegExp(r'^storage/'),
+    '',
+  );
+  return '${storageBaseUrl()}$path';
 }
 
-/// Root of the backend public disk, derived from the configured API base so it
-/// follows the environment the dashboard runs against.
+/// Root of the backend public disk holding the uploaded files.
 String storageBaseUrl() {
-  final api = Uri.parse(EnvConfig.config.baseUrl);
-  return '${api.scheme}://${api.authority}/storage/';
+  return '$storageHostUrl/storage/';
 }

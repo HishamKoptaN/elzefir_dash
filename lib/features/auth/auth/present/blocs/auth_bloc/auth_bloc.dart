@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../../../core/networking/api_result.dart';
-import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/errors/models/error_info.dart';
 import '../../../domain/usecases/auth_use_casees.dart';
 part 'auth_bloc.freezed.dart';

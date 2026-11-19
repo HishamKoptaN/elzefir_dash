@@ -29,13 +29,20 @@ class NotificationsRepoImpl implements NotificationsRepo {
   Future<ApiResult<void>> getNotifications() async {
     try {
       final res = await api.get();
-      _nots$.add([
-        ..._nots$.value,
-        ...res.notifications?.map((e) {
-              return e.toEntity();
-            }) ??
-            [],
-      ]);
+      final fetched = res.notifications?.map((e) {
+            return e.toEntity();
+          }) ??
+          [];
+      // Refresh replaces instead of appends, so repeated watch()
+      // dispatches never duplicate the list.
+      final seen = <String>{};
+      final merged = <NotificationEntity>[];
+      for (final item in [..._nots$.value, ...fetched]) {
+        if (seen.add(item.id)) {
+          merged.add(item);
+        }
+      }
+      _nots$.add(merged);
       return ApiResult.success(data: null);
     } catch (error) {
       return const ApiResult.failure(errorInfo: ErrorInfo());
@@ -53,5 +60,14 @@ class NotificationsRepoImpl implements NotificationsRepo {
     }).toList();
     _nots$.add(updatedList);
     return ApiResult.success(data: null);
+  }
+
+  @override
+  Future<ApiResult<void>> markAllAsRead() async {
+    final updatedList = _nots$.value.map((notif) {
+      return notif.copyWith(read: true);
+    }).toList();
+    _nots$.add(updatedList);
+    return const ApiResult.success(data: null);
   }
 }

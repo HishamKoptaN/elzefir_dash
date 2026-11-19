@@ -14,8 +14,6 @@ import '../../../../sign_up/domain/use_cases/sign_up_use_cases.dart';
 import '../../../domain/entities/sign_in_req_entity.dart';
 import '../../../domain/use_cases/sign_in_use_cases.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
-import 'package:flutter/material.dart';
 part 'sign_in_bloc.freezed.dart';
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';

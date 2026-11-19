@@ -1,195 +1,216 @@
-import 'package:alzefr_dash/core/routing/utils/navigation_service.dart';
-import 'package:alzefr_dash/features/products/present/view/upsert_product_view.dart';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+
 import '../../../../../core/utils/extensions/theme_ext.dart';
-import '../../../../../core/widgets/custom_image.dart';
+import '../../../../../core/utils/storage_url.dart';
 import '../../../../products/domain/entities/product_entity.dart';
-import '../../../../products/present/view/products_view.dart';
+import '../../../../products/present/view/upsert_product_view.dart';
 import '../editing_btn.dart';
 import 'category_badge_widget.dart';
+import 'product_image.dart';
 
-class ProductCard extends StatefulWidget {
+import 'price_widget.dart';
+
+/// كارت منتج بأسلوب Stitch: صورة في الأعلى، شارة التصنيف بامتداد كامل،
+/// ثم وصف مختصر، وشريط سفلي يفصل السعر وزر «تعديل» عن بقية المحتوى.
+class ProductCard extends StatelessWidget {
   final ProductEntity product;
   const ProductCard({super.key, required this.product});
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
 
-class _ProductCardState extends State<ProductCard> {
-  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
+    final imageUrl = resolveStoredImageUrl(product.image);
+
     return Container(
-      width: 900.w,
+      clipBehavior: .antiAlias,
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF),
-        borderRadius: .circular(12.r),
-        border: Border.all(
-          color: const Color(0xFFC3C7CE).withValues(alpha: 0.1),
-        ),
-        boxShadow: const [
+        color: context.colorScheme.surface,
+        borderRadius: .circular(16.r),
+        border: Border.all(color: context.colorScheme.outline),
+        boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.05),
-            offset: Offset(0, 1),
-            blurRadius: 2,
+            color: context.colorScheme.primary.withValues(alpha: 0.05),
+            offset: const Offset(0, 2),
+            blurRadius: 10,
           ),
         ],
       ),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: .stretch,
         children: [
-          GestureDetector(
-            onTap: () {
-              showGeneralDialog(
-                context: context,
-                barrierDismissible: true,
-                barrierLabel: "Close",
-                barrierColor: Colors.black87,
-                pageBuilder: (_, _, _) {
-                  return Center(
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: InteractiveViewer(
-                        minScale: 1,
-                        maxScale: 4,
-                        child: CustomImage(
-                          image: widget.product.image,
-                          fit: .contain,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
-            child: Container(
-              padding: .all(6.sp),
-              decoration: BoxDecoration(
-                color: Color(0xFFFFF1EA),
-                borderRadius: .vertical(top: Radius.circular(12.r)),
-              ),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    child: SizedBox(
-                      height: 170.h,
-                      width: .infinity,
-                      child: CustomImage(
-                        image: widget.product.image,
-                        fit: .cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 12.h,
-                    right: 10.w,
-                    child: Container(
-                      padding: .all(8.w),
-                      decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: .circular(20.r),
-                      ),
-                      child: Icon(
-                        Icons.zoom_in,
-                        size: 14.iconRes,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          Expanded(child: ProductImage(image: imageUrl)),
           Padding(
-            padding: .all(16.r),
+            padding: .fromLTRB(12.w, 10.h, 12.w, 8.h),
             child: Column(
               crossAxisAlignment: .start,
+              spacing: 6.h,
               children: [
-                Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        widget.product.title,
-                        maxLines: 2,
-                        style: context.textTheme.titleLarge?.copyWith(
-                          color: Color(0xFF28180D),
-                        ),
-                        textAlign: .right,
-                      ),
-                    ),
-                    CategoryBadgeWidget(name: widget.product.category.name),
-                  ],
+                CategoryBadgeWidget(name: product.category.name),
+                Text(
+                  product.title,
+                  maxLines: 1,
+                  overflow: .ellipsis,
+                  style: context.textTheme.titleMedium,
+                  textAlign: .right,
                 ),
-                SizedBox(height: 4.h),
-                SizedBox(
-                  width: .infinity,
-                  child: Text(
-                    widget.product.description,
-                    style: context.textTheme.bodySmall?.copyWith(
-                      color: Color(0xFF42474D),
-                    ),
-                    textAlign: .right,
-                    maxLines: 2,
-                    overflow: .ellipsis,
+                Text(
+                  product.description,
+                  style: context.textTheme.bodySmall?.copyWith(
+                    color: context.colorScheme.onSurface.withValues(alpha: 0.6),
                   ),
-                ),
-                PriceWidget(price: widget.product.price),
-                Align(
-                  alignment: Alignment.center,
-                  child: CustomOutlinedButton(
-                    text: 'تعديل',
-                    onTap: () {
-                      context.pushNamed(
-                        UpsertProductView.routeName,
-                        extra: widget.product,
-                      );
-                    },
-                  ),
+                  textAlign: .right,
+                  maxLines: 2,
+                  overflow: .ellipsis,
                 ),
               ],
+            ),
+          ),
+          Container(
+            padding: .symmetric(horizontal: 12.w, vertical: 8.h),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(color: context.colorScheme.outline),
+              ),
+            ),
+            child: _PriceActionBar(
+              spacing: 8.w,
+              price: PriceWidget(price: product.price),
+              action: CustomOutlinedButton(
+                text: 'تعديل',
+                icon: Icons.edit_outlined,
+                onTap: () {
+                  context.pushNamed(
+                    UpsertProductView.routeName,
+                    extra: product,
+                  );
+                },
+              ),
             ),
           ),
         ],
       ),
     );
   }
+}
 
-  Color accentColorCalc(Color baseColor) {
-    return const Color(0xFFF7E2D5);
+/// Lays the price and the action on one line while the price can still shrink
+/// with an ellipsis, and moves the action below the price only when the action
+/// alone is wider than the bar. Neither a [Row] (it overflows) nor a [Wrap] (it
+/// breaks the line too early) can decide that, so the bar measures the action
+/// itself.
+class _PriceActionBar extends MultiChildRenderObjectWidget {
+  _PriceActionBar({
+    required Widget price,
+    required Widget action,
+    required this.spacing,
+  }) : super(children: [price, action]);
+
+  /// Gap between the price and the action, and between the two lines.
+  final double spacing;
+
+  @override
+  _RenderPriceActionBar createRenderObject(BuildContext context) {
+    return _RenderPriceActionBar(spacing, Directionality.of(context));
+  }
+
+  @override
+  void updateRenderObject(
+    BuildContext context,
+    _RenderPriceActionBar renderObject,
+  ) {
+    renderObject
+      ..spacing = spacing
+      ..textDirection = Directionality.of(context);
   }
 }
 
-class PriceWidget extends StatelessWidget {
-  const PriceWidget({super.key, required this.price});
+class _PriceActionBarParentData extends ContainerBoxParentData<RenderBox> {}
 
-  final String price;
+class _RenderPriceActionBar extends RenderBox
+    with
+        ContainerRenderObjectMixin<RenderBox, _PriceActionBarParentData>,
+        RenderBoxContainerDefaultsMixin<RenderBox, _PriceActionBarParentData> {
+  _RenderPriceActionBar(this._spacing, this._textDirection);
+
+  double _spacing;
+  set spacing(double value) {
+    if (value == _spacing) return;
+    _spacing = value;
+    markNeedsLayout();
+  }
+
+  TextDirection _textDirection;
+  set textDirection(TextDirection value) {
+    if (value == _textDirection) return;
+    _textDirection = value;
+    markNeedsLayout();
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: .end,
-      children: [
-        Text(
-          price,
-          style: context.textTheme.titleLarge?.copyWith(
-            color: Color(0xFF001629),
-          ),
-        ),
-        SizedBox(width: 4.w),
-        Text(
-          'ج.م',
-          style: context.textTheme.titleMedium?.copyWith(
-            color: Color(0xFF001629),
-          ),
-          // style: TextStyle(
-          //   color: Color(0xFF42474D),
-          // ),
-        ),
-      ],
+  void setupParentData(RenderBox child) {
+    if (child.parentData is! _PriceActionBarParentData) {
+      child.parentData = _PriceActionBarParentData();
+    }
+  }
+
+  @override
+  void performLayout() {
+    final price = firstChild!;
+    final action = lastChild!;
+
+    // The action keeps its natural width: it is what decides the layout. It is
+    // laid out unbounded so a bar narrower than the action cannot squeeze the
+    // button's own contents.
+    action.layout(const BoxConstraints(), parentUsesSize: true);
+    final priceWidth = constraints.maxWidth - action.size.width - _spacing;
+    final stacked = priceWidth <= 0;
+
+    price.layout(
+      stacked
+          ? constraints.loosen()
+          : BoxConstraints(
+              maxWidth: priceWidth,
+              maxHeight: constraints.maxHeight,
+            ),
+      parentUsesSize: true,
     );
+
+    final height = stacked
+        ? price.size.height + _spacing + action.size.height
+        : math.max(price.size.height, action.size.height);
+    size = constraints.constrain(Size(constraints.maxWidth, height));
+
+    final priceY = stacked ? 0.0 : (size.height - price.size.height) / 2;
+    _position(price, dy: priceY);
+    _position(
+      action,
+      dy: stacked
+          ? price.size.height + _spacing
+          : (size.height - action.size.height) / 2,
+      atEnd: !stacked,
+    );
+  }
+
+  /// Aligns [child] to the start of the bar when [atEnd] is false, to its end
+  /// otherwise, following [textDirection].
+  void _position(RenderBox child, {required double dy, bool atEnd = false}) {
+    final isRtl = _textDirection == TextDirection.rtl;
+    final alignRight = atEnd ? !isRtl : isRtl;
+    final dx = alignRight ? math.max(0.0, size.width - child.size.width) : 0.0;
+    (child.parentData! as _PriceActionBarParentData).offset = Offset(dx, dy);
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    defaultPaint(context, offset);
+  }
+
+  @override
+  bool hitTestChildren(BoxHitTestResult result, {required Offset position}) {
+    return defaultHitTestChildren(result, position: position);
   }
 }

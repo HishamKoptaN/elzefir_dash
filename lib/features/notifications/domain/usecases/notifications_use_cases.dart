@@ -23,4 +23,8 @@ class NotificationsUseCases {
   Future<ApiResult<void>> markAsRead({required String id}) async {
     return await notificationsRepo.markAsRead(id: id);
   }
+
+  Future<ApiResult<void>> markAllAsRead() async {
+    return await notificationsRepo.markAllAsRead();
+  }
 }

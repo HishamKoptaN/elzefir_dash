@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:form_inputs/form_inputs.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../sign_up/domain/entities/sign_up_req_entity.dart';
 import '../sign_up/present/bloc/sign_up_bloc.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../working_hours/present/widgets/working_hours_display.dart';
 import 'contacts_items.dart';
 import 'footer_widget.dart';
 
@@ -34,12 +34,7 @@ class FooterMobileLayout extends StatelessWidget implements FooterWidget {
           child: Column(
             crossAxisAlignment: .start,
             children: [
-              Text(
-                'السبت - الخميس: 10:00 ص - 1:00 ص',
-                style: context.textTheme.bodyLarge?.copyWith(
-                  color: Colors.white70,
-                ),
-              ),
+              const WorkingHoursDisplay(compact: true),
               CustomFooterDividerWidget(),
             ],
           ),

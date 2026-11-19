@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductUpsertReqModel {
 
- int? get id; String? get image; String? get name; String? get title; String? get description; String? get price;@JsonKey(name: 'category_id') String? get categoryId;
+ int? get id; String? get image; String? get name; String? get title; String? get description; num? get price;@JsonKey(name: 'category_id') String? get categoryId;
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -54,7 +54,7 @@ abstract mixin class $ProductUpsertReqModelCopyWith<$Res>  {
   factory $ProductUpsertReqModelCopyWith(ProductUpsertReqModel value, $Res Function(ProductUpsertReqModel) _then) = _$ProductUpsertReqModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, String? price,@JsonKey(name: 'category_id') String? categoryId
+ int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId
 });
 
 
@@ -79,7 +79,7 @@ as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as String?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as num?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -165,7 +165,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel() when $default != null:
 return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
@@ -186,7 +186,7 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price, @JsonKey(name: 'category_id')  String? categoryId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel():
 return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
@@ -206,7 +206,7 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel() when $default != null:
 return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
@@ -229,7 +229,7 @@ class _ProductUpsertReqModel implements ProductUpsertReqModel {
 @override final  String? name;
 @override final  String? title;
 @override final  String? description;
-@override final  String? price;
+@override final  num? price;
 @override@JsonKey(name: 'category_id') final  String? categoryId;
 
 /// Create a copy of ProductUpsertReqModel
@@ -267,7 +267,7 @@ abstract mixin class _$ProductUpsertReqModelCopyWith<$Res> implements $ProductUp
   factory _$ProductUpsertReqModelCopyWith(_ProductUpsertReqModel value, $Res Function(_ProductUpsertReqModel) _then) = __$ProductUpsertReqModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, String? price,@JsonKey(name: 'category_id') String? categoryId
+ int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId
 });
 
 
@@ -292,7 +292,7 @@ as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as String?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as num?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

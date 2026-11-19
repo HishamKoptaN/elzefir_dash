@@ -1,18 +1,21 @@
-import 'package:alzefr_dash/core/widgets/forms/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:form_inputs/form_inputs.dart';
-import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/widgets/custom_image.dart';
-import '../../../../core/widgets/feedback/app_snackbar.dart';
+import 'package:alzefr_dash/core/di/dependency_injection.dart';
+import 'package:alzefr_dash/core/errors/models/error_info.dart';
+import 'package:alzefr_dash/core/widgets/feedback/app_snackbar.dart';
+import 'package:alzefr_dash/features/categories/present/blocs/bloc/categories_bloc.dart';
+
 import '../../domain/entities/product_entity.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
 import '../blocs/bloc/products_bloc.dart';
 import '../blocs/product_upsert_bloc/product_upsert_bloc.dart';
+import 'widgets/form/product_upsert_form.dart';
+
+String _errorMessage(ErrorInfo errorInfo) {
+  final message = errorInfo.message.trim();
+  return message.isEmpty ? 'تعذّر حفظ المنتج' : message;
+}
 
 class UpsertProductView extends StatefulWidget {
   const UpsertProductView({super.key, required this.product});
@@ -26,8 +29,10 @@ class _UpsertProductViewState extends State<UpsertProductView> {
   @override
   void initState() {
     super.initState();
+    getIt<CategoriesBloc>().add(CategoriesEvent.get());
+    final bloc = getIt<ProductUpsertBloc>();
     if (widget.product != null) {
-      getIt<ProductUpsertBloc>().add(
+      bloc.add(
         .dataChanged(
           productUpsertReq: ProductUpsertReqEntity(
             id: widget.product?.id,
@@ -39,10 +44,11 @@ class _UpsertProductViewState extends State<UpsertProductView> {
             categoryId: .dirty(
               value: widget.product?.category.id.toString() ?? '',
             ),
-            // enabled: widget.product.enabled,
           ),
         ),
       );
+    } else {
+      bloc.add(const ProductUpsertEvent.reset());
     }
   }
 
@@ -51,18 +57,31 @@ class _UpsertProductViewState extends State<UpsertProductView> {
     return BlocConsumer<ProductUpsertBloc, ProductUpsertState>(
       bloc: getIt<ProductUpsertBloc>(),
       listener: (context, state) {
-        state.maybeWhen(
-          success: () {
-            // The list is cached in a singleton bloc, so pull it again to show
-            // the image that was just uploaded.
-            getIt<ProductsBloc>().add(ProductsEvent.get());
+        state.maybeMap(
+          success: (_) {
+            getIt<ProductsBloc>().add(.get());
+            context.showSuccessSnackBar(
+              title: 'تم الحفظ',
+              message: 'تم حفظ المنتج بنجاح',
+            );
             context.pop();
           },
-          failure: (errorInfo) {
-            final message = errorInfo.message.trim().isEmpty
-                ? 'تعذّر حفظ المنتج'
-                : errorInfo.message.trim();
-            context.showErrorSnackBar(title: 'خطأ', message: message);
+          // A failed save keeps the form loaded with the admin's input, so the
+          // reason is reported here while they stay on the form to retry.
+          loaded: (loaded) {
+            final errorInfo = loaded.errorInfo;
+            if (errorInfo != null) {
+              context.showErrorSnackBar(
+                title: 'خطأ',
+                message: _errorMessage(errorInfo),
+              );
+            }
+          },
+          failure: (failure) {
+            context.showErrorSnackBar(
+              title: 'خطأ',
+              message: _errorMessage(failure.apiErrorModel),
+            );
           },
           orElse: () {},
         );
@@ -70,126 +89,10 @@ class _UpsertProductViewState extends State<UpsertProductView> {
       builder: (context, state) {
         return state.maybeMap(
           loaded: (state) {
-            return SingleChildScrollView(
-              child: Column(
-                spacing: 4.h,
-                children: [
-                  Stack(
-                    children: [
-                      ClipRRect(
-                        child: SizedBox(
-                          height: 240.h,
-                          width: .infinity,
-                          child: CustomImage(
-                            image:
-                                state
-                                    .productUpsertReq
-                                    ?.imageFile
-                                    ?.value
-                                    ?.path ??
-                                state.productUpsertReq?.imageUrl?.value ??
-                                '',
-                            fit: .cover,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 20.h,
-                        right: 10.w,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: IconButton(
-                            icon: const Icon(Icons.camera_alt),
-                            color: Colors.black,
-                            onPressed: () async {
-                              final XFile? image = await ImagePicker()
-                                  .pickImage(source: ImageSource.gallery);
-                              if (image != null) {
-                                getIt<ProductUpsertBloc>().add(
-                                  ProductUpsertEvent.dataChanged(
-                                    productUpsertReq: state.productUpsertReq!
-                                        .copyWith(
-                                          // Keep the picked file itself: its
-                                          // name and mime type are what the
-                                          // upload link is generated from.
-                                          imageFile: XFileFormInput.dirty(
-                                            image,
-                                          ),
-                                        ),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  // CustomDropDown
-                  CustomTextFormField(
-                    width: .infinity,
-                    initialValue: state.productUpsertReq?.name?.value,
-                    onChanged: (value) {
-                      getIt<ProductUpsertBloc>().add(
-                        .dataChanged(
-                          productUpsertReq: state.productUpsertReq!.copyWith(
-                            name: .dirty(value: value),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  CustomTextFormField(
-                    width: .infinity,
-                    initialValue: state.productUpsertReq?.title?.value,
-                    onChanged: (value) {
-                      getIt<ProductUpsertBloc>().add(
-                        ProductUpsertEvent.dataChanged(
-                          productUpsertReq: state.productUpsertReq!.copyWith(
-                            title: GenericFormInput.dirty(value: value),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  CustomTextFormField(
-                    width: .infinity,
-                    initialValue: state.productUpsertReq?.description?.value,
-                    onChanged: (value) {
-                      getIt<ProductUpsertBloc>().add(
-                        ProductUpsertEvent.dataChanged(
-                          productUpsertReq: state.productUpsertReq!.copyWith(
-                            description: GenericFormInput.dirty(value: value),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  CustomTextFormField(
-                    width: .infinity,
-                    initialValue: state.productUpsertReq?.price?.value,
-                    onChanged: (v) {
-                      getIt<ProductUpsertBloc>().add(
-                        ProductUpsertEvent.dataChanged(
-                          productUpsertReq: state.productUpsertReq!.copyWith(
-                            price: GenericFormInput.dirty(value: v),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  FilledButton(
-                    onPressed: () {
-                      getIt<ProductUpsertBloc>().add(
-                        const ProductUpsertEvent.upsert(),
-                      );
-                    },
-                    child: state.formzSubmissionStatus.isInProgress
-                        ? const CircularProgressIndicator()
-                        : const Text('حفظ'),
-                  ),
-                ],
-              ),
+            return ProductUpsertForm(
+              req: state.productUpsertReq ?? const ProductUpsertReqEntity(),
+              status: state.formzSubmissionStatus,
+              isNew: widget.product == null,
             );
           },
           orElse: () {

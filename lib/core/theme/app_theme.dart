@@ -1,4 +1,3 @@
-import 'package:alzefr_dash/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
@@ -9,29 +8,73 @@ class AppTheme {
   static const AppColors _light = LightColors();
   static const AppColors _dark = DarkColors();
   static ThemeData lightTheme(BuildContext context) {
+    final textTheme = getLightTextTheme(context: context);
+    final colorScheme = ColorScheme.light(
+      primary: _light.primary,
+      onPrimary: Colors.white,
+      secondary: const Color(0xFF48A999),
+      onSecondary: Colors.white,
+      tertiary: const Color(0xFFFF7F50),
+      onTertiary: Colors.white,
+      surface: _light.surface,
+      surfaceContainer: _light.surface,
+      surfaceContainerHigh: const Color(0xFFF1F5F9),
+      surfaceContainerHighest: const Color(0xFFE2E8F0),
+      onSurface: _light.textPrimary,
+      outline: const Color(0xFFE2E8F0),
+      error: AppColors.danger,
+    );
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      fontFamily: 'FreeSerif',
+      fontFamily: 'Cairo',
       scaffoldBackgroundColor: _light.background,
-      textTheme: getLightTextTheme(context: context),
-      colorScheme: ColorScheme.light(
-        primary: _light.primary,
-        onPrimary: Colors.white,
-        secondary: const Color(0xFFFBECE6),
-        tertiary: const Color(0xFFC88A67),
-        surface: _light.background,
-        surfaceContainer: _light.surface,
-        error: AppColors.danger,
-        onSurface: _light.textPrimary,
-      ),
+      textTheme: textTheme,
+      colorScheme: colorScheme,
 
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
-        centerTitle: true,
-        titleTextStyle: context.textTheme.displayLarge,
-        foregroundColor: Colors.black,
-        toolbarTextStyle: context.textTheme.bodyLarge,
+        centerTitle: false,
+        elevation: 0,
+        scrolledUnderElevation: 1,
+        titleTextStyle: textTheme.titleLarge?.copyWith(
+          color: _light.textPrimary,
+        ),
+        foregroundColor: _light.primary,
+        toolbarTextStyle: textTheme.bodyLarge,
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: _light.surface,
+        elevation: 2,
+        indicatorColor: _light.primary.withValues(alpha: 0.12),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          return IconThemeData(
+            color: states.contains(WidgetState.selected)
+                ? _light.primary
+                : _light.textSecondary,
+          );
+        }),
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final selected = states.contains(WidgetState.selected);
+          return textTheme.labelLarge!.copyWith(
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            color: selected ? _light.primary : _light.textSecondary,
+          );
+        }),
+      ),
+      navigationRailTheme: NavigationRailThemeData(
+        backgroundColor: _light.surface,
+        indicatorColor: _light.primary.withValues(alpha: 0.12),
+        indicatorShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+        ),
+        selectedLabelTextStyle: textTheme.labelLarge?.copyWith(
+          fontWeight: FontWeight.w700,
+          color: _light.primary,
+        ),
+        unselectedLabelTextStyle: textTheme.labelLarge?.copyWith(
+          color: _light.textSecondary,
+        ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
@@ -45,7 +88,12 @@ class AppTheme {
         color: Colors.white,
         strokeWidth: 2,
       ),
-      cardTheme: CardThemeData(color: _light.surface, elevation: 4),
+      cardTheme: CardThemeData(
+        color: _light.surface,
+        elevation: 1,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: .circular(14.r)),
+      ),
       tooltipTheme: TooltipThemeData(
         textStyle: TextStyle(fontSize: 20.sp.rf(context), color: Colors.white),
         decoration: BoxDecoration(
@@ -61,7 +109,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 14.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+          shape: RoundedRectangleBorder(borderRadius: .circular(10.r)),
           backgroundColor: _light.primary,
           foregroundColor: Colors.white,
           disabledBackgroundColor: _light.textSecondary.withValues(alpha: 0.24),
@@ -70,14 +118,14 @@ class AppTheme {
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          textStyle: context.textTheme.labelLarge,
+          textStyle: textTheme.labelLarge,
           minimumSize: Size(120.w, 48.h),
           maximumSize: Size(.infinity, 48.h),
-          backgroundColor: context.colorScheme.primary,
-          foregroundColor: context.colorScheme.onPrimary,
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
           elevation: 0,
           shape: RoundedRectangleBorder(borderRadius: .circular(8.r)),
-          padding: EdgeInsets.symmetric(horizontal: 64.w, vertical: 0.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0.h),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -147,7 +195,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      fontFamily: 'NotoNaskhArabic',
+      fontFamily: 'Cairo',
       scaffoldBackgroundColor: _dark.background,
       colorScheme: ColorScheme.dark(
         primary: _dark.primary,

@@ -5,13 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/errors/error_handler.dart';
+import '../../../../core/errors/models/error_info.dart';
 import '../../../../core/networking/api_result.dart';
+import '../../../../core/services/numeric_id_allocator.dart';
+import '../../../../core/services/presigned_image_uploader.dart';
+import '../../../../core/utils/price_input.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
 import '../../../profile/data/mappers/profile_model_mapper.dart';
 import '../../../profile/data/models/presigned_url_req_model.dart';
 import '../../domain/entities/product_upsert_req_entity.dart';
 import '../../domain/repo/products_repo.dart';
-import '../../../../core/services/presigned_image_uploader.dart';
 import '../data_sources/products_api.dart';
 import '../model/product_model.dart';
 
@@ -36,7 +39,9 @@ class ProductsRepoImpl implements ProductsRepo {
           .get()
           .timeout(const Duration(seconds: 15));
       final products = querySnapshot.docs.map((doc) {
-        return ProductModel.fromJson(doc.data()).toEntity();
+        return ProductModel.fromJson(
+          normalizeProductJson(doc.data()),
+        ).toEntity();
       }).toList();
       return ApiResult.success(data: products);
     } catch (e, s) {
@@ -87,50 +92,61 @@ class ProductsRepoImpl implements ProductsRepo {
     required ProductUpsertReqEntity req,
   }) async {
     try {
-      final categoryId = int.tryParse(req.categoryId?.value ?? '');
-      final id = req.id ?? await _nextProductId();
-      final image = req.imageUrl?.value?.trim();
-      final data = <String, dynamic>{
-        'id': id,
-        'name': req.name?.value ?? '',
-        'title': req.title?.value ?? '',
-        'description': req.description?.value ?? '',
-        'price': req.price?.value ?? '',
-        if (categoryId != null) 'category_id': categoryId,
-        // Keep the previous image when the form was saved without picking one.
-        if (image != null && image.isNotEmpty) 'image': image,
-      };
+      // A product carries a single price; validate and normalize it here so an
+      // invalid price can never be written from any entry point.
+      final price = parsePriceNumber(req.price?.value ?? '');
+      if (price == null) {
+        return ApiResult.failure(
+          errorInfo: const ErrorInfo(message: 'أدخل سعرًا رقميًا صالحًا'),
+        );
+      }
 
-      await _firestore
-          .collection(_productsCollection)
-          .doc(id.toString())
-          .set(data, SetOptions(merge: true));
+      final categoryId = int.tryParse(req.categoryId?.value ?? '');
+      final image = req.imageUrl?.value.trim() ?? '';
+      final products = _firestore.collection(_productsCollection);
+      final name = req.name?.value ?? '';
+      final title = req.title?.value ?? '';
+      final description = req.description?.value ?? '';
+
+      // Only new products need an id; an existing one keeps the id it has.
+      final idStart = req.id == null ? await numericIdStartAfter(products) : 1;
+      late final int id;
+      await _firestore.runTransaction((transaction) async {
+        // Claiming the id and writing the document in the same transaction
+        // keeps two concurrent saves from taking the same product id.
+        id =
+            req.id ??
+            await reserveNumericId(transaction, products, startFrom: idStart);
+        transaction.set(
+          products.doc(id.toString()),
+          {
+            'id': id,
+            'name': name,
+            'title': title,
+            'description': description,
+            'price': price,
+            if (categoryId != null) 'category_id': categoryId,
+            // Keep the previous image when the form was saved without picking one.
+            if (image.isNotEmpty) 'image': image,
+            'price_updated_at': FieldValue.serverTimestamp(),
+          },
+          SetOptions(merge: true),
+        );
+      });
 
       return ApiResult.success(
         data: ProductEntity(
           id: id,
-          name: data['name'] as String,
-          title: data['title'] as String,
-          description: data['description'] as String,
-          price: data['price'] as String,
-          image: image ?? '',
+          name: name,
+          title: title,
+          description: description,
+          price: priceToText(price),
+          image: image,
           category: CategoryEntity(id: categoryId ?? 0),
         ),
       );
     } catch (e, s) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
     }
-  }
-
-  /// Products are addressed by their numeric id, so new ones continue the
-  /// numbering of the highest id already stored.
-  Future<int> _nextProductId() async {
-    final latest = await _firestore
-        .collection(_productsCollection)
-        .orderBy('id', descending: true)
-        .limit(1)
-        .get();
-    final highest = latest.docs.firstOrNull?['id'];
-    return (highest is num ? highest.toInt() : 0) + 1;
   }
 }

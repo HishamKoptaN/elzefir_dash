@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
@@ -7,8 +6,8 @@ import 'package:formz/formz.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/routing/utils/navigation_service.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../core/widgets/bg_container_widget.dart';
 import '../../../../core/widgets/contact_field_widget.dart';
@@ -43,7 +42,10 @@ class _ProfileViewState extends State<ProfileView> {
       if (image != null && mounted) {
         return File(image.path);
       }
-    } catch (e) {}
+    } catch (e) {
+      // الهاتف قد يرفض تغيير الصورة (permissions/مسار غير صالح) — لا نخنق
+      // الشاشة؛ يبقى الاختيار السابق كما هو.
+    }
     return null;
   }
 
@@ -62,7 +64,7 @@ class _ProfileViewState extends State<ProfileView> {
             context.showSuccessSnackBar(title: 'تم تحديث الملف الشخصي بنجاح');
           },
           failure: (apiErrorModel) {
-            context.showErrorSnackBar(title: apiErrorModel.title ?? '');
+            context.showErrorSnackBar(title: apiErrorModel.title);
           },
         );
       },
@@ -125,11 +127,8 @@ class _ProfileViewState extends State<ProfileView> {
                             children: [
                               Text(
                                 'بيانات الاتصال',
-                                style: TextStyle(
-                                  fontSize: 22.sp,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1,
+                                style: context.textTheme.titleLarge?.copyWith(
+                                  color: context.colorScheme.onSurface,
                                 ),
                               ),
                             ],
@@ -172,16 +171,17 @@ class _ProfileViewState extends State<ProfileView> {
                                 textDirection: TextDirection.ltr,
                                 child: FilledButton.icon(
                                   style: FilledButton.styleFrom(
-                                    backgroundColor:
-                                        (state.updatedProfile == null &&
-                                                state.updatedProfile == null
-                                            ? true
-                                            : (state.updatedProfile?.isEdited(
-                                                    original: state.profile,
-                                                  ) ??
-                                                  false))
-                                        ? LightColors().primary
-                                        : Colors.grey,
+                                    backgroundColor: state.updatedProfile
+                                            ?.isEdited(original: state.profile) ??
+                                        false
+                                        ? context.colorScheme.primary
+                                        : context.colorScheme.onSurface
+                                            .withValues(alpha: 0.12),
+                                    foregroundColor: state.updatedProfile
+                                            ?.isEdited(original: state.profile) ??
+                                        false
+                                        ? null
+                                        : context.colorScheme.onSurface,
                                   ),
                                   onPressed: () {
                                     if (state.updatedProfile?.isEdited(
@@ -209,10 +209,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           state.updatedProfile == null
                                               ? 'تعديل'
                                               : 'حفظ التغييرات',
-                                          style: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                          style: context.textTheme.labelLarge,
                                         ),
                                 ),
                               ),
@@ -227,10 +224,7 @@ class _ProfileViewState extends State<ProfileView> {
                                   },
                                   child: Text(
                                     'إلغاء',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    style: context.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.w600),
                                   ),
                                 ),
                             ],
@@ -249,7 +243,7 @@ class _ProfileViewState extends State<ProfileView> {
           },
           failure: (state) {
             return CustomErrorWidget(
-              message: state.apiErrorModel.message ?? '',
+              message: state.apiErrorModel.message,
               onRetry: () =>
                   getIt<ProfileBloc>().add(const ProfileEvent.getProfile()),
               retryText: 'retry',

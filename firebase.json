@@ -1,5 +1,9 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "hosting": {
+    "target": "elzefir-dash-dev",
     "public": "build/web",
     "ignore": [
       "firebase.json",

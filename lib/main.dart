@@ -1,20 +1,25 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'alzafr_dash.dart';
 import 'config/env_config.dart';
 import 'core/debug/utils/app_observer.dart';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+
 import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart' as intl;  
+import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl_standalone.dart';
-import 'core/services/pusher_service.dart';
+
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
+
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
+
 import 'package:device_preview/device_preview.dart';
 
 Future<void> main() async {

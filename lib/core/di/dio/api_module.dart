@@ -6,7 +6,6 @@ import '../../../config/envs/dev_env.dart';
 import '../../../config/envs/prod_env.dart';
 import '../../globals/database/shared_pref_helper.dart';
 import '../../globals/database/shared_pref_keys.dart';
-import '../dependency_injection.dart';
 
 @module
 abstract class ApiModule {

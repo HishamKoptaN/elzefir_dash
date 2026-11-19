@@ -10,15 +10,17 @@ class CategoryBadgeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 12.w),
+      padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 10.w),
       decoration: BoxDecoration(
-        color: context.colorScheme.secondary,
-        borderRadius: BorderRadius.circular(8),
+        color: context.colorScheme.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
         name,
+        maxLines: 1,
+        overflow: .ellipsis,
         style: context.textTheme.titleSmall?.copyWith(
-          color: context.colorScheme.tertiary,
+          color: context.colorScheme.onSurface.withValues(alpha: 0.7),
         ),
       ),
     );

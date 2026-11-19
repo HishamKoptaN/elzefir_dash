@@ -17,12 +17,9 @@ jobs:
           channel: "stable"
           cache: true
       - run: flutter build web --release --dart-define=ENV=${{ github.base_ref }}
-      - name: Set hosting site for environment
-        run: |
-          jq --arg site "${{ vars.HOSTING_SITE }}" '.hosting.site = $site' firebase.json > firebase.tmp.json && mv firebase.tmp.json firebase.json
-      - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: ${{ vars.PROJECT_ID }}
+          target: ${{ vars.TARGET }}

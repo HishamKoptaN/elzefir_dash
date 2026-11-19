@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +6,7 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:phone_input/phone_input_package.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../auth/widgets/custom_auth_text_form_field.dart';
 import '../../../domain/entities/profile_entity.dart';
 import '../../bloc/profile_bloc.dart';
@@ -40,7 +40,9 @@ class ProfilePhoneWidget extends StatelessWidget {
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: IconTheme(
-                data: const IconThemeData(color: Colors.black),
+                data: IconThemeData(
+                  color: context.colorScheme.onSurface,
+                ),
                 child: PhoneInput(
                   initialValue: PhoneNumber(
                     isoCode: IsoCode.values.firstWhere(
@@ -177,12 +179,12 @@ class ProfilePhoneWidget extends StatelessWidget {
                   countryCodeStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 24.sp,
-                    color: Colors.black,
+                    color: context.colorScheme.onSurface,
                   ),
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 24.sp,
-                    color: Colors.black,
+                    color: context.colorScheme.onSurface,
                   ),
                 ),
               ),

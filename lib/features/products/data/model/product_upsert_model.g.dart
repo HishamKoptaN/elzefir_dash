@@ -14,7 +14,7 @@ _ProductUpsertReqModel _$ProductUpsertReqModelFromJson(
   name: json['name'] as String?,
   title: json['title'] as String?,
   description: json['description'] as String?,
-  price: json['price'] as String?,
+  price: json['price'] as num?,
   categoryId: json['category_id'] as String?,
 );
 

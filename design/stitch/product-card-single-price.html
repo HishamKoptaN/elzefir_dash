@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كارت منتج فاخر - أسماك الزفر</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#124370',
+              'navy-dark': '#0b2b48',
+              'navy-light': '#1e5990',
+              coral: '#F47A53',
+              'coral-light': '#ff8e68',
+              'coral-soft': '#FFF1EC',
+              ice: '#F4FAFD',
+              card: '#FFFFFF',
+              muted: '#627685',
+              border: '#E2EBF1',
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'Be Vietnam Pro', 'sans-serif'],
+          },
+          boxShadow: {
+            'card-subtle': '0 4px 20px -2px rgba(18, 67, 112, 0.06), 0 2px 6px -1px rgba(18, 67, 112, 0.04)',
+            'card-hover': '0 12px 28px -4px rgba(18, 67, 112, 0.12), 0 4px 10px -2px rgba(18, 67, 112, 0.06)',
+            'badge': '0 2px 6px rgba(0, 0, 0, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', 'Be Vietnam Pro', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#F4FAFD] to-[#E9F2F7] min-h-screen p-4 flex flex-col justify-start items-center">
+  
+  <!-- Container with showcase context -->
+  <div class="w-full max-w-md mx-auto space-y-4 pt-2 pb-10">
+
+    <!-- Mini Header Bar for Context -->
+    <div class="flex items-center justify-between px-2 pt-2 pb-1">
+      <div>
+        <span class="text-xs font-bold tracking-wider text-brand-coral uppercase">تصميم كروت المنيو المحدثة</span>
+        <h1 class="text-lg font-extrabold text-brand-navy">الأطباق والأسماك المميزة</h1>
+      </div>
+      <div class="flex items-center gap-1.5 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-brand-border/60 shadow-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-[11px] font-bold text-brand-navy">طازج يومياً</span>
+      </div>
+    </div>
+
+    <!-- PRIMARY IMPROVED PRODUCT CARD (Focused showcase matching user prompt precisely) -->
+    <div class="group relative bg-brand-card rounded-2xl p-3 border border-brand-border/80 shadow-card-subtle hover:shadow-card-hover transition-all duration-300">
+      <div class="flex items-center gap-3.5">
+        
+        <!-- Image Box (112x112 rounded with category badge) -->
+        <div class="relative w-[112px] h-[112px] shrink-0 rounded-xl overflow-hidden bg-slate-100 ring-1 ring-black/5">
+          <img 
+            src="https://lh3.googleusercontent.com/aida/ALJJyrCI7Jg-NebPlM7-_R6UmtSm_6rZl-rs1EZ1SmcAwj5k1oApu-DatuFDFkANTR5z6oQLbjGSCdlv6orYjn8kznJFRw-PbS0UEMZMdUVvdiZTOQpoBx4b9UqrJPqVMVthC1ua3xViU5ZxbwVw0R8nJbfSIjoIsgdolrWVvPlAcruRE_7tDnX0Tjaqi8fIVfupNFrggtxk82oQiIIPyRFq2I2c14aLt-NVtGVR_kBW38Q7Kz9B05WSdp-UrZ4s" 
+            alt="سمك بوري سنجاري فاخر" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none"></div>
+          
+          <!-- Category Badge overlay -->
+          <div class="absolute top-2 right-2">
+            <span class="inline-flex items-center gap-1 bg-brand-navy/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-badge backdrop-blur-xs border border-white/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-coral"></span>
+              سنجاري
+            </span>
+          </div>
+
+          <!-- Bottom micro badge -->
+          <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center text-[9px] text-white font-medium">
+            <span class="bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[11px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.9
+            </span>
+            <span class="bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded text-[8.5px]">500 جم</span>
+          </div>
+        </div>
+
+        <!-- Product Content (Title, 2-line description, Price in navy, Action button) -->
+        <div class="flex-1 min-w-0 flex flex-col justify-between self-stretch py-0.5">
+          <div>
+            <!-- Header Row: Title & Favorite -->
+            <div class="flex items-start justify-between gap-1 mb-1">
+              <h2 class="text-base font-extrabold text-brand-navy leading-snug tracking-tight truncate group-hover:text-brand-navy-light transition-colors">
+                سمك بوري سنجاري فاخر
+              </h2>
+              <button class="text-slate-400 hover:text-brand-coral p-1 -mt-1 -ml-1 transition-colors rounded-full active:scale-90" aria-label="حفظ بالمفضلة">
+                <span class="material-symbols-outlined text-[19px]">favorite</span>
+              </button>
+            </div>
+
+            <!-- 2-Line Description -->
+            <p class="text-xs text-brand-muted leading-relaxed line-clamp-2 font-normal">
+              مفتوح سنجاري متبل بخلطة الخضار السرية مع زيت الزيتون والليمون المعصفر والتسوية الممتازة في الفرن.
+            </p>
+          </div>
+
+          <!-- Price & Action Row -->
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+            <!-- Price Block in Navy Blue (#124370) -->
+            <div class="flex items-baseline gap-1">
+              <span class="text-lg font-black text-brand-navy leading-none">180</span>
+              <span class="text-xs font-bold text-brand-navy/80">ج.م</span>
+              <span class="text-[10px] text-slate-400 font-medium mr-1">/ وجبة</span>
+            </div>
+
+            <!-- Premium Order Button with Coral Accent (#F47A53) -->
+            <button class="inline-flex items-center gap-1.5 bg-brand-coral hover:bg-brand-coral-light active:bg-[#d9633e] text-white px-3.5 py-1.5 rounded-xl font-bold text-xs shadow-md shadow-brand-coral/25 active:scale-95 transition-all duration-200">
+              <span>إضافة</span>
+              <span class="material-symbols-outlined text-[15px]">add_shopping_cart</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECOND CARD VARIANT (Demonstrating consistency across other seafood items) -->
+    <div class="group relative bg-brand-card rounded-2xl p-3 border border-brand-border/80 shadow-card-subtle hover:shadow-card-hover transition-all duration-300">
+      <div class="flex items-center gap-3.5">
+        
+        <!-- Image Box (112x112 rounded with category badge) -->
+        <div class="relative w-[112px] h-[112px] shrink-0 rounded-xl overflow-hidden bg-slate-100 ring-1 ring-black/5">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1t5W2iyXYP6IhpqSMxwP_eu9FhfVorl9QbKtwy-rzup0KNFiTzphjDGH8UAf6UWlmVhfqjW4cD7nrRZN8P0th3zxXr3eMXhcsbiEdQla2cZr2TLqcZW1wuJ7YFG4IKeKs77jMYM-HiU5DVIpdqysPYPMuvr5OPDTO2C8vKvrsMfv2Q4nQwwcuvmCxXSO-RpDPxJOxXg_O85MDjs6j1xE657XUUCVPxKD3WaSShVLT82HOhqOur4YOTBMaEe9Zwq3JhpW_pyS2HRWM" 
+            alt="طاجن مأكولات بحرية فيليه" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none"></div>
+          
+          <!-- Category Badge overlay -->
+          <div class="absolute top-2 right-2">
+            <span class="inline-flex items-center gap-1 bg-brand-navy/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-badge backdrop-blur-xs border border-white/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-coral"></span>
+              طواجن
+            </span>
+          </div>
+
+          <!-- Bottom micro badge -->
+          <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center text-[9px] text-white font-medium">
+            <span class="bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[11px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.8
+            </span>
+            <span class="bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded text-[8.5px]">طاجن فخار</span>
+          </div>
+        </div>
+
+        <!-- Product Content -->
+        <div class="flex-1 min-w-0 flex flex-col justify-between self-stretch py-0.5">
+          <div>
+            <!-- Header Row -->
+            <div class="flex items-start justify-between gap-1 mb-1">
+              <h2 class="text-base font-extrabold text-brand-navy leading-snug tracking-tight truncate group-hover:text-brand-navy-light transition-colors">
+                طاجن مأكولات بحرية فيليه
+              </h2>
+              <button class="text-slate-400 hover:text-brand-coral p-1 -mt-1 -ml-1 transition-colors rounded-full active:scale-90" aria-label="حفظ بالمفضلة">
+                <span class="material-symbols-outlined text-[19px]">favorite</span>
+              </button>
+            </div>
+
+            <!-- 2-Line Description -->
+            <p class="text-xs text-brand-muted leading-relaxed line-clamp-2 font-normal">
+              قطع فيليه طازجة ومخلية مع صوص الزفر السري وخضار مشوي بالفرن ونكهة بلدية غنية ومسبكة.
+            </p>
+          </div>
+
+          <!-- Price & Action Row -->
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+            <!-- Price in Navy Blue -->
+            <div class="flex items-baseline gap-1">
+              <span class="text-lg font-black text-brand-navy leading-none">195</span>
+              <span class="text-xs font-bold text-brand-navy/80">ج.م</span>
+              <span class="text-[10px] text-slate-400 font-medium mr-1">/ طاجن</span>
+            </div>
+
+            <!-- Add Button in Coral -->
+            <button class="inline-flex items-center gap-1.5 bg-brand-coral hover:bg-brand-coral-light active:bg-[#d9633e] text-white px-3.5 py-1.5 rounded-xl font-bold text-xs shadow-md shadow-brand-coral/25 active:scale-95 transition-all duration-200">
+              <span>إضافة</span>
+              <span class="material-symbols-outlined text-[15px]">add_shopping_cart</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- THIRD CARD VARIANT (Fried Tilapia / المقلي الذهبي) -->
+    <div class="group relative bg-brand-card rounded-2xl p-3 border border-brand-border/80 shadow-card-subtle hover:shadow-card-hover transition-all duration-300">
+      <div class="flex items-center gap-3.5">
+        
+        <!-- Image Box (112x112 rounded with category badge) -->
+        <div class="relative w-[112px] h-[112px] shrink-0 rounded-xl overflow-hidden bg-slate-100 ring-1 ring-black/5">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5hqaiJkrJklVpkhGBcr9VxUp5JUTlw7Kg3xyiw4FmMR9vCL6yzmyClYmAatEt9VNyrVob4K3lbdNiQ4pxIqm4_kY_9flhtjZLfU0dlD_f-ZirVBjyMhc5LvqfL2FeX_qM80iZ0gbYm6-OVNyVj-UPcHm1NFmiMdCmXJah48WxiNa4SbLE1KofDtmidQRAZeWV9c1F9jZnOpz4dZVbbqm7Ia2qMQpX4uXIxk15OiGvMHzXzjCsaesys_rjN2Fkj9mwZceYDEpH9V-z" 
+            alt="سمك بلطي مقلي ذهبي" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none"></div>
+          
+          <!-- Category Badge overlay -->
+          <div class="absolute top-2 right-2">
+            <span class="inline-flex items-center gap-1 bg-brand-navy/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-badge backdrop-blur-xs border border-white/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-coral"></span>
+              مقلي مقرمش
+            </span>
+          </div>
+
+          <!-- Bottom micro badge -->
+          <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center text-[9px] text-white font-medium">
+            <span class="bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[11px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.9
+            </span>
+            <span class="bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded text-[8.5px]">مقصوص الزعانف</span>
+          </div>
+        </div>
+
+        <!-- Product Content -->
+        <div class="flex-1 min-w-0 flex flex-col justify-between self-stretch py-0.5">
+          <div>
+            <!-- Header Row -->
+            <div class="flex items-start justify-between gap-1 mb-1">
+              <h2 class="text-base font-extrabold text-brand-navy leading-snug tracking-tight truncate group-hover:text-brand-navy-light transition-colors">
+                سمك بلطي مقلي ذهبي
+              </h2>
+              <button class="text-slate-400 hover:text-brand-coral p-1 -mt-1 -ml-1 transition-colors rounded-full active:scale-90" aria-label="حفظ بالمفضلة">
+                <span class="material-symbols-outlined text-[19px]">favorite</span>
+              </button>
+            </div>
+
+            <!-- 2-Line Description -->
+            <p class="text-xs text-brand-muted leading-relaxed line-clamp-2 font-normal">
+              بلطي بلدي طازج مقلي ذهبي بتتبيلة الشيف الخاصة مع ليمون وبقدونس طازج ورشة بهار الزفر الشهية.
+            </p>
+          </div>
+
+          <!-- Price & Action Row -->
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+            <!-- Price in Navy Blue -->
+            <div class="flex items-baseline gap-1">
+              <span class="text-lg font-black text-brand-navy leading-none">120</span>
+              <span class="text-xs font-bold text-brand-navy/80">ج.م</span>
+              <span class="text-[10px] text-slate-400 font-medium mr-1">/ كجم</span>
+            </div>
+
+            <!-- Add Button in Coral -->
+            <button class="inline-flex items-center gap-1.5 bg-brand-coral hover:bg-brand-coral-light active:bg-[#d9633e] text-white px-3.5 py-1.5 rounded-xl font-bold text-xs shadow-md shadow-brand-coral/25 active:scale-95 transition-all duration-200">
+              <span>إضافة</span>
+              <span class="material-symbols-outlined text-[15px]">add_shopping_cart</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Quick Specifications Badge Explaining Design Upgrades -->
+    <div class="bg-white/70 backdrop-blur-md rounded-xl p-3 border border-brand-border/60 text-[11px] text-brand-muted flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-brand-navy shrink-0"></span>
+        <span>كحلي <span class="font-mono text-brand-navy font-bold">#124370</span></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-brand-coral shrink-0"></span>
+        <span>مرجاني <span class="font-mono text-brand-coral font-bold">#F47A53</span></span>
+      </div>
+      <div class="flex items-center gap-1">
+        <span class="material-symbols-outlined text-[13px] text-slate-400">aspect_ratio</span>
+        <span class="font-bold text-slate-600">112×112px</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

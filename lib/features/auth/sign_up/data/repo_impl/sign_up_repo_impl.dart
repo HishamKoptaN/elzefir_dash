@@ -11,7 +11,6 @@ import '../../../../../../core/di/dio/api_module.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/services/token_service.dart';
 import '../../../../../core/services/device_service.dart';
-import '../../../../firebase_messaging/firebase_messaging_service.dart';
 import '../data_sources/sign_up_api.dart';
 import '../mappers/sign_up_mapper.dart';
 

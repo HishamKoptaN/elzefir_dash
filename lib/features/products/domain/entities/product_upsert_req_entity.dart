@@ -1,5 +1,5 @@
-import 'package:form_inputs/form_inputs.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:form_inputs/form_inputs.dart';
 part 'product_upsert_req_entity.freezed.dart';
 
 @freezed

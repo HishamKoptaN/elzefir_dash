@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/extensions/theme_ext.dart';
-import '../../../../core/widgets/custom_image.dart';
+
 import 'dart:ui';
 
-import '../../../../generated/assets.gen.dart';
 
 class OfferWidget extends StatelessWidget {
   const OfferWidget({super.key});
@@ -20,7 +20,7 @@ class OfferWidget extends StatelessWidget {
           fit: .expand,
           textDirection: .rtl,
           children: [
-            CustomImage(image: Assets.mock.offer.path, fit: .cover),
+            //CustomImage(image: Assets.mock.offer.path, fit: .cover),
             Container(
               padding: const .symmetric(horizontal: 16, vertical: 6),
               decoration: BoxDecoration(

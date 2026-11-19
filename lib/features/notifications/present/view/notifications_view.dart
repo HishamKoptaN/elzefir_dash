@@ -4,120 +4,137 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/widgets/navigation/custom_app_bar.dart';
-import '../../domain/entities/notification_entity.dart';
-import '../../domain/repo/notifications_repo.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../core/widgets/feedback/empty_widget.dart';
+import '../../../../core/widgets/feedback/error_content_widget.dart';
 import '../bloc/notifications_bloc.dart';
 import 'widgets/notification_item.dart';
 
-class NotificationsView extends StatefulWidget {
+class NotificationsView extends StatelessWidget {
   const NotificationsView({super.key});
   static const String routeName = 'notifications';
-  @override
-  State<NotificationsView> createState() => _NotificationsViewState();
-}
-
-class _NotificationsViewState extends State<NotificationsView> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'الإشعارات'),
-      body: Container(
-        color: const Color(0xFFFFFFFF),
-        width: double.infinity,
-        height: double.infinity,
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFFF7F7F7),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 8),
-                BlocBuilder<NotificationsBloc, NotificationsState>(
-                  bloc: getIt<NotificationsBloc>(),
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      loaded: (state) {
-                        return ListView.separated(
-                          shrinkWrap: true,
-                          itemCount: state.notifications?.length ?? 0,
-                          itemBuilder: (context, i) {
-                            return NotificationItem(
-                              notification: state.notifications![i],
-                            );
-                          },
-                          separatorBuilder: (context, i) {
-                            return Gap(10.h);
-                          },
-                        );
-                      },
-                      initial: (state) {
-                        getIt<NotificationsBloc>().add(
-                          const NotificationsEvent.watch(),
-                        );
-                        return const SizedBox.shrink();
-                      },
-                      orElse: () {
-                        return const SizedBox();
-                      },
-                    );
-                  },
-                ),
-                // ...sectionsToShow.entries.expand(
-                //   (entry) => [
-                //     _SectionLabel(text: entry.key),
-                //     _NotificationsCard(items: entry.value),
-                //     const SizedBox(height: 16),
-                //   ],
-                // ),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return NotificationsBody(
+      bloc: getIt<NotificationsBloc>(),
     );
   }
+}
 
-  Widget _buildNotificationItem({required NotificationEntity notification}) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      color: notification.read ? Colors.white : const Color(0xFFE8EAF6),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 25.r,
-            backgroundColor: Colors.grey[200],
-            child: Icon(Icons.notifications, color: Colors.blueAccent),
-          ),
-          Gap(12.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+class NotificationsBody extends StatelessWidget {
+  const NotificationsBody({super.key, required this.bloc});
+
+  final NotificationsBloc bloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<NotificationsBloc, NotificationsState>(
+      bloc: bloc,
+      builder: (context, state) {
+        return state.maybeMap(
+          loaded: (state) {
+            final notifications = state.notifications ?? [];
+            final unreadCount = state.unreadCount ?? 0;
+            return Column(
               children: [
-                Text(
-                  notification.title,
-                  style: TextStyle(
-                    fontWeight: notification.read
-                        ? FontWeight.normal
-                        : FontWeight.bold,
+                Padding(
+                  padding: .fromLTRB(16.w, 16.h, 16.w, 8.h),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          spacing: 2.h,
+                          children: [
+                            Text(
+                              'الإشعارات',
+                              style: context.textTheme.headlineLarge,
+                            ),
+                            Text(
+                              unreadCount == 0
+                                  ? 'كل الإشعارات مقروءة'
+                                  : '$unreadCount إشعار غير مقروء',
+                              style: context.textTheme.bodyMedium?.copyWith(
+                                color: context.colorScheme.onSurface.withValues(
+                                  alpha: 0.6,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                        child: TextButton.icon(
+                          onPressed: unreadCount == 0
+                              ? null
+                              : () {
+                                  bloc.add(
+                                    const NotificationsEvent.markAllAsRead(),
+                                  );
+                                },
+                          icon: const Icon(Icons.done_all_rounded, size: 18),
+                          label: const Text(
+                            'تحديد الكل كمقروءة',
+                            maxLines: 1,
+                            overflow: .ellipsis,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  notification.body,
-                  style: TextStyle(color: Colors.grey[600]),
+                Expanded(
+                  child: notifications.isEmpty
+                      ? const EmptyWidget(
+                          icon: Icons.notifications_none_rounded,
+                          text: 'لا توجد إشعارات بعد',
+                          hint: 'ستظهر هنا إشعارات التسجيل والطلبات الجديدة لحسابك',
+                        )
+                      : ListView.separated(
+                          padding: .fromLTRB(16.w, 0, 16.w, 24.h),
+                          itemCount: notifications.length,
+                          separatorBuilder: (_, _) {
+                            return Gap(10.h);
+                          },
+                          itemBuilder: (context, index) {
+                            final notification = notifications[index];
+                            return NotificationItem(
+                              notification: notification,
+                              onTap: notification.read
+                                  ? null
+                                  : () {
+                                      bloc.add(
+                                        NotificationsEvent.markAsRead(
+                                          id: notification.id,
+                                        ),
+                                      );
+                                    },
+                            );
+                          },
+                        ),
                 ),
               ],
-            ),
-          ),
-        ],
-      ),
+            );
+          },
+          failure: (failure) {
+            final message = failure.apiErrorModel.message.trim();
+            return CustomErrorWidget(
+              message: message.isEmpty ? 'تعذّر تحميل الإشعارات' : message,
+              onRetry: () {
+                bloc.add(const NotificationsEvent.watch());
+              },
+            );
+          },
+          initial: (_) {
+            bloc.add(const NotificationsEvent.watch());
+            return const Center(child: CircularProgressIndicator());
+          },
+          orElse: () {
+            return const Center(child: CircularProgressIndicator());
+          },
+        );
+      },
     );
   }
 }

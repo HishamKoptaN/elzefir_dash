@@ -18,12 +18,12 @@ class LightColors extends AppColors {
   const LightColors();
   @override
   Color get primary {
-    return const Color(0xFF002B49);
+    return const Color(0xFF124370);
   }
 
   @override
   Color get primaryLight {
-    return const Color(0xFFD7CCC8);
+    return const Color(0xFFDCE7EF);
   }
 
   @override
@@ -33,7 +33,7 @@ class LightColors extends AppColors {
 
   @override
   Color get background {
-    return const Color(0xFFF5EAD8);
+    return const Color(0xFFF8FAFC);
   }
 
   @override
@@ -43,12 +43,12 @@ class LightColors extends AppColors {
 
   @override
   Color get textPrimary {
-    return const Color(0xFF212121);
+    return const Color(0xFF0F172A);
   }
 
   @override
   Color get textSecondary {
-    return const Color(0xFF757575);
+    return const Color(0xFF64748B);
   }
 }
 

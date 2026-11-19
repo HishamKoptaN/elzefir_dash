@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
-import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../working_hours/present/widgets/working_hours_display.dart';
 import 'contacts_items.dart';
 import 'footer_widget.dart';
 
@@ -39,35 +38,7 @@ class FooterDeskLayout extends StatelessWidget implements FooterWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.access_time,
-                          color: Color(0xFFFACC15),
-                          size: 16.iconRes,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          'السبت - الخميس',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Padding(
-                      padding: EdgeInsets.only(right: 24.w),
-                      child: Text(
-                        '10:00 ص - 1:00 ص',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 18.sp,
-                        ),
-                      ),
-                    ),
+                    const WorkingHoursDisplay(compact: false),
                     SizedBox(height: 8.h),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),

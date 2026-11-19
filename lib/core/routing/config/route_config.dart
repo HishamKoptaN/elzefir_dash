@@ -10,10 +10,15 @@ import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
 import '../../../features/categories/domain/entities/categories_res_entity.dart';
+import '../../../features/categories/present/view/upsert_category_view.dart';
 import '../../../features/categories/present/view/widgets/categories_view.dart';
 import '../../../features/home/present/home.dart';
+import '../../../features/home/present/restaurant_page_view.dart';
+import '../../../features/notifications/present/view/notifications_view.dart';
+import '../../../features/profile/present/views/profile_view.dart';
 import '../../../features/products/domain/entities/product_entity.dart';
 import '../../../features/products/present/view/upsert_product_view.dart';
+import '../../../features/working_hours/present/view/working_hours_view.dart';
 import '../../utils/extensions/theme_ext.dart';
 import '../app_route.dart';
 import '../middlewares/guards/app_guards.dart';
@@ -77,6 +82,13 @@ class RouteConfig {
         },
       ),
       appRoute(
+        name: RestaurantPageView.routeName,
+        path: '/${RestaurantPageView.routeName}',
+        builder: (context, state) {
+          return const RestaurantPageView();
+        },
+      ),
+      appRoute(
         name: SignUpView.routeName,
         path: '/${SignUpView.routeName}',
         builder: (context, state) {
@@ -111,18 +123,49 @@ class RouteConfig {
                 path: UpsertProductView.routeName,
                 builder: (context, state) {
                   return UpsertProductView(
-                    product: state.extra as ProductEntity,
+                    product: state.extra as ProductEntity?,
                   );
                 },
               ),
             ],
           ),
           appRoute(
+            name: WorkingHoursView.routeName,
+            path: '/${WorkingHoursView.routeName}',
+            builder: (context, state) {
+              return const WorkingHoursView();
+            },
+          ),
+          appRoute(
             name: CategoriesView.routeName,
             path: '/${CategoriesView.routeName}',
             builder: (context, state) {
-              final category = state.extra as CategoryEntity?;
               return CategoriesView();
+            },
+            routes: [
+              appRoute(
+                name: UpsertCategoryView.routeName,
+                path: 'upsert',
+                builder: (context, state) {
+                  return UpsertCategoryView(
+                    category: state.extra as CategoryEntity?,
+                  );
+                },
+              ),
+            ],
+          ),
+          appRoute(
+            name: NotificationsView.routeName,
+            path: '/${NotificationsView.routeName}',
+            builder: (context, state) {
+              return const NotificationsView();
+            },
+          ),
+          appRoute(
+            name: ProfileView.routeName,
+            path: '/${ProfileView.routeName}',
+            builder: (context, state) {
+              return const ProfileView();
             },
           ),
         ],
@@ -138,6 +181,14 @@ class RouteConfig {
         return state.extra == null ? 'إضافة منتج جديد' : 'تعديل منتج';
       case '/categories':
         return 'التصنيفات';
+      case '/categories/upsert':
+        return state.extra == null ? 'إضافة تصنيف جديد' : 'تعديل تصنيف';
+      case '/working-hours':
+        return 'ساعات العمل';
+      case '/notifications':
+        return 'الإشعارات';
+      case '/profile':
+        return 'الملف الشخصي';
 
       default:
         return '';

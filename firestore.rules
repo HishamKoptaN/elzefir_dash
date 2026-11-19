@@ -1,0 +1,44 @@
+rules_version = '2';
+
+// Rules for the Elzefir dashboard.
+//
+// The menu is read by the customer app without signing in, while everything the
+// dashboard writes needs a signed-in user. Tighten `canEditMenu()` to a custom
+// claim (for example `request.auth.token.admin == true`) once accounts carry
+// one; until then any signed-in account can edit the menu.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function canEditMenu() {
+      return isSignedIn();
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update, delete: if canEditMenu();
+    }
+
+    match /settlement_methods/{methodId} {
+      allow read: if true;
+      allow create, update, delete: if canEditMenu();
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create, update, delete: if canEditMenu();
+    }
+
+    match /working_hours/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if canEditMenu();
+    }
+
+    // Everything else (profile, notifications, backups) stays behind a sign-in.
+    match /{document=**} {
+      allow read, write: if isSignedIn();
+    }
+  }
+}

@@ -1,38 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/extensions/theme_ext.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   final String text;
   final VoidCallback? onTap;
+  final IconData? icon;
 
-  const CustomOutlinedButton({super.key, required this.text, this.onTap});
+  const CustomOutlinedButton({
+    super.key,
+    required this.text,
+    this.onTap,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 71.73,
-        height: 38.0,
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: const Color(0xFF002C51).withValues(alpha: 0.2),
-            width: 1.0,
-          ),
-          borderRadius: BorderRadius.circular(6.0),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontFamily: 'FreeSerif',
-            fontSize: 16.0,
-            fontWeight: FontWeight.w400,
-            height: 1.5,
-            color: Color(0xFF002C51),
-          ),
-          textAlign: TextAlign.center,
-        ),
+    final style = OutlinedButton.styleFrom(
+      foregroundColor: context.colorScheme.primary,
+      minimumSize: Size(88.r, kMinInteractiveDimension),
+      padding: .symmetric(horizontal: 16.r, vertical: 8.r),
+      side: BorderSide(
+        color: context.colorScheme.primary.withValues(alpha: 0.4),
       ),
+      shape: RoundedRectangleBorder(borderRadius: .circular(10.r)),
+      textStyle: context.textTheme.labelLarge,
     );
+    if (icon != null) {
+      return OutlinedButton.icon(
+        onPressed: onTap,
+        style: style,
+        icon: Icon(icon, size: 18.r),
+        label: Text(text),
+      );
+    }
+    return OutlinedButton(onPressed: onTap, style: style, child: Text(text));
   }
 }
