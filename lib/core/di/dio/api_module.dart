@@ -2,8 +2,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../../../config/env.dart';
-import '../../../config/envs/dev_env.dart';
-import '../../../config/envs/prod_env.dart';
+import '../../../config/env_config.dart';
 import '../../globals/database/shared_pref_helper.dart';
 import '../../globals/database/shared_pref_keys.dart';
 
@@ -11,11 +10,7 @@ import '../../globals/database/shared_pref_keys.dart';
 abstract class ApiModule {
   @singleton
   Env get config {
-    const env = String.fromEnvironment('FLUTTER_ENV', defaultValue: 'dev');
-    if (env == 'prod') {
-      return ProdEnv();
-    }
-    return DevEnv();
+    return EnvConfig.config;
   }
 }
 
