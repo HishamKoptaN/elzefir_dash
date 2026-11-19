@@ -10,67 +10,29 @@ class ProdFirebaseOptions {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
-      case TargetPlatform.iOS:
-        return ios;
-      case TargetPlatform.macOS:
-        return macos;
-      case TargetPlatform.windows:
-        return windows;
-      case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
       default:
         throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
+          'DefaultFirebaseOptions have not been configured for this platform - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
         );
     }
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCusHoAiX9Dpogg_1UQzw_IicBhb3NBrVM',
-    appId: '1:843078461358:web:7be639247388b1a464ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    authDomain: 'alzefr.firebaseapp.com',
-    storageBucket: 'alzefr.firebasestorage.app',
-    measurementId: 'G-CQTX2QHYTZ',
+    apiKey: 'AIzaSyDa5tsdgfGYP378YlBC_P3BwqGcBZWzwsg',
+    appId: '1:1057189524284:web:e3d3031f7da5ad94d62439',
+    messagingSenderId: '1057189524284',
+    projectId: 'elzefir-dbb8d',
+    authDomain: 'elzefir-dbb8d.firebaseapp.com',
+    storageBucket: 'elzefir-dbb8d.firebasestorage.app',
+    measurementId: 'G-KMSJVTFYHE',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAnYX3yfrQEValt_uZoDMxVmMJcCTTP1HA',
-    appId: '1:843078461358:android:8a47ed1499f94ac264ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    storageBucket: 'alzefr.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyABEcWPhYvWGigFPQIwRAUJMZPr4_llBeU',
-    appId: '1:843078461358:ios:ad08d247a38ca31164ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    storageBucket: 'alzefr.firebasestorage.app',
-    iosBundleId: 'com.example.alzefr',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyABEcWPhYvWGigFPQIwRAUJMZPr4_llBeU',
-    appId: '1:843078461358:ios:ad08d247a38ca31164ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    storageBucket: 'alzefr.firebasestorage.app',
-    iosBundleId: 'com.example.alzefr',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCusHoAiX9Dpogg_1UQzw_IicBhb3NBrVM',
-    appId: '1:843078461358:web:04c947a1b6b8235c64ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    authDomain: 'alzefr.firebaseapp.com',
-    storageBucket: 'alzefr.firebasestorage.app',
-    measurementId: 'G-Z54WPY82TN',
+    apiKey: 'AIzaSyD8pjelajX2Rt9E7MYvy3qusrq3EoTHf8g',
+    appId: '1:1057189524284:android:9d01e04329fc5816d62439',
+    messagingSenderId: '1057189524284',
+    projectId: 'elzefir-dbb8d',
+    storageBucket: 'elzefir-dbb8d.firebasestorage.app',
   );
 }
