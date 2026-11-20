@@ -9,6 +9,7 @@ import '../../../features/auth/sign_in/present/views/sign_in_view.dart';
 import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
+import '../../../features/analytics/present/view/analytics_view.dart';
 import '../../../features/categories/domain/entities/categories_res_entity.dart';
 import '../../../features/categories/present/view/upsert_category_view.dart';
 import '../../../features/categories/present/view/widgets/categories_view.dart';
@@ -155,6 +156,13 @@ class RouteConfig {
             ],
           ),
           appRoute(
+            name: AnalyticsView.routeName,
+            path: '/${AnalyticsView.routeName}',
+            builder: (context, state) {
+              return const AnalyticsView();
+            },
+          ),
+          appRoute(
             name: NotificationsView.routeName,
             path: '/${NotificationsView.routeName}',
             builder: (context, state) {
@@ -185,6 +193,8 @@ class RouteConfig {
         return state.extra == null ? 'إضافة تصنيف جديد' : 'تعديل تصنيف';
       case '/working-hours':
         return 'ساعات العمل';
+      case '/analytics':
+        return 'التحليلات';
       case '/notifications':
         return 'الإشعارات';
       case '/profile':
