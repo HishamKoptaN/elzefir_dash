@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../categories/present/view/widgets/categories_view.dart';
 import '../../../products/present/view/products_view.dart';
+import '../../../visitors/present/view/visitors_view.dart';
 import '../../../working_hours/present/view/working_hours_view.dart';
 
 class DashboardNav extends StatelessWidget {
@@ -16,20 +18,26 @@ class DashboardNav extends StatelessWidget {
     (
       route: ProductsView.routeName,
       label: 'المنتجات',
-      icon: Icons.restaurant_menu_outlined,
-      selectedIcon: Icons.restaurant_menu,
+      icon: FontAwesomeIcons.bowlFood,
+      selectedIcon: FontAwesomeIcons.bowlFood,
     ),
     (
       route: CategoriesView.routeName,
       label: 'التصنيفات',
-      icon: Icons.category_outlined,
-      selectedIcon: Icons.category,
+      icon: FontAwesomeIcons.layerGroup,
+      selectedIcon: FontAwesomeIcons.layerGroup,
     ),
     (
       route: WorkingHoursView.routeName,
       label: 'ساعات العمل',
-      icon: Icons.schedule_outlined,
-      selectedIcon: Icons.schedule,
+      icon: FontAwesomeIcons.clock,
+      selectedIcon: FontAwesomeIcons.solidClock,
+    ),
+    (
+      route: VisitorsView.routeName,
+      label: 'الزوار',
+      icon: FontAwesomeIcons.eye,
+      selectedIcon: FontAwesomeIcons.solidEye,
     ),
   ];
 
@@ -63,8 +71,8 @@ class DashboardNav extends StatelessWidget {
         destinations: [
           for (final d in _destinations)
             NavigationRailDestination(
-              icon: Icon(d.icon),
-              selectedIcon: Icon(d.selectedIcon),
+              icon: FaIcon(d.icon),
+              selectedIcon: FaIcon(d.selectedIcon),
               label: Text(d.label, style: context.textTheme.labelLarge),
               padding: .symmetric(vertical: 8.h),
             ),
@@ -81,8 +89,8 @@ class DashboardNav extends StatelessWidget {
       destinations: [
         for (final d in _destinations)
           NavigationDestination(
-            icon: Icon(d.icon),
-            selectedIcon: Icon(d.selectedIcon),
+            icon: FaIcon(d.icon),
+            selectedIcon: FaIcon(d.selectedIcon),
             label: d.label,
           ),
       ],
