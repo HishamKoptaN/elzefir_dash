@@ -2,6 +2,15 @@ rules_version = '2';
 
 // Rules for the Elzefir dashboard.
 //
+// Firebase project mapping (verified 2026-11-20):
+//   - Customer app (elzefir): dev AND prod FirebaseOptions both target
+//     `elzefir-dev`, even though its hosting lives on `elzefir-dbb8d`.
+//   - Dashboard default ENV=dev also targets `elzefir-dev`, so the visitor
+//     stats written by the customer app are readable here.
+//   - Dashboard ENV=prod targets `elzefir-dbb8d` and will NOT see these stats.
+//     Keep deploying the dashboard with the default dev env, or migrate the
+//     customer app to `elzefir-dbb8d` only after verifying its products exist.
+//
 // The menu is read by the customer app without signing in, while everything the
 // dashboard writes needs a signed-in user. Tighten `canEditMenu()` to a custom
 // claim (for example `request.auth.token.admin == true`) once accounts carry
@@ -14,6 +23,36 @@ service cloud.firestore {
 
     function canEditMenu() {
       return isSignedIn();
+    }
+
+    // Anonymous website visitors increment the shared counters from the
+    // customer app. Only signed-in dashboard users may read them.
+    function isValidVisitorStats() {
+      return request.resource.data.keys().hasOnly([
+          'totalVisits', 'uniqueVisitors', 'lastVisitAt', 'daily'
+        ])
+        && request.resource.data.totalVisits is int
+        && request.resource.data.totalVisits > 0
+        && request.resource.data.uniqueVisitors is int
+        && request.resource.data.uniqueVisitors >= 0;
+    }
+
+    function isValidVisitorHit() {
+      return request.resource.data.keys().hasOnly([
+          'firstSeenAt', 'lastSeenAt', 'visits'
+        ])
+        && request.resource.data.visits is int
+        && request.resource.data.visits > 0;
+    }
+
+    match /stats/visitors {
+      allow read: if isSignedIn();
+      allow create, update: if isValidVisitorStats();
+    }
+
+    match /visitors/{visitorId} {
+      allow read: if isSignedIn();
+      allow create, update: if isValidVisitorHit();
     }
 
     match /products/{productId} {
