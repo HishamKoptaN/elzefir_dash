@@ -24,6 +24,13 @@ class AnalyticsRepoImpl implements AnalyticsRepo {
   }
 
   @override
+  Stream<VisitorStatsEntity> watchVisitorStats() {
+    return dataSource.watchStats().map((json) {
+      return mapVisitorStats(json);
+    });
+  }
+
+  @override
   Future<ApiResult<List<VisitorEntity>>> getVisitors({
     required int limit,
   }) async {
@@ -36,5 +43,14 @@ class AnalyticsRepoImpl implements AnalyticsRepo {
     } catch (e, s) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
     }
+  }
+
+  @override
+  Stream<List<VisitorEntity>> watchVisitors({required int limit}) {
+    return dataSource.watchVisitors(limit: limit).map((rows) {
+      return rows.map((row) {
+        return mapVisitor(row);
+      }).toList();
+    });
   }
 }

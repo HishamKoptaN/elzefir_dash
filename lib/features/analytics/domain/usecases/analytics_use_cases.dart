@@ -14,9 +14,17 @@ class AnalyticsUseCases {
     return repo.getVisitorStats();
   }
 
+  Stream<VisitorStatsEntity> watchVisitorStats() {
+    return repo.watchVisitorStats();
+  }
+
   Future<ApiResult<List<VisitorEntity>>> getTopVisitors({
     required int limit,
   }) {
     return repo.getVisitors(limit: limit);
+  }
+
+  Stream<List<VisitorEntity>> watchTopVisitors({required int limit}) {
+    return repo.watchVisitors(limit: limit);
   }
 }

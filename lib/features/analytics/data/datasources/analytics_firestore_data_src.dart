@@ -22,6 +22,13 @@ class AnalyticsFirestoreDataSrc implements AnalyticsDataSource {
   }
 
   @override
+  Stream<Map<String, dynamic>> watchStats() {
+    return _firestore.doc(statsDocPath).snapshots().map((snapshot) {
+      return snapshot.data() ?? <String, dynamic>{};
+    });
+  }
+
+  @override
   Future<List<Map<String, dynamic>>> getVisitors({required int limit}) async {
     final snapshot = await _firestore
         .collection(visitorsCollection)
@@ -32,5 +39,19 @@ class AnalyticsFirestoreDataSrc implements AnalyticsDataSource {
     return snapshot.docs.map((doc) {
       return <String, dynamic>{'id': doc.id, ...doc.data()};
     }).toList();
+  }
+
+  @override
+  Stream<List<Map<String, dynamic>>> watchVisitors({required int limit}) {
+    return _firestore
+        .collection(visitorsCollection)
+        .orderBy('lastSeenAt', descending: true)
+        .limit(limit)
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return <String, dynamic>{'id': doc.id, ...doc.data()};
+      }).toList();
+    });
   }
 }
