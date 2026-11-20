@@ -20,6 +20,16 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i161;
 
 import '../../config/env.dart' as _i557;
+import '../../features/analytics/data/datasources/analytics_data_src.dart'
+    as _i356;
+import '../../features/analytics/data/datasources/analytics_firestore_data_src.dart'
+    as _i816;
+import '../../features/analytics/data/repo_impl/analytics_repo_impl.dart'
+    as _i804;
+import '../../features/analytics/domain/repo/analytics_repo.dart' as _i1033;
+import '../../features/analytics/domain/usecases/analytics_use_cases.dart'
+    as _i497;
+import '../../features/analytics/present/bloc/analytics_bloc.dart' as _i336;
 import '../../features/auth/auth/data/datasources/auth_api.dart' as _i976;
 import '../../features/auth/auth/data/repo/auth_repo_impl.dart' as _i246;
 import '../../features/auth/auth/domain/repo/auth_repo.dart' as _i610;
@@ -42,7 +52,7 @@ import '../../features/auth/reset_password/domain/usecases/reset_pass_usecases.d
     as _i992;
 import '../../features/auth/reset_password/present/bloc/reset_pass_bloc.dart'
     as _i192;
-import '../../features/auth/sign_in/data/datasources/sign_in_api.dart' as _i804;
+import '../../features/auth/sign_in/data/datasources/sign_in_api.dart' as _i805;
 import '../../features/auth/sign_in/data/repo_impl/sign_in_repo_impl.dart'
     as _i200;
 import '../../features/auth/sign_in/domain/repo/sign_in_repo.dart' as _i305;
@@ -147,6 +157,9 @@ _i174.GetIt init(
     () => _i749.FirebaseAuthService(),
   );
   gh.lazySingleton<_i432.SessionManager>(() => _i241.SessionManagerImpl());
+  gh.singleton<_i356.AnalyticsDataSource>(
+    () => _i816.AnalyticsFirestoreDataSrc(),
+  );
   gh.singleton<_i303.NetworkInfoImpl>(
     () => injectionModule.networkInfoImpl(gh<_i161.InternetConnection>()),
   );
@@ -156,12 +169,21 @@ _i174.GetIt init(
   gh.singleton<_i158.AuthInterceptor>(
     () => _i158.AuthInterceptor(gh<_i158.TokenStorage>()),
   );
+  gh.lazySingleton<_i1033.AnalyticsRepo>(
+    () => _i804.AnalyticsRepoImpl(gh<_i356.AnalyticsDataSource>()),
+  );
+  gh.singleton<_i497.AnalyticsUseCases>(
+    () => _i497.AnalyticsUseCases(gh<_i1033.AnalyticsRepo>()),
+  );
   gh.singleton<_i41.PusherService>(
     () => _i41.PusherService(gh<_i158.TokenStorage>(), gh<_i1017.EventBus>()),
   );
   gh.singleton<_i361.Dio>(
     () => dioModule.s3Dio(gh<_i158.LoggingInterceptor>()),
     instanceName: 's3Dio',
+  );
+  gh.singleton<_i336.AnalyticsBloc>(
+    () => _i336.AnalyticsBloc(gh<_i497.AnalyticsUseCases>()),
   );
   gh.singleton<_i303.NetworkInfo>(
     () => injectionModule.networkInfo(gh<_i303.NetworkInfoImpl>()),
@@ -206,8 +228,8 @@ _i174.GetIt init(
   gh.singleton<_i976.AuthApi>(
     () => _i976.AuthApi(gh<_i361.Dio>(instanceName: 'authDio')),
   );
-  gh.lazySingleton<_i804.SignInApi>(
-    () => _i804.SignInApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  gh.lazySingleton<_i805.SignInApi>(
+    () => _i805.SignInApi(gh<_i361.Dio>(instanceName: 'authDio')),
   );
   gh.lazySingleton<_i552.SignUpApi>(
     () => _i552.SignUpApi(gh<_i361.Dio>(instanceName: 'authDio')),
@@ -294,7 +316,7 @@ _i174.GetIt init(
     () => _i200.SignInRepoImpl(
       gh<_i749.FirebaseAuthService>(),
       gh<_i610.AuthRepo>(),
-      gh<_i804.SignInApi>(),
+      gh<_i805.SignInApi>(),
     ),
   );
   gh.singleton<_i340.ProductsBloc>(
