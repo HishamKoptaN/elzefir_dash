@@ -27,8 +27,8 @@ class OtpView extends StatelessWidget {
             },
             failure: (state) {
               context.showErrorSnackBar(
-                title: state.apiError.title ?? 'فشل',
-                message: state.apiError.message ?? 'حدث خطأ',
+                title: state.apiError.title,
+                message: state.apiError.message,
               );
             },
           );

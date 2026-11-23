@@ -13,7 +13,6 @@ class NewUserRegisteredHandler implements NotificationHandler {
     BuildContext context,
     NotificationEntity notification,
   ) async {
-    final userId = notification.data['id'];
     // NavigationService.goNamed(
     //   context: context,
     //   routeName: UserProfileView.routeName,
