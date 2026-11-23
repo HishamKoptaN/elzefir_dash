@@ -7,7 +7,7 @@ class CustomDividerWidget extends StatelessWidget {
     this.thickness,
   });
 
-  double? thickness;
+  final double? thickness;
   @override
   Widget build(context) {
     return Divider(
