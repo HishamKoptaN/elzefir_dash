@@ -13,6 +13,8 @@ abstract class ProductUpsertReqEntity with _$ProductUpsertReqEntity {
     GenericFormInput? description,
     GenericFormInput? price,
     GenericFormInput? categoryId,
+    bool? isFeatured,
+    bool? isMostRequested,
     bool? enabled,
   }) = _ProductUpsertReqEntity;
 }

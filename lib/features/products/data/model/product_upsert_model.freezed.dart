@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductUpsertReqModel {
 
- int? get id; String? get image; String? get name; String? get title; String? get description; num? get price;@JsonKey(name: 'category_id') String? get categoryId;
+ int? get id; String? get image; String? get name; String? get title; String? get description; num? get price;@JsonKey(name: 'category_id') String? get categoryId; bool? get isFeatured; bool? get isMostRequested;
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $ProductUpsertReqModelCopyWith<ProductUpsertReqModel> get copyWith => _$ProductU
 @override
 bool operator ==(Object other) {
   final _this = this as ProductUpsertReqModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertReqModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductUpsertReqModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.isFeatured, _this.isFeatured) || other.isFeatured == _this.isFeatured)&&(identical(other.isMostRequested, _this.isMostRequested) || other.isMostRequested == _this.isMostRequested));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductUpsertReqModel;
-  return Object.hash(runtimeType,_this.id,_this.image,_this.name,_this.title,_this.description,_this.price,_this.categoryId);
+  return Object.hash(runtimeType,_this.id,_this.image,_this.name,_this.title,_this.description,_this.price,_this.categoryId,_this.isFeatured,_this.isMostRequested);
 }
 
 @override
 String toString() {
   final _this = this as ProductUpsertReqModel;
-  return 'ProductUpsertReqModel(id: ${_this.id}, image: ${_this.image}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, categoryId: ${_this.categoryId})';
+  return 'ProductUpsertReqModel(id: ${_this.id}, image: ${_this.image}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, categoryId: ${_this.categoryId}, isFeatured: ${_this.isFeatured}, isMostRequested: ${_this.isMostRequested})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $ProductUpsertReqModelCopyWith<$Res>  {
   factory $ProductUpsertReqModelCopyWith(ProductUpsertReqModel value, $Res Function(ProductUpsertReqModel) _then) = _$ProductUpsertReqModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId
+ int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId, bool? isFeatured, bool? isMostRequested
 });
 
 
@@ -71,7 +71,7 @@ class _$ProductUpsertReqModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? isFeatured = freezed,Object? isMostRequested = freezed,}) {
   return _then(ProductUpsertReqModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -80,7 +80,9 @@ as String?,title: freezed == title ? _self.title : title // ignore: cast_nullabl
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as num?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,isFeatured: freezed == isFeatured ? _self.isFeatured : isFeatured // ignore: cast_nullable_to_non_nullable
+as bool?,isMostRequested: freezed == isMostRequested ? _self.isMostRequested : isMostRequested // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 
@@ -165,10 +167,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId,  bool? isFeatured,  bool? isMostRequested)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel() when $default != null:
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.isFeatured,_that.isMostRequested);case _:
   return orElse();
 
 }
@@ -186,10 +188,10 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId,  bool? isFeatured,  bool? isMostRequested)  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel():
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.isFeatured,_that.isMostRequested);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +208,10 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  num? price, @JsonKey(name: 'category_id')  String? categoryId,  bool? isFeatured,  bool? isMostRequested)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductUpsertReqModel() when $default != null:
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.categoryId,_that.isFeatured,_that.isMostRequested);case _:
   return null;
 
 }
@@ -221,7 +223,7 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 @JsonSerializable()
 
 class _ProductUpsertReqModel implements ProductUpsertReqModel {
-  const _ProductUpsertReqModel({this.id, this.image, this.name, this.title, this.description, this.price, @JsonKey(name: 'category_id') this.categoryId});
+  const _ProductUpsertReqModel({this.id, this.image, this.name, this.title, this.description, this.price, @JsonKey(name: 'category_id') this.categoryId, this.isFeatured, this.isMostRequested});
   factory _ProductUpsertReqModel.fromJson(Map<String, dynamic> json) => _$ProductUpsertReqModelFromJson(json);
 
 @override final  int? id;
@@ -231,6 +233,8 @@ class _ProductUpsertReqModel implements ProductUpsertReqModel {
 @override final  String? description;
 @override final  num? price;
 @override@JsonKey(name: 'category_id') final  String? categoryId;
+@override final  bool? isFeatured;
+@override final  bool? isMostRequested;
 
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
@@ -245,18 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductUpsertReqModel&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductUpsertReqModel&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.isFeatured, isFeatured) || other.isFeatured == isFeatured)&&(identical(other.isMostRequested, isMostRequested) || other.isMostRequested == isMostRequested));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,image,name,title,description,price,categoryId);
+    return Object.hash(runtimeType,id,image,name,title,description,price,categoryId,isFeatured,isMostRequested);
 }
 
 @override
 String toString() {
-    return 'ProductUpsertReqModel(id: $id, image: $image, name: $name, title: $title, description: $description, price: $price, categoryId: $categoryId)';
+    return 'ProductUpsertReqModel(id: $id, image: $image, name: $name, title: $title, description: $description, price: $price, categoryId: $categoryId, isFeatured: $isFeatured, isMostRequested: $isMostRequested)';
 }
 
 
@@ -267,7 +271,7 @@ abstract mixin class _$ProductUpsertReqModelCopyWith<$Res> implements $ProductUp
   factory _$ProductUpsertReqModelCopyWith(_ProductUpsertReqModel value, $Res Function(_ProductUpsertReqModel) _then) = __$ProductUpsertReqModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId
+ int? id, String? image, String? name, String? title, String? description, num? price,@JsonKey(name: 'category_id') String? categoryId, bool? isFeatured, bool? isMostRequested
 });
 
 
@@ -284,7 +288,7 @@ class __$ProductUpsertReqModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductUpsertReqModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? categoryId = freezed,Object? isFeatured = freezed,Object? isMostRequested = freezed,}) {
   return _then(_ProductUpsertReqModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -293,7 +297,9 @@ as String?,title: freezed == title ? _self.title : title // ignore: cast_nullabl
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as num?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,isFeatured: freezed == isFeatured ? _self.isFeatured : isFeatured // ignore: cast_nullable_to_non_nullable
+as bool?,isMostRequested: freezed == isMostRequested ? _self.isMostRequested : isMostRequested // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 

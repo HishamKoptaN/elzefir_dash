@@ -14,6 +14,8 @@ _ProductModel _$ProductModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       description: json['description'] as String?,
       price: json['price'] as String?,
+      isFeatured: json['isFeatured'] as bool?,
+      isMostRequested: json['isMostRequested'] as bool?,
       category: json['category'] == null
           ? null
           : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
@@ -27,6 +29,8 @@ Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'price': instance.price,
+      'isFeatured': instance.isFeatured,
+      'isMostRequested': instance.isMostRequested,
       'category': instance.category,
     };
 

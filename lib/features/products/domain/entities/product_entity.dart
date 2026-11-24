@@ -11,6 +11,8 @@ abstract class ProductEntity with _$ProductEntity {
     @Default('') String title,
     @Default('') String description,
     @Default('') String price,
+    @Default(false) bool isFeatured,
+    @Default(false) bool isMostRequested,
     @Default('') String image,
     @Default(CategoryEntity()) CategoryEntity category,
   }) = _ProductEntity;
