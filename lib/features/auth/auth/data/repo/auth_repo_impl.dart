@@ -74,6 +74,7 @@ class AuthRepoImpl implements AuthRepo {
       await _api.logout();
       await SharedPrefHelper.clearAllSecuredData();
       await SharedPrefHelper.clearAllData();
+      await _authStorageService.clear();
       return const ApiResult.success(data: null);
     } catch (e, st) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, st));
