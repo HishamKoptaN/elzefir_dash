@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ import 'package:intl/intl_standalone.dart';
 
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
+import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 
 import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -36,18 +38,18 @@ Future<void> main() async {
     );
     Bloc.observer = AppBlocObserver();
     configureDependencies();
+    if (kIsWeb && FirebaseAuth.instance.currentUser != null) {
+      final completer = Completer<void>();
+      getIt<AuthBloc>().add(AuthEvent.authToken(onComplete: completer));
+      await completer.future.timeout(
+        const Duration(seconds: 10),
+        onTimeout: () {},
+      );
+    }
     await ScreenUtil.ensureScreenSize();
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
     usePathUrlStrategy();
-    // if (kDebugMode) {
-    //   await SharedPrefHelper.setSecuredString(
-    //     key: SharedPrefKeys.jwtToken,
-    //     value: '720|oZpdN9poVxzMRxXUdJU85YYpTYbmQSpjSBX4Vgdgb3de16c1',
-    //   );
-    // await SharedPrefHelper.clearAllData();
-    // await SharedPrefHelper.clearAllSecuredData();
-    // }
     // getIt<PusherService>().init();
     // final completer = Completer();
     // getIt<AuthBloc>().add(AuthEvent.check(onComplete: completer));
