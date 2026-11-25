@@ -22,5 +22,7 @@ class SiteInfoFields {
     SiteContentField(key: 'contact_phone_label', label: 'اتصل بنا - عنوان الهاتف', fallback: 'الهاتف المباشر (أورنج)'),
     SiteContentField(key: 'contact_whatsapp_label', label: 'اتصل بنا - عنوان واتساب', fallback: 'واتساب وخدمة العملاء (إتصالات)'),
     SiteContentField(key: 'contact_address_label', label: 'اتصل بنا - عنوان العنوان', fallback: 'العنوان والفرع'),
+    SiteContentField(key: 'privacy_sections_json', label: 'أقسام سياسة الخصوصية', fallback: '', multiline: true),
+    SiteContentField(key: 'terms_sections_json', label: 'أقسام الشروط والأحكام', fallback: '', multiline: true),
   ];
 }

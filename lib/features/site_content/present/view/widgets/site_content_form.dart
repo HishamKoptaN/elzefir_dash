@@ -11,6 +11,7 @@ import '../../../domain/fields/site_content_fields.dart';
 import '../../../domain/fields/site_content_info_fields.dart';
 import '../../../domain/site_content_field.dart';
 import '../../controller/site_content_controller.dart';
+import 'site_content_info_editors.dart';
 
 /// نموذج نصوص الموقع. الحقول تأتي من وصف واحد في طبقة النطاق، لذلك إضافة نص
 /// جديد إلى الموقع لا تتطلب نسخ كود هنا.
@@ -59,6 +60,7 @@ class SiteContentForm extends StatelessWidget {
           subtitle: 'عناوين ومقدمات من نحن والخصوصية والشروط واتصل بنا',
           fields: SiteInfoFields.fields,
         ),
+        SiteContentInfoEditors(controller: controller),
       ],
     );
   }
