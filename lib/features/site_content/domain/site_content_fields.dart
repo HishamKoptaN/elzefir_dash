@@ -1,19 +1,9 @@
+import 'site_content_about_fields.dart';
+import 'site_content_contact_fields.dart';
+import 'site_content_field.dart';
+
 /// حقول نصوص الصفحة الرئيسية التي يملك المشرف تعديلها.
-/// المفتاح هو نفسه المكتوب في مستند `settings/general` ويقرأه الموقع العام،
-/// لذا إضافة نص جديد إلى الموقع تحتاج إضافة وصف هنا فقط.
-class SiteContentField {
-  const SiteContentField({
-    required this.key,
-    required this.label,
-    required this.fallback,
-    this.multiline = false,
-  });
-
-  final String key;
-  final String label;
-  final String fallback;
-  final bool multiline;
-
+class SiteContentFields {
   static const hero = [
     SiteContentField(
       key: 'hero_eyebrow_brand',
@@ -75,5 +65,10 @@ class SiteContentField {
     ),
   ];
 
-  static const all = [...hero, ...sections];
+  static const all = [
+    ...hero,
+    ...sections,
+    ...SiteAboutFields.fields,
+    ...SiteContactFields.fields,
+  ];
 }
