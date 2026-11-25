@@ -4,6 +4,11 @@ import 'site_content_field.dart';
 class SiteAboutFields {
   static const fields = [
     SiteContentField(
+      key: 'about_title',
+      label: 'عنوان قسم من نحن',
+      fallback: 'من نحن',
+    ),
+    SiteContentField(
       key: 'about_body',
       label: 'نبذة عن المطعم',
       fallback:
