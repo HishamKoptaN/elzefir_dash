@@ -13,6 +13,7 @@ abstract class ProductModel with _$ProductModel {
     String? title,
     String? description,
     String? price,
+    String? priceUnit,
     CategoryModel? category,
   }) = _ProductModel;
 
