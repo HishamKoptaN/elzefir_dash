@@ -15,6 +15,10 @@ class CategoriesUseCases {
     return await categoriesRepo.get();
   }
 
+  Future<ApiResult<void>> delete(int id) async {
+    return await categoriesRepo.delete(id);
+  }
+
   /// Save a category, uploading a freshly picked image first when there is one.
   ///
   /// The image travels the same three steps as a product image: the backend
