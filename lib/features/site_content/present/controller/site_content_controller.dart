@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../../data/site_content_data_src.dart';
+import '../../domain/site_content_field.dart';
 import '../../domain/site_content_fields.dart';
 
 /// يحمل نصوص الموقع القابلة للتحرير، ويقارنها بالنسخة المحفوظة لتفعيل زر الحفظ.
@@ -10,7 +11,7 @@ class SiteContentController extends ChangeNotifier {
 
   final SiteContentDataSrc _dataSrc;
   Map<String, String> _values = {
-    for (final field in SiteContentField.all) field.key: field.fallback,
+    for (final field in SiteContentFields.all) field.key: field.fallback,
   };
   Map<String, String> _saved = const {};
   bool _loading = true;
@@ -39,7 +40,7 @@ class SiteContentController extends ChangeNotifier {
     try {
       final raw = await _dataSrc.get();
       _values = {
-        for (final field in SiteContentField.all)
+        for (final field in SiteContentFields.all)
           field.key: _storedText(raw, field),
       };
       _saved = Map<String, String>.from(_values);

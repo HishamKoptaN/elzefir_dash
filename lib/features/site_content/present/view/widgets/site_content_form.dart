@@ -5,6 +5,9 @@ import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/forms/custom_text_form_field.dart';
 import '../../../../../core/widgets/forms/form_section_card.dart';
 import '../../../../../core/widgets/forms/labeled_field.dart';
+import '../../../domain/site_content_about_fields.dart';
+import '../../../domain/site_content_contact_fields.dart';
+import '../../../domain/site_content_field.dart';
 import '../../../domain/site_content_fields.dart';
 import '../../controller/site_content_controller.dart';
 
@@ -25,14 +28,28 @@ class SiteContentForm extends StatelessWidget {
           icon: Icons.auto_awesome_outlined,
           title: 'الواجهة الرئيسية',
           subtitle: 'العنوان والشعار ونصوص الأزرار كما تظهر للزبون',
-          fields: SiteContentField.hero,
+          fields: SiteContentFields.hero,
         ),
         _section(
           context: context,
           icon: Icons.widgets_outlined,
           title: 'عناوين الأقسام',
           subtitle: 'النصوص الظاهرة فوق الأطباق والشريط المتحرك',
-          fields: SiteContentField.sections,
+          fields: SiteContentFields.sections,
+        ),
+        _section(
+          context: context,
+          icon: Icons.info_outline_rounded,
+          title: 'من نحن',
+          subtitle: 'النبذة وميزات المطعم في الصفحة الرئيسية',
+          fields: SiteAboutFields.fields,
+        ),
+        _section(
+          context: context,
+          icon: Icons.contact_support_outlined,
+          title: 'بيانات التواصل',
+          subtitle: 'الأرقام والروابط في التذييل وأزرار الاتصال',
+          fields: SiteContactFields.fields,
         ),
       ],
     );
