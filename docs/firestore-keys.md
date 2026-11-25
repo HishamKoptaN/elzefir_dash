@@ -15,7 +15,7 @@
 
 `price_updated_at` حقل قديم لم يعد يُقرأ؛ `priceUnit` الفارغ يعني «كجم».
 
-## مفاتيح `settings/general` (64 مفتاحاً)
+## مفاتيح `settings/general` (76 مفتاحاً)
 
 كل مفتاح أدناه مكتوب في الداشبورد ويُقرأ في الموقع. القيمة الافتراضية في الداشبورد مطابقة لافتراض الموقع، فحفظ أي حقل لا يغيّر الحقول الأخرى.
 
@@ -36,6 +36,9 @@
 
 ### التنقل والترتيب
 `nav_home`، `nav_gallery`، `nav_products`، `nav_prices`، `nav_about`، `nav_contact`، `section_order_json`.
+
+### بطاقة عرض اليوم
+`offer_badge`، `offer_savings`، `offer_title`، `offer_description`، `offer_price`، `offer_before_price`، `offer_cta`، `offer_call_label`، `offer_image`، `offer_feature_1..3`.
 
 ## صيغ الحقول المنظّمة (JSON)
 
