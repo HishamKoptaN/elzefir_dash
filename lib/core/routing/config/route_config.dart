@@ -17,6 +17,7 @@ import '../../../features/home/present/home.dart';
 import '../../../features/home/present/restaurant_page_view.dart';
 import '../../../features/notifications/present/view/notifications_view.dart';
 import '../../../features/profile/present/views/profile_view.dart';
+import '../../../features/site_content/present/view/site_content_view.dart';
 import '../../../features/products/domain/entities/product_entity.dart';
 import '../../../features/products/present/view/upsert_product_view.dart';
 import '../../../features/working_hours/present/view/working_hours_view.dart';
@@ -156,6 +157,13 @@ class RouteConfig {
             ],
           ),
           appRoute(
+            name: SiteContentView.routeName,
+            path: '/${SiteContentView.routeName}',
+            builder: (context, state) {
+              return const SiteContentView();
+            },
+          ),
+          appRoute(
             name: AnalyticsView.routeName,
             path: '/${AnalyticsView.routeName}',
             builder: (context, state) {
@@ -193,6 +201,8 @@ class RouteConfig {
         return state.extra == null ? 'إضافة تصنيف جديد' : 'تعديل تصنيف';
       case '/working-hours':
         return 'ساعات العمل';
+      case '/site-content':
+        return 'نصوص الموقع';
       case '/analytics':
         return 'التحليلات';
       case '/notifications':
