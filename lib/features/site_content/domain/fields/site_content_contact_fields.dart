@@ -29,6 +29,11 @@ class SiteContactFields {
       fallback: '01124497981',
     ),
     SiteContentField(
+      key: 'whatsapp_url',
+      label: 'رابط واتساب',
+      fallback: 'https://wa.me/201124497981',
+    ),
+    SiteContentField(
       key: 'address_label',
       label: 'العنوان الظاهر',
       fallback: 'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
