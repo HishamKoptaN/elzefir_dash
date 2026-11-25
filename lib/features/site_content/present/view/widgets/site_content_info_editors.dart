@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../controller/site_content_controller.dart';
 import 'about_features_editor.dart';
+import 'gallery_items_editor.dart';
 import 'info_sections_editor.dart';
 
 /// محررا أقسام صفحتي الخصوصية والشروط.
@@ -32,6 +33,7 @@ class SiteContentInfoEditors extends StatelessWidget {
           title: 'أقسام صفحة من نحن',
         ),
         AboutFeaturesEditor(controller: controller),
+        GalleryItemsEditor(controller: controller),
       ],
     );
   }

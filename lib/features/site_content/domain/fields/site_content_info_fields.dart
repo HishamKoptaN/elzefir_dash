@@ -30,5 +30,7 @@ class SiteInfoFields {
     SiteContentField(key: 'about_cta_title', label: 'عنوان صندوق الطلب', fallback: 'هل أنت جاهز لتجربة أشهى وجبة بحرية؟'),
     SiteContentField(key: 'about_cta_subtitle', label: 'وصف صندوق الطلب', fallback: 'اطلب الآن أو شرفنا بالزيارة في فرعنا بالعياط - شارع الجيش'),
     SiteContentField(key: 'about_cta_phone', label: 'رقم صندوق الطلب', fallback: '01008673836'),
+    SiteContentField(key: 'hero_image_url', label: 'رابط صورة الهيرو', fallback: ''),
+    SiteContentField(key: 'gallery_items_json', label: 'شرائح المعرض', fallback: '', multiline: true),
   ];
 }
