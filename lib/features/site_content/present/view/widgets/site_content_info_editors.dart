@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../controller/site_content_controller.dart';
 import 'about_features_editor.dart';
+import 'addons_editor.dart';
+import 'cooking_methods_editor.dart';
 import 'gallery_items_editor.dart';
 import 'info_sections_editor.dart';
 
@@ -34,6 +36,8 @@ class SiteContentInfoEditors extends StatelessWidget {
         ),
         AboutFeaturesEditor(controller: controller),
         GalleryItemsEditor(controller: controller),
+        CookingMethodsEditor(controller: controller),
+        AddonsEditor(controller: controller),
       ],
     );
   }
