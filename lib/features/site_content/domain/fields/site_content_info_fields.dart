@@ -41,5 +41,17 @@ class SiteInfoFields {
     SiteContentField(key: 'nav_about', label: 'زر من نحن', fallback: 'من نحن'),
     SiteContentField(key: 'nav_contact', label: 'زر تواصل', fallback: 'تواصل'),
     SiteContentField(key: 'section_order_json', label: 'ترتيب الأقسام: معرّف واحد لكل سطر (hero / gallery / products / prices / about / contact)', fallback: '', multiline: true),
+    SiteContentField(key: 'offer_badge', label: 'عرض اليوم - الشارة', fallback: 'عرض اليوم'),
+    SiteContentField(key: 'offer_savings', label: 'عرض اليوم - شارة التوفير', fallback: 'وفر 90 ج.م'),
+    SiteContentField(key: 'offer_title', label: 'عرض اليوم - العنوان', fallback: 'وجبة العائلة التوفيرية'),
+    SiteContentField(key: 'offer_description', label: 'عرض اليوم - الوصف', fallback: 'كيلو سمك مشكل + أرز + سلطات + شوربة'),
+    SiteContentField(key: 'offer_price', label: 'عرض اليوم - السعر', fallback: '290'),
+    SiteContentField(key: 'offer_before_price', label: 'عرض اليوم - السعر قبل الخصم', fallback: 'قبل 380 ج.م'),
+    SiteContentField(key: 'offer_cta', label: 'عرض اليوم - نص زر الطلب', fallback: 'اطلب الآن'),
+    SiteContentField(key: 'offer_call_label', label: 'عرض اليوم - نص زر الاتصال', fallback: 'اتصل الآن'),
+    SiteContentField(key: 'offer_image', label: 'عرض اليوم - رابط الصورة', fallback: ''),
+    SiteContentField(key: 'offer_feature_1', label: 'عرض اليوم - ميزة أولى', fallback: 'تكفي 4-5 أفراد'),
+    SiteContentField(key: 'offer_feature_2', label: 'عرض اليوم - ميزة ثانية', fallback: 'شوي وقلي فوري'),
+    SiteContentField(key: 'offer_feature_3', label: 'عرض اليوم - ميزة ثالثة', fallback: 'توصيل ساخن'),
   ];
 }
