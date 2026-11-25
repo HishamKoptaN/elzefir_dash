@@ -34,5 +34,12 @@ class SiteInfoFields {
     SiteContentField(key: 'gallery_items_json', label: 'شرائح المعرض', fallback: '', multiline: true),
     SiteContentField(key: 'cooking_methods_json', label: 'طرق الطهي', fallback: '', multiline: true),
     SiteContentField(key: 'addons_json', label: 'الأطباق الجانبية', fallback: '', multiline: true),
+    SiteContentField(key: 'nav_home', label: 'زر الرئيسية', fallback: 'الرئيسية'),
+    SiteContentField(key: 'nav_gallery', label: 'زر المعرض', fallback: 'المعرض'),
+    SiteContentField(key: 'nav_products', label: 'زر القائمة', fallback: 'القائمة'),
+    SiteContentField(key: 'nav_prices', label: 'زر الأسعار', fallback: 'الأسعار'),
+    SiteContentField(key: 'nav_about', label: 'زر من نحن', fallback: 'من نحن'),
+    SiteContentField(key: 'nav_contact', label: 'زر تواصل', fallback: 'تواصل'),
+    SiteContentField(key: 'section_order_json', label: 'ترتيب الأقسام: معرّف واحد لكل سطر (hero / gallery / products / prices / about / contact)', fallback: '', multiline: true),
   ];
 }
