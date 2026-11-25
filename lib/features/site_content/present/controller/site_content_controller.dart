@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../data/site_content_data_src.dart';
 import '../../domain/site_content_field.dart';
-import '../../domain/site_content_fields.dart';
+import '../../domain/fields/site_content_fields.dart';
 
 /// يحمل نصوص الموقع القابلة للتحرير، ويقارنها بالنسخة المحفوظة لتفعيل زر الحفظ.
 class SiteContentController extends ChangeNotifier {

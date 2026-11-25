@@ -1,4 +1,4 @@
-import 'site_content_field.dart';
+import '../site_content_field.dart';
 
 /// نصوص قسم «من نحن» في الصفحة الرئيسية.
 class SiteAboutFields {

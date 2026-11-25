@@ -1,4 +1,4 @@
-import 'site_content_field.dart';
+import '../site_content_field.dart';
 
 /// بيانات التواصل وروابطها كما تظهر في التذييل وأزرار الاتصال السريع.
 class SiteContactFields {

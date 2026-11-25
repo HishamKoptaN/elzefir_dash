@@ -1,6 +1,7 @@
 import 'site_content_about_fields.dart';
 import 'site_content_contact_fields.dart';
-import 'site_content_field.dart';
+import '../site_content_field.dart';
+import 'site_content_info_fields.dart';
 
 /// حقول نصوص الصفحة الرئيسية التي يملك المشرف تعديلها.
 class SiteContentFields {
@@ -70,5 +71,6 @@ class SiteContentFields {
     ...sections,
     ...SiteAboutFields.fields,
     ...SiteContactFields.fields,
+    ...SiteInfoFields.fields,
   ];
 }
