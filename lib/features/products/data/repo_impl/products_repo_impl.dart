@@ -130,7 +130,6 @@ class ProductsRepoImpl implements ProductsRepo {
             if (categoryId != null) 'category_id': categoryId,
             // Keep the previous image when the form was saved without picking one.
             if (image.isNotEmpty) 'image': image,
-            'price_updated_at': FieldValue.serverTimestamp(),
           },
           SetOptions(merge: true),
         );

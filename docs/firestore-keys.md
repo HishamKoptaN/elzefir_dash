@@ -6,14 +6,14 @@
 
 | المسار | الكاتب | القارئ | الحقول |
 |---|---|---|---|
-| `products/{id}` | الداشبورد | الموقع | `id`, `name`, `title`, `description`, `price`, `priceUnit`, `image`, `category_id`, `isFeatured`, `isMostRequested`, `price_updated_at` |
+| `products/{id}` | الداشبورد | الموقع | `id`, `name`, `title`, `description`, `price`, `priceUnit`, `image`, `category_id`, `isFeatured`, `isMostRequested` |
 | `categories/{id}` | الداشبورد | الموقع | `id`, `name`, `image` |
 | `settings/working_hours` | الداشبورد | الموقع | `days`, `open`, `close`, `updatedAt` |
 | `settings/general` | الداشبورد | الموقع | مفاتيح المحتوى أدناه |
 | `stats/visitors` | الموقع | الداشبورد | `firstSeenAt`, `lastSeenAt`, `visits` |
 | `visitors/{id}` | الموقع | الداشبورد | `firstSeenAt`, `lastSeenAt`, `visits` |
 
-`price_updated_at` حقل قديم لم يعد يُقرأ؛ `priceUnit` الفارغ يعني «كجم».
+`priceUnit` الفارغ يعني «كجم».
 
 ## مفاتيح `settings/general` (76 مفتاحاً)
 
