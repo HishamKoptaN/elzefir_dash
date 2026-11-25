@@ -14,6 +14,7 @@ import 'package:alzefr_dash/features/products/domain/entities/product_upsert_req
 import 'package:alzefr_dash/features/products/present/blocs/product_upsert_bloc/product_upsert_bloc.dart';
 
 import 'category_dropdown.dart';
+import 'price/product_price_unit_field.dart';
 
 class ProductFormFields extends StatelessWidget {
   const ProductFormFields({super.key, required this.req});
@@ -177,6 +178,7 @@ class ProductFormFields extends StatelessWidget {
                 ],
               ),
             ),
+            ProductPriceUnitField(req: req),
             CategoryDropdown(
               value: req.categoryId?.value,
               onChanged: (value) {

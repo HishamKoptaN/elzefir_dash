@@ -107,6 +107,7 @@ class ProductsRepoImpl implements ProductsRepo {
       final name = req.name?.value ?? '';
       final title = req.title?.value ?? '';
       final description = req.description?.value ?? '';
+      final priceUnit = req.priceUnit?.value.trim() ?? '';
 
       // Only new products need an id; an existing one keeps the id it has.
       final idStart = req.id == null ? await numericIdStartAfter(products) : 1;
@@ -125,6 +126,7 @@ class ProductsRepoImpl implements ProductsRepo {
             'title': title,
             'description': description,
             'price': price,
+            'priceUnit': priceUnit,
             if (categoryId != null) 'category_id': categoryId,
             // Keep the previous image when the form was saved without picking one.
             if (image.isNotEmpty) 'image': image,
@@ -141,6 +143,7 @@ class ProductsRepoImpl implements ProductsRepo {
           title: title,
           description: description,
           price: priceToText(price),
+          priceUnit: priceUnit,
           image: image,
           category: CategoryEntity(id: categoryId ?? 0),
         ),
