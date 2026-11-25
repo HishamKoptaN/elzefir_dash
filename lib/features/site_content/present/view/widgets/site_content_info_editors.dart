@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../controller/site_content_controller.dart';
+import 'about_features_editor.dart';
 import 'info_sections_editor.dart';
 
 /// محررا أقسام صفحتي الخصوصية والشروط.
@@ -25,6 +26,12 @@ class SiteContentInfoEditors extends StatelessWidget {
           settingKey: 'terms_sections_json',
           title: 'أقسام الشروط والأحكام',
         ),
+        InfoSectionsEditor(
+          controller: controller,
+          settingKey: 'about_sections_json',
+          title: 'أقسام صفحة من نحن',
+        ),
+        AboutFeaturesEditor(controller: controller),
       ],
     );
   }

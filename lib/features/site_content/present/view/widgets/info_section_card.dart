@@ -30,6 +30,13 @@ class InfoSectionCard extends StatelessWidget {
       subtitle: 'سطر لكل فقرة أو نقطة',
       children: [
         _field(
+          label: 'معرّف القسم (mission / services / menu / quality)',
+          value: section.id,
+          onChanged: (value) {
+            onChanged(section.copyWith(id: value));
+          },
+        ),
+        _field(
           label: 'عنوان القسم',
           value: section.title,
           onChanged: (value) {

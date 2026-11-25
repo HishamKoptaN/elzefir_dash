@@ -31,7 +31,7 @@ class SiteContactFields {
     SiteContentField(
       key: 'address_label',
       label: 'العنوان الظاهر',
-      fallback: 'العياط غرب - شارع الجيش - أمام سلم السكة الحديد',
+      fallback: 'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
       multiline: true,
     ),
     SiteContentField(

@@ -2,6 +2,7 @@
 /// الفقرات والنقاط تُخزَّن كنص متعدد الأسطر وتُحوَّل إلى قائمة عند الحفظ.
 class InfoSectionDraft {
   const InfoSectionDraft({
+    this.id = '',
     this.title = '',
     this.paragraphs = '',
     this.bullets = '',
@@ -9,6 +10,7 @@ class InfoSectionDraft {
     this.linkLabel = '',
   });
 
+  final String id;
   final String title;
   final String paragraphs;
   final String bullets;
@@ -17,6 +19,7 @@ class InfoSectionDraft {
 
   factory InfoSectionDraft.fromJson(Map<String, dynamic> json) {
     return InfoSectionDraft(
+      id: json['id']?.toString() ?? '',
       title: json['title']?.toString() ?? '',
       paragraphs: _lines(json['paragraphs']),
       bullets: _lines(json['bullets']),
@@ -32,6 +35,7 @@ class InfoSectionDraft {
 
   Map<String, dynamic> toJson() {
     return {
+      if (id.trim().isNotEmpty) 'id': id.trim(),
       'title': title,
       'paragraphs': _nonEmptyLines(paragraphs),
       'bullets': _nonEmptyLines(bullets),
@@ -49,6 +53,7 @@ class InfoSectionDraft {
   }
 
   InfoSectionDraft copyWith({
+    String? id,
     String? title,
     String? paragraphs,
     String? bullets,
@@ -56,6 +61,7 @@ class InfoSectionDraft {
     String? linkLabel,
   }) {
     return InfoSectionDraft(
+      id: id ?? this.id,
       title: title ?? this.title,
       paragraphs: paragraphs ?? this.paragraphs,
       bullets: bullets ?? this.bullets,
