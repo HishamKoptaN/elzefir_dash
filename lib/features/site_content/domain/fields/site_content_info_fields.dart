@@ -32,5 +32,7 @@ class SiteInfoFields {
     SiteContentField(key: 'about_cta_phone', label: 'رقم صندوق الطلب', fallback: '01008673836'),
     SiteContentField(key: 'hero_image_url', label: 'رابط صورة الهيرو', fallback: ''),
     SiteContentField(key: 'gallery_items_json', label: 'شرائح المعرض', fallback: '', multiline: true),
+    SiteContentField(key: 'cooking_methods_json', label: 'طرق الطهي', fallback: '', multiline: true),
+    SiteContentField(key: 'addons_json', label: 'الأطباق الجانبية', fallback: '', multiline: true),
   ];
 }
