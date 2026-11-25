@@ -42,6 +42,10 @@ class _FakeProductsRepo implements ProductsRepo {
       data: ProductEntity(id: req.id ?? 1, price: req.price?.value ?? ''),
     );
   }
+
+  @override
+  Future<ApiResult<void>> delete(int id) async =>
+      const ApiResult.success(data: null);
 }
 
 ProductUpsertReqEntity _editReq({

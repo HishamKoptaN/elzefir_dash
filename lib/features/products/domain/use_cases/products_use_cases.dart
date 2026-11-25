@@ -15,6 +15,10 @@ class ProductsUseCase {
     return await productsRepo.get();
   }
 
+  Future<ApiResult<void>> delete(int id) async {
+    return await productsRepo.delete(id);
+  }
+
   /// Save a product, uploading a freshly picked image first when there is one.
   ///
   /// The image travels in three steps: the backend issues an upload link, the
