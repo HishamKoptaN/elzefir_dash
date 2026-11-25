@@ -19,5 +19,8 @@ class SiteInfoFields {
     SiteContentField(key: 'contact_page_title', label: 'اتصل بنا - العنوان', fallback: 'تواصل معنا - مطعم أسماك الزفر'),
     SiteContentField(key: 'contact_page_subtitle', label: 'اتصل بنا - العنوان الفرعي', fallback: 'نسعد دائماً باستقبال اتصالاتكم وطلباتكم خلال ساعات العمل'),
     SiteContentField(key: 'contact_page_intro', label: 'اتصل بنا - المقدمة', fallback: 'فريق عمل مطعم أسماك الزفر جاهز لخدمتكم ومساعدتكم.', multiline: true),
+    SiteContentField(key: 'contact_phone_label', label: 'اتصل بنا - عنوان الهاتف', fallback: 'الهاتف المباشر (أورنج)'),
+    SiteContentField(key: 'contact_whatsapp_label', label: 'اتصل بنا - عنوان واتساب', fallback: 'واتساب وخدمة العملاء (إتصالات)'),
+    SiteContentField(key: 'contact_address_label', label: 'اتصل بنا - عنوان العنوان', fallback: 'العنوان والفرع'),
   ];
 }
