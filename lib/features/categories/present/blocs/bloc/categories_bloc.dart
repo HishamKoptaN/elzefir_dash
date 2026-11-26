@@ -29,6 +29,18 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             );
           });
         },
+        delete: (id) async {
+          await categoriesUseCases.delete(id).then((result) async {
+            await result.when(
+              success: (_) async {
+                add(const CategoriesEvent.get());
+              },
+              failure: (errorInfo) async {
+                emit(CategoriesState.failure(errorInfo: errorInfo));
+              },
+            );
+          });
+        },
       );
     });
   }

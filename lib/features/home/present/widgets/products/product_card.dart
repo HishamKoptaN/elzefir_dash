@@ -5,9 +5,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/widgets/feedback/confirm_delete_dialog.dart';
 import '../../../../../core/utils/storage_url.dart';
 import '../../../../products/domain/entities/product_entity.dart';
+import '../../../../products/present/blocs/bloc/products_bloc.dart';
 import '../../../../products/present/view/upsert_product_view.dart';
 import '../editing_btn.dart';
 import 'category_badge_widget.dart';
@@ -49,7 +52,28 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: .start,
               spacing: 6.h,
               children: [
-                CategoryBadgeWidget(name: product.category.name),
+                Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    Flexible(
+                      child: CategoryBadgeWidget(name: product.category.name),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete_outline),
+                      color: context.colorScheme.error,
+                      tooltip: 'حذف المنتج',
+                      visualDensity: .compact,
+                      onPressed: () async {
+                        if (!await confirmDelete(context, product.title)) {
+                          return;
+                        }
+                        getIt<ProductsBloc>().add(
+                          ProductsEvent.delete(product.id),
+                        );
+                      },
+                    ),
+                  ],
+                ),
                 Text(
                   product.title,
                   maxLines: 1,

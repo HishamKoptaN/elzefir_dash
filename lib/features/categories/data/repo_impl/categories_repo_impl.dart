@@ -79,4 +79,14 @@ class CategoriesRepoImpl implements CategoriesRepo {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
     }
   }
+
+  @override
+  Future<ApiResult<void>> delete(int id) async {
+    try {
+      await categoriesDataSrc.delete(id);
+      return const ApiResult.success(data: null);
+    } catch (e, s) {
+      return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
+    }
+  }
 }

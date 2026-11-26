@@ -29,6 +29,18 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             );
           });
         },
+        delete: (id) async {
+          await useCases.delete(id).then((result) async {
+            await result.when(
+              success: (_) async {
+                add(const ProductsEvent.get());
+              },
+              failure: (apiErrorModel) async {
+                emit(.failure(apiErrorModel: apiErrorModel));
+              },
+            );
+          });
+        },
       );
     });
     add(.get());

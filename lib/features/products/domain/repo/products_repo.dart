@@ -24,4 +24,6 @@ abstract class ProductsRepo {
   Future<ApiResult<ProductEntity>> upsert({
     required ProductUpsertReqEntity req,
   });
+
+  Future<ApiResult<void>> delete(int id);
 }
