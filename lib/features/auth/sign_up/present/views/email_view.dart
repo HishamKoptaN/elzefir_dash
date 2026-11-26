@@ -37,11 +37,12 @@ class _VerifyEmailViewState extends State<VerifyEmailView>
   }
 
   void _startTimer() {
+    _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_secondsRemaining > 0) {
         setState(() => _secondsRemaining--);
       } else {
-        _timer?.cancel();
+        timer.cancel();
       }
     });
   }
