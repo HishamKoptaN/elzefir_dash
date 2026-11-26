@@ -16,7 +16,8 @@ final Uint8List _pngBytes = base64Decode(
 
 void main() {
   // Runs against a local backend: php artisan serve --host=0.0.0.0 --port=8000
-  group('category upload link flow', () {
+  group('category upload link flow',
+      skip: const bool.fromEnvironment('SKIP_BACKEND_TESTS'), () {
     const apiBase = 'http://127.0.0.1:8000/api/admin/';
     final api = CategoriesApi(
       Dio(
