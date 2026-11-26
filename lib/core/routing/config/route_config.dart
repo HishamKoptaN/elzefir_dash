@@ -106,6 +106,7 @@ class RouteConfig {
         },
       ),
       ShellRoute(
+        redirect: AppGuards.authenticatedRedirect,
         builder: (context, state, child) {
           return HomeView(
             title: _getPageTitle(state: state),
