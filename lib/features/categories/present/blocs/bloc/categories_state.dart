@@ -1,7 +1,7 @@
 part of 'categories_bloc.dart';
 
 @freezed
-class CategoriesState with _$CategoriesState {
+abstract class CategoriesState with _$CategoriesState {
   const factory CategoriesState.initial() = _Initial;
   const factory CategoriesState.loaded({
     required List<CategoryEntity>? categories,
