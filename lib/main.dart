@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'alzafr_dash.dart';
 import 'config/env_config.dart';
 import 'core/debug/utils/app_observer.dart';
+import 'core/services/pusher_service.dart';
 
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -59,7 +60,15 @@ Future<void> main() async {
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
     usePathUrlStrategy();
-    // getIt<PusherService>().init();
+    // if (kDebugMode) {
+    //   await SharedPrefHelper.setSecuredString(
+    //     key: SharedPrefKeys.jwtToken,
+    //     value: '720|oZpdN9poVxzMRxXUdJU85YYpTYbmQSpjSBX4Vgdgb3de16c1',
+    //   );
+    // await SharedPrefHelper.clearAllData();
+    // await SharedPrefHelper.clearAllSecuredData();
+    // }
+    getIt<PusherService>().init();
     // final completer = Completer();
     // getIt<AuthBloc>().add(AuthEvent.check(onComplete: completer));
     // await completer.future;
