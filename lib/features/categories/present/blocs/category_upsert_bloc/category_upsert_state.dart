@@ -1,7 +1,7 @@
 part of 'category_upsert_bloc.dart';
 
 @freezed
-class CategoryUpsertState with _$CategoryUpsertState {
+abstract class CategoryUpsertState with _$CategoryUpsertState {
   const factory CategoryUpsertState.initial() = _Initial;
   const factory CategoryUpsertState.loaded({
     CategoryUpsertReqEntity? categoryUpsertReq,

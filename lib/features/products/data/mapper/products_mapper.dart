@@ -33,6 +33,9 @@ extension ProductModelMapper on ProductModel {
       title: title ?? '',
       description: description ?? '',
       price: priceToText(price),
+      priceUnit: priceUnit ?? '',
+      isFeatured: isFeatured ?? false,
+      isMostRequested: isMostRequested ?? false,
       image: image ?? '',
       category: category?.toEntity() ?? CategoryEntity(),
     );
@@ -60,8 +63,11 @@ extension ProductUpsertReqEntityToModel on ProductUpsertReqEntity {
       title: title?.value,
       description: description?.value,
       price: parsePriceNumber(price?.value ?? ''),
+      priceUnit: priceUnit?.value,
       image: imageUrl?.value,
       categoryId: categoryId?.value,
+      isFeatured: isFeatured,
+      isMostRequested: isMostRequested,
     );
   }
 }

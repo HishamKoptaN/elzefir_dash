@@ -124,20 +124,14 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
                 _selectedIndex < widget.tabSpecificWidgets!.length &&
                 widget.tabSpecificWidgets![_selectedIndex].isNotEmpty)
               Row(
-                children: widget.tabSpecificWidgets![_selectedIndex]
-                    .where((widget) => widget != null)
-                    .cast<Widget>()
-                    .toList(),
+                children: widget.tabSpecificWidgets![_selectedIndex],
               )
             else if (widget.otherWidgets != null)
               Padding(
                 padding: EdgeInsets.only(bottom: 15.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: widget.otherWidgets!
-                      .where((widget) => widget != null)
-                      .cast<Widget>()
-                      .toList(),
+                  children: widget.otherWidgets!,
                 ),
               ),
           ],

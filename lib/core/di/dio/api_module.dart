@@ -3,8 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../../../config/env.dart';
 import '../../../config/env_config.dart';
-import '../../globals/database/shared_pref_helper.dart';
-import '../../globals/database/shared_pref_keys.dart';
+import '../../services/token_store.dart';
 
 @module
 abstract class ApiModule {
@@ -28,7 +27,7 @@ class AuthInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await tokenStorage.getToken();
+    final token = _currentToken ?? await tokenStorage.getToken();
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
@@ -73,9 +72,5 @@ class LanguageInterceptor extends Interceptor {
 
 @lazySingleton
 class TokenStorage {
-  Future<String?> getToken() async {
-    return await SharedPrefHelper.getSecuredString(
-      key: SharedPrefKeys.jwtToken,
-    );
-  }
+  Future<String?> getToken() => createTokenStore().read();
 }

@@ -1,40 +1,34 @@
 rules_version = '2';
 
-// Rules for the Elzefir dashboard.
+// Canonical Firestore rules for every Elzefir client.
+// Source of truth: elzefir_api/firestore.rules
+// Keep the copies in elzefir/ and elzefir_dash/ identical to this file.
 //
-// Firebase project mapping (verified 2026-11-20):
-//   - Customer app (elzefir): dev AND prod FirebaseOptions both target
-//     `elzefir-dev`, even though its hosting lives on `elzefir-dbb8d`.
-//   - Dashboard default ENV=dev also targets `elzefir-dev`, so the visitor
-//     stats written by the customer app are readable here.
-//   - Dashboard ENV=prod targets `elzefir-dbb8d` and will NOT see these stats.
-//     Keep deploying the dashboard with the default dev env, or migrate the
-//     customer app to `elzefir-dbb8d` only after verifying its products exist.
-//
-// The menu is read by the customer app without signing in, while everything the
-// dashboard writes needs a signed-in user. Tighten `canEditMenu()` to a custom
-// claim (for example `request.auth.token.admin == true`) once accounts carry
-// one; until then any signed-in account can edit the menu.
+// The customer app and the dashboard share the `elzefir-dev` Firebase project
+// and both sign users in by phone, so `request.auth != null` alone cannot
+// distinguish an admin. Catalog writes and visitor analytics require the
+// `admin` custom claim; see docs/firestore-rules.md for provisioning.
+// The API writes with the Admin SDK and bypasses these rules.
 service cloud.firestore {
   match /databases/{database}/documents {
     function isSignedIn() {
       return request.auth != null;
     }
 
-    function canEditMenu() {
-      return isSignedIn();
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
     }
 
-    // Anonymous website visitors increment the shared counters from the
-    // customer app. Only signed-in dashboard users may read them.
     function isValidVisitorStats() {
       return request.resource.data.keys().hasOnly([
           'totalVisits', 'uniqueVisitors', 'lastVisitAt', 'daily'
         ])
         && request.resource.data.totalVisits is int
         && request.resource.data.totalVisits > 0
-        && request.resource.data.uniqueVisitors is int
-        && request.resource.data.uniqueVisitors >= 0;
+        && (!('uniqueVisitors' in request.resource.data)
+            || (request.resource.data.uniqueVisitors is int
+                && request.resource.data.uniqueVisitors >= 0))
+        && request.resource.data.daily is map;
     }
 
     function isValidVisitorHit() {
@@ -45,39 +39,48 @@ service cloud.firestore {
         && request.resource.data.visits > 0;
     }
 
+    // Public catalog and site settings; writes are admin-only.
+    match /products/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /categories/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /settlement_methods/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /working_hours/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // The customer app writes these counters anonymously; only admins read them.
     match /stats/visitors {
-      allow read: if isSignedIn();
+      allow read: if isAdmin();
       allow create, update: if isValidVisitorStats();
+      allow delete: if false;
     }
 
     match /visitors/{visitorId} {
-      allow read: if isSignedIn();
+      allow read: if isAdmin();
       allow create, update: if isValidVisitorHit();
+      allow delete: if false;
     }
 
-    match /products/{productId} {
-      allow read: if true;
-      allow create, update, delete: if canEditMenu();
-    }
-
-    match /settlement_methods/{methodId} {
-      allow read: if true;
-      allow create, update, delete: if canEditMenu();
-    }
-
-    match /categories/{categoryId} {
-      allow read: if true;
-      allow create, update, delete: if canEditMenu();
-    }
-
-    match /working_hours/{documentId} {
-      allow read: if true;
-      allow create, update, delete: if canEditMenu();
-    }
-
-    // Everything else (profile, notifications, backups) stays behind a sign-in.
+    // No other collection is accessible to clients.
     match /{document=**} {
-      allow read, write: if isSignedIn();
+      allow read, write: if false;
     }
   }
 }

@@ -22,7 +22,7 @@ class SharedPrefHelper {
     required dynamic value,
   }) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    debugPrint("SharedPrefHelper : setData with key : $key and value : $value");
+    debugPrint('SharedPrefHelper : setData with key : $key');
     switch (value.runtimeType) {
       case String:
         await prefs.setString(key, value);
@@ -55,9 +55,7 @@ class SharedPrefHelper {
     required int value,
     required bool add,
   }) async {
-    debugPrint(
-      'SharedPrefHelper : updateList with key : $key and value : $value',
-    );
+    debugPrint('SharedPrefHelper : updateList with key : $key');
     final prefs = await SharedPreferences.getInstance();
     final list = await getIntList(key: key);
     if (add && !list.contains(value)) {
@@ -105,9 +103,7 @@ class SharedPrefHelper {
     required String value,
   }) async {
     const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint(
-      "FlutterSecureStorage : setSecuredString with key : $key and value : $value",
-    );
+    debugPrint('FlutterSecureStorage : setSecuredString with key : $key');
     await flutterSecureStorage.write(key: key, value: value);
   }
 
@@ -118,7 +114,7 @@ class SharedPrefHelper {
       debugPrint('FlutterSecureStorage : getSecuredString with key :');
       return await flutterSecureStorage.read(key: key) ?? '';
     } catch (e) {
-      print("❌ Error storing token: $e");
+      debugPrint('FlutterSecureStorage : read failed: ${e.runtimeType}');
     }
   }
 

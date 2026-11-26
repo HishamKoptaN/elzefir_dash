@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:alzefr_dash/core/di/dependency_injection.dart';
 import 'package:alzefr_dash/core/utils/extensions/theme_ext.dart';
+import 'package:alzefr_dash/core/widgets/feedback/confirm_delete_dialog.dart';
 import 'package:alzefr_dash/core/widgets/custom_image.dart';
 import 'package:alzefr_dash/features/home/present/widgets/editing_btn.dart';
 import '../../../domain/entities/categories_res_entity.dart';
+import '../../blocs/bloc/categories_bloc.dart';
 import '../upsert_category_view.dart';
 
 /// كارت تصنيف بأسلوب Stitch: صورة مصغرة مدورة، اسم جريء، وملاحظة أن النقر
@@ -97,6 +100,19 @@ class CategoryCard extends StatelessWidget {
                   icon: Icons.edit_outlined,
                   onTap: () {
                     return _openEdit(context);
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete_outline),
+                  color: context.colorScheme.error,
+                  tooltip: 'حذف التصنيف',
+                  onPressed: () async {
+                    if (!await confirmDelete(context, category.name)) {
+                      return;
+                    }
+                    getIt<CategoriesBloc>().add(
+                      CategoriesEvent.delete(category.id),
+                    );
                   },
                 ),
               ],

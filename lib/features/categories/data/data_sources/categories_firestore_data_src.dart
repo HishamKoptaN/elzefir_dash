@@ -60,4 +60,22 @@ class CategoriesFirestoreDataSrc implements CategoriesDataSrc {
     });
     return CategoryModel(id: id, name: name, image: image);
   }
+
+  @override
+  Future<void> delete(int id) async {
+    final batch = _firestore.batch();
+    // Products that pointed at this category keep their other data but lose
+    // the reference, so no product is silently left with a missing category.
+    final linked = await _firestore
+        .collection('products')
+        .where('category_id', isEqualTo: id)
+        .get();
+    for (final doc in linked.docs) {
+      batch.update(doc.reference, {'category_id': FieldValue.delete()});
+    }
+    batch.delete(
+      _firestore.collection(categoriesCollection).doc(id.toString()),
+    );
+    await batch.commit();
+  }
 }

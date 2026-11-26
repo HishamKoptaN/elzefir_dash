@@ -1,6 +1,6 @@
 import 'package:form_inputs/form_inputs.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'IdentityInput.dart';
+import 'identity_input.dart';
 part 'sign_in_req_entity.freezed.dart';
 
 @freezed

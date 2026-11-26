@@ -107,6 +107,9 @@ class ProductsRepoImpl implements ProductsRepo {
       final name = req.name?.value ?? '';
       final title = req.title?.value ?? '';
       final description = req.description?.value ?? '';
+      final priceUnit = req.priceUnit?.value.trim() ?? '';
+      final isFeatured = req.isFeatured ?? false;
+      final isMostRequested = req.isMostRequested ?? false;
 
       // Only new products need an id; an existing one keeps the id it has.
       final idStart = req.id == null ? await numericIdStartAfter(products) : 1;
@@ -125,10 +128,15 @@ class ProductsRepoImpl implements ProductsRepo {
             'title': title,
             'description': description,
             'price': price,
+            'priceUnit': priceUnit,
+            // These two flags are what the public site reads to decide which
+            // dishes appear in the featured strip and which one gets the
+            // "الأكثر طلباً" badge, so always write them explicitly.
+            'isFeatured': isFeatured,
+            'isMostRequested': isMostRequested,
             if (categoryId != null) 'category_id': categoryId,
             // Keep the previous image when the form was saved without picking one.
             if (image.isNotEmpty) 'image': image,
-            'price_updated_at': FieldValue.serverTimestamp(),
           },
           SetOptions(merge: true),
         );
@@ -141,10 +149,23 @@ class ProductsRepoImpl implements ProductsRepo {
           title: title,
           description: description,
           price: priceToText(price),
+          priceUnit: priceUnit,
+          isFeatured: isFeatured,
+          isMostRequested: isMostRequested,
           image: image,
           category: CategoryEntity(id: categoryId ?? 0),
         ),
       );
+    } catch (e, s) {
+      return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
+    }
+  }
+
+  @override
+  Future<ApiResult<void>> delete(int id) async {
+    try {
+      await _firestore.collection(_productsCollection).doc(id.toString()).delete();
+      return const ApiResult.success(data: null);
     } catch (e, s) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
     }

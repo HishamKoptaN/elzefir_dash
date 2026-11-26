@@ -6,6 +6,7 @@ import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../analytics/present/view/analytics_view.dart';
 import '../../../categories/present/view/widgets/categories_view.dart';
 import '../../../products/present/view/products_view.dart';
+import '../../../site_content/present/view/site_content_view.dart';
 import '../../../working_hours/present/view/working_hours_view.dart';
 
 class DashboardNav extends StatelessWidget {
@@ -31,6 +32,12 @@ class DashboardNav extends StatelessWidget {
       label: 'ساعات العمل',
       icon: Icons.schedule_outlined,
       selectedIcon: Icons.schedule,
+    ),
+    (
+      route: SiteContentView.routeName,
+      label: 'نصوص الموقع',
+      icon: Icons.article_outlined,
+      selectedIcon: Icons.article,
     ),
     (
       route: AnalyticsView.routeName,

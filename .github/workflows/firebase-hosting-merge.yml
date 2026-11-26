@@ -15,6 +15,10 @@ jobs:
           flutter-version-file: pubspec.yaml
           channel: "stable"
           cache: true
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+      - name: Test
+        run: flutter test --dart-define=SKIP_BACKEND_TESTS=true
       - run: flutter build web --release --dart-define=ENV=${{ github.ref_name }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

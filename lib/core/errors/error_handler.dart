@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'mappers/error_mapper.dart';
 import 'mappers/types/dio_error_mapper.dart';
@@ -29,22 +30,14 @@ class ErrorHandler {
     return UnknownErrorMapper().map(error, stackTrace);
   }
 
-  static void _logToCrashlytics(dynamic error, StackTrace? stackTrace) {
-    // FirebaseCrashlytics.instance.setCustomKey('screen', currentScreen);
-    // FirebaseCrashlytics.instance.setCustomKey('user_id', userId);
-    // FirebaseCrashlytics.instance.setCustomKey('app_version', appVersion);
-    // FirebaseCrashlytics.instance.setCustomKey('environment', 'prod');
-    // FirebaseCrashlytics.instance.setCustomKey(
-    //   'url',
-    //   dio.requestOptions.uri.toString(),
-    // );
-    // FirebaseCrashlytics.instance.setCustomKey(
-    //   'method',
-    //   dio.requestOptions.method,
-    // );
-    // FirebaseCrashlytics.instance.setCustomKey(
-    //   'status',
-    //   dio.response?.statusCode ?? -1,
-    // );
+  static void _logToCrashlytics(Object error, StackTrace? stackTrace) {
+    if (kIsWeb) {
+      return;
+    }
+    FirebaseCrashlytics.instance.recordError(
+      error,
+      stackTrace,
+      fatal: false,
+    );
   }
 }

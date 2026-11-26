@@ -1,7 +1,7 @@
 part of 'profile_bloc.dart';
 
 @freezed
-class ProfileState with _$ProfileState {
+abstract class ProfileState with _$ProfileState {
   const factory ProfileState.init() = _Init;
   const factory ProfileState.loading() = _ProfileLoading;
   const factory ProfileState.loaded({

@@ -90,7 +90,7 @@ class _ContentSection extends StatelessWidget {
           SizedBox(height: 2.h),
           Text(
             'في مطعم الزفر نقدم أفضل أنواع الأسماك والمأكولات البحرية الطازجة، '
-            'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الطهاة. هدفنا أن نقدم '
+            'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الشيفات. هدفنا أن نقدم '
             'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
             textAlign: TextAlign.right,
             style: context.textTheme.bodyLarge?.copyWith(

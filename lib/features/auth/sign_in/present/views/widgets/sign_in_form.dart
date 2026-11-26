@@ -9,7 +9,7 @@ import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../auth_sizes.dart';
 import '../../../../forgot_password/present/views/forgot_pass_view.dart';
 import '../../../../widgets/custom_auth_text_form_field.dart';
-import '../../../domain/entities/IdentityInput.dart';
+import '../../../domain/entities/identity_input.dart';
 import '../../../domain/entities/sign_in_req_entity.dart';
 import '../../blocs/bloc/sign_in_bloc.dart';
 

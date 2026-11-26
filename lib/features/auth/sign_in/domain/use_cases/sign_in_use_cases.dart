@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../auth/present/blocs/auth_bloc/auth_bloc.dart';
-import '../entities/IdentityInput.dart';
+import '../entities/identity_input.dart';
 import '../entities/sign_in_req_entity.dart';
 import '../repo/sign_in_repo.dart';
 

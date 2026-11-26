@@ -1,7 +1,7 @@
 part of 'reset_pass_bloc.dart';
 
 @freezed
-class ResetPassEvent with _$ResetPassEvent {
+abstract class ResetPassEvent with _$ResetPassEvent {
   const factory ResetPassEvent.dataChanged({
     required ResetPassEntity resetPassEntity,
   }) = _DataChanged;

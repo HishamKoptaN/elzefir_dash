@@ -41,6 +41,9 @@ class _UpsertProductViewState extends State<UpsertProductView> {
             title: .dirty(value: widget.product?.title ?? ''),
             description: .dirty(value: widget.product?.description ?? ''),
             price: .dirty(value: widget.product?.price ?? ''),
+            priceUnit: .dirty(value: widget.product?.priceUnit ?? ''),
+            isFeatured: widget.product?.isFeatured ?? false,
+            isMostRequested: widget.product?.isMostRequested ?? false,
             categoryId: .dirty(
               value: widget.product?.category.id.toString() ?? '',
             ),

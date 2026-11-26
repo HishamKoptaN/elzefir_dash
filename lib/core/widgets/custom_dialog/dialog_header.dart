@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import '../../theme/app_colors.dart';
-import '../../utils/extensions/responsive_icon_extension .dart';
+import '../../utils/extensions/responsive_icon_extension.dart';
 
 class DialogHeader extends StatelessWidget {
   final String title;

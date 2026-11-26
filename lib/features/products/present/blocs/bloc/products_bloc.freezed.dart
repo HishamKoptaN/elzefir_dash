@@ -56,11 +56,12 @@ extension ProductsEventPatterns on ProductsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Get value)?  get,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Get value)?  get,TResult Function( _Delete value)?  delete,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get(_that);case _:
+return get(_that);case _Delete() when delete != null:
+return delete(_that);case _:
   return orElse();
 
 }
@@ -78,11 +79,12 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Get value)  get,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Get value)  get,required TResult Function( _Delete value)  delete,}){
 final _that = this;
 switch (_that) {
 case _Get():
-return get(_that);case _:
+return get(_that);case _Delete():
+return delete(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -99,11 +101,12 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Get value)?  get,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Get value)?  get,TResult? Function( _Delete value)?  delete,}){
 final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get(_that);case _:
+return get(_that);case _Delete() when delete != null:
+return delete(_that);case _:
   return null;
 
 }
@@ -120,10 +123,11 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  get,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  get,TResult Function( int id)?  delete,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get();case _:
+return get();case _Delete() when delete != null:
+return delete(_that.id);case _:
   return orElse();
 
 }
@@ -141,10 +145,11 @@ return get();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  get,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  get,required TResult Function( int id)  delete,}) {final _that = this;
 switch (_that) {
 case _Get():
-return get();case _:
+return get();case _Delete():
+return delete(_that.id);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -161,10 +166,11 @@ return get();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  get,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  get,TResult? Function( int id)?  delete,}) {final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get();case _:
+return get();case _Delete() when delete != null:
+return delete(_that.id);case _:
   return null;
 
 }
@@ -203,6 +209,74 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class _Delete implements ProductsEvent {
+  const _Delete(this.id);
+  
+
+ final  int id;
+
+/// Create a copy of ProductsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DeleteCopyWith<_Delete> get copyWith => __$DeleteCopyWithImpl<_Delete>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Delete&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
+
+@override
+String toString() {
+    return 'ProductsEvent.delete(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DeleteCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
+  factory _$DeleteCopyWith(_Delete value, $Res Function(_Delete) _then) = __$DeleteCopyWithImpl;
+@useResult
+$Res call({
+ int id
+});
+
+
+
+
+}
+/// @nodoc
+class __$DeleteCopyWithImpl<$Res>
+    implements _$DeleteCopyWith<$Res> {
+  __$DeleteCopyWithImpl(this._self, this._then);
+
+  final _Delete _self;
+  final $Res Function(_Delete) _then;
+
+/// Create a copy of ProductsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(_Delete(
+null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$ProductsState {

@@ -1,7 +1,7 @@
 part of 'product_upsert_bloc.dart';
 
 @freezed
-class ProductUpsertState with _$ProductUpsertState {
+abstract class ProductUpsertState with _$ProductUpsertState {
   const factory ProductUpsertState.initial() = _Initial;
   const factory ProductUpsertState.loaded({
     ProductUpsertReqEntity? productUpsertReq,

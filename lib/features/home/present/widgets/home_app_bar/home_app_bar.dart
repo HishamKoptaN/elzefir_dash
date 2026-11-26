@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
-import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../../core/utils/extensions/responsive_icon_extension.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/feedback/empty_widget.dart';
 import '../../../../notifications/domain/entities/notification_entity.dart';

@@ -49,7 +49,6 @@ class FirebaseAuthService {
         message: 'Failed to get Firebase ID token',
       );
     }
-    log('[log] 🔥 Firebase ID Token: $idToken');
     return idToken;
   }
 

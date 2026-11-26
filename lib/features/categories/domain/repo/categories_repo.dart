@@ -24,4 +24,6 @@ abstract class CategoriesRepo {
   Future<ApiResult<CategoryEntity>> upsert({
     required CategoryUpsertReqEntity req,
   });
+
+  Future<ApiResult<void>> delete(int id);
 }

@@ -1,7 +1,7 @@
 part of 'reset_pass_bloc.dart';
 
 @freezed
-class ResetPassState with _$ResetPassState {
+abstract class ResetPassState with _$ResetPassState {
   const factory ResetPassState.loading() = ResetPassLoading;
   const factory ResetPassState.loaded({
     required ResetPassEntity resetPassEntity,

@@ -3,13 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'alzafr_dash.dart';
 import 'config/env_config.dart';
 import 'core/debug/utils/app_observer.dart';
+import 'core/services/pusher_service.dart';
 
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
@@ -17,6 +20,7 @@ import 'package:intl/intl_standalone.dart';
 
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
+import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 
 import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -29,6 +33,14 @@ Future<void> main() async {
       await Firebase.initializeApp(options: EnvConfig.config.firebaseOptions);
       // await FirebaseMessagingService.initialize();
     }
+    if (!kIsWeb && kReleaseMode) {
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
+      PlatformDispatcher.instance.onError = (error, stack) {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        return true;
+      };
+    }
     HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: kIsWeb
           ? HydratedStorageDirectory.web
@@ -36,6 +48,14 @@ Future<void> main() async {
     );
     Bloc.observer = AppBlocObserver();
     configureDependencies();
+    if (kIsWeb && FirebaseAuth.instance.currentUser != null) {
+      final completer = Completer<void>();
+      getIt<AuthBloc>().add(AuthEvent.authToken(onComplete: completer));
+      await completer.future.timeout(
+        const Duration(seconds: 10),
+        onTimeout: () {},
+      );
+    }
     await ScreenUtil.ensureScreenSize();
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
@@ -48,7 +68,7 @@ Future<void> main() async {
     // await SharedPrefHelper.clearAllData();
     // await SharedPrefHelper.clearAllSecuredData();
     // }
-    // getIt<PusherService>().init();
+    getIt<PusherService>().init();
     // final completer = Completer();
     // getIt<AuthBloc>().add(AuthEvent.check(onComplete: completer));
     // await completer.future;
