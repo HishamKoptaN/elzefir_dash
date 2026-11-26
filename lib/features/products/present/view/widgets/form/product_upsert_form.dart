@@ -11,6 +11,7 @@ import 'package:alzefr_dash/core/widgets/forms/image_picker_field.dart';
 import 'package:alzefr_dash/features/products/domain/entities/product_upsert_req_entity.dart';
 
 import '../../../blocs/product_upsert_bloc/product_upsert_bloc.dart';
+import 'product_flags_fields.dart';
 import 'product_form_fields.dart';
 
 class ProductUpsertForm extends StatelessWidget {
@@ -57,6 +58,7 @@ class ProductUpsertForm extends StatelessWidget {
                       },
                     ),
                     ProductFormFields(req: req),
+                    ProductFlagsFields(req: req),
                     if (status == FormzSubmissionStatus.failure ||
                         req.title?.isNotValid == true ||
                         req.description?.isNotValid == true)

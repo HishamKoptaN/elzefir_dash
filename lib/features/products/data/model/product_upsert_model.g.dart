@@ -17,6 +17,8 @@ _ProductUpsertReqModel _$ProductUpsertReqModelFromJson(
   price: json['price'] as num?,
   priceUnit: json['priceUnit'] as String?,
   categoryId: json['category_id'] as String?,
+  isFeatured: json['isFeatured'] as bool?,
+  isMostRequested: json['isMostRequested'] as bool?,
 );
 
 Map<String, dynamic> _$ProductUpsertReqModelToJson(
@@ -30,4 +32,6 @@ Map<String, dynamic> _$ProductUpsertReqModelToJson(
   'price': instance.price,
   'priceUnit': instance.priceUnit,
   'category_id': instance.categoryId,
+  'isFeatured': instance.isFeatured,
+  'isMostRequested': instance.isMostRequested,
 };
