@@ -1,7 +1,7 @@
 part of 'auth_bloc.dart';
 
 @freezed
-class AuthState with _$AuthState {
+abstract class AuthState with _$AuthState {
   const factory AuthState.init() = _Init;
   const factory AuthState.loading() = _Loading;
   const factory AuthState.authenticated() = _Authenticated;
