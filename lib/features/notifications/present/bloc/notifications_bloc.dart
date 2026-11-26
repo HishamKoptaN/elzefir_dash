@@ -13,10 +13,17 @@ part 'notifications_state.dart';
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   final NotificationsUseCases useCases;
 
+  /// يمنع فتح أكثر من اشتراك واحد على البث نفسه عند تكرار حدث `watch`.
+  bool _watching = false;
+
   NotificationsBloc(this.useCases) : super(const NotificationsState.initial()) {
     on<NotificationsEvent>((event, emit) async {
       await event.when(
         watch: () async {
+          if (_watching) {
+            return;
+          }
+          _watching = true;
           try {
             await useCases.getNotifications();
           } catch (e) {
@@ -42,6 +49,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
               );
             },
           );
+          _watching = false;
         },
         markAsRead: (id) async {
           await useCases.markAsRead(id: id);
