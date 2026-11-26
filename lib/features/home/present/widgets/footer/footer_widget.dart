@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
-import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../../core/utils/extensions/responsive_icon_extension.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
