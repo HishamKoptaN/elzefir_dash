@@ -30,7 +30,7 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
         dataChanged: (productUpsertReq) {
           state.maybeMap(
             loaded: (state) {
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(productUpsertReq: productUpsertReq),
               );
@@ -55,7 +55,7 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
               if (req == null ||
                   _validateForm(productUpsertReq: req) !=
                       FormzSubmissionStatus.success) {
-                emitCustomLoaded(
+                _emitCustomLoaded(
                   emit: emit,
                   state: state,
                   errorInfo: const ErrorInfo(
@@ -66,7 +66,7 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
                 return;
               }
 
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(formzSubmissionStatus: .inProgress),
               );
@@ -76,12 +76,12 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
                 await res.when(
                   success: (res) async {
                     emit(ProductUpsertState.success());
-                    emitCustomLoaded(emit: emit, state: state);
+                    _emitCustomLoaded(emit: emit, state: state);
                   },
                   failure: (apiErrorModel) async {
                     // Keep the loaded form (and everything typed into it) so the
                     // admin can fix the problem and retry instead of losing it.
-                    emitCustomLoaded(
+                    _emitCustomLoaded(
                       emit: emit,
                       state: state,
                       errorInfo: apiErrorModel,
@@ -95,7 +95,7 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
       );
     });
   }
-  void emitCustomLoaded({
+  void _emitCustomLoaded({
     required Emitter<ProductUpsertState> emit,
     required _Loaded state,
     FormzSubmissionStatus? formzSubmissionStatus,

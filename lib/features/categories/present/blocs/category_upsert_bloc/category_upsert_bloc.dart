@@ -30,7 +30,7 @@ class CategoryUpsertBloc
         dataChanged: (categoryUpsertReq) {
           state.maybeMap(
             loaded: (state) {
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(categoryUpsertReq: categoryUpsertReq),
               );
@@ -48,7 +48,7 @@ class CategoryUpsertBloc
         upsert: () async {
           await state.mapOrNull(
             loaded: (state) async {
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(formzSubmissionStatus: .inProgress),
               );
@@ -58,7 +58,7 @@ class CategoryUpsertBloc
                     await res.when(
                       success: (res) async {
                         emit(CategoryUpsertState.success());
-                        emitCustomLoaded(emit: emit, state: state);
+                        _emitCustomLoaded(emit: emit, state: state);
                       },
                       failure: (apiErrorModel) async {
                         emit(
@@ -75,7 +75,7 @@ class CategoryUpsertBloc
       );
     });
   }
-  void emitCustomLoaded({
+  void _emitCustomLoaded({
     required Emitter<CategoryUpsertState> emit,
     required _Loaded state,
     FormzSubmissionStatus? formzSubmissionStatus,

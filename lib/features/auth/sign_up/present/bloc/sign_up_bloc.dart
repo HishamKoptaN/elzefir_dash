@@ -31,7 +31,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         signUp: () async {
           await state.mapOrNull(
             loaded: (state) async {
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(
                   formzSubmissionStatus: FormzSubmissionStatus.inProgress,
@@ -43,7 +43,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
               );
               await result.when(
                 success: (_) async {
-                  emitCustomLoaded(
+                  _emitCustomLoaded(
                     emit: emit,
                     state: state.copyWith(
                       signUpReq: SignUpReqEntity(),
@@ -54,7 +54,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
                 },
                 failure: (apiErrorModel) {
                   emitCustomFailure(emit: emit, apiErrorModel: apiErrorModel);
-                  emitCustomLoaded(emit: emit, state: state);
+                  _emitCustomLoaded(emit: emit, state: state);
                 },
               );
             },
@@ -63,7 +63,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         dataChanged: (signUpReq) async {
           await state.mapOrNull(
             loaded: (state) {
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state.copyWith(signUpReq: signUpReq!),
               );
@@ -74,7 +74,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     });
   }
 
-  void emitCustomLoaded({
+  void _emitCustomLoaded({
     required Emitter<SignUpState> emit,
     required _Loaded state,
     FormzSubmissionStatus? formzSubmissionStatus,

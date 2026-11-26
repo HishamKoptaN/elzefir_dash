@@ -57,7 +57,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         updateProfile: () async {
           await state.mapOrNull(
             loaded: (state) async {
-              emitCustomLoaded(
+              _emitCustomLoaded(
                 emit: emit,
                 state: state,
                 formzSubmissionStatus: FormzSubmissionStatus.inProgress,
@@ -76,7 +76,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               await result.when(
                 success: (profile) {
                   emit(const ProfileState.success());
-                  emitCustomLoaded(
+                  _emitCustomLoaded(
                     emit: emit,
                     state: state.copyWith(
                       profile: profile!,
@@ -86,7 +86,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                 },
                 failure: (apiErrorModel) {
                   emit(ProfileState.failure(apiErrorModel: apiErrorModel));
-                  emitCustomLoaded(emit: emit, state: state);
+                  _emitCustomLoaded(emit: emit, state: state);
                 },
               );
             },
@@ -95,7 +95,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       );
     });
   }
-  void emitCustomLoaded({
+  void _emitCustomLoaded({
     required Emitter<ProfileState> emit,
     required _Loaded state,
     FormzSubmissionStatus? formzSubmissionStatus,
