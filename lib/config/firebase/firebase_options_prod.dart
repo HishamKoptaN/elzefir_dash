@@ -19,20 +19,19 @@ class ProdFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDa5tsdgfGYP378YlBC_P3BwqGcBZWzwsg',
-    appId: '1:1057189524284:web:e3d3031f7da5ad94d62439',
-    messagingSenderId: '1057189524284',
-    projectId: 'elzefir-dbb8d',
-    authDomain: 'elzefir-dbb8d.firebaseapp.com',
-    storageBucket: 'elzefir-dbb8d.firebasestorage.app',
-    measurementId: 'G-KMSJVTFYHE',
+    apiKey: 'AIzaSyCKyOmnfaHHhXw3tZNH7Ela-_3IsR_6DbU',
+    appId: '1:1052606400660:web:6672898c151aeffba5cc81',
+    messagingSenderId: '1052606400660',
+    projectId: 'elzefir',
+    authDomain: 'elzefir.firebaseapp.com',
+    storageBucket: 'elzefir.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD8pjelajX2Rt9E7MYvy3qusrq3EoTHf8g',
-    appId: '1:1057189524284:android:9d01e04329fc5816d62439',
-    messagingSenderId: '1057189524284',
-    projectId: 'elzefir-dbb8d',
-    storageBucket: 'elzefir-dbb8d.firebasestorage.app',
+    apiKey: 'AIzaSyBzRVCg0fq6fUvziGOgs2cKGeqySv7hVFs',
+    appId: '1:1052606400660:android:25198788e67819d9a5cc81',
+    messagingSenderId: '1052606400660',
+    projectId: 'elzefir',
+    storageBucket: 'elzefir.firebasestorage.app',
   );
 }
