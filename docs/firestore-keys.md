@@ -15,7 +15,7 @@
 
 `priceUnit` الفارغ يعني «كجم».
 
-## مفاتيح `settings/general` (76 مفتاحاً)
+## مفاتيح `settings/general` (77 مفتاحاً)
 
 كل مفتاح أدناه مكتوب في الداشبورد ويُقرأ في الموقع. القيمة الافتراضية في الداشبورد مطابقة لافتراض الموقع، فحفظ أي حقل لا يغيّر الحقول الأخرى.
 
@@ -35,7 +35,7 @@
 `cooking_methods_json`، `addons_json`، `gallery_items_json`.
 
 ### التنقل والترتيب
-`nav_home`، `nav_gallery`، `nav_products`، `nav_prices`، `nav_about`، `nav_contact`، `section_order_json`.
+`nav_home`، `nav_gallery`، `nav_products`، `nav_prices`، `nav_about`، `nav_contact`، `nav_orders`، `section_order_json`.
 
 ### بطاقة عرض اليوم
 `offer_badge`، `offer_savings`، `offer_title`، `offer_description`، `offer_price`، `offer_before_price`، `offer_cta`، `offer_call_label`، `offer_image`، `offer_feature_1..3`.
