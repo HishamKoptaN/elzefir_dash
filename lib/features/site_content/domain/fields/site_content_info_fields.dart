@@ -53,5 +53,8 @@ class SiteInfoFields {
     SiteContentField(key: 'offer_feature_1', label: 'عرض اليوم - ميزة أولى', fallback: 'تكفي 4-5 أفراد'),
     SiteContentField(key: 'offer_feature_2', label: 'عرض اليوم - ميزة ثانية', fallback: 'شوي وقلي فوري'),
     SiteContentField(key: 'offer_feature_3', label: 'عرض اليوم - ميزة ثالثة', fallback: 'توصيل ساخن'),
+    SiteContentField(key: 'orders_teaser_title', label: 'قسم الطلبات - العنوان', fallback: 'الطلبات'),
+    SiteContentField(key: 'orders_teaser_subtitle', label: 'قسم الطلبات - الوصف', fallback: 'نجهّز لك تجربة طلب أسهل وأسرع، كونوا معنا قريباً'),
+    SiteContentField(key: 'orders_teaser_badge', label: 'قسم الطلبات - الشارة', fallback: 'قريباً'),
   ];
 }
