@@ -10,11 +10,11 @@ class ProdEnv implements Env {
   }
   @override
   String get baseUrl {
-    return 'https://odhea.com/api/admin/';
+    return 'https://coral-shark-547480.hostingersite.com/api/admin/';
   }
   @override
   String get authBaseUrl {
-    return 'https://odhea.com/api/auth/';
+    return 'https://coral-shark-547480.hostingersite.com/api/auth/';
   }
   @override
   bool get enableLogging => false;
@@ -22,7 +22,7 @@ class ProdEnv implements Env {
   String get vapidKey =>
       'BFGt9-pcSAFclpHVnYRhDrm-rSCnYQvFEiejFU6g39v1RnyQnclua7On4BE1-du0OKu4IgMCMv_GVq07nwS8-HU';
   @override
-  String get dashboardUrl => 'https://odhea.com';
+  String get dashboardUrl => 'https://elzefir-dash-prod-ab0e1.web.app';
   @override
   PusherChannelsOptions get pusherChannelsOptions =>
       PusherChannelsOptions.fromCluster(

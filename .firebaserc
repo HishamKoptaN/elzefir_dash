@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "elzefir-dev"
+    "default": "elzefir-dev",
+    "prod": "elzefir"
   },
   "targets": {
     "elzefir-dev": {
@@ -10,10 +11,10 @@
         ]
       }
     },
-    "elzefir-dbb8d": {
+    "elzefir": {
       "hosting": {
         "elzefir-dash": [
-          "elzefir-dash"
+          "elzefir-dash-prod-ab0e1"
         ]
       }
     }
