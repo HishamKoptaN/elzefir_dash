@@ -16,7 +16,6 @@ class BodyWidget extends StatefulWidget {
 }
 
 class _BodyWidgetState extends State<BodyWidget> {
-  final ScrollController scrollController = ScrollController();
   final offerWidget = GlobalKey();
   final categoriesKey = GlobalKey();
   final productsKey = GlobalKey();
