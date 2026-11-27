@@ -236,7 +236,7 @@ class FooterDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
+      'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 15 عامًا بجودة عالية وأسعار تناسب الجميع.',
       style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
     );
   }
