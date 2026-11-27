@@ -3,10 +3,10 @@ import '../site_content_field.dart';
 /// عناوين ومقدمات صفحات المعلومات الأربع في الموقع العام.
 class SiteInfoFields {
   static const fields = [
-    SiteContentField(key: 'about_page_badge', label: 'من نحن - الشارة', fallback: 'عراقة وخبرة 20 عاماً'),
+    SiteContentField(key: 'about_page_badge', label: 'من نحن - الشارة', fallback: 'عراقة وخبرة 15 عاماً'),
     SiteContentField(key: 'about_page_title', label: 'من نحن - العنوان', fallback: 'من نحن - مطعم أسماك الزفر'),
     SiteContentField(key: 'about_page_subtitle', label: 'من نحن - العنوان الفرعي', fallback: 'رواد تقديم المأكولات البحرية والأسماك الطازجة في العياط والجيزة'),
-    SiteContentField(key: 'about_page_intro', label: 'من نحن - المقدمة', fallback: 'في مطعم أسماك الزفر، نفتخر برحلة تمتد لأكثر من 20 عاماً في عالم المأكولات البحرية، حيث نجمع بين الطعم المصري الأصيل والجودة الفائقة. بدأت رحلتنا بشغف تقديم أجود أنواع الأسماك البحرية والنيلية الطازجة يومياً مباشرة من شباك الصيادين إلى مائدتك.', multiline: true),
+    SiteContentField(key: 'about_page_intro', label: 'من نحن - المقدمة', fallback: 'في مطعم أسماك الزفر، نفتخر برحلة تمتد لأكثر من 15 عاماً في عالم المأكولات البحرية، حيث نجمع بين الطعم المصري الأصيل والجودة الفائقة. بدأت رحلتنا بشغف تقديم أجود أنواع الأسماك البحرية والنيلية الطازجة يومياً مباشرة من شباك الصيادين إلى مائدتك.', multiline: true),
     SiteContentField(key: 'privacy_page_badge', label: 'الخصوصية - الشارة', fallback: 'الشفافية وحماية البيانات'),
     SiteContentField(key: 'privacy_page_title', label: 'الخصوصية - العنوان', fallback: 'سياسة الخصوصية'),
     SiteContentField(key: 'privacy_page_updated', label: 'الخصوصية - تاريخ التحديث', fallback: 'آخر تحديث: 11 أكتوبر 2026'),
