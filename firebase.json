@@ -38,17 +38,17 @@
     "platforms": {
       "android": {
         "default": {
-          "projectId": "elzefir-dbb8d",
-          "appId": "1:1057189524284:android:9d01e04329fc5816d62439",
+          "projectId": "elzefir",
+          "appId": "1:1052606400660:android:25198788e67819d9a5cc81",
           "fileOutput": "android/app/google-services.json"
         }
       },
       "dart": {
         "lib/config/firebase/firebase_options_prod.dart": {
-          "projectId": "elzefir-dbb8d",
+          "projectId": "elzefir",
           "configurations": {
-            "android": "1:1057189524284:android:9d01e04329fc5816d62439",
-            "web": "1:1057189524284:web:e3d3031f7da5ad94d62439"
+            "android": "1:1052606400660:android:25198788e67819d9a5cc81",
+            "web": "1:1052606400660:web:6672898c151aeffba5cc81"
           }
         }
       }
