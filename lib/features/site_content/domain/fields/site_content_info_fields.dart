@@ -40,6 +40,7 @@ class SiteInfoFields {
     SiteContentField(key: 'nav_prices', label: 'زر الأسعار', fallback: 'الأسعار'),
     SiteContentField(key: 'nav_about', label: 'زر من نحن', fallback: 'من نحن'),
     SiteContentField(key: 'nav_contact', label: 'زر تواصل', fallback: 'تواصل'),
+    SiteContentField(key: 'nav_orders', label: 'زر الطلبات', fallback: 'الطلبات'),
     SiteContentField(key: 'section_order_json', label: 'ترتيب الأقسام: معرّف واحد لكل سطر (hero / gallery / products / prices / about / contact)', fallback: '', multiline: true),
     SiteContentField(key: 'offer_badge', label: 'عرض اليوم - الشارة', fallback: 'عرض اليوم'),
     SiteContentField(key: 'offer_savings', label: 'عرض اليوم - شارة التوفير', fallback: 'وفر 90 ج.م'),
