@@ -215,8 +215,8 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.enabled
 /// @nodoc
 
 
-class _CategoryUpsertReqEntity implements CategoryUpsertReqEntity {
-  const _CategoryUpsertReqEntity({this.id, this.imageUrl, this.imageFile, this.name, this.enabled});
+class _CategoryUpsertReqEntity extends CategoryUpsertReqEntity {
+  const _CategoryUpsertReqEntity({this.id, this.imageUrl, this.imageFile, this.name, this.enabled}): super._();
   
 
 @override final  int? id;
