@@ -14,6 +14,7 @@ import '../../../widgets/auth_page_layout.dart';
 import '../../../widgets/custom_auth_text_form_field.dart';
 import '../bloc/sign_up_bloc.dart';
 import '../../../widgets/debug_auto_fill.dart';
+import 'widgets/password_requirement_tile.dart';
 import 'widgets/sign_up_actions.dart';
 
 class SignUpView extends StatefulWidget {
@@ -265,14 +266,12 @@ class _SignUpViewState extends State<SignUpView> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildPasswordRequirement(
-                              context: context,
+                            PasswordRequirementTile(
                               text: 'رمز واحد على الأقل (!@#\$%^&*...)',
                               isSatisfied:
                                   signUpReq.password?.hasSymbol ?? false,
                             ),
-                            _buildPasswordRequirement(
-                              context: context,
+                            PasswordRequirementTile(
                               text: 'حرف كبير واحد على الأقل (A-Z)',
                               isSatisfied:
                                   signUpReq.password?.value != null &&
@@ -280,8 +279,7 @@ class _SignUpViewState extends State<SignUpView> {
                                     RegExp(r'[A-Z]'),
                                   ),
                             ),
-                            _buildPasswordRequirement(
-                              context: context,
+                            PasswordRequirementTile(
                               text: 'حرف صغير واحد على الأقل (a-z)',
                               isSatisfied:
                                   signUpReq.password?.value != null &&
@@ -289,14 +287,12 @@ class _SignUpViewState extends State<SignUpView> {
                                     RegExp(r'[a-z]'),
                                   ),
                             ),
-                            _buildPasswordRequirement(
-                              context: context,
+                            PasswordRequirementTile(
                               text: 'رقم واحد على الأقل (0-9)',
                               isSatisfied:
                                   signUpReq.password?.hasNumber ?? false,
                             ),
-                            _buildPasswordRequirement(
-                              context: context,
+                            PasswordRequirementTile(
                               text: '8 أحرف و أرقام على الأقل',
                               isSatisfied:
                                   signUpReq.password?.value != null &&
@@ -376,29 +372,6 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
-  Widget _buildPasswordRequirement({
-    required BuildContext context,
-    required String text,
-    required bool isSatisfied,
-  }) {
-    return Padding(
-      padding: EdgeInsets.only(top: 2.h),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(width: 4.w),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 16.sp,
-              color: isSatisfied ? Colors.green : Colors.grey[600],
-              fontWeight: isSatisfied ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 class DebugGap extends StatelessWidget {
