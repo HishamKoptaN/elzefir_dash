@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:phone_input/phone_input_package.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/widgets/forms/custom_phone_form_field.dart';
 import '../../../../auth/widgets/custom_auth_text_form_field.dart';
 import '../../../domain/entities/profile_entity.dart';
 import '../../bloc/profile_bloc.dart';
@@ -40,10 +39,8 @@ class ProfilePhoneWidget extends StatelessWidget {
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: IconTheme(
-                data: IconThemeData(
-                  color: context.colorScheme.onSurface,
-                ),
-                child: PhoneInput(
+                data: IconThemeData(color: context.colorScheme.onSurface),
+                child: CustomPhoneFormField(
                   initialValue: PhoneNumber(
                     isoCode: IsoCode.values.firstWhere(
                       (element) {
@@ -60,7 +57,6 @@ class ProfilePhoneWidget extends StatelessWidget {
                     nsn: profile?.phoneNumber?.value ?? '',
                   ),
                   enabled: updatedProfile != null,
-                  defaultCountry: IsoCode.SA,
                   onChanged: (phoneNumber) {
                     getIt<ProfileBloc>().add(
                       ProfileEvent.dataChanged(
@@ -83,109 +79,9 @@ class ProfilePhoneWidget extends StatelessWidget {
                       ),
                     );
                   },
-                  autocorrect: false,
                   flagSize: 45.sp,
-                  autofillHints: [AutofillHints.telephoneNumber],
-                  showFlagInInput: true,
-                  isCountrySelectionEnabled: updatedProfile != null,
-                  showArrow: true,
-                  shouldFormat: false,
-                  flagShape: BoxShape.rectangle,
-                  decoration: authFieldDecoration(
-                    hintText: 'رقم الهاتف',
-                    prefixIcon: Icon(
-                      Icons.phone,
-                      // color: AppColors.primary,
-                      size: 30.sp,
-                    ),
-                    hintTextDirection: TextDirection.rtl,
-                  ),
+                  decoration: authFieldDecoration(hintText: 'رقم الهاتف'),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  // focusNode: _phoneFocusNode,
-                  validator: PhoneValidator.compose([
-                    PhoneValidator.required(errorText: 'مطلوب'),
-                    PhoneValidator.validMobile(
-                      errorText: 'رقم الهاتف غير صحيح',
-                    ),
-                    PhoneValidator.valid(),
-                    PhoneValidator.validCountry([
-                      IsoCode.EG,
-                      IsoCode.SA,
-                      IsoCode.CM,
-                      IsoCode.TZ,
-                      IsoCode.UG,
-                      IsoCode.MW,
-                      IsoCode.MZ,
-                    ]),
-                    PhoneValidator.validType(
-                      PhoneNumberType.mobile,
-                      errorText: 'نوع الهاتف غير صحيح',
-                    ),
-                  ]),
-                  countrySelectorNavigator:
-                      CountrySelectorNavigator.draggableBottomSheet(
-                        minChildSize: 0.4,
-                        maxChildSize: 0.7,
-                        initialChildSize: 0.6,
-                        countries: [
-                          IsoCode.EG,
-                          IsoCode.SA,
-                          IsoCode.CM,
-                          IsoCode.TZ,
-                          IsoCode.UG,
-                          IsoCode.MW,
-                          IsoCode.MZ,
-                        ],
-                        favorites: [
-                          IsoCode.EG,
-                          IsoCode.SA,
-                          IsoCode.CM,
-                          IsoCode.TZ,
-                          IsoCode.UG,
-                          IsoCode.MW,
-                          IsoCode.MZ,
-                        ],
-                        addFavoriteSeparator: true,
-                        showCountryCode: true,
-                        noResultMessage: 'noResultMessage',
-                        showSearchInput: true,
-                        searchInputDecoration: const InputDecoration(
-                          focusColor: Colors.white,
-                          fillColor: Colors.white,
-                          hintText: 'بحث',
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                        ),
-
-                        defaultSearchInputIconColor: Colors.grey,
-                        bottomSheetDragHandlerColor: Colors.grey,
-                        scrollPhysics: const BouncingScrollPhysics(),
-                        flagSize: 50.sp,
-                        flagShape: BoxShape.rectangle,
-                        showCountryName: true,
-                        showCountryFlag: true,
-                        searchInputHeight: 50.h,
-                      ),
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(
-                      RegExp(r'^[0-9+\-\s\(\)]+$'),
-                    ),
-                  ],
-                  countryCodeStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 24.sp,
-                    color: context.colorScheme.onSurface,
-                  ),
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 24.sp,
-                    color: context.colorScheme.onSurface,
-                  ),
                 ),
               ),
             ),
