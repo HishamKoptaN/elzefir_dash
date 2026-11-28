@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
+
+import '../../../../../../core/di/dependency_injection.dart';
 import '../../bloc/forgot_pass_bloc.dart';
 
 class DebugAutoFill extends StatefulWidget {
@@ -31,11 +32,11 @@ class _DebugAutoFillState extends State<DebugAutoFill> {
     if (_tapCount >= 3) {
       debugPrint('✅ Triple tap detected! Running login scenario...');
       _tapCount = 0;
-      _runLoginScenario(context);
+      _runLoginScenario();
     }
   }
 
-  void _runLoginScenario(BuildContext context) {
+  void _runLoginScenario() {
     debugPrint('🚀 Running Debug Autofill Login with BLoC...');
 
     const testEmails = [
@@ -48,7 +49,7 @@ class _DebugAutoFillState extends State<DebugAutoFill> {
     debugPrint('📧 Using test email: $testEmail');
     debugPrint('✅ These domains are already authorized in Firebase Console');
 
-    context.read<ForgotPassBloc>()
+    getIt<ForgotPassBloc>()
       ..add(ForgotPassEvent.dataChanged(email: EmailFormInput.dirty(testEmail)))
       ..add(const ForgotPassEvent.sendPassResetEmail());
 
