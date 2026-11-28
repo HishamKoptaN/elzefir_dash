@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/errors/models/error_info.dart';
 import '../../../../core/networking/api_result.dart';
@@ -124,20 +124,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required ProfileEntity updatedProfile,
   }) {
     if (formzSubmissionStatus != null) return formzSubmissionStatus;
-    final bool isNameValid = Formz.validate([
-      updatedProfile.name ?? const GenericFormInput.pure(),
-    ]);
-    final bool isUserNameValid = Formz.validate([
-      updatedProfile.username ?? const GenericFormInput.pure(),
-    ]);
-    final bool isPhoneChanged =
-        updatedProfile.phoneNumber?.value.trim() !=
-        originalProfile.phoneNumber?.value.trim();
-    final bool isPhoneValid = isPhoneChanged
-        ? (updatedProfile.isValidNumber == true)
-        : true;
-    final bool hasChanges = updatedProfile.isEdited(original: originalProfile);
-    return (isNameValid && isUserNameValid && isPhoneValid && hasChanges)
+    return updatedProfile.canSubmit(original: originalProfile)
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.initial;
   }
