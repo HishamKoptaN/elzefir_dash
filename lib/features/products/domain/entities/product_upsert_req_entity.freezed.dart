@@ -222,8 +222,8 @@ return $default(_that.id,_that.imageUrl,_that.imageFile,_that.name,_that.title,_
 /// @nodoc
 
 
-class _ProductUpsertReqEntity implements ProductUpsertReqEntity {
-  const _ProductUpsertReqEntity({this.id, this.imageUrl, this.imageFile, this.name, this.title, this.description, this.price, this.priceUnit, this.categoryId, this.isFeatured, this.isMostRequested, this.enabled});
+class _ProductUpsertReqEntity extends ProductUpsertReqEntity {
+  const _ProductUpsertReqEntity({this.id, this.imageUrl, this.imageFile, this.name, this.title, this.description, this.price, this.priceUnit, this.categoryId, this.isFeatured, this.isMostRequested, this.enabled}): super._();
   
 
 @override final  int? id;

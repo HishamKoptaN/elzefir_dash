@@ -1,12 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
-import '../../../../../core/utils/price_input.dart';
 import '../../../domain/entities/product_upsert_req_entity.dart';
 import '../../../domain/use_cases/products_use_cases.dart';
 part 'product_upsert_bloc.freezed.dart';
@@ -16,11 +14,18 @@ part 'product_upsert_state.dart';
 @lazySingleton
 class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
   final ProductsUseCase productsUseCases;
+  ProductUpsertReqEntity? _original;
+
+  void setOriginal(ProductUpsertReqEntity? original) {
+    _original = original;
+  }
+
   ProductUpsertBloc({required this.productsUseCases})
     : super(const ProductUpsertState.initial()) {
     on<ProductUpsertEvent>((event, emit) async {
       await event.when(
         reset: () async {
+          _original = null;
           emit(
             const ProductUpsertState.loaded(
               formzSubmissionStatus: FormzSubmissionStatus.initial,
@@ -60,7 +65,8 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
                   state: state,
                   errorInfo: const ErrorInfo(
                     title: 'بيانات غير مكتملة',
-                    message: 'أكمل بيانات المنتج (الاسم، الوصف، السعر) قبل الحفظ',
+                    message:
+                        'أكمل بيانات المنتج (الاسم، الوصف، السعر) قبل الحفظ',
                   ),
                 );
                 return;
@@ -122,13 +128,7 @@ class ProductUpsertBloc extends Bloc<ProductUpsertEvent, ProductUpsertState> {
   FormzSubmissionStatus _validateForm({
     required ProductUpsertReqEntity productUpsertReq,
   }) {
-    return (Formz.validate([
-          productUpsertReq.name ?? const GenericFormInput.pure(),
-          productUpsertReq.title ?? const GenericFormInput.pure(),
-          productUpsertReq.description ?? const GenericFormInput.pure(),
-          productUpsertReq.price ?? const GenericFormInput.pure(),
-        ]) &&
-        isValidPrice(productUpsertReq.price?.value ?? ''))
+    return productUpsertReq.canSubmit(original: _original)
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.failure;
   }
