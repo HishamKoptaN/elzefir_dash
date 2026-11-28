@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../../core/build/app_version.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -247,12 +248,19 @@ class CopyRightWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "© ${DateTime.now().year} مطعم أسماك الزفر. جميع الحقوق محفوظة.",
-        textAlign: TextAlign.center,
-        style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
-      ),
+    return FutureBuilder<String>(
+      future: AppVersion.display,
+      builder: (context, snapshot) {
+        final version = snapshot.data ?? '';
+        final suffix = version.isEmpty ? '' : ' • إصدار اللوحة v$version';
+        return Center(
+          child: Text(
+            "© ${DateTime.now().year} مطعم أسماك الزفر. جميع الحقوق محفوظة$suffix.",
+            textAlign: TextAlign.center,
+            style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
+          ),
+        );
+      },
     );
   }
 }
