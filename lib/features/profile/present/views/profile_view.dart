@@ -5,6 +5,7 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/routing/utils/navigation_service.dart';
@@ -16,7 +17,9 @@ import '../../../../core/widgets/feedback/error_content_widget.dart';
 import '../../../auth/reset_password/present/views/reset_pass_view.dart';
 import '../bloc/profile_bloc.dart';
 import 'widgets/profile_card_widget.dart';
+
 import 'package:universal_io/io.dart';
+
 import 'widgets/profile_phone_widget.dart';
 
 class ProfileView extends StatefulWidget {
@@ -71,6 +74,12 @@ class _ProfileViewState extends State<ProfileView> {
       builder: (context, state) {
         return state.maybeMap(
           loaded: (state) {
+            final canSubmit =
+                state.updatedProfile?.canSubmit(original: state.profile) ??
+                false;
+            final isSaving = state.formzSubmissionStatus.isInProgress;
+            final isSaveDisabled =
+                isSaving || (state.updatedProfile != null && !canSubmit);
             return SingleChildScrollView(
               child: Skeletonizer(
                 enabled: state.isLoading,
@@ -171,34 +180,29 @@ class _ProfileViewState extends State<ProfileView> {
                                 textDirection: TextDirection.ltr,
                                 child: FilledButton.icon(
                                   style: FilledButton.styleFrom(
-                                    backgroundColor: state.updatedProfile
-                                            ?.isEdited(original: state.profile) ??
-                                        false
-                                        ? context.colorScheme.primary
-                                        : context.colorScheme.onSurface
-                                            .withValues(alpha: 0.12),
-                                    foregroundColor: state.updatedProfile
-                                            ?.isEdited(original: state.profile) ??
-                                        false
-                                        ? null
-                                        : context.colorScheme.onSurface,
+                                    backgroundColor: isSaveDisabled
+                                        ? context.colorScheme.onSurface
+                                              .withValues(alpha: 0.12)
+                                        : context.colorScheme.primary,
+                                    foregroundColor: isSaveDisabled
+                                        ? context.colorScheme.onSurface
+                                        : null,
                                   ),
-                                  onPressed: () {
-                                    if (state.updatedProfile?.isEdited(
-                                          original: state.profile,
-                                        ) ??
-                                        false) {
-                                      getIt<ProfileBloc>().add(
-                                        ProfileEvent.updateProfile(),
-                                      );
-                                    } else {
-                                      getIt<ProfileBloc>().add(
-                                        ProfileEvent.dataChanged(
-                                          updatedProfile: state.profile,
-                                        ),
-                                      );
-                                    }
-                                  },
+                                  onPressed: isSaveDisabled
+                                      ? null
+                                      : () {
+                                          if (state.updatedProfile == null) {
+                                            getIt<ProfileBloc>().add(
+                                              ProfileEvent.dataChanged(
+                                                updatedProfile: state.profile,
+                                              ),
+                                            );
+                                            return;
+                                          }
+                                          getIt<ProfileBloc>().add(
+                                            ProfileEvent.updateProfile(),
+                                          );
+                                        },
                                   icon: state.updatedProfile == null
                                       ? Icon(Icons.edit_rounded, size: 18.r)
                                       : Icon(Icons.check_rounded, size: 18.r),
@@ -224,7 +228,8 @@ class _ProfileViewState extends State<ProfileView> {
                                   },
                                   child: Text(
                                     'إلغاء',
-                                    style: context.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.w600),
+                                    style: context.textTheme.labelLarge
+                                        ?.copyWith(fontWeight: FontWeight.w600),
                                   ),
                                 ),
                             ],
