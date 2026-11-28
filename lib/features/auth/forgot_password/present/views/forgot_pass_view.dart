@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
+
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_scaffold.dart';
@@ -67,7 +68,7 @@ class ForgotPassView extends StatelessWidget {
                           hintText: "البريد الإلكتروني",
                           suffixIcon: Icons.mail,
                           onChanged: (v) {
-                            context.read<ForgotPassBloc>().add(
+                            getIt<ForgotPassBloc>().add(
                               ForgotPassEvent.dataChanged(
                                 email: EmailFormInput.dirty(v!),
                               ),
@@ -77,9 +78,11 @@ class ForgotPassView extends StatelessWidget {
                         customAuthBtn(
                           context: context,
                           onPressed: formzSubmissionStatus.isSuccess
-                              ? () => context.read<ForgotPassBloc>().add(
-                                  const ForgotPassEvent.sendPassResetEmail(),
-                                )
+                              ? () {
+                                  getIt<ForgotPassBloc>().add(
+                                    const ForgotPassEvent.sendPassResetEmail(),
+                                  );
+                                }
                               : null,
                           formzSubmissionStatus: formzSubmissionStatus,
                           title: "إرسال",
