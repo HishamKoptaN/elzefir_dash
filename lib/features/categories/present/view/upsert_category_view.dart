@@ -3,11 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:alzefr_dash/core/di/dependency_injection.dart';
 import 'package:alzefr_dash/core/widgets/feedback/app_snackbar.dart';
+
 import '../../domain/entities/categories_res_entity.dart';
 import '../../domain/entities/category_upsert_req_entity.dart';
 import '../blocs/bloc/categories_bloc.dart';
 import '../blocs/category_upsert_bloc/category_upsert_bloc.dart';
 import 'widgets/category_upsert_form.dart';
+
+CategoryUpsertReqEntity _initialReq(CategoryEntity? category) {
+  return CategoryUpsertReqEntity(
+    id: category?.id,
+    imageUrl: .dirty(value: category?.image ?? ''),
+    name: .dirty(value: category?.name ?? ''),
+  );
+}
 
 class UpsertCategoryView extends StatefulWidget {
   const UpsertCategoryView({super.key, required this.category});
@@ -22,18 +31,15 @@ class _UpsertCategoryViewState extends State<UpsertCategoryView> {
   void initState() {
     super.initState();
     final bloc = getIt<CategoryUpsertBloc>();
+    final initialReq = _initialReq(widget.category);
     if (widget.category != null) {
-      bloc.add(
-        CategoryUpsertEvent.dataChanged(
-          categoryUpsertReq: CategoryUpsertReqEntity(
-            id: widget.category?.id,
-            imageUrl: .dirty(value: widget.category?.image ?? ''),
-            name: .dirty(value: widget.category?.name ?? ''),
-          ),
-        ),
-      );
+      bloc
+        ..setOriginal(initialReq)
+        ..add(CategoryUpsertEvent.dataChanged(categoryUpsertReq: initialReq));
     } else {
-      bloc.add(const CategoryUpsertEvent.reset());
+      bloc
+        ..setOriginal(null)
+        ..add(const CategoryUpsertEvent.reset());
     }
   }
 

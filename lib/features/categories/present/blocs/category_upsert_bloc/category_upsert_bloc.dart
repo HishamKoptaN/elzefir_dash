@@ -1,9 +1,9 @@
 import 'package:alzefr_dash/features/categories/domain/use_cases/categories_use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
 import '../../../domain/entities/category_upsert_req_entity.dart';
@@ -15,11 +15,18 @@ part 'category_upsert_state.dart';
 class CategoryUpsertBloc
     extends Bloc<CategoryUpsertEvent, CategoryUpsertState> {
   final CategoriesUseCases categoriesUseCases;
+  CategoryUpsertReqEntity? _original;
+
+  void setOriginal(CategoryUpsertReqEntity? original) {
+    _original = original;
+  }
+
   CategoryUpsertBloc({required this.categoriesUseCases})
     : super(const CategoryUpsertState.initial()) {
     on<CategoryUpsertEvent>((event, emit) async {
       await event.when(
         reset: () {
+          _original = null;
           emit(
             const CategoryUpsertState.loaded(
               categoryUpsertReq: CategoryUpsertReqEntity(),
@@ -99,9 +106,7 @@ class CategoryUpsertBloc
   FormzSubmissionStatus _validateForm({
     required CategoryUpsertReqEntity categoryUpsertReq,
   }) {
-    return (Formz.validate([
-          categoryUpsertReq.name ?? const GenericFormInput.pure(),
-        ]))
+    return categoryUpsertReq.canSubmit(original: _original)
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.failure;
   }

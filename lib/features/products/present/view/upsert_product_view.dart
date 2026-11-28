@@ -17,6 +17,21 @@ String _errorMessage(ErrorInfo errorInfo) {
   return message.isEmpty ? 'تعذّر حفظ المنتج' : message;
 }
 
+ProductUpsertReqEntity _initialReq(ProductEntity? product) {
+  return ProductUpsertReqEntity(
+    id: product?.id,
+    imageUrl: .dirty(value: product?.image ?? ''),
+    name: .dirty(value: product?.name ?? ''),
+    title: .dirty(value: product?.title ?? ''),
+    description: .dirty(value: product?.description ?? ''),
+    price: .dirty(value: product?.price ?? ''),
+    priceUnit: .dirty(value: product?.priceUnit ?? ''),
+    isFeatured: product?.isFeatured ?? false,
+    isMostRequested: product?.isMostRequested ?? false,
+    categoryId: .dirty(value: product?.category.id.toString() ?? ''),
+  );
+}
+
 class UpsertProductView extends StatefulWidget {
   const UpsertProductView({super.key, required this.product});
   static const String routeName = "upsert";
@@ -31,27 +46,15 @@ class _UpsertProductViewState extends State<UpsertProductView> {
     super.initState();
     getIt<CategoriesBloc>().add(CategoriesEvent.get());
     final bloc = getIt<ProductUpsertBloc>();
+    final initialReq = _initialReq(widget.product);
     if (widget.product != null) {
-      bloc.add(
-        .dataChanged(
-          productUpsertReq: ProductUpsertReqEntity(
-            id: widget.product?.id,
-            imageUrl: .dirty(value: widget.product?.image ?? ''),
-            name: .dirty(value: widget.product?.name ?? ''),
-            title: .dirty(value: widget.product?.title ?? ''),
-            description: .dirty(value: widget.product?.description ?? ''),
-            price: .dirty(value: widget.product?.price ?? ''),
-            priceUnit: .dirty(value: widget.product?.priceUnit ?? ''),
-            isFeatured: widget.product?.isFeatured ?? false,
-            isMostRequested: widget.product?.isMostRequested ?? false,
-            categoryId: .dirty(
-              value: widget.product?.category.id.toString() ?? '',
-            ),
-          ),
-        ),
-      );
+      bloc
+        ..setOriginal(initialReq)
+        ..add(ProductUpsertEvent.dataChanged(productUpsertReq: initialReq));
     } else {
-      bloc.add(const ProductUpsertEvent.reset());
+      bloc
+        ..setOriginal(null)
+        ..add(const ProductUpsertEvent.reset());
     }
   }
 
